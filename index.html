@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Your Options with Perry Homes | The Speights Experience</title>
+  <style>
+    :root {
+      --black: #050505;
+      --charcoal: #1b1b1b;
+      --soft-black: #242424;
+      --white: #ffffff;
+      --ivory: #f8f5ef;
+      --warm-gray: #ebe6de;
+      --taupe: #b9aa98;
+      --gold: #b99a5b;
+      --deep-gold: #8a6d38;
+      --text: #222222;
+      --muted: #6f6a63;
+      --shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
+      color: var(--text);
+      background: var(--ivory);
+      line-height: 1.6;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .top-branding {
+      background: var(--white);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .top-branding img {
+      width: 100%;
+      max-height: 175px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 560px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--white);
+      overflow: hidden;
+      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.58)), url("images/hero-perry-home.jpg") center/cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.55));
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+      padding: 70px 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.35);
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.045em;
+      margin-bottom: 24px;
+      text-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-subtitle {
+      max-width: 780px;
+      margin: 0 auto 34px;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.22);
+    }
+
+    .section {
+      padding: 84px 6vw;
+    }
+
+    .section-inner {
+      max-width: 1220px;
+      margin: 0 auto;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 46px;
+      align-items: center;
+    }
+
+    .section-label {
+      color: var(--deep-gold);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.3rem, 4.5vw, 4rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+    }
+
+    .experience-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .experience-list {
+      list-style: none;
+      display: grid;
+      gap: 18px;
+    }
+
+    .experience-list li {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--black);
+      color: var(--gold);
+      font-weight: 900;
+    }
+
+    .experience-list strong {
+      display: block;
+      color: var(--black);
+      margin-bottom: 3px;
+    }
+
+    .experience-list span {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .collection-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 44px;
+    }
+
+    .collection-header .section-copy {
+      margin-bottom: 0;
+    }
+
+    .dark-section {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .dark-section .section-title,
+    .dark-section .section-copy {
+      color: var(--white);
+    }
+
+    .dark-section .section-copy {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .home-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .home-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-section .home-card {
+      background: var(--soft-black);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .home-image {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: var(--warm-gray);
+    }
+
+    .home-body {
+      padding: 22px;
+    }
+
+    .home-kicker {
+      color: var(--deep-gold);
+      font-size: 0.73rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .dark-section .home-kicker {
+      color: var(--gold);
+    }
+
+    .home-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+
+    .dark-section .home-title {
+      color: var(--white);
+    }
+
+    .home-description {
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .dark-section .home-description {
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .process-band {
+      background: linear-gradient(135deg, var(--charcoal), #050505);
+      color: var(--white);
+      border-radius: 34px;
+      padding: 46px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .process-band h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+    }
+
+    .process-pills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .pill {
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .pill strong {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+
+    .pill span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.92rem;
+    }
+
+    .cta {
+      text-align: center;
+      background: var(--white);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .cta-box {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      margin-top: 28px;
+      display: inline-grid;
+      gap: 8px;
+      padding: 24px 32px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card strong {
+      font-size: 1.35rem;
+      color: var(--gold);
+    }
+
+    .footer {
+      padding: 28px 6vw;
+      text-align: center;
+      background: var(--black);
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.84rem;
+    }
+
+    .disclaimer {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 980px) {
+      .intro-grid,
+      .process-band {
+        grid-template-columns: 1fr;
+      }
+
+      .home-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-branding img {
+        max-height: 100px;
+      }
+
+      .hero {
+        min-height: 520px;
+      }
+
+      .section {
+        padding: 64px 20px;
+      }
+
+      .home-grid,
+      .process-pills {
+        grid-template-columns: 1fr;
+      }
+
+      .process-band {
+        padding: 30px;
+        border-radius: 24px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Replace this file path with your uploaded header image path when hosting. -->
+  <header class="top-branding">
+    <img src="header footer atoe Angela.png" alt="A tradition of excellence. Perry Homes." />
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">The Speights Experience</div>
+      <h1>Explore Your Options with Perry Homes</h1>
+      <p class="hero-subtitle">
+        A curated new-home journey with Angela Speights — from discovering your ideal floor plan to selecting the right homesite, understanding your numbers, and moving forward with confidence.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#single-story">View Single Story Homes</a>
+        <a class="btn btn-secondary" href="#two-story">View Two-Story Homes</a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="section-inner intro-grid">
+        <div>
+          <p class="section-label">What to Expect</p>
+          <h2 class="section-title">A polished, personal, and well-guided Perry Homes experience.</h2>
+          <p class="section-copy">
+            Buying a new Perry home should feel exciting, organized, and elevated. The Speights Experience is designed to help you explore available plans, compare lifestyles, understand your purchase path, and feel fully supported from first conversation to closing day.
+          </p>
+          <p class="section-copy">
+            Whether you are focused on a quick move-in opportunity, a homesite with the right view, or building from the ground up, Angela will help you narrow the choices and move with clarity.
+          </p>
+        </div>
+
+        <div class="experience-card">
+          <ul class="experience-list">
+            <li>
+              <div class="number">1</div>
+              <div><strong>Personal Fact-Finding</strong><span>We identify your timeline, budget, must-haves, preferred rooms, homesite goals, and financing path.</span></div>
+            </li>
+            <li>
+              <div class="number">2</div>
+              <div><strong>Curated Home Tour</strong><span>You receive a focused tour of plans and inventory that match the way you want to live.</span></div>
+            </li>
+            <li>
+              <div class="number">3</div>
+              <div><strong>Plan + Homesite Strategy</strong><span>We compare one-story and two-story plans, lot placement, exterior style, and overall value.</span></div>
+            </li>
+            <li>
+              <div class="number">4</div>
+              <div><strong>Numbers + Incentive Review</strong><span>We review estimated payment, incentives, closing costs, lender credits, and next steps.</span></div>
+            </li>
+            <li>
+              <div class="number">5</div>
+              <div><strong>Contract to Closing Support</strong><span>From My Account updates to walkthroughs, construction milestones, and key delivery, you are guided throughout the process.</span></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="single-story" class="section">
+      <div class="section-inner">
+        <div class="collection-header">
+          <p class="section-label">Single Story Homes</p>
+          <h2 class="section-title">Elegant single-level living with Perry Homes craftsmanship.</h2>
+          <p class="section-copy">Explore representative exterior styles for some of the most requested single-story Perry home designs.</p>
+        </div>
+
+        <div class="home-grid">
+          <article class="home-card">
+            <img class="home-image" src="images/2896W.jpg" alt="Representative Perry Homes 2896W exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">2896W</h3><p class="home-description">A refined single-story design with thoughtful spaces for everyday comfort and effortless hosting.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/3057W.jpg" alt="Representative Perry Homes 3057W exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3057W</h3><p class="home-description">A beautifully balanced plan offering open gathering areas and private retreats.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/3334W.jpg" alt="Representative Perry Homes 3334W exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3334W</h3><p class="home-description">A spacious single-story option with impressive curb appeal and elevated livability.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/3735W.jpg" alt="Representative Perry Homes 3735W exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3735W</h3><p class="home-description">An expansive one-level design that feels grand, functional, and welcoming.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/3411W.jpg" alt="Representative Perry Homes 3411W exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3411W</h3><p class="home-description">A versatile layout with generous room sizes and the signature Perry Homes finish.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/3469W.jpg" alt="Representative Perry Homes 3469W exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3469W</h3><p class="home-description">An elegant plan designed for buyers who want everyday ease with a luxury feel.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/3600W.jpg" alt="Representative Perry Homes 3600W exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3600W</h3><p class="home-description">A stunning single-story design with a memorable presence and strong lifestyle flow.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/3566W.jpg" alt="Representative Perry Homes 3566W exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3566W</h3><p class="home-description">A client favorite with oversized spaces, refined architecture, and timeless appeal.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/3130S.jpg" alt="Representative Perry Homes 3130S exterior" />
+            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3130S</h3><p class="home-description">A smart single-story option with Perry Homes quality and a polished exterior impression.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="two-story" class="section dark-section">
+      <div class="section-inner">
+        <div class="collection-header">
+          <p class="section-label">Two-Story Homes</p>
+          <h2 class="section-title">Grand two-story designs with presence, flexibility, and room to grow.</h2>
+          <p class="section-copy">For buyers who want dramatic architecture, upstairs living options, additional bedrooms, game rooms, or media spaces, these two-story designs create a lasting impression.</p>
+        </div>
+
+        <div class="home-grid">
+          <article class="home-card">
+            <img class="home-image" src="images/4239W.jpg" alt="Representative Perry Homes 4239W exterior" />
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4239W</h3><p class="home-description">A sophisticated two-story plan with strong curb appeal and flexible lifestyle spaces.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/4036W.jpg" alt="Representative Perry Homes 4036W exterior" />
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4036W</h3><p class="home-description">A beautiful design for those who want space, separation, and a polished Perry Homes feel.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/4891W.jpg" alt="Representative Perry Homes 4891W exterior" />
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4891W</h3><p class="home-description">A statement-making home with generous proportions and executive-style presence.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/4132W.jpg" alt="Representative Perry Homes 4132W exterior" />
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4132W</h3><p class="home-description">A gracious two-story plan designed for entertaining, working, relaxing, and gathering.</p></div>
+          </article>
+
+          <article class="home-card">
+            <img class="home-image" src="images/4296W.jpg" alt="Representative Perry Homes 4296W exterior" />
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4296W</h3><p class="home-description">A spacious plan with luxury curb appeal and the flexibility today's buyers expect.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-inner process-band">
+        <h2>Your path from browsing to keys is organized from day one.</h2>
+        <div class="process-pills">
+          <div class="pill"><strong>Tour Options</strong><span>Review model homes, inventory homes, and representative plans that match your goals.</span></div>
+          <div class="pill"><strong>Compare Value</strong><span>Look at pricing, homesite availability, incentives, estimated payment, and timing.</span></div>
+          <div class="pill"><strong>Choose Confidently</strong><span>Decide between quick move-in, near-completion, or build-from-the-ground-up opportunities.</span></div>
+          <div class="pill"><strong>Move Forward</strong><span>Receive guidance through contract, financing, selections, construction updates, and closing.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="cta-box">
+        <p class="section-label">Ready When You Are</p>
+        <h2 class="section-title">Let’s find the right Perry home, on the right homesite, at the right value.</h2>
+        <p class="section-copy">Send your preferred home designs, desired timeline, and must-have features so Angela can curate your next steps.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:3468674865">Call Angela</a>
+          <a class="btn btn-secondary" style="background: var(--black); border-color: var(--black);" href="mailto:Angela.Speights@perryhomes.com?subject=Explore%20My%20Perry%20Homes%20Options">Email My Options</a>
+        </div>
+        <div class="contact-card">
+          <strong>Angela Speights</strong>
+          <span>Perry Homes</span>
+          <span>346-867-4865</span>
+          <span>Angela.Speights@perryhomes.com</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="disclaimer">
+      Representative images, features, specifications, pricing, availability, incentives, and community details may vary and are subject to change. This page is intended as a client-facing guide to begin exploring Perry Homes options with Angela Speights.
+    </p>
+  </footer>
+</body>
+</html>
