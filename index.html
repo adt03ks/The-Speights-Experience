@@ -846,6 +846,13 @@
       3566W-3.png    = third image
       3566W-4.png    = fourth image
 
+      Most plans currently use 4 gallery photos.
+      The 4296W plan is set up for 13 gallery photos:
+      images/4296W.png, images/4296W-2.png, images/4296W-3.png, images/4296W-4.png,
+      images/4296W-5.png, images/4296W-6.png, images/4296W-7.png, images/4296W-8.png,
+      images/4296W-9.png, images/4296W-10.png, images/4296W-11.png, images/4296W-12.png,
+      images/4296W-13.png
+
       Do the same for every plan, for example:
       images/4239W.png, images/4239W-2.png, images/4239W-3.png, images/4239W-4.png
     */
@@ -858,12 +865,14 @@
     const galleryClose = document.querySelector(".gallery-close");
 
     function buildPlanImages(plan) {
-      return [
-        `images/${plan}.png`,
-        `images/${plan}-2.png`,
-        `images/${plan}-3.png`,
-        `images/${plan}-4.png`
-      ];
+      const totalImages = plan === "4296W" ? 13 : 4;
+      const images = [`images/${plan}.png`];
+
+      for (let i = 2; i <= totalImages; i++) {
+        images.push(`images/${plan}-${i}.png`);
+      }
+
+      return images;
     }
 
     function setMainImage(src, plan) {
