@@ -65,7 +65,7 @@
       text-align: center;
       color: var(--white);
       overflow: hidden;
-      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.58)), url("2896W.png") center/cover no-repeat;
+      background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.58)), url("images/2896W.png") center/cover no-repeat;
     }
 
     .hero::after {
@@ -292,10 +292,50 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    .home-link {
+      display: block;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      background: transparent;
+      font: inherit;
+    }
+
+    .home-link::after {
+      content: "View Photos + Floorplan";
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.72);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .home-link:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .home-image {
       aspect-ratio: 16 / 10;
       object-fit: cover;
       background: var(--warm-gray);
+      transition: transform 0.3s ease;
+    }
+
+    .home-link:hover .home-image {
+      transform: scale(1.04);
     }
 
     .home-body {
@@ -403,6 +443,108 @@
     .contact-card strong {
       font-size: 1.35rem;
       color: var(--gold);
+    }
+
+    .gallery-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(0, 0, 0, 0.78);
+    }
+
+    .gallery-modal.is-open {
+      display: flex;
+    }
+
+    .gallery-box {
+      width: min(1080px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      background: var(--ivory);
+      border-radius: 28px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    .gallery-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 24px;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .gallery-top h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1;
+    }
+
+    .gallery-close {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    .gallery-content {
+      padding: 24px;
+    }
+
+    .gallery-main {
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--warm-gray);
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
+    }
+
+    .gallery-main img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: contain;
+      background: var(--warm-gray);
+    }
+
+    .gallery-thumbs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .gallery-thumb {
+      border: 2px solid transparent;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--white);
+      padding: 0;
+    }
+
+    .gallery-thumb.is-active {
+      border-color: var(--gold);
+    }
+
+    .gallery-thumb img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .gallery-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 22px;
     }
 
     .footer {
@@ -529,47 +671,65 @@
 
         <div class="home-grid">
           <article class="home-card">
-            <img class="home-image" src="2896W.png" alt="Representative Perry Homes 2896W exterior" />
+            <button class="home-link" type="button" data-plan="2896W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/2896w">
+              <img class="home-image" src="images/2896W.png" alt="Representative Perry Homes 2896W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">2896W</h3><p class="home-description">A refined single-story design with thoughtful spaces for everyday comfort and effortless hosting.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="3057W.png" alt="Representative Perry Homes 3057W exterior" />
+            <button class="home-link" type="button" data-plan="3057W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3057w">
+              <img class="home-image" src="images/3057W.png" alt="Representative Perry Homes 3057W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3057W</h3><p class="home-description">A beautifully balanced plan offering open gathering areas and private retreats.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="3334W.png" alt="Representative Perry Homes 3334W exterior" />
+            <button class="home-link" type="button" data-plan="3334W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3334w">
+              <img class="home-image" src="images/3334W.png" alt="Representative Perry Homes 3334W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3334W</h3><p class="home-description">A spacious single-story option with impressive curb appeal and elevated livability.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="3735W.png" alt="Representative Perry Homes 3735W exterior" />
+            <button class="home-link" type="button" data-plan="3735W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3735w">
+              <img class="home-image" src="images/3735W.png" alt="Representative Perry Homes 3735W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3735W</h3><p class="home-description">An expansive one-level design that feels grand, functional, and welcoming.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="3411W.png" alt="Representative Perry Homes 3411W exterior" />
+            <button class="home-link" type="button" data-plan="3411W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3411w">
+              <img class="home-image" src="images/3411W.png" alt="Representative Perry Homes 3411W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3411W</h3><p class="home-description">A versatile layout with generous room sizes and the signature Perry Homes finish.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="3469W.png" alt="Representative Perry Homes 3469W exterior" />
+            <button class="home-link" type="button" data-plan="3469W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3469w">
+              <img class="home-image" src="images/3469W.png" alt="Representative Perry Homes 3469W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3469W</h3><p class="home-description">An elegant plan designed for buyers who want everyday ease with a luxury feel.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="3600W.png" alt="Representative Perry Homes 3600W exterior" />
+            <button class="home-link" type="button" data-plan="3600W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3600w">
+              <img class="home-image" src="images/3600W.png" alt="Representative Perry Homes 3600W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3600W</h3><p class="home-description">A stunning single-story design with a memorable presence and strong lifestyle flow.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="3566W.png" alt="Representative Perry Homes 3566W exterior" />
+            <button class="home-link" type="button" data-plan="3566W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3566w">
+              <img class="home-image" src="images/3566W.png" alt="Representative Perry Homes 3566W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3566W</h3><p class="home-description">A client favorite with oversized spaces, refined architecture, and timeless appeal.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="3130S.png" alt="Representative Perry Homes 3130S exterior" />
+            <button class="home-link" type="button" data-plan="3130S" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3130s">
+              <img class="home-image" src="images/3130S.png" alt="Representative Perry Homes 3130S exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3130S</h3><p class="home-description">A smart single-story option with Perry Homes quality and a polished exterior impression.</p></div>
           </article>
         </div>
@@ -586,27 +746,37 @@
 
         <div class="home-grid">
           <article class="home-card">
-            <img class="home-image" src="4239W.png" alt="Representative Perry Homes 4239W exterior" />
+            <button class="home-link" type="button" data-plan="4239W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/4239w">
+              <img class="home-image" src="images/4239W.png" alt="Representative Perry Homes 4239W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4239W</h3><p class="home-description">A sophisticated two-story plan with strong curb appeal and flexible lifestyle spaces.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="4036W.png" alt="Representative Perry Homes 4036W exterior" />
+            <button class="home-link" type="button" data-plan="4036W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/4036w">
+              <img class="home-image" src="images/4036W.png" alt="Representative Perry Homes 4036W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4036W</h3><p class="home-description">A beautiful design for those who want space, separation, and a polished Perry Homes feel.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="4891W.png" alt="Representative Perry Homes 4891W exterior" />
+            <button class="home-link" type="button" data-plan="4891W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/4891w">
+              <img class="home-image" src="images/4891W.png" alt="Representative Perry Homes 4891W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4891W</h3><p class="home-description">A statement-making home with generous proportions and executive-style presence.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="4132W.png" alt="Representative Perry Homes 4132W exterior" />
+            <button class="home-link" type="button" data-plan="4132W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/4132w">
+              <img class="home-image" src="images/4132W.png" alt="Representative Perry Homes 4132W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4132W</h3><p class="home-description">A gracious two-story plan designed for entertaining, working, relaxing, and gathering.</p></div>
           </article>
 
           <article class="home-card">
-            <img class="home-image" src="4296W.png" alt="Representative Perry Homes 4296W exterior" />
+            <button class="home-link" type="button" data-plan="4296W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/4296w">
+              <img class="home-image" src="images/4296W.png" alt="Representative Perry Homes 4296W exterior" />
+            </button>
             <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4296W</h3><p class="home-description">A spacious plan with luxury curb appeal and the flexibility today's buyers expect.</p></div>
           </article>
         </div>
@@ -629,9 +799,9 @@
       <div class="cta-box">
         <p class="section-label">Ready When You Are</p>
         <h2 class="section-title">Let’s find the right Perry home, on the right homesite, at the right value.</h2>
-        <p class="section-copy">Send your preferred home designs, desired timeline, and must-have features so your New Home Sales Professional, Angela Speights, can curate your next steps.</p>
+        <p class="section-copy">Send your preferred home designs, desired timeline, and must-have features so Angela can curate your next steps.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:3468674865">Call Angela Speights</a>
+          <a class="btn btn-primary" href="tel:3468674865">Call Angela</a>
           <a class="btn btn-secondary" style="background: var(--black); border-color: var(--black);" href="mailto:Angela.Speights@perryhomes.com?subject=Explore%20My%20Perry%20Homes%20Options">Email My Options</a>
         </div>
         <div class="contact-card">
@@ -644,10 +814,109 @@
     </section>
   </main>
 
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+    <div class="gallery-box" role="dialog" aria-modal="true" aria-labelledby="galleryTitle">
+      <div class="gallery-top">
+        <h3 id="galleryTitle">Plan Gallery</h3>
+        <button class="gallery-close" type="button" aria-label="Close gallery">×</button>
+      </div>
+      <div class="gallery-content">
+        <div class="gallery-main">
+          <img id="galleryMainImage" src="" alt="Selected plan image" />
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+        <div class="gallery-actions">
+          <a class="btn btn-primary" id="galleryFloorplanLink" href="#" target="_blank" rel="noopener">Open Floorplan + Options</a>
+          <a class="btn btn-secondary" style="background: var(--black); border-color: var(--black);" href="mailto:Angela.Speights@perryhomes.com?subject=I%20would%20like%20more%20details%20about%20this%20Perry%20Homes%20plan">Ask Angela About This Plan</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="footer">
     <p class="disclaimer">
       Representative images, features, specifications, pricing, availability, incentives, and community details may vary and are subject to change. This page is intended as a client-facing guide to begin exploring Perry Homes options with Angela Speights.
     </p>
   </footer>
+  <script>
+    /*
+      Add extra pictures for each plan inside your images folder using this naming format:
+      3566W.png      = main card image
+      3566W-2.png    = second image
+      3566W-3.png    = third image
+      3566W-4.png    = fourth image
+
+      Do the same for every plan, for example:
+      images/4239W.png, images/4239W-2.png, images/4239W-3.png, images/4239W-4.png
+    */
+
+    const galleryModal = document.getElementById("galleryModal");
+    const galleryTitle = document.getElementById("galleryTitle");
+    const galleryMainImage = document.getElementById("galleryMainImage");
+    const galleryThumbs = document.getElementById("galleryThumbs");
+    const galleryFloorplanLink = document.getElementById("galleryFloorplanLink");
+    const galleryClose = document.querySelector(".gallery-close");
+
+    function buildPlanImages(plan) {
+      return [
+        `images/${plan}.png`,
+        `images/${plan}-2.png`,
+        `images/${plan}-3.png`,
+        `images/${plan}-4.png`
+      ];
+    }
+
+    function setMainImage(src, plan) {
+      galleryMainImage.src = src;
+      galleryMainImage.alt = `${plan} Perry Homes plan photo`;
+
+      document.querySelectorAll(".gallery-thumb").forEach((thumb) => {
+        thumb.classList.toggle("is-active", thumb.dataset.src === src);
+      });
+    }
+
+    function openGallery(plan, floorplanUrl) {
+      const images = buildPlanImages(plan);
+      galleryTitle.textContent = `${plan} Plan Gallery`;
+      galleryFloorplanLink.href = floorplanUrl;
+      galleryThumbs.innerHTML = "";
+
+      images.forEach((src, index) => {
+        const thumb = document.createElement("button");
+        thumb.className = "gallery-thumb";
+        thumb.type = "button";
+        thumb.dataset.src = src;
+        thumb.innerHTML = `<img src="${src}" alt="${plan} image ${index + 1}" onerror="this.closest('button').style.display='none'" />`;
+        thumb.addEventListener("click", () => setMainImage(src, plan));
+        galleryThumbs.appendChild(thumb);
+      });
+
+      setMainImage(images[0], plan);
+      galleryModal.classList.add("is-open");
+      galleryModal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeGallery() {
+      galleryModal.classList.remove("is-open");
+      galleryModal.setAttribute("aria-hidden", "true");
+      galleryMainImage.src = "";
+    }
+
+    document.querySelectorAll(".home-link").forEach((button) => {
+      button.addEventListener("click", () => {
+        openGallery(button.dataset.plan, button.dataset.floorplan);
+      });
+    });
+
+    galleryClose.addEventListener("click", closeGallery);
+
+    galleryModal.addEventListener("click", (event) => {
+      if (event.target === galleryModal) closeGallery();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeGallery();
+    });
+  </script>
 </body>
 </html>
