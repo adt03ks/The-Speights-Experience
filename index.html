@@ -885,9 +885,13 @@
     }
 
     function openGallery(plan, floorplanUrl) {
+      const planLinks = {
+        "4296W": "https://perryhomes.blu-plan.com/plan/4296w"
+      };
+
       const images = buildPlanImages(plan);
       galleryTitle.textContent = `${plan} Plan Gallery`;
-      galleryFloorplanLink.href = floorplanUrl;
+      galleryFloorplanLink.href = planLinks[plan] || floorplanUrl;
       galleryThumbs.innerHTML = "";
 
       images.forEach((src, index) => {
