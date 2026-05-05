@@ -864,15 +864,33 @@
     const galleryFloorplanLink = document.getElementById("galleryFloorplanLink");
     const galleryClose = document.querySelector(".gallery-close");
 
-    function buildPlanImages(plan) {
-      const totalImages = plan === "4296W" ? 13 : 4;
-      const images = [`images/${plan}.png`];
+   function buildPlanImages(plan) {
+  const planImageCounts = {
+    "2896W": 16,
+    "3057W": 4,
+    "3334W": 4,
+    "3735W": 4,
+    "3411W": 4,
+    "3469W": 4,
+    "3600W": 4,
+    "3566W": 4,
+    "3130S": 4,
+    "4239W": 4,
+    "4036W": 4,
+    "4891W": 4,
+    "4132W": 4,
+    "4296W": 13
+  };
 
-      for (let i = 2; i <= totalImages; i++) {
-        images.push(`images/${plan}-${i}.png`);
-      }
+  const totalImages = planImageCounts[plan] || 1;
+  const images = [`images/${plan}.png`];
 
-      return images;
+  for (let i = 2; i <= totalImages; i++) {
+    images.push(`images/${plan}-${i}.png`);
+  }
+
+  return images;
+}
     }
 
     function setMainImage(src, plan) {
