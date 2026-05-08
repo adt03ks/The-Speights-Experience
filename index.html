@@ -340,8 +340,47 @@
       transform: scale(1.04);
     }
 
-    .home-body {
+    .home-body 
+    {
       padding: 22px;
+    }
+
+    .home-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 12px 0 16px;
+    }
+
+    .home-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 11px;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--black);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .home-stat svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      flex-shrink: 0;
+    }
+
+    .dark-section .home-stat {
+      border-color: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
     }
 
     .home-kicker {
@@ -600,9 +639,47 @@
         width: 100%;
       }
     }
+    .angela-footer {
+  width: 100%;
+  background: #050505;
+  margin: 60px 0 0;
+  padding: 0;
+}
+
+.angela-footer img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
   </style>
 </head>
 <body>
+
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
+    <symbol id="icon-bed" viewBox="0 0 24 24">
+      <path d="M3 11V7.5A2.5 2.5 0 0 1 5.5 5h3A2.5 2.5 0 0 1 11 7.5V11" />
+      <path d="M11 11V8.5A2.5 2.5 0 0 1 13.5 6h5A2.5 2.5 0 0 1 21 8.5V11" />
+      <path d="M3 11h18a1 1 0 0 1 1 1v5H2v-5a1 1 0 0 1 1-1Z" />
+      <path d="M2 17v2" />
+      <path d="M22 17v2" />
+    </symbol>
+
+    <symbol id="icon-bath" viewBox="0 0 24 24">
+      <path d="M4 11h17v2a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6v-1a1 1 0 0 1 1-1Z" />
+      <path d="M7 11V5.5A2.5 2.5 0 0 1 9.5 3H10" />
+      <path d="M10 5h4" />
+      <path d="M6 19l-1 2" />
+      <path d="M18 19l1 2" />
+    </symbol>
+
+    <symbol id="icon-garage" viewBox="0 0 24 24">
+      <path d="M3 21V8l9-5 9 5v13" />
+      <path d="M7 21V11h10v10" />
+      <path d="M7 15h10" />
+      <path d="M7 18h10" />
+    </symbol>
+  </svg>
+
   <!-- Replace this file path with your uploaded header image path when hosting. -->
   <header class="top-branding">
     <img src="header footer atoe Angela.png" alt="A tradition of excellence. Perry Homes." />
@@ -617,7 +694,7 @@
       </p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#single-story">View Single Story Homes</a>
-        <a class="btn btn-secondary" href="#two-story">View Two-Story Homes</a>
+        <a class="btn btn-primary" href="#two-story">View Two-Story Homes</a>
       </div>
     </div>
   </section>
@@ -668,7 +745,7 @@
         <div class="collection-header">
           <p class="section-label">Single Story Homes</p>
           <h2 class="section-title">Elegant single-level living with Perry Homes craftsmanship.</h2>
-          <p class="section-copy">Explore representative exterior styles for some of the most requested single-story Perry home designs.</p>
+          <p class="section-copy">Explore the quality design of function meets luxury for some of the most requested single-story Perry home plans.</p>
         </div>
 
         <div class="home-grid">
@@ -676,63 +753,162 @@
             <button class="home-link" type="button" data-plan="2896W" data-floorplan="https://perryhomes.blu-plan.com/plan/2896w">
               <img class="home-image" src="images/2896W.png" alt="Representative Perry Homes 2896W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">2896W</h3><p class="home-description">A refined single-story design with thoughtful spaces for everyday comfort and effortless hosting.</p></div>
+            <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">2896W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>3 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>3.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 2896W plan offers <strong>2,896 square feet</strong> of thoughtfully designed living space with <strong>3 bedrooms, 3 full baths, 1 half bath, and a 3-car garage</strong>. This elegant one-story design features a <strong>front-facing split garage configuration</strong>, with a <strong>2-car garage on one side and a separate swing-in 1-car garage on the other</strong>, creating both architectural balance and added everyday convenience. Inside, the home delivers spacious rooms, refined flow, and the elevated design details Perry Homes is known for.
+  </p>
+</div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="3057W" data-floorplan="https://perryhomes.blu-plan.com/plan/3057w">
               <img class="home-image" src="images/3057W.png" alt="Representative Perry Homes 3057W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3057W</h3><p class="home-description">A beautifully balanced plan offering open gathering areas and private retreats.</p></div>
+           <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">3057W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>3.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 3057W plan offers <strong>3,057 square feet</strong> of beautifully designed living space with <strong>4 bedrooms, 3 full baths, 1 half bath, and a 3-car garage</strong>. This elegant one-story home features a <strong>front-facing split garage configuration</strong>, with a <strong>swing-in 2-car garage on one side and a separate 1-car garage on the other</strong>, creating a polished exterior presence while offering ample flexible spaces to suit your needs.
+  </p>
+</div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="3334W" data-floorplan="https://perryhomes.blu-plan.com/plan/3334w">
               <img class="home-image" src="images/3334W.png" alt="Representative Perry Homes 3334W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3334W</h3><p class="home-description">A spacious single-story option with impressive curb appeal and elevated livability.</p></div>
+            <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">3334W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>3.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 3334W plan offers <strong>3,334 square feet</strong> of refined living space with <strong>4 bedrooms, 3 full baths, 1 half bath, and a 3-car tandem garage</strong>. This well thought out plan offers a generously sized game room and a welcoming setup perfect for hosting while adding convenience, storage, and functional everyday flow.
+  </p>
+</div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="3735W" data-floorplan="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70/floorplans/3735w">
               <img class="home-image" src="images/3735W.png" alt="Representative Perry Homes 3735W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3735W</h3><p class="home-description">An expansive one-level design that feels grand, functional, and welcoming.</p></div>
+            <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">3735W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>3.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 3735W plan offers <strong>3,735 square feet</strong> of bold presence with <strong>4 bedrooms, 3 full baths, 1 half bath, and a 3-car tandem garage</strong>. The flow of this plan offers privacy and convenience of luxury living while creating the perfect atmosphere for hosting with the central kitchen location.
+  </p>
+</div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="3411W" data-floorplan="https://perryhomes.blu-plan.com/plan/3411w">
               <img class="home-image" src="images/3411W.png" alt="Representative Perry Homes 3411W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3411W</h3><p class="home-description">A versatile layout with generous room sizes and the signature Perry Homes finish.</p></div>
+            <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">3411W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>3.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 3411W plan offers <strong>3,411 square feet</strong> of fully functional space. With <strong>4 bedrooms, 3 full baths, 1 half bath, and a 3-car split garage</strong> featuring a <strong>2-car drive-in on one side and a swing-in 1-car garage on the other</strong>. Vaulted ceilings, separate hallways, and a rear-facing home office are amongst the features that set this unique plan apart.
+  </p>
+</div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="3469W" data-floorplan="https://perryhomes.blu-plan.com/plan/3469w">
               <img class="home-image" src="images/3469W.png" alt="Representative Perry Homes 3469W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3469W</h3><p class="home-description">An elegant plan designed for buyers who want everyday ease with a luxury feel.</p></div>
+            <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">3469W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>3.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 3469W plan offers <strong>3,469 square feet</strong>, <strong>4 bedrooms, 3 full baths, 1 half bath, and a 3-car front-facing garage</strong>. The grand entrance welcomes you in with a 13-foot ceiling that leads you into even taller ceilings of 17 feet and a centrally located kitchen with built-in seating spaces perfect for hosting and entertaining.
+  </p>
+</div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="3600W" data-floorplan="https://perryhomes.blu-plan.com/plan/3600w">
               <img class="home-image" src="images/3600W.png" alt="Representative Perry Homes 3600W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3600W</h3><p class="home-description">A stunning single-story design with a memorable presence and strong lifestyle flow.</p></div>
+            <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">3600W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>3.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 3600W plan offers <strong>3,600 square feet</strong>, <strong>4 bedrooms, 3 full baths, 1 half bath, and a 3-car tandem garage</strong>. This plan is known for the wide porch with extended height that escalates the presence starting from the curb appeal. This plan offers a robust amount of seating and entertaining space with a kitchen that offers built-in seating, a dining room that opens up off of the kitchen, and a game room adjacent to it that expands in space and thrives in taking the title of the hosting house. This home offers equal outdoor hosting space to complete the bigger picture of why it is the perfect plan to call home.
+  </p>
+</div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="3566W" data-floorplan="https://perryhomes.blu-plan.com/plan/3566w">
               <img class="home-image" src="images/3566W.png" alt="Representative Perry Homes 3566W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3566W</h3><p class="home-description">A client favorite with oversized spaces, refined architecture, and timeless appeal.</p></div>
+           <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">3566W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>4.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 3566W plan offers <strong>3,566 square feet</strong>, <strong>4 bedrooms, 4 full baths, 1 half bath, and a 3-car tandem garage</strong>. Coined as the show stopper amongst single story plans, it is no question why this is often used as the model home for Perry Home communities. Open space combined with high ceilings and a desirable amount of windows throughout sets this home apart as the ultimate place of tranquility, spaciousness, and character.
+  </p>
+</div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="3130S" data-floorplan="https://perryhomes.blu-plan.com/plan/3130s">
               <img class="home-image" src="images/3130S.png" alt="Representative Perry Homes 3130S exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Single Story</p><h3 class="home-title">3130S</h3><p class="home-description">A smart single-story option with Perry Homes quality and a polished exterior impression.</p></div>
+            <div class="home-body">
+  <p class="home-kicker">Single Story</p>
+  <h3 class="home-title">3130S</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>4.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Garage</span>
+  </div>
+  <p class="home-description">
+    The Perry Homes 3130S plan offers <strong>3,130 square feet</strong>, <strong>4 bedrooms, 4 full baths, 1 half bath, and a 3-car split garage</strong> offering a <strong>1-car garage on one side and a 2-car swing-in garage on the other</strong>. Unique to this plan is the stucco elevations that provide luxury curb appeal, while the kitchen offers a unique approach showcasing a double island setup. With the kitchen, breakfast area, and the family room providing an open space to host and enjoy the sight of the outdoors through the expansive walls of windows, the covered patio does not disappoint, but perfectly compliments the flow of this plan.
+  </p>
+</div>
           </article>
         </div>
       </div>
@@ -751,35 +927,65 @@
             <button class="home-link" type="button" data-plan="4239W" data-floorplan="https://perryhomes.blu-plan.com/plan/4239w">
               <img class="home-image" src="images/4239W.png" alt="Representative Perry Homes 4239W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4239W</h3><p class="home-description">A sophisticated two-story plan with strong curb appeal and flexible lifestyle spaces.</p></div>
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4239W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>5 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>4.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Tandem Garage</span>
+  </div>
+  <p class="home-description">The Perry Homes 4239W plan offers <strong>4,239 square feet</strong> of grand two-story living space with <strong>5 bedrooms, 4 full baths, 1 half bath, and a 3-car tandem garage</strong>. This impressive design welcomes you with a dramatic two-story entry, private home office, formal dining room, curved staircase, and an expansive family room with a fireplace and wall of windows. With a spacious kitchen, private primary suite, guest suites on both levels, a large game room, media room, and covered backyard patio, this plan delivers the space, privacy, and elevated flow perfect for both everyday living and entertaining.</p></div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="4036W" data-floorplan="https://perryhomes.blu-plan.com/plan/4036w">
               <img class="home-image" src="images/4036W.png" alt="Representative Perry Homes 4036W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4036W</h3><p class="home-description">A beautiful design for those who want space, separation, and a polished Perry Homes feel.</p></div>
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4036W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>3 Full + 2 Half Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Split Garage</span>
+  </div>
+  <p class="home-description">The Perry Homes 4036W plan offers <strong>4,036 square feet</strong> of elegant two-story living space with <strong>4 bedrooms, 3 full baths, 2 half baths, and a 3-car split garage</strong>. This impressive design opens with a large front porch, grand two-story entry, curved staircase, private guest suite, and formal dining room. The heart of the home features soaring ceilings, a fireplace, a wall of windows, a private home office, and a beautifully designed kitchen with built-in seating, a walk-in pantry, and a butler’s pantry. With a luxurious primary suite, oversized upstairs game room, connected secondary bedrooms, covered backyard patio, and thoughtful garage placement, this plan delivers both architectural impact and everyday function.</p></div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="4891W" data-floorplan="https://perryhomes.blu-plan.com/plan/4891w">
               <img class="home-image" src="images/4891W.png" alt="Representative Perry Homes 4891W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4891W</h3><p class="home-description">A statement-making home with generous proportions and executive-style presence.</p></div>
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4891W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>5 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>4.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>3-Car Tandem Garage</span>
+  </div>
+  <p class="home-description">The Perry Homes 4891W plan offers <strong>4,891 square feet</strong> of grand two-story living space with <strong>5 bedrooms, 4 full baths, 1 half bath, and a 3-car tandem garage</strong>. This impressive design is framed by a private home office with French doors and a formal dining room at the two-story entry, leading into a dramatic family room with soaring ceilings and a wall of windows. The kitchen features a large island with built-in seating, a butler’s pantry, and seamless flow into the morning area and covered backyard patio. With a downstairs guest suite, luxurious primary suite, upstairs game room, media room, Hollywood bath, and an additional staircase near the morning area, this plan delivers exceptional space, elegance, and functionality for elevated everyday living.</p></div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="4132W" data-floorplan="https://perryhomes.blu-plan.com/plan/4132w">
               <img class="home-image" src="images/4132W.png" alt="Representative Perry Homes 4132W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4132W</h3><p class="home-description">A gracious two-story plan designed for entertaining, working, relaxing, and gathering.</p></div>
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4132W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>4.5 Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>4-Car Split Garage</span>
+  </div>
+  <p class="home-description">The Perry Homes 4132W plan offers <strong>4,132 square feet</strong> of elevated two-story living space with <strong>4 bedrooms, 4 full baths, 1 half bath, and a 4-car split garage</strong>. This impressive design features a private guest suite, front home office with French doors, formal dining room, curved staircase, and a dramatic open-concept family room with a fireplace, wall of windows, and 21-foot ceiling. The kitchen connects beautifully to the morning area and includes a large island with built-in seating, a butler’s pantry, and a walk-in pantry. With a luxurious primary suite, upstairs game room, adjoining media room, secondary bedrooms with private baths and walk-in closets, dual mud rooms, two split 2-car garages, and a covered backyard patio, this plan delivers standout function, luxury, and presence.</p></div>
           </article>
 
           <article class="home-card">
             <button class="home-link" type="button" data-plan="4296W" data-floorplan="https://perryhomes.blu-plan.com/plan/4296w">
               <img class="home-image" src="images/4296W.png" alt="Representative Perry Homes 4296W exterior" />
             </button>
-            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4296W</h3><p class="home-description">A spacious plan with luxury curb appeal and the flexibility today's buyers expect.</p></div>
+            <div class="home-body"><p class="home-kicker">Two-Story</p><h3 class="home-title">4296W</h3>
+  <div class="home-stats">
+    <span class="home-stat"><svg><use href="#icon-bed"></use></svg>4 Beds</span>
+    <span class="home-stat"><svg><use href="#icon-bath"></use></svg>4 Full + 2 Half Baths</span>
+    <span class="home-stat"><svg><use href="#icon-garage"></use></svg>4-Car Split Garage</span>
+  </div>
+  <p class="home-description">The Perry Homes 4296W plan offers <strong>4,296 square feet</strong> of dramatic two-story living space with <strong>4 bedrooms, 4 full baths, 2 half baths, and a 4-car split garage</strong>. This striking design opens with a grand two-story entryway centered by a fireplace, creating an immediate sense of luxury and presence. The family room features extended ceilings and a wall of windows, while the kitchen offers a large island with built-in seating, ample counter space, a walk-in pantry, and convenient access to the dining room through the butler’s pantry. With a private guest suite, secluded home office, spacious primary suite, upstairs game room, connecting media room, secondary bedrooms, covered backyard patio, and four-car split garage, this plan delivers bold architecture, flexibility, and refined everyday living.</p></div>
           </article>
         </div>
       </div>
@@ -807,7 +1013,6 @@
           <a class="btn btn-secondary" style="background: var(--black); border-color: var(--black);" href="mailto:Angela.Speights@perryhomes.com?subject=Explore%20My%20Perry%20Homes%20Options">Email My Options</a>
           <a class="btn btn-primary" href="https://adt03ks.github.io/Speights-Mortgage-Calculator-/" target="_blank" rel="noopener">Estimate Mortgage Payment</a>
         </div>
-        
       </div>
     </section>
   </main>
@@ -831,15 +1036,15 @@
     </div>
   </div>
 
- <section class="angela-footer">
-  <img src="Professional Footer - Angela.png" alt="Angela Speights Perry Homes contact footer">
-</section>
+  <section class="angela-footer">
+    <img src="Professional Footer - Angela.png" alt="Angela Speights Perry Homes contact footer">
+  </section>
 
-<footer class="footer">
-  <p class="disclaimer">
-    Representative images, features, specifications, pricing, availability, incentives, and community details may vary and are subject to change. This page is intended as a client-facing guide to begin exploring Perry Homes options with Angela Speights.
-  </p>
-</footer>
+  <footer class="footer">
+    <p class="disclaimer">
+      Representative images, features, specifications, pricing, availability, incentives, and community details may vary and are subject to change. This page is intended as a client-facing guide to begin exploring Perry Homes options with Angela Speights.
+    </p>
+  </footer>
 
   <script>
     /*
