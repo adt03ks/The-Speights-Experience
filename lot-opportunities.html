@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Lot Opportunities | Perry Homes</title>
+
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --card: rgba(255, 255, 255, 0.95);
+      --text: #1f1f1f;
+      --muted: #666;
+      --line: #e7dfd1;
+      --gold: #b9975b;
+      --gold-dark: #98763f;
+      --available: #28a745;
+      --inventory: #0d6efd;
+      --preplanned: #8fd0ff;
+      --sold: #dc3545;
+      --unavailable: #8c8c8c;
+      --shadow: 0 20px 50px rgba(0,0,0,0.08);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(to bottom, #f8f5ef 0%, #ffffff 100%);
+      color: var(--text);
+    }
+
+    .page-shell {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 34px 20px 60px;
+    }
+
+    .page-topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      color: var(--gold-dark);
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(185,151,91,0.12);
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-card h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.05;
+    }
+
+    .hero-card p {
+      margin: 0;
+      max-width: 900px;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1.4fr 230px;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .toolbar input,
+    .toolbar select {
+      width: 100%;
+      height: 56px;
+      border-radius: 16px;
+      border: 1px solid #ddd6c9;
+      background: #fff;
+      padding: 0 16px;
+      font-size: 15px;
+      color: #222;
+      outline: none;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.04);
+    }
+
+    .toolbar input:focus,
+    .toolbar select:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(185,151,91,0.15);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      margin-bottom: 22px;
+      align-items: center;
+      color: #4d4d4d;
+      font-size: 14px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .legend-dot {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 0 2px #fff, 0 0 0 3px rgba(0,0,0,0.08);
+    }
+
+    .legend-dot.available { background: var(--available); }
+    .legend-dot.inventory { background: var(--inventory); }
+    .legend-dot.preplanned { background: var(--preplanned); }
+    .legend-dot.sold { background: var(--sold); }
+    .legend-dot.unavailable { background: var(--unavailable); }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(320px, 420px);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .map-card,
+    .sidebar-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .map-card {
+      padding: 16px;
+    }
+
+    .map-wrap {
+      position: relative;
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #f1eee8;
+    }
+
+    .map-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .lot-hotspots {
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+    }
+
+    .lot-marker {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 6px rgba(255,255,255,0.22), 0 8px 18px rgba(0,0,0,0.18);
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: box-shadow 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
+      z-index: 6;
+    }
+
+    .lot-marker:hover,
+    .lot-marker.active {
+      box-shadow: 0 0 0 8px rgba(255,255,255,0.28), 0 10px 22px rgba(0,0,0,0.22);
+      border-color: #fff;
+    }
+
+    .lot-marker.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .status-available { background: var(--available); }
+    .status-inventory { background: var(--inventory); }
+    .status-preplanned { background: var(--preplanned); }
+    .status-sold { background: var(--sold); }
+    .status-unavailable { background: var(--unavailable); }
+
+    .sidebar-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .sidebar-card {
+      padding: 24px;
+    }
+
+    .detail-tag {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #f5efe4;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-card h2,
+    .sidebar-card h3 {
+      margin: 0 0 12px;
+      line-height: 1.15;
+      color: #1d1d1d;
+    }
+
+    .sidebar-card p {
+      margin: 0 0 12px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .lot-status-badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .detail-item {
+      background: #faf8f3;
+      border: 1px solid #ece4d7;
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .detail-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--gold-dark);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .detail-item span {
+      font-weight: 600;
+      color: #222;
+    }
+
+    .notes-box {
+      margin-top: 6px;
+      background: #fbfaf7;
+      border-left: 4px solid var(--gold);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .cta-card {
+      display: grid;
+      grid-template-columns: 145px 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .cta-photo {
+      width: 145px;
+      height: 185px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 18px;
+      display: block;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .cta-copy h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .cta-copy p {
+      margin: 0 0 14px;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.18s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.03);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: #333;
+      border-color: #d8cfbf;
+    }
+
+    .btn-secondary:hover {
+      background: #faf7f0;
+    }
+
+    .empty-state ul {
+      margin: 18px 0 0;
+      padding-left: 18px;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .no-results {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #fff5f5;
+      border: 1px solid #f2d2d2;
+      color: #8d2b2b;
+      margin-top: 10px;
+      display: none;
+    }
+
+    @media (max-width: 1100px) {
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-shell {
+        padding: 22px 14px 48px;
+      }
+
+      .hero-card,
+      .sidebar-card {
+        padding: 20px;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-card {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-photo {
+        width: 100%;
+        max-width: 240px;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <div class="page-topbar">
+      <a href="index.html" class="back-link">← Back to Main Page</a>
+    </div>
+
+    <section class="hero-card">
+      <span class="eyebrow">Riceland Lot Opportunities</span>
+      <h1>Explore Available Homesites with Confidence</h1>
+      <p>
+        Use the interactive map below to compare lot opportunities by address, status,
+        price, direction, dimensions, and square footage. Click any marker for detailed
+        information and let Angela help you identify the right lot for your future Perry Home.
+      </p>
+    </section>
+
+    <div class="toolbar">
+      <input type="text" id="lotSearch" placeholder="Search by lot number, address, or plan..." />
+      <select id="statusFilter">
+        <option value="all">All Statuses</option>
+        <option value="available">Available</option>
+        <option value="inventory">Inventory Home</option>
+        <option value="preplanned">Pre-Planned</option>
+        <option value="sold">Sold</option>
+        <option value="unavailable">Unavailable</option>
+      </select>
+    </div>
+
+    <div class="legend">
+      <span><i class="legend-dot available"></i> Available</span>
+      <span><i class="legend-dot inventory"></i> Inventory</span>
+      <span><i class="legend-dot preplanned"></i> Pre-Planned</span>
+      <span><i class="legend-dot sold"></i> Sold</span>
+      <span><i class="legend-dot unavailable"></i> Unavailable</span>
+    </div>
+
+    <div class="main-grid">
+      <div class="map-card">
+        <div class="map-wrap">
+          <!-- Replace with your actual file path -->
+          <img src="images/sunchase-map-all-yellow.png" alt="Sunchase Drive Lot Opportunities Map" />
+          <div id="lotHotspots" class="lot-hotspots"></div>
+        </div>
+        <div id="noResults" class="no-results">No lots match your current search or filter.</div>
+      </div>
+
+      <div class="sidebar-stack">
+        <aside class="sidebar-card" id="lotDetailCard">
+          <div class="empty-state">
+            <span class="detail-tag">Select a Lot</span>
+            <h2>Find the Right Homesite</h2>
+            <p>
+              Click a map marker to view the lot’s detailed information. You can also search
+              by lot number, address, or plan and filter by status.
+            </p>
+            <ul>
+              <li>Compare lot dimensions and square footage</li>
+              <li>See whether a lot is available, inventory, sold, or pre-planned</li>
+              <li>Quickly connect with Angela for guidance</li>
+            </ul>
+          </div>
+        </aside>
+
+        <aside class="sidebar-card">
+          <div class="cta-card">
+            <!-- Replace with your actual branding photo path -->
+            <img src="images/angela-speights-branding.png" alt="Angela Speights with Perry Homes" class="cta-photo" />
+            <div class="cta-copy">
+              <span class="detail-tag">Angela Speights</span>
+              <h3>Need Help Choosing the Right Lot?</h3>
+              <p>
+                I’d love to help you compare homesites, understand lot advantages,
+                and guide you toward the best Perry Homes opportunity for your needs.
+              </p>
+              <div class="cta-actions">
+                <a href="tel:2810000000" class="btn btn-primary">Call Angela</a>
+                <a href="mailto:youremail@example.com" class="btn btn-secondary">Email Angela</a>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const statusMeta = {
+      available: { label: "Available", className: "status-available", color: "#28a745" },
+      inventory: { label: "Inventory Home", className: "status-inventory", color: "#0d6efd" },
+      preplanned: { label: "Pre-Planned", className: "status-preplanned", color: "#8fd0ff" },
+      sold: { label: "Sold", className: "status-sold", color: "#dc3545" },
+      unavailable: { label: "Unavailable", className: "status-unavailable", color: "#8c8c8c" }
+    };
+
+    const lots = [
+      { id:"12431", x:90.59, y:6.38, address:"12431 Sunchase Drive", price:"$---,---", facing:"North / Northeast", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Large homesite near the end of the cul-de-sac area." },
+      { id:"12427", x:84.37, y:6.54, address:"12427 Sunchase Drive", price:"$---,---", facing:"North", width:"70'", depth:"130'", sqft:"9,100", status:"sold", plan:"Build Lot", notes:"Currently sold." },
+      { id:"4132W-E70-top", x:76.40, y:7.58, address:"12419 Sunchase Drive", price:"$---,---", facing:"North", width:"70'", depth:"130'", sqft:"9,100", status:"inventory", plan:"4132W-E70", notes:"Inventory opportunity with established plan assignment." },
+      { id:"12415", x:66.67, y:10.37, address:"12415 Sunchase Drive", price:"$---,---", facing:"North", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Upper row lot with golf course-adjacent setting." },
+      { id:"12407", x:56.14, y:11.64, address:"12407 Sunchase Drive", price:"$---,---", facing:"North", width:"70'", depth:"130'", sqft:"9,100", status:"unavailable", plan:"Build Lot", notes:"Currently unavailable." },
+      { id:"12331", x:46.89, y:13.56, address:"12331 Sunchase Drive", price:"$---,---", facing:"North", width:"70'", depth:"130'", sqft:"9,100", status:"sold", plan:"Build Lot", notes:"Currently sold." },
+      { id:"12327", x:39.87, y:17.38, address:"12327 Sunchase Drive", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Nicely positioned along the upper curve of Sunchase Drive." },
+      { id:"12323", x:34.13, y:23.52, address:"12323 Sunchase Drive", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Great mid-block homesite." },
+      { id:"12319", x:29.35, y:29.74, address:"12319 Sunchase Drive", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Convenient position along Sunchase Drive." },
+      { id:"12315", x:25.04, y:36.28, address:"12315 Sunchase Drive", price:"$---,---", facing:"Southeast", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Buyer-friendly location near curve transition." },
+      { id:"12307", x:18.66, y:44.26, address:"12307 Sunchase Drive", price:"$---,---", facing:"South", width:"70'", depth:"130'", sqft:"9,100", status:"sold", plan:"Build Lot", notes:"Currently sold." },
+      { id:"12223", x:15.63, y:49.44, address:"12223 Sunchase Drive", price:"$---,---", facing:"Southwest", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Well positioned toward the lower left portion of the community." },
+      { id:"3130S-E1", x:20.33, y:55.02, address:"12219 Sunchase Drive", price:"$---,---", facing:"Southwest", width:"70'", depth:"130'", sqft:"9,100", status:"preplanned", plan:"3130S-E1", notes:"Pre-planned homesite with designated plan." },
+      { id:"12215-left", x:25.12, y:59.17, address:"12215 Sunchase Drive", price:"$---,---", facing:"Southwest", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Lower row homesite with excellent access." },
+      { id:"12211-left", x:30.06, y:62.44, address:"12211 Sunchase Drive", price:"$---,---", facing:"Southwest", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Great option for buyers wanting a lower Sunchase Drive location." },
+      { id:"12207", x:35.81, y:65.87, address:"12207 Sunchase Drive", price:"$---,---", facing:"Southwest", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Homesite with attractive positioning near the bend." },
+      { id:"12203", x:41.95, y:69.54, address:"12203 Sunchase Drive", price:"$---,---", facing:"South", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Lower Sunchase Drive homesite close to the main curve." },
+      { id:"12314", x:39.63, y:34.29, address:"12314 Sunchase Drive", price:"$---,---", facing:"West", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Inner loop homesite with nice orientation." },
+      { id:"12310", x:36.12, y:38.60, address:"12310 Sunchase Drive", price:"$---,---", facing:"West", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Great option along the interior of the community." },
+      { id:"4296W-E1", x:47.69, y:38.68, address:"12306 Sunchase Drive", price:"$---,---", facing:"West", width:"70'", depth:"130'", sqft:"9,100", status:"preplanned", plan:"4296W-E1", notes:"Pre-planned lot with designated home plan." },
+      { id:"12208", x:44.50, y:51.99, address:"12208 Sunchase Drive", price:"$---,---", facing:"South", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Appealing interior homesite." },
+      { id:"12204", x:50.56, y:53.27, address:"12204 Sunchase Drive", price:"$---,---", facing:"South", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Excellent lower-center homesite." },
+      { id:"12247", x:68.02, y:20.26, address:"12247 Jacob Lane", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Beautiful Jacob Lane location near the lake side of the section." },
+      { id:"12243", x:69.14, y:25.04, address:"12243 Jacob Lane", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Prime Jacob Lane homesite." },
+      { id:"4132W-E70-mid", x:61.08, y:31.66, address:"12239 Jacob Lane", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"inventory", plan:"4132W-E70", notes:"Inventory home opportunity on Jacob Lane." },
+      { id:"12226", x:62.36, y:37.24, address:"12226 Jacob Lane", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"sold", plan:"Build Lot", notes:"Currently sold." },
+      { id:"3057W-E70", x:72.73, y:39.00, address:"12230 Lake View Boulevard", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"preplanned", plan:"3057W-E70", notes:"Pre-planned homesite with assigned plan." },
+      { id:"12227", x:72.17, y:44.50, address:"12227 Lake View Boulevard", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Strong lot option near Lake View Boulevard." },
+      { id:"4891W-E34", x:63.24, y:48.80, address:"12223 Lake View Boulevard", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"preplanned", plan:"4891W-E34", notes:"Pre-planned lot with designated plan assignment." },
+      { id:"12215-right", x:70.10, y:60.29, address:"12215 Lake View Boulevard", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Attractive lake-side corridor homesite." },
+      { id:"12211-right", x:71.45, y:64.99, address:"12211 Lake View Boulevard", price:"$---,---", facing:"East", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Excellent location for buyers wanting Lake View Boulevard." },
+      { id:"3566W-E1", x:59.65, y:65.15, address:"12206 Sunchase Drive", price:"$---,---", facing:"South", width:"70'", depth:"130'", sqft:"9,100", status:"inventory", plan:"3566W-E1", notes:"Inventory home with designated plan." },
+      { id:"12202", x:55.10, y:70.49, address:"12202 Sunchase Drive", price:"$---,---", facing:"South", width:"70'", depth:"130'", sqft:"9,100", status:"available", plan:"Build Lot", notes:"Great lower homesite option." }
+    ];
+
+    const hotspots = document.getElementById("lotHotspots");
+    const lotDetailCard = document.getElementById("lotDetailCard");
+    const lotSearch = document.getElementById("lotSearch");
+    const statusFilter = document.getElementById("statusFilter");
+    const noResults = document.getElementById("noResults");
+
+    function renderMarkers() {
+      hotspots.innerHTML = "";
+
+      lots.forEach((lot) => {
+        const marker = document.createElement("button");
+        marker.type = "button";
+        marker.className = `lot-marker ${statusMeta[lot.status].className}`;
+        marker.style.left = `${lot.x}%`;
+        marker.style.top = `${lot.y}%`;
+        marker.dataset.id = lot.id;
+        marker.dataset.status = lot.status;
+        marker.title = `${lot.address} • ${statusMeta[lot.status].label}`;
+        marker.setAttribute("aria-label", `${lot.address} • ${statusMeta[lot.status].label}`);
+
+        marker.addEventListener("click", () => {
+          setActiveMarker(lot.id);
+          renderDetail(lot);
+        });
+
+        hotspots.appendChild(marker);
+      });
+    }
+
+    function setActiveMarker(id) {
+      document.querySelectorAll(".lot-marker").forEach((marker) => {
+        marker.classList.toggle("active", marker.dataset.id === id);
+      });
+    }
+
+    function renderDetail(lot) {
+      const badge = statusMeta[lot.status];
+      lotDetailCard.innerHTML = `
+        <span class="lot-status-badge" style="background:${badge.color}">
+          ${badge.label}
+        </span>
+        <h2>${lot.address}</h2>
+        <p>${lot.plan ? `Plan: <strong>${lot.plan}</strong>` : ""}</p>
+
+        <div class="detail-grid">
+          <div class="detail-item"><strong>Lot / Label</strong><span>${lot.id}</span></div>
+          <div class="detail-item"><strong>Price</strong><span>${lot.price}</span></div>
+          <div class="detail-item"><strong>Facing</strong><span>${lot.facing}</span></div>
+          <div class="detail-item"><strong>Width</strong><span>${lot.width}</span></div>
+          <div class="detail-item"><strong>Depth</strong><span>${lot.depth}</span></div>
+          <div class="detail-item"><strong>Lot Size</strong><span>${lot.sqft} sq. ft.</span></div>
+        </div>
+
+        <div class="notes-box">${lot.notes}</div>
+      `;
+    }
+
+    function applyFilters() {
+      const query = lotSearch.value.trim().toLowerCase();
+      const selectedStatus = statusFilter.value;
+      let matchCount = 0;
+      let firstMatch = null;
+
+      document.querySelectorAll(".lot-marker").forEach((marker) => {
+        const lot = lots.find(item => item.id === marker.dataset.id);
+        if (!lot) return;
+
+        const matchesQuery =
+          !query ||
+          lot.id.toLowerCase().includes(query) ||
+          lot.address.toLowerCase().includes(query) ||
+          (lot.plan && lot.plan.toLowerCase().includes(query));
+
+        const matchesStatus =
+          selectedStatus === "all" || lot.status === selectedStatus;
+
+        const show = matchesQuery && matchesStatus;
+        marker.classList.toggle("hidden", !show);
+
+        if (show) {
+          matchCount++;
+          if (!firstMatch) firstMatch = lot;
+        }
+      });
+
+      noResults.style.display = matchCount === 0 ? "block" : "none";
+
+      if (query && firstMatch) {
+        setActiveMarker(firstMatch.id);
+        renderDetail(firstMatch);
+      }
+    }
+
+    renderMarkers();
+
+    lotSearch.addEventListener("input", applyFilters);
+    statusFilter.addEventListener("change", applyFilters);
+  </script>
+</body>
+</html>
