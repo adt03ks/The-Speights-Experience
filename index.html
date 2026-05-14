@@ -1035,7 +1035,39 @@
     font-size: 32px;
   }
 }
-    
+  /* FIX: Stop SVG markers from jumping */
+.lot-marker,
+.lot-marker:hover,
+.lot-marker.active {
+  transform: none !important;
+}
+
+.lot-marker {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.lot-marker .marker-core,
+.lot-marker .marker-ring,
+.lot-marker .marker-pulse,
+.lot-marker-core,
+.lot-marker-ring {
+  transition: r 0.18s ease, stroke-width 0.18s ease, opacity 0.18s ease;
+}
+
+.lot-marker:hover .marker-core,
+.lot-marker.active .marker-core,
+.lot-marker:hover .lot-marker-core,
+.lot-marker.active .lot-marker-core {
+  r: 14;
+}
+
+.lot-marker:hover .marker-ring,
+.lot-marker.active .marker-ring,
+.lot-marker:hover .lot-marker-ring,
+.lot-marker.active .lot-marker-ring {
+  r: 23;
+}  
   </style>
 </head>
 <body>
