@@ -1035,11 +1035,33 @@
     font-size: 32px;
   }
 }
-  /* FIX: Stop SVG markers from jumping */
-.lot-marker,
-.lot-marker:hover,
-.lot-marker.active {
-  transform: none !important;
+/* Stable SVG clickable markers */
+.lot-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.lot-marker {
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.lot-marker circle {
+  transition: opacity 0.18s ease, stroke-width 0.18s ease;
+}
+
+.lot-marker:hover .marker-core,
+.lot-marker.active .marker-core {
+  stroke-width: 5;
+}
+
+.lot-marker:hover .marker-ring,
+.lot-marker.active .marker-ring {
+  opacity: 0.85;
 }
 
 .lot-marker {
@@ -1737,56 +1759,59 @@
   let activeMarkerId = null;
   const markerNodes = new Map();
 
-  function renderMarkers() {
-    overlay.innerHTML = "";
+function renderMarkers(); {
+  overlay.innerHTML = "";
+  markerNodes.clear();
 
-    lots.forEach((lot) => {
-      const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-      group.setAttribute("class", "lot-marker");
-      group.setAttribute("data-id", lot.id);
-      group.setAttribute("data-status", lot.status);
-      group.setAttribute("transform", `translate(${lot.x}, ${lot.y})`);
-      group.setAttribute("tabindex", "0");
-      group.setAttribute("role", "button");
-      group.setAttribute("aria-label", `View details for ${lot.address}`);
+  lots.forEach((lot) => {
+    const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+    group.setAttribute("class", "lot-marker");
+    group.setAttribute("data-id", lot.id);
+    group.setAttribute("data-status", lot.status);
+    group.setAttribute("tabindex", "0");
+    group.setAttribute("role", "button");
+    group.setAttribute("aria-label", `View details for ${lot.address}`);
 
-      const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      ring.setAttribute("class", "marker-ring");
-      ring.setAttribute("r", "18");
+    const ring = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    ring.setAttribute("class", "marker-ring");
+    ring.setAttribute("cx", lot.x);
+    ring.setAttribute("cy", lot.y);
+    ring.setAttribute("r", "18");
+    ring.setAttribute("fill", "rgba(255,255,255,0.45)");
+    ring.setAttribute("stroke", "rgba(0,0,0,0.25)");
+    ring.setAttribute("stroke-width", "1.5");
 
-      const pulse = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      pulse.setAttribute("class", "marker-pulse");
-      pulse.setAttribute("r", "25");
-      pulse.setAttribute("stroke", statusColors[lot.status] || "#28a745");
+    const core = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    core.setAttribute("class", "marker-core");
+    core.setAttribute("cx", lot.x);
+    core.setAttribute("cy", lot.y);
+    core.setAttribute("r", "11");
+    core.setAttribute("fill", statusColors[lot.status] || "#28a745");
+    core.setAttribute("stroke", "#ffffff");
+    core.setAttribute("stroke-width", "3");
 
-      const core = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      core.setAttribute("class", "marker-core");
-      core.setAttribute("r", "11");
-      core.setAttribute("fill", statusColors[lot.status] || "#28a745");
+    group.appendChild(ring);
+    group.appendChild(core);
 
-      group.appendChild(pulse);
-      group.appendChild(ring);
-      group.appendChild(core);
+    group.addEventListener("click", () => {
+      activeMarkerId = lot.id;
+      setActiveMarker(lot.id);
+      showLotInfo(lot);
+    });
 
-      group.addEventListener("click", () => {
+    group.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
         activeMarkerId = lot.id;
         setActiveMarker(lot.id);
         showLotInfo(lot);
-      });
-
-      group.addEventListener("keypress", (e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          activeMarkerId = lot.id;
-          setActiveMarker(lot.id);
-          showLotInfo(lot);
-        }
-      });
-
-      overlay.appendChild(group);
-      markerNodes.set(lot.id, group);
+      }
     });
-  }
+
+    overlay.appendChild(group);
+    markerNodes.set(lot.id, group);
+  });
+}
 
   function setActiveMarker(id) {
     markerNodes.forEach((node, nodeId) => {
