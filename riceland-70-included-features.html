@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Riceland 70' Included Features | Angela Speights</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f4efe8;
+  color: #0b1d38;
+  font-family: "Montserrat", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.hero {
+  background: linear-gradient(90deg, rgba(5,20,39,.95), rgba(5,20,39,.65)), url("images/riceland-hero-home.jpg") center/cover no-repeat;
+  color: white;
+  padding: 45px 6%;
+  display: grid;
+  grid-template-columns: 1.1fr .8fr;
+  align-items: center;
+  min-height: 410px;
+}
+
+.logo {
+  width: 230px;
+  margin-bottom: 45px;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(48px, 7vw, 88px);
+  line-height: .95;
+  letter-spacing: 2px;
+}
+
+.hero h2 {
+  color: #d6a84d;
+  font-size: clamp(24px, 3vw, 38px);
+  letter-spacing: 4px;
+  margin-top: 15px;
+}
+
+.hero p {
+  color: white;
+  font-size: 20px;
+  max-width: 650px;
+  margin-top: 20px;
+}
+
+.hero-agent {
+  align-self: end;
+  justify-self: end;
+  max-height: 390px;
+}
+
+.main-card {
+  background: #fffaf2;
+  margin: -25px auto 0;
+  width: min(1180px, 94%);
+  border-radius: 28px 28px 0 0;
+  padding: 30px;
+}
+
+.intro {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.intro img {
+  border-radius: 14px;
+  height: 250px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.intro h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 42px;
+  color: #0b1d38;
+}
+
+.intro h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  color: #c4933f;
+  margin-bottom: 15px;
+}
+
+.intro p {
+  font-size: 17px;
+  color: #1d1d1d;
+  max-width: 650px;
+}
+
+.icon-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.icon-mini {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 13px;
+  color: #0b1d38;
+}
+
+.icon-circle {
+  width: 42px;
+  height: 42px;
+  border: 2px solid #d6a84d;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #d6a84d;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.section-heading span {
+  height: 1px;
+  width: 110px;
+  background: #d6a84d;
+}
+
+.section-heading h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  letter-spacing: 2px;
+  color: #0b1d38;
+  text-align: center;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.feature-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+
+.feature-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.feature-content {
+  padding: 20px 20px 22px;
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 16px;
+}
+
+.feature-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #071b34;
+  color: #d6a84d;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  border: 3px solid #d6a84d;
+}
+
+.feature-card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #0b1d38;
+}
+
+.feature-card ul {
+  padding-left: 18px;
+  font-size: 14px;
+  color: #111;
+  line-height: 1.55;
+}
+
+.cta {
+  background: #071b34;
+  color: white;
+  padding: 34px 6%;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 18px;
+  border-top: 3px solid #d6a84d;
+}
+
+.cta h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+}
+
+.cta p {
+  color: #d6a84d;
+  font-size: 16px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 18px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-align: center;
+  min-width: 230px;
+  display: inline-block;
+}
+
+.btn-gold {
+  background: #d6a84d;
+  color: white;
+}
+
+.btn-white {
+  background: white;
+  color: #071b34;
+}
+
+.footer-img img {
+  width: 100%;
+}
+
+.form-section {
+  background: #071b34;
+  padding: 40px 6%;
+}
+
+.disclaimer {
+  background: #071b34;
+  color: white;
+  border-top: 2px solid #d6a84d;
+  font-size: 12px;
+  line-height: 1.7;
+  padding: 24px 6% 35px;
+}
+
+@media(max-width: 900px) {
+  .hero,
+  .intro,
+  .features,
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-agent {
+    justify-self: center;
+  }
+
+  .icon-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cta {
+    text-align: center;
+  }
+}
+
+@media(max-width: 600px) {
+  .main-card {
+    padding: 20px;
+  }
+
+  .icon-row {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading span {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div>
+    <img class="logo" src="images/perry-logo-white.png" alt="Perry Homes Logo">
+    <h1>RICELAND 70’</h1>
+    <h2>INCLUDED FEATURES</h2>
+    <p>Thoughtfully designed. Beautifully built. Everything you need — included from the start.</p>
+  </div>
+
+  <img class="hero-agent" src="images/angela-hero.png" alt="Angela Speights">
+</section>
+
+<main class="main-card">
+
+  <section class="intro">
+    <img src="images/design-consultation.jpg" alt="Happy buyers reviewing home selections with Angela">
+
+    <div>
+      <h3>Guidance You Can Trust.</h3>
+      <h4>Service You Deserve.</h4>
+      <p>
+        Building a new home is one of life’s biggest decisions. I’m here to make it simple,
+        exciting, and personal. From exploring homesites to selecting the perfect finishes,
+        I’ll be with you every step of the way.
+      </p>
+
+      <div class="icon-row">
+        <div class="icon-mini"><div class="icon-circle">⌖</div><span>Local Expertise<br>You Can Trust</span></div>
+        <div class="icon-mini"><div class="icon-circle">♡</div><span>Personalized<br>Home Guidance</span></div>
+        <div class="icon-mini"><div class="icon-circle">⌂</div><span>Seamless<br>Building Experience</span></div>
+        <div class="icon-mini"><div class="icon-circle">✓</div><span>Strong Advocate<br>Every Step</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-heading">
+    <span></span>
+    <h2>WHAT’S INCLUDED IN YOUR PERRY HOME</h2>
+    <span></span>
+  </div>
+
+  <section class="features">
+
+    <article class="feature-card">
+      <img src="images/quality-construction.jpg" alt="Friendly construction professional inspecting framing">
+      <div class="feature-content">
+        <div class="feature-icon">⌂</div>
+        <div>
+          <h3>QUALITY CONSTRUCTION</h3>
+          <ul>
+            <li>Professionally engineered foundations</li>
+            <li>Third-party inspections throughout</li>
+            <li>2-Year Workmanship Warranty</li>
+            <li>10-Year Structural Warranty</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="feature-card">
+      <img src="images/energy-efficiency.jpg" alt="Happy family relaxing in an energy efficient home">
+      <div class="feature-content">
+        <div class="feature-icon">♧</div>
+        <div>
+          <h3>ENERGY EFFICIENCY</h3>
+          <ul>
+            <li>ENERGY STAR® partner builder</li>
+            <li>Radiant barrier & Low-E windows</li>
+            <li>Tankless water heater</li>
+            <li>Energy-saving insulation & LED lighting</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="feature-card">
+      <img src="images/kitchen-features.jpg" alt="Beautiful Perry Homes inspired kitchen with upgraded finishes">
+      <div class="feature-content">
+        <div class="feature-icon">♨</div>
+        <div>
+          <h3>KITCHEN FEATURES</h3>
+          <ul>
+            <li>42” custom-style cabinets</li>
+            <li>Granite countertops & tile backsplash</li>
+            <li>GE® stainless appliances</li>
+            <li>Undermount sink with pull-out faucet</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="feature-card">
+      <img src="images/interior-finishes.jpg" alt="Woman enjoying comfort in a beautiful living room">
+      <div class="feature-content">
+        <div class="feature-icon">▭</div>
+        <div>
+          <h3>INTERIOR FINISHES</h3>
+          <ul>
+            <li>8-foot interior doors</li>
+            <li>Luxury tile in key living areas</li>
+            <li>Decorative lighting & fireplace</li>
+            <li>Stylish staircase details</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="feature-card">
+      <img src="images/exterior-features.jpg" alt="Beautiful Perry Homes exterior with landscaping">
+      <div class="feature-content">
+        <div class="feature-icon">⌂</div>
+        <div>
+          <h3>EXTERIOR FEATURES</h3>
+          <ul>
+            <li>Full masonry first floor</li>
+            <li>Front, side & back yard irrigation</li>
+            <li>Professional landscaping & sod</li>
+            <li>Cedar fencing & decorative lighting</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="feature-card">
+      <img src="images/smart-home-technology.jpg" alt="Father and daughter using a smart thermostat">
+      <div class="feature-content">
+        <div class="feature-icon">⌁</div>
+        <div>
+          <h3>SMART HOME TECHNOLOGY</h3>
+          <ul>
+            <li>Video doorbell & smart thermostat</li>
+            <li>Keyless entry & smart switches</li>
+            <li>Wi-Fi garage door opener</li>
+            <li>Structured wiring & alarm pre-wire</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<section class="cta">
+  <div>
+    <h2>Let’s Find Your Perfect Homesite.</h2>
+    <p>Explore your options and let’s start the journey together.</p>
+  </div>
+
+  <a href="explore-lot-options.html" class="btn btn-gold">EXPLORE LOT OPTIONS</a>
+  <a href="#register" class="btn btn-white">LET’S CONNECT<br>REGISTER TODAY</a>
+</section>
+
+<div class="footer-img">
+  <img src="Professional Footer - Angela.png" alt="Angela Speights Perry Homes Footer">
+</div>
+
+<section class="form-section" id="register">
+  <script src="https://js-na2.hsforms.net/forms/embed/245646671.js" defer></script>
+  <div class="hs-form-frame"
+    data-region="na2"
+    data-form-id="f36b1cf0-e31f-49e6-a844-a3019c5610d9"
+    data-portal-id="245646671">
+  </div>
+</section>
+
+<section class="disclaimer">
+  Representative images, floorplans, pricing, incentives, elevations, included features,
+  specifications, availability, warranties, promotions, and community details are subject to
+  change without notice. Information presented is deemed reliable but is not guaranteed and
+  should be independently verified with Perry Homes and appropriate professionals. Features
+  and availability may vary by homesite, floorplan, elevation, or construction stage. Renderings
+  and photos may contain optional upgrades not included in base pricing. Please contact
+  Angela Speights or Perry Homes directly for the most current information, availability, and
+  complete details.
+</section>
+
+</body>
+</html>
