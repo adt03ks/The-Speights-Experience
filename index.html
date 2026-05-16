@@ -711,6 +711,72 @@
   height: auto;
   display: block;
 }
+    .connect-register-btn {
+  border: 0;
+  cursor: pointer;
+}
+
+.register-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.register-modal.is-open {
+  display: flex;
+}
+
+.register-modal-box {
+  width: min(720px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  background: #ffffff;
+  border-radius: 26px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+}
+
+.register-modal-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #050505;
+  color: #ffffff;
+}
+
+.register-modal-top h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  line-height: 1.1;
+}
+
+.register-modal-close {
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.register-modal-body {
+  padding: 26px;
+}
+
+.register-modal-body p {
+  margin: 0 0 18px;
+  color: #666;
+  line-height: 1.6;
+}
   </style>
 </head>
 <body>
@@ -1091,6 +1157,10 @@
      rel="noopener">
     Explore Lot Options
   </a>
+
+         <button class="btn btn-primary connect-register-btn" type="button" data-open-register-form>
+    Let's Connect - Register Today
+  </button>
 </div>
       </div>
     </section>
@@ -1114,6 +1184,29 @@
           <a class="btn btn-primary" id="galleryFloorplanLink" href="#" target="_blank" rel="noopener">Open Floorplan + Options</a>
           <a class="btn btn-secondary" style="background: var(--black); border-color: var(--black);" href="mailto:Angela.Speights@perryhomes.com?subject=I%20would%20like%20more%20details%20about%20this%20Perry%20Homes%20plan">Ask Angela About This Plan</a>
         </div>
+        <div class="register-modal" id="registerModal" aria-hidden="true">
+  <div class="register-modal-box" role="dialog" aria-modal="true" aria-labelledby="registerModalTitle">
+    <div class="register-modal-top">
+      <h3 id="registerModalTitle">Let's Connect</h3>
+      <button class="register-modal-close" type="button" aria-label="Close registration form">×</button>
+    </div>
+
+    <div class="register-modal-body">
+      <p>
+        Register today so Angela can help you explore Perry Homes options, lot opportunities,
+        floorplans, pricing, and next steps with confidence.
+      </p>
+
+      <script src="https://js-na2.hsforms.net/forms/embed/245646671.js" defer></script>
+      <div 
+        class="hs-form-frame" 
+        data-region="na2" 
+        data-form-id="f36b1cf0-e31f-49e6-a844-a3019c5610d9" 
+        data-portal-id="245646671">
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </div>
   </div>
@@ -1127,7 +1220,7 @@
       Representative images, features, specifications, pricing, availability, incentives, and community details may vary and are subject to change. This page is intended as a client-facing guide to begin exploring Perry Homes options with Angela Speights.
     </p>
   </footer>
-
+</script>
   <script>
     /*
       Add extra pictures for each plan inside your images folder using this naming format:
@@ -1266,6 +1359,43 @@
       if (event.key === "ArrowLeft") showGalleryImage(-1);
       if (event.key === "ArrowRight") showGalleryImage(1);
     });
+    const registerModal = document.getElementById("registerModal");
+const registerButtons = document.querySelectorAll("[data-open-register-form]");
+const registerClose = document.querySelector(".register-modal-close");
+
+function openRegisterModal() {
+  if (!registerModal) return;
+  registerModal.classList.add("is-open");
+  registerModal.setAttribute("aria-hidden", "false");
+}
+
+function closeRegisterModal() {
+  if (!registerModal) return;
+  registerModal.classList.remove("is-open");
+  registerModal.setAttribute("aria-hidden", "true");
+}
+
+registerButtons.forEach((button) => {
+  button.addEventListener("click", openRegisterModal);
+});
+
+if (registerClose) {
+  registerClose.addEventListener("click", closeRegisterModal);
+}
+
+if (registerModal) {
+  registerModal.addEventListener("click", (event) => {
+    if (event.target === registerModal) {
+      closeRegisterModal();
+    }
+  });
+}
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeRegisterModal();
+  }
+});
   </script>
 </body>
 </html>
