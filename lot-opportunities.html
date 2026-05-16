@@ -370,6 +370,65 @@
       background: #faf7f0;
     }
 
+
+    .inventory-preview {
+      margin-top: 18px;
+      border: 1px solid #ece4d7;
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.06);
+    }
+
+    .inventory-preview a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .inventory-preview img {
+      display: block;
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      background: #f1eee8;
+    }
+
+    .inventory-preview-body {
+      padding: 14px 16px 16px;
+    }
+
+    .inventory-preview-body strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #1f1f1f;
+      font-size: 16px;
+    }
+
+    .inventory-preview-body p {
+      margin: 0 0 12px;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .inventory-preview-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      background: #111;
+      color: #fff !important;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .inventory-preview-btn:hover {
+      opacity: 0.92;
+    }
+
     .empty-state ul {
       margin: 18px 0 0;
       padding-left: 18px;
@@ -517,6 +576,27 @@
       unavailable: { label: "Unavailable", className: "status-unavailable", color: "#8c8c8c" }
     };
 
+    function getBasePlan(plan) {
+      if (!plan || plan === "Build Lot") return "";
+      const match = String(plan).toUpperCase().match(/^\d{4}[WS]/);
+      return match ? match[0] : "";
+    }
+
+    function getFloorplanHref(plan) {
+      const basePlan = getBasePlan(plan);
+      return basePlan ? `index.html#plan-${basePlan.toLowerCase()}` : "";
+    }
+
+    function getPlanImage(plan) {
+      const basePlan = getBasePlan(plan);
+      return basePlan ? `images/${basePlan}.png` : "";
+    }
+
+    function shouldShowPlanPreview(lot) {
+      return Boolean(getBasePlan(lot.plan)) && lot.status !== "sold" && lot.status !== "unavailable";
+    }
+
+
     const lots = [
       { id:"12431", x:90.59, y:6.38, address:"12431 Sunchase Drive", price:"Unavailable", facing:"South / Southwest", width:"55.45'", depth:"178'", sqft:"23,663", status:"sold", plan:"4336W", notes:"No Longer Available" },
       { id:"12427", x:84.37, y:6.54, address:"12427 Sunchase Drive", price:"Unavailable", facing:"South", width:"64.5'", depth:"145'", sqft:"16,088", status:"sold", plan:"5573S", notes:"No Longer Available" },
@@ -562,19 +642,20 @@
     function renderMarkers() {
       hotspots.innerHTML = "";
 
-      lots.forEach((lot) => {
+      lots.forEach((lot, index) => {
         const marker = document.createElement("button");
         marker.type = "button";
         marker.className = `lot-marker ${statusMeta[lot.status].className}`;
         marker.style.left = `${lot.x}%`;
         marker.style.top = `${lot.y}%`;
+        marker.dataset.uid = String(index);
         marker.dataset.id = lot.id;
         marker.dataset.status = lot.status;
         marker.title = `${lot.address} • ${statusMeta[lot.status].label}`;
         marker.setAttribute("aria-label", `${lot.address} • ${statusMeta[lot.status].label}`);
 
         marker.addEventListener("click", () => {
-          setActiveMarker(lot.id);
+          setActiveMarker(String(index));
           renderDetail(lot);
         });
 
@@ -582,14 +663,33 @@
       });
     }
 
-    function setActiveMarker(id) {
+    function setActiveMarker(uid) {
       document.querySelectorAll(".lot-marker").forEach((marker) => {
-        marker.classList.toggle("active", marker.dataset.id === id);
+        marker.classList.toggle("active", marker.dataset.uid === uid);
       });
     }
 
     function renderDetail(lot) {
       const badge = statusMeta[lot.status];
+      const basePlan = getBasePlan(lot.plan);
+      const floorplanHref = getFloorplanHref(lot.plan);
+      const planImage = getPlanImage(lot.plan);
+
+      const inventoryPreview = shouldShowPlanPreview(lot)
+        ? `
+          <div class="inventory-preview">
+            <a href="${floorplanHref}" target="_blank" rel="noopener" aria-label="View ${basePlan} floorplan on The Speights Experience landing page">
+              <img src="${planImage}" alt="Representative Perry Homes ${basePlan} exterior" onerror="this.closest('.inventory-preview').style.display='none'">
+            </a>
+            <div class="inventory-preview-body">
+              <strong>${basePlan} Floorplan</strong>
+              <p>This opportunity is shown with the ${lot.plan} designation, but the floorplan link is simplified to the base ${basePlan} plan.</p>
+              <a href="${floorplanHref}" class="inventory-preview-btn" target="_blank" rel="noopener">View Floorplan</a>
+            </div>
+          </div>
+        `
+        : "";
+
       lotDetailCard.innerHTML = `
         <span class="lot-status-badge" style="background:${badge.color}">
           ${badge.label}
@@ -607,6 +707,8 @@
         </div>
 
         <div class="notes-box">${lot.notes}</div>
+
+        ${inventoryPreview}
       `;
     }
 
@@ -615,16 +717,19 @@
       const selectedStatus = statusFilter.value;
       let matchCount = 0;
       let firstMatch = null;
+      let firstMatchUid = null;
 
       document.querySelectorAll(".lot-marker").forEach((marker) => {
-        const lot = lots.find(item => item.id === marker.dataset.id);
+        const lot = lots[Number(marker.dataset.uid)];
         if (!lot) return;
 
+        const basePlan = getBasePlan(lot.plan).toLowerCase();
         const matchesQuery =
           !query ||
           lot.id.toLowerCase().includes(query) ||
           lot.address.toLowerCase().includes(query) ||
-          (lot.plan && lot.plan.toLowerCase().includes(query));
+          (lot.plan && lot.plan.toLowerCase().includes(query)) ||
+          (basePlan && basePlan.includes(query));
 
         const matchesStatus =
           selectedStatus === "all" || lot.status === selectedStatus;
@@ -634,14 +739,17 @@
 
         if (show) {
           matchCount++;
-          if (!firstMatch) firstMatch = lot;
+          if (!firstMatch) {
+            firstMatch = lot;
+            firstMatchUid = marker.dataset.uid;
+          }
         }
       });
 
       noResults.style.display = matchCount === 0 ? "block" : "none";
 
       if (query && firstMatch) {
-        setActiveMarker(firstMatch.id);
+        setActiveMarker(firstMatchUid);
         renderDetail(firstMatch);
       }
     }
