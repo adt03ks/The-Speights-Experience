@@ -990,7 +990,40 @@
         }
         selectedPlans.add(planId);
       }
+document.getElementById("emailComparisonButton").addEventListener("click", function(event) {
+  event.preventDefault();
 
+  const plans = getSelectedPlanObjects();
+
+  if (!plans.length) {
+    alert("Please select at least one floor plan before sending your comparison.");
+    return;
+  }
+
+  const comments = document.getElementById("comparisonComments").value.trim() || "No comments or questions added.";
+
+  const selectedPlanSummary = plans.map(plan => {
+    return `${plan.id} — ${plan.story}, ${plan.squareFeet} sq. ft., ${plan.beds} beds, ${plan.baths}, ${plan.garage}`;
+  }).join("\n");
+
+  const subject = `Perry Homes Floor Plan Comparison - ${plans.map(plan => plan.id).join(", ")}`;
+
+  const body = `Hello Angela,
+
+I reviewed The Speights Experience floor plan comparison tool and would like help with these selected Perry Homes floor plan option(s):
+
+${selectedPlanSummary}
+
+Questions / Comments:
+${comments}
+
+Live Riceland 70' pricing page:
+https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70
+
+Thank you.`;
+
+  window.location.href = `mailto:angela.speights@perryhomes.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
       renderPlanGrid();
       renderComparison();
     }
