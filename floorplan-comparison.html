@@ -406,6 +406,7 @@
         id: "2896W",
         story: "One-story",
         squareFeet: "2,896",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "3",
         baths: "3 full / 1 half",
         garage: "3-car split garage",
@@ -444,6 +445,7 @@
         id: "3057W",
         story: "One-story",
         squareFeet: "3,057",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "4",
         baths: "3 full / 1 half",
         garage: "3-car split garage",
@@ -483,6 +485,7 @@
         id: "3130S",
         story: "One-story",
         squareFeet: "TBD",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
@@ -516,6 +519,7 @@
         id: "3334W",
         story: "One-story",
         squareFeet: "TBD",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
@@ -550,6 +554,7 @@
         id: "3411W",
         story: "One-story",
         squareFeet: "TBD",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
@@ -583,6 +588,7 @@
         id: "3469W",
         story: "One-story",
         squareFeet: "TBD",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
@@ -617,6 +623,7 @@
         id: "3566W",
         story: "One-story",
         squareFeet: "TBD",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
@@ -651,6 +658,7 @@
         id: "3600W",
         story: "One-story",
         squareFeet: "TBD",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
@@ -684,6 +692,7 @@
         id: "3735W",
         story: "One-story",
         squareFeet: "TBD",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
@@ -718,6 +727,7 @@
         id: "4036W",
         story: "Two-story",
         squareFeet: "4,036",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "4",
         baths: "3 full / 2 half",
         garage: "3-car split garage",
@@ -760,6 +770,7 @@
         id: "4132W",
         story: "Two-story",
         squareFeet: "4,132",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "4",
         baths: "4 full / 1 half",
         garage: "4-car split garage",
@@ -803,6 +814,7 @@
         id: "4239W",
         story: "Two-story",
         squareFeet: "4,239",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "5",
         baths: "4 full / 1 half",
         garage: "3-car tandem garage",
@@ -846,6 +858,7 @@
         id: "4296W",
         story: "Two-story",
         squareFeet: "TBD",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
@@ -881,6 +894,7 @@
         id: "4891W",
         story: "Two-story",
         squareFeet: "4,891",
+        doubleFrontDoor: "Verify per elevation / plan",
         beds: "5",
         baths: "4 full / 1 half",
         garage: "3-car tandem garage",
@@ -1094,7 +1108,8 @@ Thank you.`;
           ${allRoomNames.map(roomName => dataRow(roomName, plans, plan => plan.rooms[roomName] || "Not shown / N/A")).join("")}
 
           ${sectionRow("Popular Structural / Design Options", colCount)}
-          ${dataRow("Options", plans, plan => plan.options.map(item => `• ${item}`).join("<br>"))}
+${dataRow("Double Front Door Option", plans, plan => plan.doubleFrontDoor || "Verify per elevation / plan")}
+${dataRow("Options", plans, plan => plan.options.map(item => `• ${item}`).join("<br>"))}
         </tbody>
       `;
 
