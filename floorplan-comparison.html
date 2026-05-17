@@ -962,7 +962,8 @@
         plan.highlights.join(" "),
         Object.keys(plan.rooms).join(" "),
         Object.values(plan.rooms).join(" "),
-        plan.options.join(" ")
+        plan.options.join(" "),
+        plan.doubleFrontDoor
       ].join(" ");
 
       return normalizeText(haystack).includes(normalizeText(query));
