@@ -7,13 +7,13 @@
 
   <style>
     :root {
-      --black: #101010;
-      --gold: #b88a3b;
-      --soft-gold: #f7efe2;
-      --cream: #fbf8f2;
-      --gray: #666666;
-      --border: #ded6c9;
-      --white: #ffffff;
+      --compare-black: #101010;
+      --compare-gold: #b88a3b;
+      --compare-soft-gold: #f7efe2;
+      --compare-cream: #fbf8f2;
+      --compare-gray: #666;
+      --compare-border: #ded6c9;
+      --compare-white: #fff;
     }
 
     * {
@@ -23,17 +23,23 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--black);
+      background: var(--compare-cream);
+      color: var(--compare-black);
     }
 
     .plan-compare-widget {
       padding: 42px 18px;
     }
 
-    .container {
+    .compare-header,
+    .comparison-title-row,
+    .toolbar,
+    .selected-counter,
+    .plan-grid,
+    .comparison-table-wrap {
       max-width: 1180px;
-      margin: 0 auto;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .compare-header {
@@ -45,27 +51,22 @@
       margin: 0 0 8px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: var(--gold);
+      color: var(--compare-gold);
       font-weight: 700;
       font-size: 0.78rem;
     }
 
-    h1,
-    h2,
-    h3 {
-      margin-top: 0;
-    }
-
-    .compare-header h1 {
-      margin-bottom: 12px;
+    .compare-header h1,
+    .comparison-title-row h2 {
+      margin: 0;
       font-size: clamp(2rem, 4vw, 3.4rem);
       line-height: 1.05;
     }
 
     .intro {
       max-width: 760px;
-      margin: 0 auto;
-      color: var(--gray);
+      margin: 14px auto 0;
+      color: var(--compare-gray);
       font-size: 1.05rem;
       line-height: 1.55;
     }
@@ -83,51 +84,34 @@
       font-weight: 700;
     }
 
-    input,
-    select,
-    textarea {
-      width: 100%;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 12px 14px;
-      font: inherit;
-      background: var(--white);
-    }
-
     .toolbar input {
+      width: 100%;
+      border: 1px solid var(--compare-border);
       border-radius: 999px;
       padding: 13px 17px;
+      font-size: 1rem;
+      background: var(--compare-white);
     }
 
-    button,
-    .pricing-button {
+    button {
       border: none;
       border-radius: 999px;
-      background: var(--black);
-      color: var(--white);
+      background: var(--compare-black);
+      color: var(--compare-white);
       padding: 12px 18px;
       font-weight: 700;
       cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       transition: transform 0.15s ease, opacity 0.15s ease;
     }
 
-    button:hover,
-    .pricing-button:hover {
+    button:hover {
       transform: translateY(-1px);
       opacity: 0.92;
     }
 
-    .pricing-button {
-      background: var(--gold);
-    }
-
     .selected-counter {
-      background: var(--soft-gold);
-      border: 1px solid var(--border);
+      background: var(--compare-soft-gold);
+      border: 1px solid var(--compare-border);
       border-radius: 18px;
       padding: 13px 16px;
       margin-bottom: 22px;
@@ -141,15 +125,16 @@
     }
 
     .plan-card {
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: var(--compare-white);
+      border: 1px solid var(--compare-border);
       border-radius: 24px;
       box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
       padding: 18px;
+      position: relative;
     }
 
     .plan-card.selected {
-      outline: 3px solid var(--gold);
+      outline: 3px solid var(--compare-gold);
     }
 
     .plan-card h3 {
@@ -157,8 +142,8 @@
       font-size: 1.55rem;
     }
 
-    .meta {
-      color: var(--gray);
+    .plan-card .meta {
+      color: var(--compare-gray);
       line-height: 1.45;
       margin: 0 0 12px;
     }
@@ -171,7 +156,7 @@
     }
 
     .feature-tags span {
-      background: var(--soft-gold);
+      background: var(--compare-soft-gold);
       border-radius: 999px;
       padding: 6px 10px;
       font-size: 0.8rem;
@@ -183,7 +168,7 @@
     }
 
     .plan-card.selected button {
-      background: var(--gold);
+      background: var(--compare-gold);
     }
 
     .comparison-area {
@@ -198,22 +183,10 @@
       margin-bottom: 16px;
     }
 
-    .comparison-title-row h2 {
-      margin-bottom: 0;
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-    }
-
-    .comparison-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: flex-end;
-    }
-
     .comparison-table-wrap {
       overflow-x: auto;
-      background: var(--white);
-      border: 1px solid var(--border);
+      background: var(--compare-white);
+      border: 1px solid var(--compare-border);
       border-radius: 22px;
       box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
     }
@@ -226,15 +199,15 @@
 
     .comparison-table th,
     .comparison-table td {
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--compare-border);
       padding: 14px 16px;
       text-align: left;
       vertical-align: top;
     }
 
     .comparison-table th {
-      background: var(--black);
-      color: var(--white);
+      background: var(--compare-black);
+      color: var(--compare-white);
       font-size: 1rem;
     }
 
@@ -245,80 +218,24 @@
     }
 
     .comparison-table tr.section-row td {
-      background: var(--soft-gold);
-      color: var(--black);
+      background: var(--compare-soft-gold);
+      color: var(--compare-black);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-size: 0.82rem;
     }
 
-    .compare-lead-form {
-      margin-top: 22px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
-      padding: 22px;
-    }
-
-    .form-heading h3 {
-      margin-bottom: 8px;
-      font-size: clamp(1.45rem, 3vw, 2rem);
-    }
-
-    .form-heading p {
-      color: var(--gray);
-      line-height: 1.5;
-      margin: 0 0 18px;
-    }
-
-    .form-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .compare-lead-form label {
-      display: grid;
-      gap: 7px;
-      font-weight: 800;
-    }
-
-    .full-width-label {
-      margin-top: 14px;
-    }
-
-    .send-comparison-button {
-      margin-top: 16px;
-      width: 100%;
-      background: var(--gold);
-      font-size: 1rem;
-    }
-
-    .form-note {
-      color: var(--gray);
-      font-size: 0.9rem;
-      margin: 10px 0 0;
-    }
-
     @media (max-width: 720px) {
       .toolbar,
-      .comparison-title-row,
-      .form-grid {
-        display: grid;
+      .comparison-title-row {
         grid-template-columns: 1fr;
+        display: grid;
       }
 
       .toolbar button,
-      .comparison-title-row button,
-      .pricing-button,
-      .comparison-actions {
+      .comparison-title-row button {
         width: 100%;
-      }
-
-      .comparison-actions {
-        display: grid;
       }
     }
 
@@ -326,111 +243,60 @@
       .toolbar,
       .plan-grid,
       .selected-counter,
-      .comparison-title-row button,
-      .pricing-button,
-      .compare-lead-form {
+      .comparison-title-row button {
         display: none !important;
       }
 
-      body,
       .plan-compare-widget {
         background: #fff;
+        padding: 0;
+      }
+
+      .comparison-area {
+        display: block !important;
       }
     }
   </style>
 </head>
+
 <body>
   <section class="plan-compare-widget" id="planCompareWidget">
-    <div class="container">
-      <div class="compare-header">
-        <p class="eyebrow">The Speights Experience</p>
-        <h1>Compare Your Top Perry Homes Floor Plans</h1>
-        <p class="intro">
-          Select up to three plans to compare room sizes, garage spaces, bathrooms, ceiling heights, patio options,
-          and design features side by side.
-        </p>
+    <div class="compare-header">
+      <p class="eyebrow">The Speights Experience</p>
+      <h1>Compare Your Top Perry Homes Floor Plans</h1>
+      <p class="intro">
+        Select up to three plans to compare room sizes, garage spaces, bathrooms, ceiling heights, patio options,
+        and design features side by side.
+      </p>
+    </div>
+
+    <div class="toolbar">
+      <label for="planSearch">Search by plan number or feature</label>
+      <input id="planSearch" type="search" placeholder="Example: 3566W, media room, 4-car garage" />
+      <button type="button" id="clearSelections">Clear selections</button>
+    </div>
+
+    <div class="selected-counter" id="selectedCounter">Select 1–3 plans to begin comparing.</div>
+
+    <div class="plan-grid" id="planGrid"></div>
+
+    <div class="comparison-area" id="comparisonArea" hidden>
+      <div class="comparison-title-row">
+        <div>
+          <p class="eyebrow">Side-by-Side Breakdown</p>
+          <h2>Your Selected Plans</h2>
+        </div>
+        <button type="button" onclick="window.print()">Print / Save PDF</button>
       </div>
 
-      <div class="toolbar">
-        <label for="planSearch">Search by plan number or feature</label>
-        <input id="planSearch" type="search" placeholder="Example: 3566W, media room, 4-car garage" />
-        <button type="button" id="clearSelections">Clear selections</button>
-      </div>
-
-      <div class="selected-counter" id="selectedCounter">Select 1–3 plans to begin comparing.</div>
-
-      <div class="plan-grid" id="planGrid"></div>
-
-      <div class="comparison-area" id="comparisonArea" hidden>
-        <div class="comparison-title-row">
-          <div>
-            <p class="eyebrow">Side-by-Side Breakdown</p>
-            <h2>Your Selected Plans</h2>
-          </div>
-          <div class="comparison-actions">
-            <a class="pricing-button" href="https://www.perryhomes.com/new-homes/texas/houston/riceland/riceland-70" target="_blank" rel="noopener">
-              View Live Base Pricing
-            </a>
-            <button type="button" id="printButton">Print / Save PDF</button>
-          </div>
-        </div>
-
-        <div class="comparison-table-wrap">
-          <table class="comparison-table" id="comparisonTable"></table>
-        </div>
-
-        <form class="compare-lead-form" id="compareLeadForm">
-          <div class="form-heading">
-            <p class="eyebrow">Need Help Deciding?</p>
-            <h3>Send Your Favorite Plan Comparison to Angela</h3>
-            <p>
-              Share your selected plans, questions, and what matters most in your next home.
-              Angela will use this to help guide your Perry Homes discovery.
-            </p>
-          </div>
-
-          <div class="form-grid">
-            <label>
-              Name
-              <input type="text" id="shopperName" placeholder="Your name" required />
-            </label>
-            <label>
-              Email
-              <input type="email" id="shopperEmail" placeholder="Your email" required />
-            </label>
-            <label>
-              Phone
-              <input type="tel" id="shopperPhone" placeholder="Your phone number" />
-            </label>
-            <label>
-              Buying Timeline
-              <select id="shopperTimeline">
-                <option value="Not specified">Select one</option>
-                <option value="Immediately / Move-in ready">Immediately / Move-in ready</option>
-                <option value="30-60 days">30-60 days</option>
-                <option value="60-90 days">60-90 days</option>
-                <option value="3-6 months">3-6 months</option>
-                <option value="6+ months / Still exploring">6+ months / Still exploring</option>
-              </select>
-            </label>
-          </div>
-
-          <label class="full-width-label">
-            Comments or Questions
-            <textarea id="shopperComments" rows="5" placeholder="Example: We need a larger primary bedroom, prefer a 4-car garage, want to understand patio extension options, or need help comparing pricing."></textarea>
-          </label>
-
-          <button type="submit" class="send-comparison-button">Send My Comparison to Angela</button>
-          <p class="form-note">
-            This will open the shopper’s email app with the selected plans and comments pre-filled to Angela Speights.
-          </p>
-        </form>
+      <div class="comparison-table-wrap">
+        <table class="comparison-table" id="comparisonTable"></table>
       </div>
     </div>
   </section>
 
   <script>
-    var FLOOR_PLANS = [
+    const FLOOR_PLANS = [
       {
         id: "2896W",
         story: "One-story",
@@ -439,10 +305,35 @@
         baths: "3 full / 1 half",
         garage: "3-car split garage",
         highlights: ["One-story", "Study", "Open family room", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Dining / Morning Area": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Covered Patio": "TBD" },
-        options: ["Extended covered patio", "Freestanding tub option", "Fireplace option"]
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per homesite/elevation"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Utility Room": "TBD",
+          "Mud Room": "TBD",
+          "Covered Patio": "TBD"
+        },
+        options: [
+          "Extended covered patio",
+          "Freestanding tub option",
+          "Fireplace option",
+          "Alternate kitchen options vary by elevation/homesite"
+        ]
       },
       {
         id: "3057W",
@@ -452,100 +343,270 @@
         baths: "3 full / 1 half",
         garage: "3-car split garage",
         highlights: ["One-story", "4 bedrooms", "Study", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Dining / Morning Area": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Covered Patio": "TBD" },
-        options: ["Extended covered patio", "Fireplace option", "Freestanding tub option"]
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per homesite/elevation"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Utility Room": "TBD",
+          "Mud Room": "TBD",
+          "Covered Patio": "TBD"
+        },
+        options: [
+          "Extended covered patio",
+          "Fireplace option",
+          "Freestanding tub option",
+          "Design center selections vary"
+        ]
       },
       {
         id: "3130S",
         story: "One-story",
-        squareFeet: "3,130",
+        squareFeet: "TBD",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
         highlights: ["One-story", "Flexible layout", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Dining / Morning Area": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Game Room / Flex": "TBD", "Covered Patio": "TBD" },
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Game Room / Flex": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
         options: ["Extended patio", "Fireplace option", "Bath and bedroom options vary"]
       },
       {
         id: "3334W",
         story: "One-story",
-        squareFeet: "3,334",
+        squareFeet: "TBD",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
         highlights: ["One-story", "Large family room", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Dining / Morning Area": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Covered Patio": "TBD" },
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per homesite/elevation"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Utility Room": "TBD",
+          "Mud Room": "TBD",
+          "Covered Patio": "TBD"
+        },
         options: ["Extended covered patio", "Fireplace option", "Tub/shower options vary"]
       },
       {
         id: "3411W",
         story: "One-story",
-        squareFeet: "3,411",
+        squareFeet: "TBD",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
         highlights: ["One-story", "Spacious layout", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Dining / Morning Area": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Covered Patio": "TBD" },
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
         options: ["Extended covered patio", "Fireplace option", "Garage options vary"]
       },
       {
         id: "3469W",
         story: "One-story",
-        squareFeet: "3,469",
+        squareFeet: "TBD",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
         highlights: ["One-story", "Open living", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Game Room / Flex": "TBD", "Covered Patio": "TBD" },
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Game Room / Flex": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
         options: ["Extended covered patio", "Fireplace option", "Bath options vary"]
       },
       {
         id: "3566W",
         story: "One-story",
-        squareFeet: "3,566",
+        squareFeet: "TBD",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
         highlights: ["One-story", "Large layout", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Game Room / Flex": "TBD", "Covered Patio": "TBD" },
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per homesite/elevation"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Game Room / Flex": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
         options: ["Extended covered patio", "Fireplace option", "Freestanding tub option", "Garage options vary"]
       },
       {
         id: "3600W",
         story: "One-story",
-        squareFeet: "3,600",
+        squareFeet: "TBD",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
         highlights: ["One-story", "Spacious design", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Covered Patio": "TBD" },
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
         options: ["Extended covered patio", "Fireplace option", "Garage options vary"]
       },
       {
         id: "3735W",
         story: "One-story",
-        squareFeet: "3,735",
+        squareFeet: "TBD",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
         highlights: ["One-story", "Large footprint", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Primary Bedroom": "TBD", "Bedroom 2": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Game Room / Flex": "TBD", "Covered Patio": "TBD" },
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Bedroom 2": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Game Room / Flex": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
         options: ["Extended covered patio", "Fireplace option", "Bedroom/bath options vary"]
       },
       {
@@ -556,10 +617,39 @@
         baths: "3 full / 2 half",
         garage: "3-car split garage",
         highlights: ["Two-story", "Game room", "Media room", "Guest suite"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered backyard patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "Curved staircase entry - dimensions TBD", "Home Office / Study": "TBD", "Dining Room": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Morning Area": "TBD", "Primary Bedroom": "TBD", "Guest Suite": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Game Room": "TBD", "Media Room": "TBD", "Covered Patio": "TBD" },
-        options: ["Extended covered patio", "Fireplace option", "Freestanding tub option", "Garage extension options vary"]
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered backyard patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan/elevation"
+        },
+        rooms: {
+          "Entry": "Curved staircase entry - dimensions TBD",
+          "Home Office / Study": "TBD",
+          "Dining Room": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Guest Suite": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Game Room": "TBD",
+          "Media Room": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
+        options: [
+          "Extended covered patio",
+          "Fireplace option",
+          "Freestanding tub option",
+          "Alternate kitchen/fireplace options vary",
+          "Garage extension options vary by homesite"
+        ]
       },
       {
         id: "4132W",
@@ -569,10 +659,40 @@
         baths: "4 full / 1 half",
         garage: "4-car split garage",
         highlights: ["Two-story", "4-car garage", "Game room", "Media room"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "21 ft family room ceiling - verify plan sheet", primaryBedroom: "TBD" },
-        patio: { standard: "Covered backyard patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Morning Area": "TBD", "Dining Room": "TBD", "Primary Bedroom": "TBD", "Guest Suite": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Game Room": "TBD", "Media Room": "TBD", "Covered Patio": "TBD" },
-        options: ["Extended covered patio", "Fireplace option", "Freestanding tub option", "Wet bar option where available"]
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "21' family room ceiling - verify plan sheet",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered backyard patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan/elevation"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Morning Area": "TBD",
+          "Dining Room": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Guest Suite": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Game Room": "TBD",
+          "Media Room": "TBD",
+          "Utility Room": "TBD",
+          "Mud Room": "TBD",
+          "Covered Patio": "TBD"
+        },
+        options: [
+          "Extended covered patio",
+          "Fireplace option",
+          "Freestanding tub option",
+          "Wet bar option where available",
+          "Garage extensions vary by homesite"
+        ]
       },
       {
         id: "4239W",
@@ -582,22 +702,74 @@
         baths: "4 full / 1 half",
         garage: "3-car tandem garage",
         highlights: ["Two-story", "5 bedrooms", "Game room", "Media room"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered backyard patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "Two-story entry - dimensions TBD", "Home Office / Study": "TBD", "Dining Room": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Morning Area": "TBD", "Primary Bedroom": "TBD", "Guest Suite": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Bedroom 5": "TBD", "Game Room": "TBD", "Media Room": "TBD", "Covered Patio": "TBD" },
-        options: ["Extended covered patio", "Fireplace option", "Freestanding tub option", "Wet bar option where available"]
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered backyard patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan/elevation"
+        },
+        rooms: {
+          "Entry": "Two-story entry - dimensions TBD",
+          "Home Office / Study": "TBD",
+          "Dining Room": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Guest Suite": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Bedroom 5": "TBD",
+          "Game Room": "TBD",
+          "Media Room": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
+        options: [
+          "Extended covered patio",
+          "Fireplace option",
+          "Freestanding tub option",
+          "Alternate kitchen options vary",
+          "Wet bar option where available"
+        ]
       },
       {
         id: "4296W",
         story: "Two-story",
-        squareFeet: "4,296",
+        squareFeet: "TBD",
         beds: "TBD",
         baths: "TBD",
         garage: "TBD",
         highlights: ["Two-story", "Game room", "Media room", "Covered patio"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "TBD", primaryBedroom: "TBD" },
-        patio: { standard: "Covered patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Primary Bedroom": "TBD", "Guest Suite": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Game Room": "TBD", "Media Room": "TBD", "Covered Patio": "TBD" },
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "TBD",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Dining / Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Guest Suite": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Game Room": "TBD",
+          "Media Room": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
         options: ["Extended covered patio", "Fireplace option", "Wet bar option where available"]
       },
       {
@@ -608,25 +780,199 @@
         baths: "4 full / 1 half",
         garage: "3-car tandem garage",
         highlights: ["Two-story", "5 bedrooms", "Game room", "Media room"],
-        ceilingHeights: { kitchen: "TBD", familyRoom: "Two-story family room - verify height on plan sheet", primaryBedroom: "TBD" },
-        patio: { standard: "Covered backyard patio - TBD size", extensionOptions: "Extended covered patio option available" },
-        rooms: { "Entry": "TBD", "Home Office / Study": "TBD", "Dining Room": "TBD", "Family Room": "TBD", "Kitchen": "TBD", "Morning Area": "TBD", "Primary Bedroom": "TBD", "Guest Suite": "TBD", "Bedroom 3": "TBD", "Bedroom 4": "TBD", "Bedroom 5": "TBD", "Game Room": "TBD", "Media Room": "TBD", "Covered Patio": "TBD" },
-        options: ["Extended covered patio", "Fireplace option", "Freestanding tub option", "Wet bar option where available"]
+        ceilingHeights: {
+          kitchen: "TBD",
+          familyRoom: "Two-story family room - verify height on plan sheet",
+          primaryBedroom: "TBD"
+        },
+        patio: {
+          standard: "Covered backyard patio - TBD size",
+          extensionOptions: "Extended covered patio option available - verify per plan/elevation"
+        },
+        rooms: {
+          "Entry": "TBD",
+          "Home Office / Study": "TBD",
+          "Dining Room": "TBD",
+          "Family Room": "TBD",
+          "Kitchen": "TBD",
+          "Morning Area": "TBD",
+          "Primary Bedroom": "TBD",
+          "Primary Bath": "TBD",
+          "Guest Suite": "TBD",
+          "Bedroom 3": "TBD",
+          "Bedroom 4": "TBD",
+          "Bedroom 5": "TBD",
+          "Game Room": "TBD",
+          "Media Room": "TBD",
+          "Utility Room": "TBD",
+          "Covered Patio": "TBD"
+        },
+        options: [
+          "Extended covered patio",
+          "Fireplace option",
+          "Freestanding tub option",
+          "Wet bar option where available",
+          "Alternate kitchen options vary"
+        ]
       }
     ];
 
-    var selectedPlans = [];
+    const selectedPlans = new Set();
 
-    function byId(id) {
-      return document.getElementById(id);
+    const planGrid = document.getElementById("planGrid");
+    const comparisonArea = document.getElementById("comparisonArea");
+    const comparisonTable = document.getElementById("comparisonTable");
+    const selectedCounter = document.getElementById("selectedCounter");
+    const planSearch = document.getElementById("planSearch");
+    const clearSelections = document.getElementById("clearSelections");
+
+    function normalizeText(value) {
+      return String(value || "").toLowerCase();
     }
 
-    function clean(value) {
-      return String(value || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g,
+    function planMatchesSearch(plan, query) {
+      if (!query) return true;
+
+      const haystack = [
+        plan.id,
+        plan.story,
+        plan.squareFeet,
+        plan.beds,
+        plan.baths,
+        plan.garage,
+        plan.highlights.join(" "),
+        Object.keys(plan.rooms).join(" "),
+        Object.values(plan.rooms).join(" "),
+        plan.options.join(" ")
+      ].join(" ");
+
+      return normalizeText(haystack).includes(normalizeText(query));
+    }
+
+    function renderPlanGrid() {
+      const query = planSearch.value.trim();
+      const visiblePlans = FLOOR_PLANS.filter(plan => planMatchesSearch(plan, query));
+
+      planGrid.innerHTML = visiblePlans.map(plan => {
+        const isSelected = selectedPlans.has(plan.id);
+
+        return `
+          <article class="plan-card ${isSelected ? "selected" : ""}">
+            <h3>${plan.id}</h3>
+            <p class="meta">
+              ${plan.story}<br>
+              ${plan.squareFeet} sq. ft. • ${plan.beds} beds • ${plan.baths}<br>
+              ${plan.garage}
+            </p>
+            <div class="feature-tags">
+              ${plan.highlights.map(tag => `<span>${tag}</span>`).join("")}
+            </div>
+            <button type="button" onclick="togglePlan('${plan.id}')">
+              ${isSelected ? "Selected" : "Compare this plan"}
+            </button>
+          </article>
+        `;
+      }).join("");
+
+      if (!visiblePlans.length) {
+        planGrid.innerHTML = `<p>No matching plans found. Try searching by plan number, room type, or feature.</p>`;
+      }
+    }
+
+    function togglePlan(planId) {
+      if (selectedPlans.has(planId)) {
+        selectedPlans.delete(planId);
+      } else {
+        if (selectedPlans.size >= 3) {
+          alert("Please select no more than 3 plans at a time.");
+          return;
+        }
+        selectedPlans.add(planId);
+      }
+
+      renderPlanGrid();
+      renderComparison();
+    }
+
+    function getSelectedPlanObjects() {
+      return FLOOR_PLANS.filter(plan => selectedPlans.has(plan.id));
+    }
+
+    function sectionRow(title, colCount) {
+      return `<tr class="section-row"><td colspan="${colCount}">${title}</td></tr>`;
+    }
+
+    function dataRow(label, plans, getter) {
+      return `
+        <tr>
+          <td>${label}</td>
+          ${plans.map(plan => `<td>${getter(plan) || "—"}</td>`).join("")}
+        </tr>
+      `;
+    }
+
+    function renderComparison() {
+      const plans = getSelectedPlanObjects();
+      const colCount = plans.length + 1;
+
+      selectedCounter.textContent = plans.length
+        ? `${plans.length} selected: ${plans.map(plan => plan.id).join(", ")}`
+        : "Select 1–3 plans to begin comparing.";
+
+      comparisonArea.hidden = plans.length === 0;
+
+      if (!plans.length) {
+        comparisonTable.innerHTML = "";
+        return;
+      }
+
+      const allRoomNames = [...new Set(plans.flatMap(plan => Object.keys(plan.rooms)))];
+
+      let tableHtml = `
+        <thead>
+          <tr>
+            <th>Feature</th>
+            ${plans.map(plan => `<th>${plan.id}</th>`).join("")}
+          </tr>
+        </thead>
+        <tbody>
+          ${sectionRow("Plan Overview", colCount)}
+          ${dataRow("Story", plans, plan => plan.story)}
+          ${dataRow("Square Footage", plans, plan => `${plan.squareFeet} sq. ft.`)}
+          ${dataRow("Bedroom Count", plans, plan => plan.beds)}
+          ${dataRow("Bathroom Count", plans, plan => plan.baths)}
+          ${dataRow("Garage Spaces", plans, plan => plan.garage)}
+
+          ${sectionRow("Ceiling Heights", colCount)}
+          ${dataRow("Kitchen Ceiling Height", plans, plan => plan.ceilingHeights.kitchen)}
+          ${dataRow("Family Room Ceiling Height", plans, plan => plan.ceilingHeights.familyRoom)}
+          ${dataRow("Primary Bedroom Ceiling Height", plans, plan => plan.ceilingHeights.primaryBedroom)}
+
+          ${sectionRow("Patio", colCount)}
+          ${dataRow("Standard Patio", plans, plan => plan.patio.standard)}
+          ${dataRow("Patio Extension Options", plans, plan => plan.patio.extensionOptions)}
+
+          ${sectionRow("Room Size Breakdown", colCount)}
+          ${allRoomNames.map(roomName => dataRow(roomName, plans, plan => plan.rooms[roomName] || "Not shown / N/A")).join("")}
+
+          ${sectionRow("Popular Structural / Design Options", colCount)}
+          ${dataRow("Options", plans, plan => plan.options.map(item => `• ${item}`).join("<br>"))}
+        </tbody>
+      `;
+
+      comparisonTable.innerHTML = tableHtml;
+    }
+
+    planSearch.addEventListener("input", renderPlanGrid);
+
+    clearSelections.addEventListener("click", () => {
+      selectedPlans.clear();
+      renderPlanGrid();
+      renderComparison();
+    });
+
+    renderPlanGrid();
+    renderComparison();
+  </script>
 </body>
 </html>
