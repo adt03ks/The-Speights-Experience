@@ -7,6 +7,55 @@
    <link rel="icon" type="image/png" href="favicon.png" />
 
   <style>
+    /* Hamburger Menu */
+.hamburger-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.hamburger {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 15px;
+  font-size: 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,.2);
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: rgba(255,255,255,.98);
+  width: 260px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,.2);
+}
+
+.mobile-menu a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  border-bottom: 1px solid #eee;
+  transition: .3s;
+}
+
+.mobile-menu a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.mobile-menu.show {
+  display: block;
+}
     :root {
       --bg: #f7f4ee;
       --card: rgba(255, 255, 255, 0.95);
