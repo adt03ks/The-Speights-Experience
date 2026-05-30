@@ -549,6 +549,19 @@ img {
   Angela Speights or Perry Homes directly for the most current information, availability, and
   complete details.
 </section>
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("show");
+}
 
+window.onclick = function(event) {
+  if (!event.target.matches('.hamburger')) {
+    const menu = document.getElementById("mobileMenu");
+    if (menu && menu.classList.contains('show')) {
+      menu.classList.remove('show');
+    }
+  }
+}
+</script>
 </body>
 </html>
