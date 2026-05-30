@@ -7,55 +7,83 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
   <style>
-    /* Hamburger Menu */
-.hamburger-container {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
-}
+    /* Fixed Top Navigation / Hamburger Menu */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 99999;
+      background: rgba(5, 5, 5, 0.94);
+      color: #ffffff;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+    }
 
-.hamburger {
-  background: #000;
-  color: #fff;
-  border: none;
-  padding: 12px 15px;
-  font-size: 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,.2);
-}
+    .site-title {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
 
-.mobile-menu {
-  display: none;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background: rgba(255,255,255,.98);
-  width: 260px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0,0,0,.2);
-}
+    .hamburger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      background: #ffffff;
+      color: #050505;
+      border: none;
+      font-size: 28px;
+      line-height: 1;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.22);
+    }
 
-.mobile-menu a {
-  display: block;
-  padding: 15px;
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  border-bottom: 1px solid #eee;
-  transition: .3s;
-}
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 66px;
+      right: 24px;
+      width: min(285px, calc(100vw - 40px));
+      background: #ffffff;
+      color: #050505;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
 
-.mobile-menu a:hover {
-  background: #000;
-  color: #fff;
-}
+    .nav-menu.active {
+      display: block;
+    }
 
-.mobile-menu.show {
-  display: block;
-}
+    .nav-menu a {
+      display: block;
+      padding: 15px 18px;
+      color: #050505;
+      text-decoration: none;
+      font-weight: 800;
+      border-bottom: 1px solid #eeeeee;
+    }
+
+    .nav-menu a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-menu a:hover {
+      background: #050505;
+      color: #ffffff;
+    }
+
     :root {
       --black: #050505;
       --charcoal: #1b1b1b;
@@ -83,6 +111,7 @@
       color: var(--text);
       background: var(--ivory);
       line-height: 1.6;
+      padding-top: 74px;
     }
 
     img {
@@ -844,9 +873,6 @@
     <a href="riceland-70-included-features.html">Included Features</a>
   </nav>
 </header>
-    </a>
-  </nav>
-</div>
   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
     <symbol id="icon-bed" viewBox="0 0 24 24">
       <path d="M3 11V7.5A2.5 2.5 0 0 1 5.5 5h3A2.5 2.5 0 0 1 11 7.5V11" />
@@ -1205,8 +1231,8 @@
 
   <a class="btn btn-secondary" 
      style="background: var(--black); border-color: var(--black);" 
-    <a href="floorplan-comparison.html" class="btn">
-  Plan Comparison Tool
+     href="floorplan-comparison.html">
+    Plan Comparison Tool
   </a>
 
   <a class="btn btn-primary" 
@@ -1285,7 +1311,6 @@
       Representative images, features, specifications, pricing, availability, incentives, and community details may vary and are subject to change. This page is intended as a client-facing guide to begin exploring Perry Homes options with Angela Speights.
     </p>
   </footer>
-</script>
   <script>
     /*
       Add extra pictures for each plan inside your images folder using this naming format:
@@ -1463,30 +1488,30 @@ document.addEventListener("keydown", (event) => {
 });
   </script>
   <script>
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("show");
-}
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const navMenu = document.getElementById("navMenu");
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const hamburgerBtn = document.getElementById("hamburgerBtn");
-  const navMenu = document.getElementById("navMenu");
+      if (!hamburgerBtn || !navMenu) return;
 
-  hamburgerBtn.addEventListener("click", function (event) {
-    event.stopPropagation();
-    navMenu.classList.toggle("active");
-  });
+      hamburgerBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        navMenu.classList.toggle("active");
+      });
 
-  document.addEventListener("click", function (event) {
-    if (!navMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
-      navMenu.classList.remove("active");
-    }
-  });
-});
-</script>
-    }
-  }
-}
-</script>
+      navMenu.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          navMenu.classList.remove("active");
+        });
+      });
+
+      document.addEventListener("click", function (event) {
+        if (!navMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
+          navMenu.classList.remove("active");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
