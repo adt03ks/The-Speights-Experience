@@ -1273,7 +1273,12 @@
         </div>
         <div class="gallery-thumbs" id="galleryThumbs"></div>
         <div class="gallery-actions">
-          <a class="btn btn-primary" id="galleryFloorplanLink" href="#" target="_blank" rel="noopener">Open Floorplan + Options</a>
+          <a class="btn btn-primary" id="galleryFloorplanLink" href="#" target="_blank" rel="noopener">
+            Open Floorplan + Options
+          </a>
+           <a class="btn btn-primary" id="galleryVideoLink" href="#" target="_blank" rel="noopener">
+    Watch Video Tour
+  </a>
           <a class="btn btn-secondary" style="background: var(--black); border-color: var(--black);" href="mailto:Angela.Speights@perryhomes.com?subject=I%20would%20like%20more%20details%20about%20this%20Perry%20Homes%20plan">Ask Angela About This Plan</a>
         </div>
         <div class="register-modal" id="registerModal" aria-hidden="true">
@@ -1335,6 +1340,7 @@
     const galleryMainImage = document.getElementById("galleryMainImage");
     const galleryThumbs = document.getElementById("galleryThumbs");
     const galleryFloorplanLink = document.getElementById("galleryFloorplanLink");
+    const galleryVideoLink = document.getElementById("galleryVideoLink");
     const galleryClose = document.querySelector(".gallery-close");
     const galleryPrev = document.querySelector(".gallery-nav-button.prev");
     const galleryNext = document.querySelector(".gallery-nav-button.next");
@@ -1390,18 +1396,36 @@
       currentGalleryIndex = (currentGalleryIndex + direction + currentGalleryImages.length) % currentGalleryImages.length;
       setMainImage(currentGalleryImages[currentGalleryIndex], currentGalleryPlan, currentGalleryIndex);
     }
-
     function openGallery(plan, floorplanUrl) {
       const planLinks = {
         "4296W": "https://perryhomes.blu-plan.com/plan/4296w"
       };
-
+const videoLinks = {
+  "2896W": "https://youtu.be/993rJCnFbMU?si=oP2ThSv_36ETjPwE",
+  "3334W": "https://youtu.be/0MM9DxLvQjE?si=ESvuCreVRmjKokeK",
+  "3411W": "https://youtu.be/kj9X5_5cHRE?si=Y_SLGW88ZSLVavxA",
+  "3469W": "https://youtu.be/FqGxj5OPvEg?si=Wmmy6ywF3mJgQRe-",
+  "3600W": "https://youtu.be/jn_xGh7RlBw?si=IwRaAVS9m7gBBKrD",
+  "3566W": "https://youtu.be/kj9X5_5cHRE?si=Y_SLGW88ZSLVavxA",
+  "4036W": "https://youtu.be/NnVdA_CGFB0?si=MXUp7iehLs_SLG5p",
+  "4239W": "https://youtu.be/WeGUaVQJQ50?si=0igc_wNg3D93m73a",
+  "4891W": "https://youtu.be/z0ElcKITJyA?si=wc83Dd1r1r8Q4JxT",
+  "4132W": "https://youtu.be/6OA48l4MpTU?si=6sMdRe711hXsxhns",
+  "4296W": "https://youtu.be/NVYMslm4xSI?si=1cxfrFSU52_pZi-c"
+};
       const images = buildPlanImages(plan);
       currentGalleryImages = images;
       currentGalleryPlan = plan;
       currentGalleryIndex = 0;
       galleryTitle.textContent = `${plan} Plan Gallery`;
       galleryFloorplanLink.href = planLinks[plan] || floorplanUrl;
+      if (videoLinks[plan]) {
+  galleryVideoLink.href = videoLinks[plan];
+  galleryVideoLink.style.display = "inline-flex";
+} else {
+  galleryVideoLink.href = "#";
+  galleryVideoLink.style.display = "none";
+}
       galleryThumbs.innerHTML = "";
 
       images.forEach((src, index) => {
