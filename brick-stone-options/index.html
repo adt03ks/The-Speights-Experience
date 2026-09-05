@@ -1057,7 +1057,76 @@
 
   </main>
 
+<!-- ==========================================
+     BRICK COMPARISON MODAL
+=========================================== -->
 
+<div
+  class="comparison-modal"
+  id="comparisonModal"
+  aria-hidden="true"
+>
+
+  <div class="comparison-backdrop" id="comparisonBackdrop"></div>
+
+  <div
+    class="comparison-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="comparisonTitle"
+  >
+
+    <div class="comparison-header">
+
+      <div>
+        <p class="group-label">
+          Your Shortlist
+        </p>
+
+        <h2 id="comparisonTitle">
+          Compare Brick Options
+        </h2>
+
+        <p class="comparison-intro">
+          Review your selected brick options side-by-side
+          before narrowing your exterior palette.
+        </p>
+      </div>
+
+      <button
+        class="comparison-close"
+        id="comparisonClose"
+        type="button"
+        aria-label="Close comparison"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      class="comparison-grid"
+      id="comparisonGrid"
+    >
+    </div>
+
+
+    <div class="comparison-footer">
+
+      <button
+        class="secondary-button"
+        id="comparisonDone"
+        type="button"
+      >
+        Continue Exploring
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
   <script src="script.js"></script>
 
 </body>
