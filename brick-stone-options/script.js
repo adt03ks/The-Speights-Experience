@@ -230,7 +230,27 @@ function removeViableOption(brickName) {
 
 
 // =========================================================
-// COMPARE BUTTON
+// COMPARISON ELEMENTS
+// =========================================================
+
+const comparisonModal =
+  document.getElementById("comparisonModal");
+
+const comparisonGrid =
+  document.getElementById("comparisonGrid");
+
+const comparisonClose =
+  document.getElementById("comparisonClose");
+
+const comparisonBackdrop =
+  document.getElementById("comparisonBackdrop");
+
+const comparisonDone =
+  document.getElementById("comparisonDone");
+
+
+// =========================================================
+// OPEN COMPARISON
 // =========================================================
 
 compareButton.addEventListener("click", () => {
@@ -239,14 +259,198 @@ compareButton.addEventListener("click", () => {
     return;
   }
 
+  renderComparison();
 
-  alert(
-    "Selected brick options:\n\n" +
-    viableOptions.join("\n")
+  comparisonModal.classList.add("open");
+
+  comparisonModal.setAttribute(
+    "aria-hidden",
+    "false"
   );
+
+  document.body.classList.add("modal-open");
 
 });
 
+
+// =========================================================
+// BUILD COMPARISON CARDS
+// =========================================================
+
+function renderComparison() {
+
+  comparisonGrid.innerHTML = "";
+
+  viableOptions.forEach((brickName) => {
+
+    const originalCard =
+      [...brickCards].find(
+        (card) =>
+          card.dataset.brick === brickName
+      );
+
+    if (!originalCard) {
+      return;
+    }
+
+
+    const image =
+      originalCard.querySelector("img");
+
+    const color =
+      originalCard.querySelector(
+        ".brick-details p"
+      );
+
+    const badge =
+      originalCard.querySelector(
+        ".material-badge"
+      );
+
+
+    const comparisonCard =
+      document.createElement("article");
+
+    comparisonCard.className =
+      "comparison-card";
+
+
+    comparisonCard.innerHTML = `
+      <div class="comparison-card-image">
+        <img
+          src="${image.src}"
+          alt="${brickName} brick"
+        >
+      </div>
+
+      <div class="comparison-card-details">
+
+        <h3>${brickName}</h3>
+
+        <p class="comparison-color">
+          ${color.textContent}
+        </p>
+
+        <span class="${badge.className}">
+          ${badge.textContent}
+        </span>
+
+        <button
+          class="comparison-remove"
+          type="button"
+          data-remove-brick="${brickName}"
+        >
+          Remove from Comparison
+        </button>
+
+      </div>
+    `;
+
+
+    comparisonGrid.appendChild(
+      comparisonCard
+    );
+
+  });
+
+
+  // Add remove behavior
+
+  const removeButtons =
+    comparisonGrid.querySelectorAll(
+      ".comparison-remove"
+    );
+
+
+  removeButtons.forEach((button) => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const brickName =
+          button.dataset.removeBrick;
+
+        removeViableOption(brickName);
+
+
+        // If fewer than 2 remain,
+        // close comparison automatically
+
+        if (viableOptions.length < 2) {
+
+          closeComparison();
+
+          return;
+
+        }
+
+
+        renderComparison();
+
+      }
+    );
+
+  });
+
+}
+
+
+// =========================================================
+// CLOSE COMPARISON
+// =========================================================
+
+function closeComparison() {
+
+  comparisonModal.classList.remove("open");
+
+  comparisonModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  document.body.classList.remove(
+    "modal-open"
+  );
+
+}
+
+
+comparisonClose.addEventListener(
+  "click",
+  closeComparison
+);
+
+
+comparisonBackdrop.addEventListener(
+  "click",
+  closeComparison
+);
+
+
+comparisonDone.addEventListener(
+  "click",
+  closeComparison
+);
+
+
+// Close with Escape key
+
+document.addEventListener(
+  "keydown",
+  (event) => {
+
+    if (
+      event.key === "Escape" &&
+      comparisonModal.classList.contains("open")
+    ) {
+
+      closeComparison();
+
+    }
+
+  }
+);
 
 // =========================================================
 // INITIALIZE
