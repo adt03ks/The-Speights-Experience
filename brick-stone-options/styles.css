@@ -1,0 +1,704 @@
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #f4f2ed;
+  --surface: #ffffff;
+  --text: #232323;
+  --muted: #6f6c67;
+  --border: #dedad2;
+  --dark: #202020;
+  --dark-soft: #2c2c2c;
+  --cream: #eee8dd;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  --shadow-hover: 0 16px 36px rgba(0, 0, 0, 0.12);
+  --radius: 16px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   PAGE CONTAINER
+========================================================= */
+
+.page-container {
+  width: min(1240px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  min-height: 430px;
+  background:
+    linear-gradient(
+      rgba(18, 18, 18, 0.55),
+      rgba(18, 18, 18, 0.72)
+    ),
+    url("assets/exterior-hero.jpg")
+      center center / cover no-repeat;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-overlay {
+  width: 100%;
+  padding: 85px 24px;
+}
+
+.hero-content {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #ece6db;
+}
+
+.eyebrow.dark {
+  color: #777067;
+}
+
+.hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.8rem, 6vw, 5.3rem);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero-description {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.06rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+
+/* =========================================================
+   BRICK SECTION
+========================================================= */
+
+.brick-section {
+  padding: 80px 0 130px;
+}
+
+.section-heading {
+  max-width: 780px;
+  text-align: center;
+  margin: 0 auto 40px;
+}
+
+.section-heading h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  font-weight: 500;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.section-heading > p:last-child {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   COLOR FILTERS
+========================================================= */
+
+.color-filter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 55px;
+}
+
+.color-button {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 650;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.color-button:hover {
+  transform: translateY(-2px);
+  border-color: #99938b;
+}
+
+.color-button.active {
+  background: var(--dark);
+  color: #ffffff;
+  border-color: var(--dark);
+}
+
+
+/* =========================================================
+   BRICK GROUP
+========================================================= */
+
+.brick-group {
+  margin-bottom: 62px;
+}
+
+.brick-group:last-child {
+  margin-bottom: 0;
+}
+
+.brick-group-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+.group-label {
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: #8d877f;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.brick-group-heading h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.brick-count {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   BRICK GRID
+========================================================= */
+
+.brick-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+
+/* =========================================================
+   BRICK CARD
+========================================================= */
+
+.brick-card {
+  background: var(--surface);
+  border: 1px solid #e5e1da;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.brick-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+.brick-card.selected {
+  border: 2px solid #272727;
+}
+
+.brick-image {
+  height: 190px;
+  overflow: hidden;
+  background: #dfdcd5;
+}
+
+.brick-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.brick-card:hover .brick-image img {
+  transform: scale(1.035);
+}
+
+.brick-details {
+  padding: 17px 18px 19px;
+}
+
+.brick-details h4 {
+  font-size: 1.06rem;
+  margin-bottom: 4px;
+}
+
+.brick-details p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.material-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #efede8;
+  color: #5c5851;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.material-badge.upgrade {
+  background: #e9dfcd;
+  color: #5e4a2d;
+}
+
+
+/* =========================================================
+   SHORTLIST BUTTON
+========================================================= */
+
+.shortlist-button {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  z-index: 5;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: rgba(25, 25, 25, 0.5);
+  color: #ffffff;
+  font-size: 1.25rem;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  backdrop-filter: blur(5px);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.shortlist-button:hover {
+  transform: scale(1.08);
+  background: #ffffff;
+  color: #202020;
+}
+
+.shortlist-button.selected {
+  background: #ffffff;
+  color: #202020;
+}
+
+
+/* =========================================================
+   STONE SECTION
+========================================================= */
+
+.stone-section {
+  background: var(--dark);
+  color: #ffffff;
+  padding: 80px 0 150px;
+}
+
+.stone-section-heading {
+  max-width: 780px;
+  text-align: center;
+  margin: 0 auto 42px;
+}
+
+.stone-section-heading h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.1rem, 4vw, 3.1rem);
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.stone-section-heading > p:last-child {
+  color: #c9c6c0;
+  line-height: 1.75;
+}
+
+.stone-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.stone-card {
+  background: var(--dark-soft);
+  border: 1px solid #44413d;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+.stone-card:hover {
+  transform: translateY(-5px);
+  border-color: #706b64;
+  box-shadow: 0 15px 36px rgba(0, 0, 0, 0.22);
+}
+
+.stone-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #4a4946;
+}
+
+.stone-details {
+  padding: 18px;
+}
+
+.stone-details h3 {
+  font-size: 1.02rem;
+  margin-bottom: 7px;
+}
+
+.stone-details p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #bdbab5;
+}
+
+
+/* =========================================================
+   VIABLE OPTIONS BAR
+========================================================= */
+
+.viable-options {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.97);
+  border-top: 1px solid #d8d4cd;
+  box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.viable-content {
+  width: min(1240px, calc(100% - 40px));
+  min-height: 86px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.viable-label {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: #8d877f;
+  font-size: 0.68rem;
+  font-weight: 800;
+  margin-bottom: 3px;
+}
+
+#viableCount {
+  display: block;
+  white-space: nowrap;
+}
+
+.viable-list {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.viable-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  background: #efede8;
+  border-radius: 999px;
+  color: #353330;
+  font-size: 0.82rem;
+  font-weight: 650;
+}
+
+.viable-chip button {
+  border: none;
+  background: none;
+  color: #6f6b65;
+  font-size: 0.92rem;
+  line-height: 1;
+}
+
+.compare-button {
+  border: none;
+  border-radius: 8px;
+  background: var(--dark);
+  color: #ffffff;
+  padding: 13px 20px;
+  font-weight: 700;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.compare-button:not(:disabled):hover {
+  transform: translateY(-2px);
+  background: #000000;
+}
+
+.compare-button:disabled {
+  background: #cac7c1;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   HIDDEN FILTER STATE
+========================================================= */
+
+.brick-group.hidden {
+  display: none;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .hero {
+    min-height: 390px;
+  }
+
+  .brick-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .viable-content {
+    grid-template-columns: 1fr auto;
+    padding: 15px 0;
+  }
+
+  .viable-list {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .page-container {
+    width: min(100% - 24px, 1240px);
+  }
+
+  .hero {
+    min-height: 360px;
+  }
+
+  .hero-overlay {
+    padding: 65px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.7rem;
+  }
+
+  .hero-description {
+    font-size: 0.96rem;
+  }
+
+  .brick-section {
+    padding-top: 60px;
+  }
+
+  .section-heading {
+    margin-bottom: 30px;
+  }
+
+  .color-filter {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    margin-left: -3px;
+    margin-right: -3px;
+  }
+
+  .color-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+  .color-button {
+    flex: 0 0 auto;
+  }
+
+  .brick-group-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .brick-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .brick-image {
+    height: 145px;
+  }
+
+  .brick-details {
+    padding: 13px 13px 15px;
+  }
+
+  .brick-details h4 {
+    font-size: 0.94rem;
+  }
+
+  .brick-details p {
+    font-size: 0.78rem;
+  }
+
+  .shortlist-button {
+    width: 32px;
+    height: 32px;
+    top: 9px;
+    left: 9px;
+  }
+
+  .stone-section {
+    padding-top: 65px;
+  }
+
+  .stone-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .stone-card img {
+    height: 145px;
+  }
+
+  .stone-details {
+    padding: 13px;
+  }
+
+  .stone-details h3 {
+    font-size: 0.92rem;
+  }
+
+  .stone-details p {
+    font-size: 0.78rem;
+  }
+
+  .viable-content {
+    width: calc(100% - 24px);
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .viable-list {
+    grid-column: auto;
+    grid-row: auto;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 3px;
+  }
+
+  .viable-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .viable-chip {
+    flex: 0 0 auto;
+  }
+
+  .compare-button {
+    width: 100%;
+  }
+
+}
