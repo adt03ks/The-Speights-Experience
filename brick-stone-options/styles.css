@@ -702,3 +702,224 @@ img {
   }
 
 }
+/* =========================================================
+   COMPARISON MODAL
+========================================================= */
+
+.comparison-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.comparison-modal.open {
+  display: flex;
+}
+
+.comparison-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 15, 15, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.comparison-panel {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, 100%);
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+  background: #f8f7f4;
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28);
+}
+
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.comparison-header h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.comparison-intro {
+  max-width: 650px;
+  color: var(--muted);
+}
+
+.comparison-close {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: #ffffff;
+  color: #222222;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.comparison-close:hover {
+  background: #222222;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   COMPARISON CARDS
+========================================================= */
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(210px, 1fr));
+  gap: 18px;
+}
+
+.comparison-card {
+  background: #ffffff;
+  border: 1px solid #dedbd4;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+}
+
+.comparison-card-image {
+  height: 190px;
+  background: #dedbd5;
+}
+
+.comparison-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comparison-card-details {
+  padding: 17px;
+}
+
+.comparison-card-details h3 {
+  font-size: 1.08rem;
+  margin-bottom: 5px;
+}
+
+.comparison-color {
+  color: var(--muted);
+  font-size: 0.87rem;
+  margin-bottom: 12px;
+}
+
+.comparison-remove {
+  width: 100%;
+  margin-top: 14px;
+  border: 1px solid #d5d1ca;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.comparison-remove:hover {
+  background: #f0ede7;
+}
+
+
+/* =========================================================
+   COMPARISON FOOTER
+========================================================= */
+
+.comparison-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.secondary-button {
+  border: 1px solid #2a2a2a;
+  background: #ffffff;
+  color: #222222;
+  border-radius: 8px;
+  padding: 12px 19px;
+  font-weight: 700;
+}
+
+.secondary-button:hover {
+  background: #222222;
+  color: #ffffff;
+}
+
+
+/* Prevent page scrolling while modal is open */
+
+body.modal-open {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   MOBILE COMPARISON
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .comparison-modal {
+    padding: 12px;
+  }
+
+  .comparison-panel {
+    padding: 20px 14px;
+    max-height: calc(100vh - 24px);
+  }
+
+  .comparison-header {
+    margin-bottom: 22px;
+  }
+
+  .comparison-header h2 {
+    font-size: 2rem;
+  }
+
+  .comparison-close {
+    width: 38px;
+    height: 38px;
+  }
+
+  .comparison-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .comparison-card-image {
+    height: 135px;
+  }
+
+  .comparison-card-details {
+    padding: 12px;
+  }
+
+  .comparison-card-details h3 {
+    font-size: 0.92rem;
+  }
+
+  .comparison-color {
+    font-size: 0.76rem;
+  }
+
+}
