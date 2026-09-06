@@ -155,7 +155,32 @@
 
         </div>
 
+<!-- ==========================================
+     CURRENT BRICK SELECTION
+=========================================== -->
 
+<div class="current-selection" id="currentSelection">
+
+  <div>
+    <span class="current-selection-label">
+      Currently Viewing
+    </span>
+
+    <strong id="currentBrickName">
+      Select a brick to explore compatible stone options
+    </strong>
+  </div>
+
+  <button
+    id="clearBrickSelection"
+    class="clear-selection-button"
+    type="button"
+    hidden
+  >
+    Clear Selection
+  </button>
+
+</div>
         <!-- ==========================================
              LIGHT CREAM / TAUPE
         =========================================== -->
@@ -858,9 +883,9 @@
 
 
 
-    <!-- ==========================================
-         STONE OPTIONS
-    =========================================== -->
+   <!-- ==========================================
+             Stone Options
+        =========================================== -->
 
     <section class="stone-section">
 
@@ -872,16 +897,13 @@
             Step Two
           </p>
 
-          <h2>
-            Explore Stone Options
-          </h2>
+          <h2 id="stoneSectionTitle">
+  Explore Stone Options
+</h2>
 
-          <p>
-            Stone selections add contrast, texture, and
-            architectural depth to your exterior. Available
-            options may vary based on the brick and elevation
-            selected.
-          </p>
+          <p id="stoneSectionDescription">
+  Select a brick above to view compatible stone options.
+</p>
 
         </div>
 
@@ -889,8 +911,9 @@
         <div class="stone-grid">
 
 
-          <article class="stone-card">
-
+          <article class="stone-card"
+            data-stone="blanco-sawn-chop"
+            >
             <img
               src="assets/stone/blanco-sawn-chop.jpg"
               alt="Blanco Sawn Chop stone"
@@ -912,8 +935,9 @@
           </article>
 
 
-          <article class="stone-card">
-
+          <article class="stone-card"
+ data-stone="brazos-canyon-ledge"
+>
             <img
               src="assets/stone/brazos-canyon-ledge.jpg"
               alt="Brazos Canyon Ledgestone"
@@ -935,8 +959,9 @@
           </article>
 
 
-          <article class="stone-card">
-
+          <article class="stone-card"
+            data-stone="granbury-quarry-chop"
+>
             <img
               src="assets/stone/granbury-quarry-chop.jpg"
               alt="Granbury Quarry Chop stone"
@@ -958,7 +983,9 @@
           </article>
 
 
-          <article class="stone-card">
+          <article class="stone-card"
+            data-stone="granbury-cream-chop"
+>
 
             <img
               src="assets/stone/granbury-cream-chop.jpg"
@@ -981,7 +1008,9 @@
           </article>
 
 
-          <article class="stone-card">
+          <article class="stone-card"
+              data-stone="aspen-blend-chopped"
+>
 
             <img
               src="assets/stone/aspen-blend-chopped.jpg"
