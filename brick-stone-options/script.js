@@ -472,11 +472,8 @@ function createBrickCard(
       : "";
 
 
-  const levelText =
-
-    brick.selectionLevel ||
-
-    "Level Not Listed";
+ const levelText =
+  getBrickLevelText(brick);
 
 
   card.innerHTML = `
@@ -584,9 +581,66 @@ function createBrickCard(
           class="
             material-badge
             ${
-              isUpgradeBrick(
-                brick
-              )
+             // =========================================================
+// BRICK LEVEL
+// =========================================================
+
+function getBrickLevelText(brick) {
+
+  // Primary database field
+  if (brick.selectionLevel) {
+    return brick.selectionLevel;
+  }
+
+  // Older database compatibility
+  if (brick.levelDisplay) {
+    return brick.levelDisplay;
+  }
+
+  if (brick.level) {
+    return brick.level;
+  }
+
+  // Last-resort recovery from source text
+  if (brick.sourceLevelText) {
+
+    const text =
+      String(brick.sourceLevelText)
+        .toUpperCase();
+
+    if (text.includes("LEVEL 3")) {
+      return "Level 3";
+    }
+
+    if (text.includes("LEVEL 2")) {
+      return "Level 2";
+    }
+
+    if (text.includes("LEVEL 1")) {
+      return "Level 1";
+    }
+
+    if (text.includes("STANDARD")) {
+      return "Standard";
+    }
+
+  }
+
+  return "Level Not Listed";
+}
+             function isUpgradeBrick(brick) {
+
+  const text =
+    getBrickLevelText(brick)
+      .toLowerCase();
+
+  return (
+    text.includes("level 1") ||
+    text.includes("level 2") ||
+    text.includes("level 3")
+  );
+
+}
                 ? "upgrade"
                 : ""
             }
