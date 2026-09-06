@@ -1,30 +1,39 @@
 // =========================================================
+// BRICK & STONE EXTERIOR SELECTOR
+// =========================================================
+
+const DB = window.BRICK_STONE_DB;
+
+if (!DB) {
+  throw new Error(
+    "Brick & Stone database did not load. Make sure brick-stone-database.js loads before script.js."
+  );
+}
+
+
+// =========================================================
 // SETTINGS
 // =========================================================
 
 const MAX_VIABLE_OPTIONS = 6;
 
 let viableOptions = [];
+let activeBrickId = null;
+let activeColorGroup = "all";
 
 
 // =========================================================
 // ELEMENTS
 // =========================================================
 
-const colorButtons = document.querySelectorAll(".color-button");
-const brickGroups = document.querySelectorAll(".brick-group");
-const brickCards = document.querySelectorAll(".brick-card");
+const colorFilter =
+  document.getElementById("colorFilter");
 
-const viableCount = document.getElementById("viableCount");
-const viableList = document.getElementById("viableList");
-const compareButton = document.getElementById("compareButton");
+const brickGroupsContainer =
+  document.getElementById("brickGroupsContainer");
 
-// =========================================================
-// BRICK / STONE COMPATIBILITY
-// =========================================================
-
-const stoneCards =
-  document.querySelectorAll(".stone-card");
+const stoneGrid =
+  document.getElementById("stoneGrid");
 
 const stoneSectionTitle =
   document.getElementById("stoneSectionTitle");
@@ -38,245 +47,756 @@ const currentBrickName =
 const clearBrickSelection =
   document.getElementById("clearBrickSelection");
 
+const viableCount =
+  document.getElementById("viableCount");
 
-let activeBrick = null;
+const viableList =
+  document.getElementById("viableList");
 
-
-/*
-  Approved stone compatibility.
-
-  As additional brick compatibility is confirmed,
-  simply add it here.
-*/
-
-// =========================================================
-// CLICK BRICK TO VIEW COMPATIBLE STONE
-// =========================================================
-
-brickCards.forEach((card) => {
-
-  card.addEventListener("click", (event) => {
-
-    /*
-      Do not activate the brick when the buyer
-      is only clicking the shortlist + button.
-    */
-
-    if (
-      event.target.closest(".shortlist-button")
-    ) {
-      return;
-    }
-
-
-    const brickName =
-      card.dataset.brick;
-
-    selectBrick(brickName);
-
-  });
-
-});
-// =========================================================
-// COLOR GROUP FILTERING
-// =========================================================
-
-colorButtons.forEach((button) => {
-
-  button.addEventListener("click", () => {
-
-    const selectedGroup = button.dataset.group;
-
-    // Update active button
-    colorButtons.forEach((btn) => {
-      btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-
-    // Show all groups
-    if (selectedGroup === "all") {
-
-      brickGroups.forEach((group) => {
-        group.classList.remove("hidden");
-      });
-
-      return;
-    }
-
-
-    // Show selected group only
-    brickGroups.forEach((group) => {
-
-      const groupName = group.dataset.group;
-
-      if (groupName === selectedGroup) {
-        group.classList.remove("hidden");
-      } else {
-        group.classList.add("hidden");
-      }
-
-    });
-
-  });
-
-});
+const compareButton =
+  document.getElementById("compareButton");
 
 
 // =========================================================
-// SHORTLIST BUTTONS
+// COLOR GROUP ORDER
 // =========================================================
 
-brickCards.forEach((card) => {
+const COLOR_GROUP_ORDER = [
+  "Light Cream / Taupe",
+  "Tan",
+  "Red",
+  "Brown",
+  "White",
+  "Light Gray",
+  "Medium / Dark Gray",
+  "Black"
+];
 
-  const button = card.querySelector(".shortlist-button");
-  const brickName = card.dataset.brick;
 
-  button.addEventListener("click", () => {
+// =========================================================
+// INITIALIZE
+// =========================================================
 
-    const alreadySelected =
-      viableOptions.includes(brickName);
+function initializePage() {
+
+  renderColorFilters();
+
+  renderBrickGroups();
+
+  resetStoneSection();
+
+  updateViableOptions();
+
+}
+
+initializePage();
 
 
-    // -----------------------------------------------------
-    // REMOVE FROM VIABLE OPTIONS
-    // -----------------------------------------------------
+// =========================================================
+// COLOR FILTERS
+// =========================================================
 
-    if (alreadySelected) {
+function renderColorFilters() {
 
-      viableOptions =
-        viableOptions.filter(
-          (brick) => brick !== brickName
+  colorFilter.innerHTML = "";
+
+
+  createColorButton(
+    "All",
+    "all"
+  );
+
+
+  COLOR_GROUP_ORDER.forEach(
+    (groupName) => {
+
+      const exists =
+        DB.bricks.some(
+          brick =>
+            normalizeColorGroup(
+              brick.colorGroup
+            ) === groupName
         );
 
-      card.classList.remove("selected");
-      button.classList.remove("selected");
-      button.textContent = "+";
+      if (exists) {
 
-      updateViableOptions();
+        createColorButton(
+          groupName,
+          groupName
+        );
 
-      return;
+      }
+
     }
+  );
+
+}
 
 
-    // -----------------------------------------------------
-    // MAXIMUM OF 6
-    // -----------------------------------------------------
+function createColorButton(
+  label,
+  groupValue
+) {
 
-    if (viableOptions.length >= MAX_VIABLE_OPTIONS) {
+  const button =
+    document.createElement("button");
 
-      alert(
-        `You can select up to ${MAX_VIABLE_OPTIONS} viable brick options. Remove one before adding another.`
+  button.type = "button";
+
+  button.className =
+    "color-button";
+
+  if (groupValue === "all") {
+
+    button.classList.add(
+      "active"
+    );
+
+  }
+
+
+  button.textContent =
+    label;
+
+  button.dataset.group =
+    groupValue;
+
+
+  button.addEventListener(
+    "click",
+    () => {
+
+      activeColorGroup =
+        groupValue;
+
+
+      document
+        .querySelectorAll(
+          ".color-button"
+        )
+        .forEach(
+          btn =>
+            btn.classList.remove(
+              "active"
+            )
+        );
+
+
+      button.classList.add(
+        "active"
       );
 
-      return;
+
+      renderBrickGroups();
+
     }
+  );
 
 
-    // -----------------------------------------------------
-    // ADD TO VIABLE OPTIONS
-    // -----------------------------------------------------
+  colorFilter.appendChild(
+    button
+  );
 
-    viableOptions.push(brickName);
+}
 
-    card.classList.add("selected");
-    button.classList.add("selected");
-    button.textContent = "✓";
-
-    updateViableOptions();
-
-  });
-
-});
 
 // =========================================================
-// SELECT ACTIVE BRICK
+// NORMALIZE COLOR GROUP NAMES
 // =========================================================
 
-function selectBrick(brickName) {
+function normalizeColorGroup(
+  colorGroup
+) {
 
-  activeBrick = brickName;
+  const value =
+    String(
+      colorGroup || ""
+    ).trim();
 
 
-  // Remove old active styling
+  const lower =
+    value.toLowerCase();
 
-  brickCards.forEach((card) => {
 
-    card.classList.remove(
+  if (
+    lower.includes(
+      "light cream"
+    ) ||
+    lower.includes(
+      "taupe"
+    )
+  ) {
+
+    return "Light Cream / Taupe";
+
+  }
+
+
+  if (
+    lower.includes(
+      "medium"
+    ) &&
+    lower.includes(
+      "gray"
+    )
+  ) {
+
+    return "Medium / Dark Gray";
+
+  }
+
+
+  if (
+    lower.includes(
+      "dark gray"
+    )
+  ) {
+
+    return "Medium / Dark Gray";
+
+  }
+
+
+  if (
+    lower.includes(
+      "light gray"
+    )
+  ) {
+
+    return "Light Gray";
+
+  }
+
+
+  if (
+    lower.includes("brown")
+  ) {
+
+    return "Brown";
+
+  }
+
+
+  if (
+    lower.includes("tan")
+  ) {
+
+    return "Tan";
+
+  }
+
+
+  if (
+    lower.includes("red")
+  ) {
+
+    return "Red";
+
+  }
+
+
+  if (
+    lower.includes("white")
+  ) {
+
+    return "White";
+
+  }
+
+
+  if (
+    lower.includes("black")
+  ) {
+
+    return "Black";
+
+  }
+
+
+  return value;
+
+}
+
+
+// =========================================================
+// RENDER BRICK GROUPS
+// =========================================================
+
+function renderBrickGroups() {
+
+  brickGroupsContainer.innerHTML =
+    "";
+
+
+  let groups =
+    [...COLOR_GROUP_ORDER];
+
+
+  if (
+    activeColorGroup !==
+    "all"
+  ) {
+
+    groups = [
+      activeColorGroup
+    ];
+
+  }
+
+
+  groups.forEach(
+    groupName => {
+
+      const bricks =
+        DB.bricks.filter(
+          brick =>
+            normalizeColorGroup(
+              brick.colorGroup
+            ) === groupName
+        );
+
+
+      if (
+        bricks.length === 0
+      ) {
+        return;
+      }
+
+
+      const section =
+        document.createElement(
+          "section"
+        );
+
+      section.className =
+        "brick-group";
+
+
+      section.innerHTML = `
+        <div class="brick-group-heading">
+
+          <div>
+
+            <p class="group-label">
+              Brick Collection
+            </p>
+
+            <h3>
+              ${groupName}
+            </h3>
+
+          </div>
+
+          <span class="brick-count">
+            ${bricks.length}
+            ${bricks.length === 1
+              ? "Option"
+              : "Options"}
+          </span>
+
+        </div>
+
+        <div
+          class="brick-grid"
+          data-brick-grid
+        ></div>
+      `;
+
+
+      const grid =
+        section.querySelector(
+          "[data-brick-grid]"
+        );
+
+
+      bricks
+        .sort(
+          (a, b) =>
+            a.name.localeCompare(
+              b.name
+            )
+        )
+        .forEach(
+          brick => {
+
+            grid.appendChild(
+              createBrickCard(
+                brick
+              )
+            );
+
+          }
+        );
+
+
+      brickGroupsContainer
+        .appendChild(
+          section
+        );
+
+    }
+  );
+
+}
+
+
+// =========================================================
+// CREATE BRICK CARD
+// =========================================================
+
+function createBrickCard(
+  brick
+) {
+
+  const card =
+    document.createElement(
+      "article"
+    );
+
+
+  card.className =
+    "brick-card";
+
+
+  card.dataset.brickId =
+    brick.id;
+
+
+  if (
+    activeBrickId ===
+    brick.id
+  ) {
+
+    card.classList.add(
       "active-brick"
     );
 
-  });
+  }
 
 
-  // Add active styling to selected brick
+  if (
+    viableOptions.includes(
+      brick.id
+    )
+  ) {
 
-  brickCards.forEach((card) => {
+    card.classList.add(
+      "selected"
+    );
 
-    if (
-      card.dataset.brick === brickName
-    ) {
+  }
 
-      card.classList.add(
-        "active-brick"
+
+  const selected =
+    viableOptions.includes(
+      brick.id
+    );
+
+
+  const levelText =
+    getBrickLevelText(
+      brick
+    );
+
+
+  const undertoneText =
+    brick.undertones
+      ? `<span class="brick-undertone">
+          ${brick.undertones}
+        </span>`
+      : "";
+
+
+  card.innerHTML = `
+
+    <button
+      class="shortlist-button
+      ${selected
+        ? "selected"
+        : ""}"
+      type="button"
+      aria-label="Add ${brick.name} to viable options"
+    >
+      ${selected
+        ? "✓"
+        : "+"}
+    </button>
+
+
+    <div class="brick-image">
+
+      <img
+        src="${brick.imagePath}"
+        alt="${brick.name} brick"
+        loading="lazy"
+      >
+
+    </div>
+
+
+    <div class="brick-details">
+
+      <h4>
+        ${brick.name}
+      </h4>
+
+      <p>
+        ${brick.vendor || ""}
+      </p>
+
+      ${undertoneText}
+
+      <span class="material-badge ${
+        isUpgradeBrick(brick)
+          ? "upgrade"
+          : ""
+      }">
+        ${levelText}
+      </span>
+
+    </div>
+  `;
+
+
+  // Open brick details
+
+  card.addEventListener(
+    "click",
+    event => {
+
+      if (
+        event.target.closest(
+          ".shortlist-button"
+        )
+      ) {
+        return;
+      }
+
+
+      selectBrick(
+        brick.id
       );
 
-    }
-
   });
 
 
-  // Update current selection display
+  // Shortlist
+
+  const shortlistButton =
+    card.querySelector(
+      ".shortlist-button"
+    );
+
+
+  shortlistButton
+    .addEventListener(
+      "click",
+      event => {
+
+        event.stopPropagation();
+
+        toggleViableOption(
+          brick.id
+        );
+
+      }
+    );
+
+
+  return card;
+
+}
+
+
+// =========================================================
+// BRICK LEVEL
+// =========================================================
+
+function getBrickLevelText(
+  brick
+) {
+
+  if (
+    brick.levelDisplay
+  ) {
+
+    return brick.levelDisplay;
+
+  }
+
+
+  if (
+    brick.level
+  ) {
+
+    return brick.level;
+
+  }
+
+
+  return "Level Not Listed";
+
+}
+
+
+function isUpgradeBrick(
+  brick
+) {
+
+  const text =
+    String(
+      brick.levelDisplay ||
+      brick.level ||
+      ""
+    ).toLowerCase();
+
+
+  return (
+    text.includes(
+      "level 1"
+    ) ||
+    text.includes(
+      "level 2"
+    ) ||
+    text.includes(
+      "level 3"
+    )
+  );
+
+}
+
+
+// =========================================================
+// ACTIVE BRICK
+// =========================================================
+
+function selectBrick(
+  brickId
+) {
+
+  const brick =
+    DB.bricks.find(
+      item =>
+        item.id ===
+        brickId
+    );
+
+
+  if (!brick) {
+    return;
+  }
+
+
+  activeBrickId =
+    brick.id;
+
 
   currentBrickName.textContent =
-    brickName;
+    brick.name;
+
 
   clearBrickSelection.hidden =
     false;
 
 
-  // Update stone section
+  renderBrickGroups();
 
-  showCompatibleStone(
-    brickName
+  renderApprovedStone(
+    brick
   );
 
 }
+
+
 // =========================================================
-// SHOW COMPATIBLE STONE
+// CLEAR ACTIVE BRICK
 // =========================================================
 
-function showCompatibleStone(brickName) {
+clearBrickSelection
+  .addEventListener(
+    "click",
+    () => {
 
-  const approvedStone =
-    brickStoneCompatibility[
-      brickName
-    ];
+      activeBrickId =
+        null;
+
+
+      currentBrickName.textContent =
+        "Select a brick to explore compatible stone options";
+
+
+      clearBrickSelection.hidden =
+        true;
+
+
+      renderBrickGroups();
+
+      resetStoneSection();
+
+    }
+  );
+
+
+// =========================================================
+// RENDER APPROVED STONE
+// =========================================================
+
+function renderApprovedStone(
+  brick
+) {
+
+  stoneGrid.innerHTML =
+    "";
 
 
   stoneSectionTitle.textContent =
-    `Stone Options Compatible with ${brickName}`;
+    `Stone Options Compatible with ${brick.name}`;
 
 
-  /*
-    If compatibility has not been entered yet,
-    show all stone choices for reference.
-  */
+  const stones =
+    DB.getApprovedStones(
+      brick.id
+    );
 
-  if (!approvedStone) {
+
+  if (
+    stones.length === 0
+  ) {
 
     stoneSectionDescription.textContent =
-      `Stone compatibility for ${brickName} has not yet been entered. Showing all available stone selections for reference.`;
+      `${brick.name} does not have approved stone options listed in the current collection.`;
 
 
-    stoneCards.forEach((card) => {
-
-      card.classList.remove(
-        "stone-hidden"
+    const message =
+      document.createElement(
+        "div"
       );
 
-    });
+
+    message.className =
+      "stone-empty-message";
+
+
+    message.innerHTML = `
+      <strong>
+        No Stone Options
+      </strong>
+
+      <p>
+        This brick is currently listed without
+        approved stone selections.
+      </p>
+    `;
+
+
+    stoneGrid.appendChild(
+      message
+    );
+
+
+    renderBrickExceptions(
+      brick
+    );
 
 
     return;
@@ -285,84 +805,292 @@ function showCompatibleStone(brickName) {
 
 
   stoneSectionDescription.textContent =
-    `The following stone selections are currently approved for use with ${brickName}.`;
+    `${stones.length} approved ${
+      stones.length === 1
+        ? "stone option"
+        : "stone options"
+    } for ${brick.name}. White mortar is included when stone is used.`;
 
 
-  stoneCards.forEach((card) => {
+  stones.forEach(
+    stone => {
 
-    const stoneName =
-      card.dataset.stone;
-
-
-    if (
-      approvedStone.includes(
-        stoneName
-      )
-    ) {
-
-      card.classList.remove(
-        "stone-hidden"
-      );
-
-    } else {
-
-      card.classList.add(
-        "stone-hidden"
+      stoneGrid.appendChild(
+        createStoneCard(
+          stone
+        )
       );
 
     }
+  );
 
-  });
+
+  renderBrickExceptions(
+    brick
+  );
 
 }
+
+
 // =========================================================
-// CLEAR ACTIVE BRICK
+// CREATE STONE CARD
 // =========================================================
 
-clearBrickSelection.addEventListener(
-  "click",
-  () => {
+function createStoneCard(
+  stone
+) {
 
-    activeBrick = null;
-
-
-    brickCards.forEach((card) => {
-
-      card.classList.remove(
-        "active-brick"
-      );
-
-    });
+  const card =
+    document.createElement(
+      "article"
+    );
 
 
-    currentBrickName.textContent =
-      "Select a brick to explore compatible stone options";
+  card.className =
+    "stone-card";
 
 
-    clearBrickSelection.hidden =
-      true;
+  const badges = [];
 
 
-    stoneSectionTitle.textContent =
-      "Explore Stone Options";
+  if (
+    stone.level ===
+    "Level 2"
+  ) {
 
-
-    stoneSectionDescription.textContent =
-      "Select a brick above to view compatible stone options.";
-
-
-    stoneCards.forEach((card) => {
-
-      card.classList.remove(
-        "stone-hidden"
-      );
-
-    });
+    badges.push(
+      `<span class="stone-badge upgrade">
+        Level 2
+      </span>`
+    );
 
   }
-);
+
+
+  if (
+    stone.houstonOnly
+  ) {
+
+    badges.push(
+      `<span class="stone-badge houston">
+        Houston Only
+      </span>`
+    );
+
+  }
+
+
+  card.innerHTML = `
+
+    <img
+      src="${stone.imagePath}"
+      alt="${stone.name} stone"
+      loading="lazy"
+    >
+
+
+    <div class="stone-details">
+
+      <h3>
+        ${stone.name}
+      </h3>
+
+      <div class="stone-badges">
+        ${badges.join("")}
+      </div>
+
+      <p>
+        Approved with the selected brick.
+      </p>
+
+      <p class="stone-mortar">
+        Mortar:
+        <strong>
+          White
+        </strong>
+      </p>
+
+    </div>
+  `;
+
+
+  return card;
+
+}
+
+
 // =========================================================
-// UPDATE VIABLE OPTIONS DISPLAY
+// EXCEPTIONS / SPECIAL NOTES
+// =========================================================
+
+function renderBrickExceptions(
+  brick
+) {
+
+  const oldNote =
+    document.getElementById(
+      "brickExceptionNote"
+    );
+
+
+  if (oldNote) {
+
+    oldNote.remove();
+
+  }
+
+
+  if (
+    !brick.exceptions ||
+    brick.exceptions.length === 0
+  ) {
+
+    return;
+
+  }
+
+
+  const note =
+    document.createElement(
+      "div"
+    );
+
+
+  note.id =
+    "brickExceptionNote";
+
+
+  note.className =
+    "brick-exception-note";
+
+
+  note.innerHTML = `
+
+    <strong>
+      Selection Note
+    </strong>
+
+    <ul>
+      ${brick.exceptions
+        .map(
+          exception =>
+            `<li>${exception}</li>`
+        )
+        .join("")}
+    </ul>
+  `;
+
+
+  stoneGrid.parentElement
+    .appendChild(
+      note
+    );
+
+}
+
+
+// =========================================================
+// RESET STONE SECTION
+// =========================================================
+
+function resetStoneSection() {
+
+  stoneSectionTitle.textContent =
+    "Explore Stone Options";
+
+
+  stoneSectionDescription.textContent =
+    "Select a brick above to view the stone options approved for that specific brick.";
+
+
+  stoneGrid.innerHTML = `
+    <div class="stone-empty-message">
+      <strong>
+        Select a Brick Above
+      </strong>
+
+      <p>
+        Compatible stone selections will appear here.
+      </p>
+    </div>
+  `;
+
+
+  const note =
+    document.getElementById(
+      "brickExceptionNote"
+    );
+
+
+  if (note) {
+
+    note.remove();
+
+  }
+
+}
+
+
+// =========================================================
+// VIABLE OPTIONS
+// =========================================================
+
+function toggleViableOption(
+  brickId
+) {
+
+  const alreadySelected =
+    viableOptions.includes(
+      brickId
+    );
+
+
+  if (alreadySelected) {
+
+    viableOptions =
+      viableOptions.filter(
+        id =>
+          id !== brickId
+      );
+
+
+    updateViableOptions();
+
+    renderBrickGroups();
+
+    return;
+
+  }
+
+
+  if (
+    viableOptions.length >=
+    MAX_VIABLE_OPTIONS
+  ) {
+
+    alert(
+      `You can select up to ${MAX_VIABLE_OPTIONS} viable brick options. Remove one before adding another.`
+    );
+
+    return;
+
+  }
+
+
+  viableOptions.push(
+    brickId
+  );
+
+
+  updateViableOptions();
+
+  renderBrickGroups();
+
+}
+
+
+// =========================================================
+// UPDATE VIABLE OPTIONS BAR
 // =========================================================
 
 function updateViableOptions() {
@@ -370,317 +1098,76 @@ function updateViableOptions() {
   viableCount.textContent =
     `${viableOptions.length} of ${MAX_VIABLE_OPTIONS} Selected`;
 
-  viableList.innerHTML = "";
+
+  viableList.innerHTML =
+    "";
 
 
-  viableOptions.forEach((brickName) => {
+  viableOptions.forEach(
+    brickId => {
 
-    const chip =
-      document.createElement("div");
-
-    chip.className = "viable-chip";
-
-
-    const name =
-      document.createElement("span");
-
-    name.textContent = brickName;
+      const brick =
+        DB.bricks.find(
+          item =>
+            item.id ===
+            brickId
+        );
 
 
-    const removeButton =
-      document.createElement("button");
-
-    removeButton.type = "button";
-    removeButton.innerHTML = "&times;";
-    removeButton.setAttribute(
-      "aria-label",
-      `Remove ${brickName}`
-    );
-
-
-    removeButton.addEventListener(
-      "click",
-      () => {
-
-        removeViableOption(brickName);
-
+      if (!brick) {
+        return;
       }
-    );
 
 
-    chip.appendChild(name);
-    chip.appendChild(removeButton);
-
-    viableList.appendChild(chip);
-
-  });
+      const chip =
+        document.createElement(
+          "div"
+        );
 
 
-  // Enable Compare when at least 2 are selected
+      chip.className =
+        "viable-chip";
+
+
+      chip.innerHTML = `
+        <span>
+          ${brick.name}
+        </span>
+
+        <button
+          type="button"
+          aria-label="Remove ${brick.name}"
+        >
+          ×
+        </button>
+      `;
+
+
+      chip
+        .querySelector(
+          "button"
+        )
+        .addEventListener(
+          "click",
+          () => {
+
+            toggleViableOption(
+              brick.id
+            );
+
+          }
+        );
+
+
+      viableList.appendChild(
+        chip
+      );
+
+    }
+  );
+
+
   compareButton.disabled =
     viableOptions.length < 2;
 
 }
-
-
-// =========================================================
-// REMOVE SHORTLIST ITEM
-// =========================================================
-
-function removeViableOption(brickName) {
-
-  viableOptions =
-    viableOptions.filter(
-      (brick) => brick !== brickName
-    );
-
-
-  brickCards.forEach((card) => {
-
-    if (card.dataset.brick === brickName) {
-
-      const button =
-        card.querySelector(".shortlist-button");
-
-      card.classList.remove("selected");
-      button.classList.remove("selected");
-      button.textContent = "+";
-
-    }
-
-  });
-
-
-  updateViableOptions();
-
-}
-
-
-// =========================================================
-// COMPARISON ELEMENTS
-// =========================================================
-
-const comparisonModal =
-  document.getElementById("comparisonModal");
-
-const comparisonGrid =
-  document.getElementById("comparisonGrid");
-
-const comparisonClose =
-  document.getElementById("comparisonClose");
-
-const comparisonBackdrop =
-  document.getElementById("comparisonBackdrop");
-
-const comparisonDone =
-  document.getElementById("comparisonDone");
-
-
-// =========================================================
-// OPEN COMPARISON
-// =========================================================
-
-compareButton.addEventListener("click", () => {
-
-  if (viableOptions.length < 2) {
-    return;
-  }
-
-  renderComparison();
-
-  comparisonModal.classList.add("open");
-
-  comparisonModal.setAttribute(
-    "aria-hidden",
-    "false"
-  );
-
-  document.body.classList.add("modal-open");
-
-});
-
-
-// =========================================================
-// BUILD COMPARISON CARDS
-// =========================================================
-
-function renderComparison() {
-
-  comparisonGrid.innerHTML = "";
-
-  viableOptions.forEach((brickName) => {
-
-    const originalCard =
-      [...brickCards].find(
-        (card) =>
-          card.dataset.brick === brickName
-      );
-
-    if (!originalCard) {
-      return;
-    }
-
-
-    const image =
-      originalCard.querySelector("img");
-
-    const color =
-      originalCard.querySelector(
-        ".brick-details p"
-      );
-
-    const badge =
-      originalCard.querySelector(
-        ".material-badge"
-      );
-
-
-    const comparisonCard =
-      document.createElement("article");
-
-    comparisonCard.className =
-      "comparison-card";
-
-
-    comparisonCard.innerHTML = `
-      <div class="comparison-card-image">
-        <img
-          src="${image.src}"
-          alt="${brickName} brick"
-        >
-      </div>
-
-      <div class="comparison-card-details">
-
-        <h3>${brickName}</h3>
-
-        <p class="comparison-color">
-          ${color.textContent}
-        </p>
-
-        <span class="${badge.className}">
-          ${badge.textContent}
-        </span>
-
-        <button
-          class="comparison-remove"
-          type="button"
-          data-remove-brick="${brickName}"
-        >
-          Remove from Comparison
-        </button>
-
-      </div>
-    `;
-
-
-    comparisonGrid.appendChild(
-      comparisonCard
-    );
-
-  });
-
-
-  // Add remove behavior
-
-  const removeButtons =
-    comparisonGrid.querySelectorAll(
-      ".comparison-remove"
-    );
-
-
-  removeButtons.forEach((button) => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        const brickName =
-          button.dataset.removeBrick;
-
-        removeViableOption(brickName);
-
-
-        // If fewer than 2 remain,
-        // close comparison automatically
-
-        if (viableOptions.length < 2) {
-
-          closeComparison();
-
-          return;
-
-        }
-
-
-        renderComparison();
-
-      }
-    );
-
-  });
-
-}
-
-
-// =========================================================
-// CLOSE COMPARISON
-// =========================================================
-
-function closeComparison() {
-
-  comparisonModal.classList.remove("open");
-
-  comparisonModal.setAttribute(
-    "aria-hidden",
-    "true"
-  );
-
-  document.body.classList.remove(
-    "modal-open"
-  );
-
-}
-
-
-comparisonClose.addEventListener(
-  "click",
-  closeComparison
-);
-
-
-comparisonBackdrop.addEventListener(
-  "click",
-  closeComparison
-);
-
-
-comparisonDone.addEventListener(
-  "click",
-  closeComparison
-);
-
-
-// Close with Escape key
-
-document.addEventListener(
-  "keydown",
-  (event) => {
-
-    if (
-      event.key === "Escape" &&
-      comparisonModal.classList.contains("open")
-    ) {
-
-      closeComparison();
-
-    }
-
-  }
-);
-
-// =========================================================
-// INITIALIZE
-// =========================================================
-
-updateViableOptions();
