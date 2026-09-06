@@ -60,6 +60,34 @@ const brickStoneCompatibility = {
 
 };
 // =========================================================
+// CLICK BRICK TO VIEW COMPATIBLE STONE
+// =========================================================
+
+brickCards.forEach((card) => {
+
+  card.addEventListener("click", (event) => {
+
+    /*
+      Do not activate the brick when the buyer
+      is only clicking the shortlist + button.
+    */
+
+    if (
+      event.target.closest(".shortlist-button")
+    ) {
+      return;
+    }
+
+
+    const brickName =
+      card.dataset.brick;
+
+    selectBrick(brickName);
+
+  });
+
+});
+// =========================================================
 // COLOR GROUP FILTERING
 // =========================================================
 
@@ -172,7 +200,177 @@ brickCards.forEach((card) => {
 
 });
 
+// =========================================================
+// SELECT ACTIVE BRICK
+// =========================================================
 
+function selectBrick(brickName) {
+
+  activeBrick = brickName;
+
+
+  // Remove old active styling
+
+  brickCards.forEach((card) => {
+
+    card.classList.remove(
+      "active-brick"
+    );
+
+  });
+
+
+  // Add active styling to selected brick
+
+  brickCards.forEach((card) => {
+
+    if (
+      card.dataset.brick === brickName
+    ) {
+
+      card.classList.add(
+        "active-brick"
+      );
+
+    }
+
+  });
+
+
+  // Update current selection display
+
+  currentBrickName.textContent =
+    brickName;
+
+  clearBrickSelection.hidden =
+    false;
+
+
+  // Update stone section
+
+  showCompatibleStone(
+    brickName
+  );
+
+}
+// =========================================================
+// SHOW COMPATIBLE STONE
+// =========================================================
+
+function showCompatibleStone(brickName) {
+
+  const approvedStone =
+    brickStoneCompatibility[
+      brickName
+    ];
+
+
+  stoneSectionTitle.textContent =
+    `Stone Options Compatible with ${brickName}`;
+
+
+  /*
+    If compatibility has not been entered yet,
+    show all stone choices for reference.
+  */
+
+  if (!approvedStone) {
+
+    stoneSectionDescription.textContent =
+      `Stone compatibility for ${brickName} has not yet been entered. Showing all available stone selections for reference.`;
+
+
+    stoneCards.forEach((card) => {
+
+      card.classList.remove(
+        "stone-hidden"
+      );
+
+    });
+
+
+    return;
+
+  }
+
+
+  stoneSectionDescription.textContent =
+    `The following stone selections are currently approved for use with ${brickName}.`;
+
+
+  stoneCards.forEach((card) => {
+
+    const stoneName =
+      card.dataset.stone;
+
+
+    if (
+      approvedStone.includes(
+        stoneName
+      )
+    ) {
+
+      card.classList.remove(
+        "stone-hidden"
+      );
+
+    } else {
+
+      card.classList.add(
+        "stone-hidden"
+      );
+
+    }
+
+  });
+
+}
+// =========================================================
+// CLEAR ACTIVE BRICK
+// =========================================================
+
+clearBrickSelection.addEventListener(
+  "click",
+  () => {
+
+    activeBrick = null;
+
+
+    brickCards.forEach((card) => {
+
+      card.classList.remove(
+        "active-brick"
+      );
+
+    });
+
+
+    currentBrickName.textContent =
+      "Select a brick to explore compatible stone options";
+
+
+    clearBrickSelection.hidden =
+      true;
+
+
+    stoneSectionTitle.textContent =
+      "Explore Stone Options";
+
+
+    stoneSectionDescription.textContent =
+      "Select a brick above to view compatible stone options.";
+
+
+    stoneCards.forEach((card) => {
+
+      card.classList.remove(
+        "stone-hidden"
+      );
+
+    });
+
+  }
+);
 // =========================================================
 // UPDATE VIABLE OPTIONS DISPLAY
 // =========================================================
