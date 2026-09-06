@@ -49,16 +49,6 @@ let activeBrick = null;
   simply add it here.
 */
 
-const brickStoneCompatibility = {
-
-  "Yukon": [
-    "blanco-sawn-chop",
-    "brazos-canyon-ledge",
-    "granbury-quarry-chop",
-    "granbury-cream-chop"
-  ]
-
-};
 // =========================================================
 // CLICK BRICK TO VIEW COMPATIBLE STONE
 // =========================================================
