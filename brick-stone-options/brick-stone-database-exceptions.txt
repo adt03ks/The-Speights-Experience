@@ -1,0 +1,23 @@
+BRICK & STONE DATABASE — SOURCE EXCEPTIONS / REVIEW FLAGS
+Source: BRICK-STONE-PAINT COLLECTIONS HOUSTON 8-28-26
+
+GLOBAL RULES
+- Stone elevations use White mortar; White mortar is included.
+- Aspen Blend Ledgestone and Bluebonnet Ledgestone are Level 2 stone options.
+- Ashland Grey, Brazos Canyon Ledgestone, and Edinburgh are marked Houston Only.
+- Brick availability and street-scene repetition must be checked separately; the PDF directs users to BRICK AVAILABILITY AND REPETITION.xlsx and digital plat maps.
+
+BRICK-SPECIFIC FLAGS
+- Amarllyis (page 26): Selection level is blank in source.
+- Autumn Moon (page 27): Source says 'Gray'; normalized to 'Natural Gray' for UI.
+- Belle Meade (page 28): Source level label contains both 'Level 1' and 'Standard'; stored as Standard.
+- Chesterfield (page 36): Source level label contains both 'Level 1' and 'Standard'; stored as Standard.
+- Coffeyville (page 40): Light Quarry is explicitly listed as an additional all-brick mortar option.
+- Creedmoore (page 42): No stone options are approved for this brick.
+- Glistening Springs (page 54): Selection level is blank in source.
+- London Fog (page 65): Stone options, selection level, and mortar options are blank in source; do not infer values.
+- Old Francisco (page 70): Source lists 'Blanco Sawn Chop / Flag'; represented as both Blanco Sawn Chop and Blanco Flagstone.
+- Ozark Smoke (page 73): Source says 'Gray'; normalized to 'Natural Gray' for UI.
+- Shadow Ridge (page 84): Paint exception: select one paint color only; source says to contact Coordinator when selecting. Source says 'Gray'; normalized to 'Natural Gray' for UI.
+- Stone Bay (page 91): White mortar is preferred; Natural Gray is accepted.
+- Waco Skies (page 93): Brazos Canyon Ledgestone appears twice in source; duplicate removed. Selection level is blank in source.
