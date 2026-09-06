@@ -19,7 +19,46 @@ const viableCount = document.getElementById("viableCount");
 const viableList = document.getElementById("viableList");
 const compareButton = document.getElementById("compareButton");
 
+// =========================================================
+// BRICK / STONE COMPATIBILITY
+// =========================================================
 
+const stoneCards =
+  document.querySelectorAll(".stone-card");
+
+const stoneSectionTitle =
+  document.getElementById("stoneSectionTitle");
+
+const stoneSectionDescription =
+  document.getElementById("stoneSectionDescription");
+
+const currentBrickName =
+  document.getElementById("currentBrickName");
+
+const clearBrickSelection =
+  document.getElementById("clearBrickSelection");
+
+
+let activeBrick = null;
+
+
+/*
+  Approved stone compatibility.
+
+  As additional brick compatibility is confirmed,
+  simply add it here.
+*/
+
+const brickStoneCompatibility = {
+
+  "Yukon": [
+    "blanco-sawn-chop",
+    "brazos-canyon-ledge",
+    "granbury-quarry-chop",
+    "granbury-cream-chop"
+  ]
+
+};
 // =========================================================
 // COLOR GROUP FILTERING
 // =========================================================
