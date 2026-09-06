@@ -717,7 +717,9 @@ function createBrickCard(brick) {
 
         'src="' +
         escapeAttribute(
-          brick.imagePath || ""
+         getBrickImagePath(
+  brick.imagePath
+)
         ) +
         '" ' +
 
