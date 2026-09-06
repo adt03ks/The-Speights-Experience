@@ -1051,3 +1051,93 @@ body.modal-open {
   }
 
 }
+/* =========================================================
+   BRICK DETAILS
+========================================================= */
+
+.brick-undertone {
+  display: block;
+  margin: -3px 0 10px;
+  font-size: 0.73rem;
+  color: #96775f;
+  font-style: italic;
+}
+
+
+/* =========================================================
+   STONE BADGES
+========================================================= */
+
+.stone-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 9px 0;
+}
+
+.stone-badge {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 0.67rem;
+  font-weight: 800;
+}
+
+.stone-badge.upgrade {
+  background: #e8dcc7;
+  color: #5a4528;
+}
+
+.stone-badge.houston {
+  background: #fff0a6;
+  color: #5c4a00;
+}
+
+.stone-mortar {
+  margin-top: 10px;
+  font-size: 0.78rem !important;
+}
+
+
+/* =========================================================
+   EXCEPTION NOTE
+========================================================= */
+
+.brick-exception-note {
+  margin-top: 28px;
+  border-radius: 12px;
+  border: 1px solid #685d4f;
+  background: #302d29;
+  padding: 18px 20px;
+  color: #ffffff;
+}
+
+.brick-exception-note strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.brick-exception-note ul {
+  padding-left: 20px;
+  color: #d6d1ca;
+}
+
+.brick-exception-note li + li {
+  margin-top: 5px;
+}
+
+
+/* =========================================================
+   EMPTY STONE MESSAGE
+========================================================= */
+
+.stone-empty-message strong {
+  display: block;
+  color: #ffffff;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.stone-empty-message p {
+  color: #bdb9b2;
+}
