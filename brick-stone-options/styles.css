@@ -923,3 +923,131 @@ body.modal-open {
   }
 
 }
+/* =========================================================
+   CURRENT BRICK SELECTION
+========================================================= */
+
+.current-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+
+  padding: 16px 20px;
+  margin-bottom: 38px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+}
+
+.current-selection-label {
+  display: block;
+
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+
+  font-size: 0.67rem;
+  font-weight: 800;
+
+  color: #928b82;
+
+  margin-bottom: 3px;
+}
+
+#currentBrickName {
+  font-size: 0.98rem;
+}
+
+.clear-selection-button {
+  border: 1px solid #d4d0c9;
+  background: transparent;
+
+  border-radius: 7px;
+
+  padding: 8px 12px;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.clear-selection-button:hover {
+  background: #efede8;
+}
+
+
+/* =========================================================
+   ACTIVE BRICK CARD
+========================================================= */
+
+.brick-card.active-brick {
+  border: 2px solid #222222;
+  box-shadow:
+    0 0 0 3px rgba(34, 34, 34, 0.08),
+    var(--shadow-hover);
+}
+
+.brick-card {
+  cursor: pointer;
+}
+
+.brick-card.active-brick::after {
+  content: "Viewing";
+
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  background: #222222;
+  color: #ffffff;
+
+  border-radius: 999px;
+
+  padding: 5px 9px;
+
+  font-size: 0.67rem;
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   STONE FILTER STATES
+========================================================= */
+
+.stone-card.stone-hidden {
+  display: none;
+}
+
+.stone-empty-message {
+  grid-column: 1 / -1;
+
+  text-align: center;
+
+  padding: 45px 20px;
+
+  border: 1px dashed #5a5752;
+  border-radius: 14px;
+
+  color: #bbb7b1;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .current-selection {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}
