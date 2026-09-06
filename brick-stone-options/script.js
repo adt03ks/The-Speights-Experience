@@ -1871,7 +1871,9 @@ function renderComparison() {
 
             'src="' +
             escapeAttribute(
-              brick.imagePath || ""
+             getBrickImagePath(
+  brick.imagePath
+)
             ) +
             '" ' +
 
