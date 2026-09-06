@@ -162,7 +162,16 @@ function getApprovedStones(brickId) {
     .filter(Boolean);
 
 }
+function getBrickImagePath(path) {
 
+  return String(
+    path || ""
+  ).replace(
+    /\.jpg$/i,
+    ".jpeg"
+  );
+
+}
 
 // =========================================================
 // BRICK LEVEL
