@@ -1,159 +1,294 @@
 // =========================================================
 // BRICK & STONE EXTERIOR SELECTOR
 // Database-driven version
-// IMPORTANT:
-// brick-stone-database.js must load before this file.
+// IMPORTANT: brick-stone-database.js must load before this file.
 // =========================================================
-
 
 const DB = window.BRICK_STONE_DB;
 
-
 if (!DB) {
-
   throw new Error(
     "Brick & Stone database did not load. Make sure brick-stone-database.js is loaded before script.js."
   );
-
 }
-
 
 
 // =========================================================
 // SETTINGS / STATE
 // =========================================================
 
-
 const MAX_VIABLE_OPTIONS = 6;
 
-
 let viableOptions = [];
-
 let activeBrickId = null;
-
 let activeColorGroup = "all";
-
 
 
 // =========================================================
 // ELEMENTS
 // =========================================================
 
-
 const colorFilter =
   document.getElementById("colorFilter");
-
 
 const brickGroupsContainer =
   document.getElementById("brickGroupsContainer");
 
-
 const stoneGrid =
   document.getElementById("stoneGrid");
-
 
 const stoneSectionTitle =
   document.getElementById("stoneSectionTitle");
 
-
 const stoneSectionDescription =
   document.getElementById("stoneSectionDescription");
-
 
 const currentBrickName =
   document.getElementById("currentBrickName");
 
-
 const clearBrickSelection =
   document.getElementById("clearBrickSelection");
-
 
 const viableCount =
   document.getElementById("viableCount");
 
-
 const viableList =
   document.getElementById("viableList");
-
 
 const compareButton =
   document.getElementById("compareButton");
 
-
 const comparisonModal =
   document.getElementById("comparisonModal");
-
 
 const comparisonBackdrop =
   document.getElementById("comparisonBackdrop");
 
-
 const comparisonClose =
   document.getElementById("comparisonClose");
-
 
 const comparisonDone =
   document.getElementById("comparisonDone");
 
-
 const comparisonGrid =
   document.getElementById("comparisonGrid");
-
 
 
 // =========================================================
 // COLOR GROUP ORDER
 // =========================================================
 
-
 const COLOR_GROUP_ORDER = [
-
   "Light Cream / Taupe",
-
   "Tan",
-
   "Red",
-
   "Brown",
-
   "White",
-
   "Light Gray",
-
   "Medium / Dark Gray",
-
   "Black"
-
 ];
-
 
 
 // =========================================================
 // INITIALIZE
 // =========================================================
 
-
 function initializePage() {
-
   renderColorFilters();
-
   renderBrickGroups();
-
   resetStoneSection();
-
   updateViableOptions();
+}
+
+initializePage();
+
+
+// =========================================================
+// HELPERS
+// =========================================================
+
+function getBrickById(brickId) {
+
+  if (typeof DB.getBrick === "function") {
+    return DB.getBrick(brickId);
+  }
+
+  return (
+    DB.bricks.find(
+      (brick) =>
+        brick.id === brickId
+    ) || null
+  );
 
 }
 
 
-initializePage();
+function getApprovedStones(brickId) {
 
+  if (
+    typeof DB.getApprovedStones ===
+    "function"
+  ) {
+
+    return DB.getApprovedStones(
+      brickId
+    );
+
+  }
+
+
+  const brick =
+    getBrickById(brickId);
+
+
+  if (
+    !brick ||
+    !Array.isArray(
+      brick.approvedStoneIds
+    )
+  ) {
+
+    return [];
+
+  }
+
+
+  return brick.approvedStoneIds
+    .map(
+      (stoneId) =>
+        DB.stones[stoneId]
+    )
+    .filter(Boolean);
+
+}
+
+
+// =========================================================
+// BRICK LEVEL
+// =========================================================
+
+function getBrickLevelText(brick) {
+
+  if (brick.selectionLevel) {
+    return brick.selectionLevel;
+  }
+
+
+  if (brick.levelDisplay) {
+    return brick.levelDisplay;
+  }
+
+
+  if (brick.level) {
+    return brick.level;
+  }
+
+
+  if (brick.sourceLevelText) {
+
+    const text =
+      String(
+        brick.sourceLevelText
+      ).toUpperCase();
+
+
+    if (
+      text.includes("LEVEL 3")
+    ) {
+      return "Level 3";
+    }
+
+
+    if (
+      text.includes("LEVEL 2")
+    ) {
+      return "Level 2";
+    }
+
+
+    if (
+      text.includes("LEVEL 1")
+    ) {
+      return "Level 1";
+    }
+
+
+    if (
+      text.includes("STANDARD")
+    ) {
+      return "Standard";
+    }
+
+  }
+
+
+  return "Level Not Listed";
+
+}
+
+
+function isUpgradeBrick(brick) {
+
+  const text =
+    getBrickLevelText(brick)
+      .toLowerCase();
+
+
+  return (
+    text.includes("level 1") ||
+    text.includes("level 2") ||
+    text.includes("level 3")
+  );
+
+}
+
+
+// =========================================================
+// SAFE TEXT HELPERS
+// =========================================================
+
+function escapeHtml(value) {
+
+  return String(
+    value ?? ""
+  )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
+
+}
+
+
+function escapeAttribute(value) {
+
+  return escapeHtml(
+    value
+  );
+
+}
 
 
 // =========================================================
 // COLOR FILTERS
 // =========================================================
-
 
 function renderColorFilters() {
 
@@ -169,22 +304,22 @@ function renderColorFilters() {
   COLOR_GROUP_ORDER.forEach(
     (groupName) => {
 
-
       const count =
         DB.bricks.filter(
           (brick) =>
-            brick.colorGroup === groupName
+            brick.colorGroup ===
+            groupName
         ).length;
 
 
       if (count > 0) {
 
         createColorButton(
-
-          `${groupName} (${count})`,
-
+          groupName +
+            " (" +
+            count +
+            ")",
           groupName
-
         );
 
       }
@@ -195,14 +330,15 @@ function renderColorFilters() {
 }
 
 
-
 function createColorButton(
   label,
   groupValue
 ) {
 
   const button =
-    document.createElement("button");
+    document.createElement(
+      "button"
+    );
 
 
   button.type = "button";
@@ -218,7 +354,8 @@ function createColorButton(
 
 
   if (
-    activeColorGroup === groupValue
+    activeColorGroup ===
+    groupValue
   ) {
 
     button.classList.add(
@@ -232,7 +369,6 @@ function createColorButton(
     "click",
     () => {
 
-
       activeColorGroup =
         groupValue;
 
@@ -242,10 +378,13 @@ function createColorButton(
           ".color-button"
         )
         .forEach(
-          (btn) =>
+          (btn) => {
+
             btn.classList.remove(
               "active"
-            )
+            );
+
+          }
         );
 
 
@@ -267,11 +406,9 @@ function createColorButton(
 }
 
 
-
 // =========================================================
 // RENDER BRICK GROUPS
 // =========================================================
-
 
 function renderBrickGroups() {
 
@@ -291,9 +428,7 @@ function renderBrickGroups() {
   groups.forEach(
     (groupName) => {
 
-
       const bricks =
-
         DB.bricks
           .filter(
             (brick) =>
@@ -331,49 +466,40 @@ function renderBrickGroups() {
         groupName;
 
 
-      section.innerHTML = `
+      section.innerHTML =
 
-        <div class="brick-group-heading">
+        '<div class="brick-group-heading">' +
 
+          '<div>' +
 
-          <div>
+            '<p class="group-label">' +
+              'Brick Collection' +
+            '</p>' +
 
+            '<h3>' +
+              escapeHtml(groupName) +
+            '</h3>' +
 
-            <p class="group-label">
-              Brick Collection
-            </p>
+          '</div>' +
 
+          '<span class="brick-count">' +
 
-            <h3>
-              ${escapeHtml(groupName)}
-            </h3>
-
-
-          </div>
-
-
-          <span class="brick-count">
-
-            ${bricks.length}
-
-            ${
+            bricks.length +
+            ' ' +
+            (
               bricks.length === 1
-                ? "Option"
-                : "Options"
-            }
+                ? 'Option'
+                : 'Options'
+            ) +
 
-          </span>
+          '</span>' +
 
+        '</div>' +
 
-        </div>
-
-
-        <div
-          class="brick-grid"
-          data-brick-grid
-        ></div>
-
-      `;
+        '<div ' +
+          'class="brick-grid" ' +
+          'data-brick-grid' +
+        '></div>';
 
 
       const grid =
@@ -385,13 +511,11 @@ function renderBrickGroups() {
       bricks.forEach(
         (brick) => {
 
-
           grid.appendChild(
             createBrickCard(
               brick
             )
           );
-
 
         }
       );
@@ -408,15 +532,11 @@ function renderBrickGroups() {
 }
 
 
-
 // =========================================================
 // CREATE BRICK CARD
 // =========================================================
 
-
-function createBrickCard(
-  brick
-) {
+function createBrickCard(brick) {
 
   const card =
     document.createElement(
@@ -433,7 +553,8 @@ function createBrickCard(
 
 
   if (
-    activeBrickId === brick.id
+    activeBrickId ===
+    brick.id
   ) {
 
     card.classList.add(
@@ -464,231 +585,184 @@ function createBrickCard(
 
     Array.isArray(
       brick.undertones
-    ) &&
-    brick.undertones.length > 0
+    )
+
+    &&
+
+    brick.undertones.length >
+      0
 
       ? brick.undertones.join(", ")
 
       : "";
 
 
- const levelText =
-  getBrickLevelText(brick);
+  const levelText =
+    getBrickLevelText(
+      brick
+    );
 
 
-  card.innerHTML = `
+  const upgradeClass =
+    isUpgradeBrick(brick)
+      ? " upgrade"
+      : "";
 
 
-    <button
-
-      class="
-        shortlist-button
-        ${
-          isShortlisted
-            ? "selected"
-            : ""
-        }
-      "
-
-      type="button"
-
-      aria-label="${
-        isShortlisted
-          ? "Remove"
-          : "Add"
-      } ${escapeAttribute(
-        brick.name
-      )} ${
-        isShortlisted
-          ? "from"
-          : "to"
-      } viable options"
-
-    >
-
-      ${
-        isShortlisted
-          ? "✓"
-          : "+"
-      }
-
-    </button>
+  const selectedClass =
+    isShortlisted
+      ? " selected"
+      : "";
 
 
-
-    <div class="brick-image">
-
-
-      <img
-
-        src="${escapeAttribute(
-          brick.imagePath || ""
-        )}"
-
-        alt="${escapeAttribute(
-          brick.name
-        )} brick"
-
-        loading="lazy"
-
-      >
+  const shortlistSymbol =
+    isShortlisted
+      ? "✓"
+      : "+";
 
 
-    </div>
+  const shortlistAction =
+    isShortlisted
+      ? "Remove"
+      : "Add";
 
 
-
-    <div class="brick-details">
-
-
-      <h4>
-        ${escapeHtml(
-          brick.name
-        )}
-      </h4>
+  const shortlistPreposition =
+    isShortlisted
+      ? "from"
+      : "to";
 
 
-      <p>
-        ${escapeHtml(
-          brick.vendor || ""
-        )}
-      </p>
+  let undertoneHtml =
+    "";
 
 
-      ${
+  if (undertones) {
+
+    undertoneHtml =
+
+      '<span class="brick-undertone">' +
+
+      escapeHtml(
         undertones
+      ) +
 
-          ? `
-
-            <span class="brick-undertone">
-
-              ${escapeHtml(
-                undertones
-              )}
-
-            </span>
-
-          `
-
-          : ""
-      }
-
-
-      <div class="brick-meta-row">
-
-
-        <span
-          class="
-            material-badge
-            ${
-             // =========================================================
-// BRICK LEVEL
-// =========================================================
-
-function getBrickLevelText(brick) {
-
-  // Primary database field
-  if (brick.selectionLevel) {
-    return brick.selectionLevel;
-  }
-
-  // Older database compatibility
-  if (brick.levelDisplay) {
-    return brick.levelDisplay;
-  }
-
-  if (brick.level) {
-    return brick.level;
-  }
-
-  // Last-resort recovery from source text
-  if (brick.sourceLevelText) {
-
-    const text =
-      String(brick.sourceLevelText)
-        .toUpperCase();
-
-    if (text.includes("LEVEL 3")) {
-      return "Level 3";
-    }
-
-    if (text.includes("LEVEL 2")) {
-      return "Level 2";
-    }
-
-    if (text.includes("LEVEL 1")) {
-      return "Level 1";
-    }
-
-    if (text.includes("STANDARD")) {
-      return "Standard";
-    }
+      '</span>';
 
   }
 
-  return "Level Not Listed";
-}
-             function isUpgradeBrick(brick) {
 
-  const text =
-    getBrickLevelText(brick)
-      .toLowerCase();
+  let sizeHtml =
+    "";
 
-  return (
-    text.includes("level 1") ||
-    text.includes("level 2") ||
-    text.includes("level 3")
-  );
 
-}
-                ? "upgrade"
-                : ""
-            }
-          "
-        >
+  if (
+    brick.brickSize
+  ) {
 
-          ${escapeHtml(
+    sizeHtml =
+
+      '<span class="material-badge">' +
+
+      escapeHtml(
+        brick.brickSize
+      ) +
+
+      ' Size' +
+
+      '</span>';
+
+  }
+
+
+  card.innerHTML =
+
+    '<button ' +
+
+      'class="shortlist-button' +
+      selectedClass +
+      '" ' +
+
+      'type="button" ' +
+
+      'aria-label="' +
+      shortlistAction +
+      ' ' +
+      escapeAttribute(
+        brick.name
+      ) +
+      ' ' +
+      shortlistPreposition +
+      ' viable options"' +
+
+    '>' +
+
+      shortlistSymbol +
+
+    '</button>' +
+
+
+    '<div class="brick-image">' +
+
+      '<img ' +
+
+        'src="' +
+        escapeAttribute(
+          brick.imagePath || ""
+        ) +
+        '" ' +
+
+        'alt="' +
+        escapeAttribute(
+          brick.name
+        ) +
+        ' brick" ' +
+
+        'loading="lazy"' +
+
+      '>' +
+
+    '</div>' +
+
+
+    '<div class="brick-details">' +
+
+      '<h4>' +
+        escapeHtml(
+          brick.name
+        ) +
+      '</h4>' +
+
+      '<p>' +
+        escapeHtml(
+          brick.vendor || ""
+        ) +
+      '</p>' +
+
+      undertoneHtml +
+
+      '<div class="brick-meta-row">' +
+
+        '<span class="material-badge' +
+        upgradeClass +
+        '">' +
+
+          escapeHtml(
             levelText
-          )}
+          ) +
 
-        </span>
+        '</span>' +
 
+        sizeHtml +
 
-        ${
-          brick.brickSize
+      '</div>' +
 
-            ? `
-
-              <span
-                class="material-badge"
-              >
-
-                ${escapeHtml(
-                  brick.brickSize
-                )}
-                Size
-
-              </span>
-
-            `
-
-            : ""
-        }
-
-
-      </div>
-
-
-    </div>
-
-  `;
-
+    '</div>';
 
 
   // =======================================================
   // MISSING BRICK IMAGE FALLBACK
   // =======================================================
-
 
   const image =
     card.querySelector(
@@ -699,7 +773,6 @@ function getBrickLevelText(brick) {
   image.addEventListener(
     "error",
     () => {
-
 
       const imageBox =
         card.querySelector(
@@ -715,30 +788,27 @@ function getBrickLevelText(brick) {
       );
 
 
-      imageBox.innerHTML = `
+      imageBox.innerHTML =
 
-        <span>
-          ${escapeHtml(
-            brick.name
-          )}
-        </span>
+        "<span>" +
 
-      `;
+        escapeHtml(
+          brick.name
+        ) +
+
+        "</span>";
 
     }
   );
-
 
 
   // =======================================================
   // CLICK BRICK CARD
   // =======================================================
 
-
   card.addEventListener(
     "click",
     (event) => {
-
 
       if (
         event.target.closest(
@@ -759,11 +829,9 @@ function getBrickLevelText(brick) {
   );
 
 
-
   // =======================================================
   // SHORTLIST BUTTON
   // =======================================================
-
 
   const shortlistButton =
     card.querySelector(
@@ -775,7 +843,6 @@ function getBrickLevelText(brick) {
     .addEventListener(
       "click",
       (event) => {
-
 
         event.stopPropagation();
 
@@ -793,59 +860,14 @@ function getBrickLevelText(brick) {
 }
 
 
-
-// =========================================================
-// UPGRADE HELPER
-// =========================================================
-
-
-function isUpgradeBrick(
-  brick
-) {
-
-  const text =
-
-    String(
-      brick.selectionLevel || ""
-    )
-      .toLowerCase();
-
-
-  return (
-
-    text.includes(
-      "level 1"
-    )
-
-    ||
-
-    text.includes(
-      "level 2"
-    )
-
-    ||
-
-    text.includes(
-      "level 3"
-    )
-
-  );
-
-}
-
-
-
 // =========================================================
 // ACTIVE BRICK
 // =========================================================
 
-
-function selectBrick(
-  brickId
-) {
+function selectBrick(brickId) {
 
   const brick =
-    DB.getBrick(
+    getBrickById(
       brickId
     );
 
@@ -879,17 +901,14 @@ function selectBrick(
 }
 
 
-
 // =========================================================
 // CLEAR ACTIVE BRICK
 // =========================================================
-
 
 clearBrickSelection
   .addEventListener(
     "click",
     () => {
-
 
       activeBrickId =
         null;
@@ -912,15 +931,11 @@ clearBrickSelection
   );
 
 
-
 // =========================================================
 // RENDER APPROVED STONES
 // =========================================================
 
-
-function renderApprovedStone(
-  brick
-) {
+function renderApprovedStone(brick) {
 
   stoneGrid.innerHTML =
     "";
@@ -933,7 +948,8 @@ function renderApprovedStone(
 
 
   stoneSectionTitle.textContent =
-    `Stone Options Compatible with ${brick.name}`;
+    "Stone Options Compatible with " +
+    brick.name;
 
 
   renderBrickDetailsPanel(
@@ -942,7 +958,7 @@ function renderApprovedStone(
 
 
   const stones =
-    DB.getApprovedStones(
+    getApprovedStones(
       brick.id
     );
 
@@ -951,9 +967,11 @@ function renderApprovedStone(
     stones.length === 0
   ) {
 
-
     stoneSectionDescription.textContent =
-      `${brick.name} does not have approved stone options listed in the current collection.`;
+
+      brick.name +
+
+      " does not have approved stone options listed in the current collection.";
 
 
     const message =
@@ -966,19 +984,15 @@ function renderApprovedStone(
       "stone-empty-message";
 
 
-    message.innerHTML = `
+    message.innerHTML =
 
-      <strong>
-        No Stone Options
-      </strong>
+      "<strong>" +
+        "No Stone Options" +
+      "</strong>" +
 
-
-      <p>
-        This brick is currently listed without
-        approved stone selections.
-      </p>
-
-    `;
+      "<p>" +
+        "This brick is currently listed without approved stone selections." +
+      "</p>";
 
 
     stoneGrid.appendChild(
@@ -996,26 +1010,33 @@ function renderApprovedStone(
   }
 
 
-
   stoneSectionDescription.textContent =
-    `${stones.length} approved ${
+
+    stones.length +
+
+    " approved " +
+
+    (
       stones.length === 1
         ? "stone option"
         : "stone options"
-    } for ${brick.name}. White mortar is included when stone is used.`;
+    ) +
 
+    " for " +
+
+    brick.name +
+
+    ". White mortar is included when stone is used.";
 
 
   stones.forEach(
     (stone) => {
-
 
       stoneGrid.appendChild(
         createStoneCard(
           stone
         )
       );
-
 
     }
   );
@@ -1028,7 +1049,6 @@ function renderApprovedStone(
 }
 
 
-
 // =========================================================
 // CREATE STONE CARD
 // =========================================================
@@ -1036,132 +1056,127 @@ function renderApprovedStone(
 function createStoneCard(stone) {
 
   const card =
-    document.createElement("article");
+    document.createElement(
+      "article"
+    );
 
-  card.className = "stone-card";
+
+  card.className =
+    "stone-card";
+
 
   card.dataset.stoneId =
     stone.id;
 
 
-  // -------------------------------------------------------
-  // BUILD BADGES
-  // -------------------------------------------------------
-
   const badges = [];
 
 
-  if (stone.upgradeLevel) {
+  if (
+    stone.upgradeLevel
+  ) {
 
     badges.push(
+
       '<span class="stone-badge upgrade">' +
+
       'Level ' +
-      escapeHtml(stone.upgradeLevel) +
+
+      escapeHtml(
+        stone.upgradeLevel
+      ) +
+
       '</span>'
+
     );
 
   }
 
 
-  if (stone.houstonOnly) {
+  if (
+    stone.houstonOnly
+  ) {
 
     badges.push(
+
       '<span class="stone-badge houston">' +
+
       'Houston Only' +
+
       '</span>'
+
     );
 
   }
 
 
   const badgesHtml =
+
     badges.length > 0
+
       ? '<div class="stone-badges">' +
         badges.join("") +
         '</div>'
+
       : "";
 
 
-  // -------------------------------------------------------
-  // BUILD STONE CARD
-  // -------------------------------------------------------
+  card.innerHTML =
 
-  card.innerHTML = `
+    '<img ' +
 
-    <img
-      src="${escapeAttribute(stone.imagePath || "")}"
-      alt="${escapeAttribute(stone.name)} stone"
-      loading="lazy"
-    >
+      'src="' +
+      escapeAttribute(
+        stone.imagePath || ""
+      ) +
+      '" ' +
 
-    <div class="stone-details">
+      'alt="' +
+      escapeAttribute(
+        stone.name
+      ) +
+      ' stone" ' +
 
-      <h3>
-        ${escapeHtml(stone.name)}
-      </h3>
+      'loading="lazy"' +
 
-      ${badgesHtml}
-
-      <p>
-        Approved with the selected brick.
-      </p>
-
-      <p class="stone-mortar">
-        Mortar:
-        <strong>
-          ${escapeHtml(stone.stoneMortar || "White")}
-        </strong>
-      </p>
-
-    </div>
-
-  `;
+    '>' +
 
 
-  // -------------------------------------------------------
-  // MISSING IMAGE FALLBACK
-  // -------------------------------------------------------
+    '<div class="stone-details">' +
 
-  const image =
-    card.querySelector("img");
+      '<h3>' +
+        escapeHtml(
+          stone.name
+        ) +
+      '</h3>' +
 
+      badgesHtml +
 
-  image.addEventListener(
-    "error",
-    () => {
+      '<p>' +
+        'Approved with the selected brick.' +
+      '</p>' +
 
-      image.remove();
+      '<p class="stone-mortar">' +
 
+        'Mortar: ' +
 
-      const placeholder =
-        document.createElement("div");
+        '<strong>' +
 
+          escapeHtml(
+            stone.stoneMortar ||
+            "White"
+          ) +
 
-      placeholder.className =
-        "stone-image-missing";
+        '</strong>' +
 
+      '</p>' +
 
-      placeholder.innerHTML =
-        "<span>" +
-        escapeHtml(stone.name) +
-        "</span>";
-
-
-      card.prepend(
-        placeholder
-      );
-
-    }
-  );
+    '</div>';
 
 
-  return card;
-
-}
   // =======================================================
   // MISSING STONE IMAGE FALLBACK
   // =======================================================
-
 
   const image =
     card.querySelector(
@@ -1172,7 +1187,6 @@ function createStoneCard(stone) {
   image.addEventListener(
     "error",
     () => {
-
 
       image.remove();
 
@@ -1187,17 +1201,15 @@ function createStoneCard(stone) {
         "stone-image-missing";
 
 
-      placeholder.innerHTML = `
+      placeholder.innerHTML =
 
-        <span>
+        "<span>" +
 
-          ${escapeHtml(
-            stone.name
-          )}
+        escapeHtml(
+          stone.name
+        ) +
 
-        </span>
-
-      `;
+        "</span>";
 
 
       card.prepend(
@@ -1213,15 +1225,11 @@ function createStoneCard(stone) {
 }
 
 
-
 // =========================================================
 // BRICK DETAILS PANEL
 // =========================================================
 
-
-function renderBrickDetailsPanel(
-  brick
-) {
+function renderBrickDetailsPanel(brick) {
 
   const panel =
     document.createElement(
@@ -1264,12 +1272,10 @@ function renderBrickDetailsPanel(
   ) {
 
     mortarText =
-      brick
-        .allBrickMortarOptions
+      brick.allBrickMortarOptions
         .join(", ");
 
   }
-
 
 
   const undertones =
@@ -1288,200 +1294,66 @@ function renderBrickDetailsPanel(
       : "None Listed";
 
 
-
   const level =
-
-    brick.selectionLevel ||
-
-    "Not Listed";
-
+    getBrickLevelText(
+      brick
+    );
 
 
   const code =
-
     brick.selectionCode ||
-
     "None";
 
 
-
-  panel.innerHTML = `
-
-
-    <div
-      class="brick-details-panel-grid"
-    >
-
-
-
-      <div>
-
-        <span
-          class="detail-label"
-        >
-          Vendor
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            brick.vendor ||
-            "Not Listed"
-          )}
-
-        </strong>
-
-      </div>
-
-
-
-      <div>
-
-        <span
-          class="detail-label"
-        >
-          Color Group
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            brick.colorGroup ||
-            "Not Listed"
-          )}
-
-        </strong>
-
-      </div>
-
-
-
-      <div>
-
-        <span
-          class="detail-label"
-        >
-          Brick Size
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            brick.brickSize ||
-            "Not Listed"
-          )}
-
-        </strong>
-
-      </div>
-
-
-
-      <div>
-
-        <span
-          class="detail-label"
-        >
-          Brick Level
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            level
-          )}
-
-        </strong>
-
-      </div>
-
-
-
-      <div>
-
-        <span
-          class="detail-label"
-        >
-          Selection Code
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            code
-          )}
-
-        </strong>
-
-      </div>
-
-
-
-      <div>
-
-        <span
-          class="detail-label"
-        >
-          All-Brick Mortar
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            mortarText
-          )}
-
-        </strong>
-
-      </div>
-
-
-
-      <div>
-
-        <span
-          class="detail-label"
-        >
-          Undertones
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            undertones
-          )}
-
-        </strong>
-
-      </div>
-
-
-
-      <div>
-
-        <span
-          class="detail-label"
-        >
-          Source Page
-        </span>
-
-        <strong>
-
-          ${escapeHtml(
-            brick.sourcePage ||
-            "Not Listed"
-          )}
-
-        </strong>
-
-      </div>
-
-
-
-    </div>
-
-  `;
-
+  panel.innerHTML =
+
+    '<div class="brick-details-panel-grid">' +
+
+      detailBlock(
+        "Vendor",
+        brick.vendor ||
+        "Not Listed"
+      ) +
+
+      detailBlock(
+        "Color Group",
+        brick.colorGroup ||
+        "Not Listed"
+      ) +
+
+      detailBlock(
+        "Brick Size",
+        brick.brickSize ||
+        "Not Listed"
+      ) +
+
+      detailBlock(
+        "Brick Level",
+        level
+      ) +
+
+      detailBlock(
+        "Selection Code",
+        code
+      ) +
+
+      detailBlock(
+        "All-Brick Mortar",
+        mortarText
+      ) +
+
+      detailBlock(
+        "Undertones",
+        undertones
+      ) +
+
+      detailBlock(
+        "Source Page",
+        brick.sourcePage ||
+        "Not Listed"
+      ) +
+
+    '</div>';
 
 
   stoneGrid
@@ -1493,6 +1365,33 @@ function renderBrickDetailsPanel(
 
 }
 
+
+function detailBlock(
+  label,
+  value
+) {
+
+  return (
+
+    '<div>' +
+
+      '<span class="detail-label">' +
+        escapeHtml(
+          label
+        ) +
+      '</span>' +
+
+      '<strong>' +
+        escapeHtml(
+          value
+        ) +
+      '</strong>' +
+
+    '</div>'
+
+  );
+
+}
 
 
 function removeBrickDetailsPanel() {
@@ -1514,15 +1413,11 @@ function removeBrickDetailsPanel() {
 }
 
 
-
 // =========================================================
 // EXCEPTIONS / SPECIAL NOTES
 // =========================================================
 
-
-function renderBrickExceptions(
-  brick
-) {
+function renderBrickExceptions(brick) {
 
   removeBrickExceptionNote();
 
@@ -1559,28 +1454,32 @@ function renderBrickExceptions(
     "brick-exception-note";
 
 
-  note.innerHTML = `
+  const exceptionItems =
+
+    brick.exceptions
+      .map(
+        (exception) =>
+
+          "<li>" +
+
+          escapeHtml(
+            exception
+          ) +
+
+          "</li>"
+      )
+      .join("");
 
 
-    <strong>
-      Selection Note
-    </strong>
+  note.innerHTML =
 
+    "<strong>" +
+      "Selection Note" +
+    "</strong>" +
 
-    <ul>
-
-      ${brick.exceptions
-        .map(
-          (exception) =>
-            `<li>${escapeHtml(
-              exception
-            )}</li>`
-        )
-        .join("")}
-
-    </ul>
-
-  `;
+    "<ul>" +
+      exceptionItems +
+    "</ul>";
 
 
   stoneGrid
@@ -1590,7 +1489,6 @@ function renderBrickExceptions(
     );
 
 }
-
 
 
 function removeBrickExceptionNote() {
@@ -1612,11 +1510,9 @@ function removeBrickExceptionNote() {
 }
 
 
-
 // =========================================================
 // RESET STONE SECTION
 // =========================================================
-
 
 function resetStoneSection() {
 
@@ -1634,37 +1530,26 @@ function resetStoneSection() {
     "Select a brick above to view the stone options approved for that specific brick.";
 
 
-  stoneGrid.innerHTML = `
+  stoneGrid.innerHTML =
 
+    '<div class="stone-empty-message">' +
 
-    <div
-      class="stone-empty-message"
-    >
+      '<strong>' +
+        'Select a Brick Above' +
+      '</strong>' +
 
+      '<p>' +
+        'Compatible stone selections will appear here.' +
+      '</p>' +
 
-      <strong>
-        Select a Brick Above
-      </strong>
-
-
-      <p>
-        Compatible stone selections
-        will appear here.
-      </p>
-
-
-    </div>
-
-  `;
+    '</div>';
 
 }
-
 
 
 // =========================================================
 // VIABLE OPTIONS
 // =========================================================
-
 
 function toggleViableOption(
   brickId
@@ -1679,7 +1564,6 @@ function toggleViableOption(
   if (
     alreadySelected
   ) {
-
 
     viableOptions =
       viableOptions.filter(
@@ -1718,7 +1602,6 @@ function toggleViableOption(
   }
 
 
-
   if (
 
     viableOptions.length >=
@@ -1726,16 +1609,20 @@ function toggleViableOption(
 
   ) {
 
-
     alert(
-      `You can select up to ${MAX_VIABLE_OPTIONS} viable brick options. Remove one before adding another.`
+
+      "You can select up to " +
+
+      MAX_VIABLE_OPTIONS +
+
+      " viable brick options. Remove one before adding another."
+
     );
 
 
     return;
 
   }
-
 
 
   viableOptions.push(
@@ -1751,16 +1638,21 @@ function toggleViableOption(
 }
 
 
-
 // =========================================================
 // UPDATE VIABLE OPTIONS BAR
 // =========================================================
 
-
 function updateViableOptions() {
 
   viableCount.textContent =
-    `${viableOptions.length} of ${MAX_VIABLE_OPTIONS} Selected`;
+
+    viableOptions.length +
+
+    " of " +
+
+    MAX_VIABLE_OPTIONS +
+
+    " Selected";
 
 
   viableList.innerHTML =
@@ -1770,9 +1662,8 @@ function updateViableOptions() {
   viableOptions.forEach(
     (brickId) => {
 
-
       const brick =
-        DB.getBrick(
+        getBrickById(
           brickId
         );
 
@@ -1796,34 +1687,26 @@ function updateViableOptions() {
         "viable-chip";
 
 
-      chip.innerHTML = `
+      chip.innerHTML =
 
+        "<span>" +
 
-        <span>
+        escapeHtml(
+          brick.name
+        ) +
 
-          ${escapeHtml(
+        "</span>" +
+
+        '<button ' +
+          'type="button" ' +
+          'aria-label="Remove ' +
+          escapeAttribute(
             brick.name
-          )}
-
-        </span>
-
-
-        <button
-
-          type="button"
-
-          aria-label="Remove ${escapeAttribute(
-            brick.name
-          )}"
-
-        >
-
-          ×
-
-        </button>
-
-      `;
-
+          ) +
+          '"' +
+        '>' +
+          '×' +
+        '</button>';
 
 
       chip
@@ -1834,11 +1717,9 @@ function updateViableOptions() {
           "click",
           () => {
 
-
             toggleViableOption(
               brick.id
             );
-
 
           }
         );
@@ -1858,11 +1739,9 @@ function updateViableOptions() {
 }
 
 
-
 // =========================================================
 // COMPARISON MODAL
 // =========================================================
-
 
 if (
   compareButton
@@ -1873,9 +1752,9 @@ if (
       "click",
       () => {
 
-
         if (
-          viableOptions.length < 2
+          viableOptions.length <
+          2
         ) {
 
           return;
@@ -1892,7 +1771,6 @@ if (
     );
 
 }
-
 
 
 function renderComparison() {
@@ -1913,9 +1791,8 @@ function renderComparison() {
   viableOptions.forEach(
     (brickId) => {
 
-
       const brick =
-        DB.getBrick(
+        getBrickById(
           brickId
         );
 
@@ -1940,8 +1817,7 @@ function renderComparison() {
         brick.undertones.length >
           0
 
-          ? brick
-              .undertones
+          ? brick.undertones
               .join(", ")
 
           : "";
@@ -1957,132 +1833,103 @@ function renderComparison() {
         "comparison-card";
 
 
-      card.innerHTML = `
+      const upgradeClass =
+        isUpgradeBrick(brick)
+          ? " upgrade"
+          : "";
 
 
-        <div
-          class="comparison-card-image"
-        >
+      const undertoneHtml =
+
+        undertones
+
+          ? '<p class="comparison-undertones">' +
+            escapeHtml(
+              undertones
+            ) +
+            '</p>'
+
+          : "";
 
 
-          <img
+      card.innerHTML =
 
-            src="${escapeAttribute(
-              brick.imagePath ||
-              ""
-            )}"
+        '<div class="comparison-card-image">' +
 
-            alt="${escapeAttribute(
+          '<img ' +
+
+            'src="' +
+            escapeAttribute(
+              brick.imagePath || ""
+            ) +
+            '" ' +
+
+            'alt="' +
+            escapeAttribute(
               brick.name
-            )} brick"
+            ) +
+            ' brick" ' +
 
-            loading="lazy"
+            'loading="lazy"' +
 
-          >
+          '>' +
 
-
-        </div>
-
-
-
-        <div
-          class="comparison-card-details"
-        >
+        '</div>' +
 
 
-          <h3>
+        '<div class="comparison-card-details">' +
 
-            ${escapeHtml(
+          '<h3>' +
+            escapeHtml(
               brick.name
-            )}
+            ) +
+          '</h3>' +
 
-          </h3>
-
-
-          <p
-            class="comparison-color"
-          >
-
-            ${escapeHtml(
+          '<p class="comparison-color">' +
+            escapeHtml(
               brick.colorGroup
-            )}
+            ) +
+          '</p>' +
 
-          </p>
+          '<p>' +
+            escapeHtml(
+              brick.vendor || ""
+            ) +
+          '</p>' +
 
+          undertoneHtml +
 
-          <p>
+          '<span class="material-badge' +
+          upgradeClass +
+          '">' +
 
-            ${escapeHtml(
-              brick.vendor ||
-              ""
-            )}
+            escapeHtml(
+              getBrickLevelText(
+                brick
+              )
+            ) +
 
-          </p>
+          '</span>' +
 
+          '<button ' +
 
-          ${
-            undertones
+            'class="comparison-remove" ' +
 
-              ? `
+            'type="button" ' +
 
-                <p
-                  class="comparison-undertones"
-                >
-
-                  ${escapeHtml(
-                    undertones
-                  )}
-
-                </p>
-
-              `
-
-              : ""
-          }
-
-
-          <span
-            class="
-              material-badge
-              ${
-                isUpgradeBrick(
-                  brick
-                )
-                  ? "upgrade"
-                  : ""
-              }
-            "
-          >
-
-            ${escapeHtml(
-              brick.selectionLevel ||
-              "Level Not Listed"
-            )}
-
-          </span>
-
-
-          <button
-
-            class="comparison-remove"
-
-            type="button"
-
-            data-remove-brick="${escapeAttribute(
+            'data-remove-brick="' +
+            escapeAttribute(
               brick.id
-            )}"
+            ) +
+            '"' +
 
-          >
+          '>' +
 
-            Remove from Comparison
+            'Remove from Comparison' +
 
-          </button>
+          '</button>' +
 
-
-        </div>
-
-      `;
-
+        '</div>';
 
 
       const image =
@@ -2094,7 +1941,6 @@ function renderComparison() {
       image.addEventListener(
         "error",
         () => {
-
 
           const imageBox =
             card.querySelector(
@@ -2110,21 +1956,18 @@ function renderComparison() {
           );
 
 
-          imageBox.innerHTML = `
+          imageBox.innerHTML =
 
-            <span>
+            "<span>" +
 
-              ${escapeHtml(
-                brick.name
-              )}
+            escapeHtml(
+              brick.name
+            ) +
 
-            </span>
-
-          `;
+            "</span>";
 
         }
       );
-
 
 
       card
@@ -2134,7 +1977,6 @@ function renderComparison() {
         .addEventListener(
           "click",
           () => {
-
 
             toggleViableOption(
               brick.id
@@ -2162,7 +2004,6 @@ function renderComparison() {
   );
 
 }
-
 
 
 function openComparison() {
@@ -2199,7 +2040,6 @@ function openComparison() {
 }
 
 
-
 function closeComparison() {
 
   if (
@@ -2234,7 +2074,6 @@ function closeComparison() {
 }
 
 
-
 if (
   comparisonBackdrop
 ) {
@@ -2246,7 +2085,6 @@ if (
     );
 
 }
-
 
 
 if (
@@ -2262,7 +2100,6 @@ if (
 }
 
 
-
 if (
   comparisonDone
 ) {
@@ -2274,13 +2111,11 @@ if (
     );
 
 }
-
 
 
 document.addEventListener(
   "keydown",
   (event) => {
-
 
     if (
 
@@ -2306,52 +2141,3 @@ document.addEventListener(
 
   }
 );
-
-
-
-// =========================================================
-// SAFE TEXT HELPERS
-// =========================================================
-
-
-function escapeHtml(
-  value
-) {
-
-  return String(
-    value ?? ""
-  )
-    .replaceAll(
-      "&",
-      "&amp;"
-    )
-    .replaceAll(
-      "<",
-      "&lt;"
-    )
-    .replaceAll(
-      ">",
-      "&gt;"
-    )
-    .replaceAll(
-      '"',
-      "&quot;"
-    )
-    .replaceAll(
-      "'",
-      "&#039;"
-    );
-
-}
-
-
-
-function escapeAttribute(
-  value
-) {
-
-  return escapeHtml(
-    value
-  );
-
-}
