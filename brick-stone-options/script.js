@@ -1033,154 +1033,131 @@ function renderApprovedStone(
 // CREATE STONE CARD
 // =========================================================
 
-
-function createStoneCard(
-  stone
-) {
+function createStoneCard(stone) {
 
   const card =
-    document.createElement(
-      "article"
-    );
+    document.createElement("article");
 
-
-  card.className =
-    "stone-card";
-
+  card.className = "stone-card";
 
   card.dataset.stoneId =
     stone.id;
 
 
+  // -------------------------------------------------------
+  // BUILD BADGES
+  // -------------------------------------------------------
+
   const badges = [];
 
 
-
-  if (
-    stone.upgradeLevel
-  ) {
+  if (stone.upgradeLevel) {
 
     badges.push(
-
-      `
-
-        <span
-          class="stone-badge upgrade"
-        >
-
-          Level ${escapeHtml(
-            stone.upgradeLevel
-          )}
-
-        </span>
-
-      `
-
+      '<span class="stone-badge upgrade">' +
+      'Level ' +
+      escapeHtml(stone.upgradeLevel) +
+      '</span>'
     );
 
   }
 
 
-
-  if (
-    stone.houstonOnly
-  ) {
+  if (stone.houstonOnly) {
 
     badges.push(
-
-      `
-
-        <span
-          class="stone-badge houston"
-        >
-
-          Houston Only
-
-        </span>
-
-      `
-
+      '<span class="stone-badge houston">' +
+      'Houston Only' +
+      '</span>'
     );
 
   }
 
 
+  const badgesHtml =
+    badges.length > 0
+      ? '<div class="stone-badges">' +
+        badges.join("") +
+        '</div>'
+      : "";
+
+
+  // -------------------------------------------------------
+  // BUILD STONE CARD
+  // -------------------------------------------------------
 
   card.innerHTML = `
 
-
     <img
-
-      src="${escapeAttribute(
-        stone.imagePath || ""
-      )}"
-
-      alt="${escapeAttribute(
-        stone.name
-      )} stone"
-
+      src="${escapeAttribute(stone.imagePath || "")}"
+      alt="${escapeAttribute(stone.name)} stone"
       loading="lazy"
-
     >
-
-
 
     <div class="stone-details">
 
-
       <h3>
-        ${escapeHtml(
-          stone.name
-        )}
+        ${escapeHtml(stone.name)}
       </h3>
 
-
-      ${
-        badges.length > 0
-
-          ? `
-
-            <div
-              class="stone-badges"
-            >
-
-              ${badges.join("")}
-
-            </div>
-
-          `
-
-          : ""
-      }
-
+      ${badgesHtml}
 
       <p>
         Approved with the selected brick.
       </p>
 
-
       <p class="stone-mortar">
-
         Mortar:
-
         <strong>
-
-          ${escapeHtml(
-            stone.stoneMortar ||
-            "White"
-          )}
-
+          ${escapeHtml(stone.stoneMortar || "White")}
         </strong>
-
       </p>
-
 
     </div>
 
   `;
 
 
+  // -------------------------------------------------------
+  // MISSING IMAGE FALLBACK
+  // -------------------------------------------------------
 
+  const image =
+    card.querySelector("img");
+
+
+  image.addEventListener(
+    "error",
+    () => {
+
+      image.remove();
+
+
+      const placeholder =
+        document.createElement("div");
+
+
+      placeholder.className =
+        "stone-image-missing";
+
+
+      placeholder.innerHTML =
+        "<span>" +
+        escapeHtml(stone.name) +
+        "</span>";
+
+
+      card.prepend(
+        placeholder
+      );
+
+    }
+  );
+
+
+  return card;
+
+}
   // =======================================================
   // MISSING STONE IMAGE FALLBACK
   // =======================================================
