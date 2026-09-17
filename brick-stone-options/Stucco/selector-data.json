@@ -1,0 +1,2484 @@
+[
+  {
+    "name": "Alabaster",
+    "category": "White",
+    "page": 2,
+    "slug": "alabaster",
+    "stones": [
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Blue Moon Sawn Chop",
+      "Granbury Quarry Chop (HOU/SA/AU)",
+      "Granbury Cream Quarry Chop (DFW)",
+      "Country French Blend"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Off White / Grout 5014 Biscuit"
+    ],
+    "accents": [
+      "Alabaster",
+      "Shiitake",
+      "Loggia",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Black Fox",
+      "Thunder Gray",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/alabaster-paint.jpg",
+    "accentImage": "assets/paints/alabaster-accents.jpg",
+    "tileImage": "assets/paints/alabaster-tiles.jpg",
+    "guideImage": "assets/paints/alabaster-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Moon Sawn Chop",
+        "image": "assets/stones/blue-moon-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Quarry Chop (HOU/SA/AU)",
+        "image": "assets/stones/granbury-quarry-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Granbury Cream Quarry Chop (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Blend",
+        "image": "assets/stones/country-french-blend.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "City Loft",
+    "category": "White",
+    "page": 3,
+    "slug": "city-loft",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Country French Chopped",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Astronomy: Nebula / Grout 5047 Charcoal",
+      "Level 2 \u2014 Emser Tile Caverna: Fossil / Grout 5093 Warm Gray"
+    ],
+    "accents": [
+      "City Loft",
+      "Jogging Path",
+      "Fawn Brindle",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Sealskin",
+      "Thunder Gray",
+      "Iron Ore",
+      "Tricorn Black",
+      "Peppercorn"
+    ],
+    "paintImage": "assets/paints/city-loft-paint.jpg",
+    "accentImage": "assets/paints/city-loft-accents.jpg",
+    "tileImage": "assets/paints/city-loft-tiles.jpg",
+    "guideImage": "assets/paints/city-loft-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Eider White",
+    "category": "White",
+    "page": 4,
+    "slug": "eider-white",
+    "stones": [
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Ashland Gray (Houston)",
+      "French Chateau (DFW)",
+      "Blue Marble Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Rebel / Grout 5107 Iron",
+      "Level 1 \u2014 DT Astronomy: Solstice / Grout 5019 Pearl Gray",
+      "Level 2 \u2014 Emser Tile Caverna: Tufa / Grout 5107 Iron"
+    ],
+    "accents": [
+      "Eider White",
+      "Mindful Gray",
+      "Acier",
+      "Gauntlet Gray"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Black Magic",
+      "Tricorn Black",
+      "Black Fox",
+      "Peppercorn"
+    ],
+    "paintImage": "assets/paints/eider-white-paint.jpg",
+    "accentImage": "assets/paints/eider-white-accents.jpg",
+    "tileImage": "assets/paints/eider-white-tiles.jpg",
+    "guideImage": "assets/paints/eider-white-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Greek Villa",
+    "category": "White",
+    "page": 5,
+    "slug": "greek-villa",
+    "stones": [
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Granbury Cream Quarry Chop (DFW)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 Emser Tile Caverna: Fossil / Grout 5093 Warm Gray",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Taupe / Grout 5105 Driftwood"
+    ],
+    "accents": [
+      "Greek Villa",
+      "Anew Gray",
+      "Keystone Gray",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Black Magic",
+      "Tricorn Black",
+      "Greenblack"
+    ],
+    "paintImage": "assets/paints/greek-villa-paint.jpg",
+    "accentImage": "assets/paints/greek-villa-accents.jpg",
+    "tileImage": "assets/paints/greek-villa-tiles.jpg",
+    "guideImage": "assets/paints/greek-villa-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Cream Quarry Chop (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Marshmallow",
+    "category": "White",
+    "page": 6,
+    "slug": "marshmallow",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Ashland Gray (HOU)",
+      "French Chateau (DFW)",
+      "Country French Blend"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Taupe / Grout 5105 Driftwood"
+    ],
+    "accents": [
+      "Marshmallow",
+      "Anew Gray",
+      "Mega Greige",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Black Fox",
+      "Thunder Gray",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/marshmallow-paint.jpg",
+    "accentImage": "assets/paints/marshmallow-accents.jpg",
+    "tileImage": "assets/paints/marshmallow-tiles.jpg",
+    "guideImage": "assets/paints/marshmallow-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (HOU)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Blend",
+        "image": "assets/stones/country-french-blend.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Moderate White",
+    "category": "White",
+    "page": 7,
+    "slug": "moderate-white",
+    "stones": [
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Blue Moon Sawn Chop",
+      "Granbury Quarry Chop (HOU/SA/AU)",
+      "Granbury Cream Chop (DFW)",
+      "Granbury Blue Streak (DFW)",
+      "Blanco Sawn Chop",
+      "Sonoma White (DFW)",
+      "Blanco Ledgestone",
+      "Country French Blend"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Taupe / Grout 5105 Driftwood"
+    ],
+    "accents": [
+      "Moderate White",
+      "Modern Gray",
+      "Tony Taupe",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Sealskin",
+      "Black Fox",
+      "Iron Ore",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/moderate-white-paint.jpg",
+    "accentImage": "assets/paints/moderate-white-accents.jpg",
+    "tileImage": "assets/paints/moderate-white-tiles.jpg",
+    "guideImage": "assets/paints/moderate-white-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Moon Sawn Chop",
+        "image": "assets/stones/blue-moon-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Quarry Chop (HOU/SA/AU)",
+        "image": "assets/stones/granbury-quarry-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Granbury Cream Chop (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Blue Streak (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Ledgestone",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Blend",
+        "image": "assets/stones/country-french-blend.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Natural Choice",
+    "category": "White",
+    "page": 8,
+    "slug": "natural-choice",
+    "stones": [
+      "Country French Chopped",
+      "Ashland Gray (Houston)",
+      "French Chateau (DFW)",
+      "Blue Marble Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Light Moss / Grout 5004 Bahama Beige"
+    ],
+    "accents": [
+      "Natural Choice",
+      "Modern Gray",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Peppercorn",
+      "Black Fox",
+      "Iron Ore",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/natural-choice-paint.jpg",
+    "accentImage": "assets/paints/natural-choice-accents.jpg",
+    "tileImage": "assets/paints/natural-choice-tiles.jpg",
+    "guideImage": "assets/paints/natural-choice-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Origami White",
+    "category": "White",
+    "page": 9,
+    "slug": "origami-white",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Sonoma Charcoal",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Ashland Gray (Houston)",
+      "Silvermist (DFW)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Light Moss / Grout 5004 Bahama Beige"
+    ],
+    "accents": [
+      "Origami White",
+      "Amazing Gray",
+      "Felted Wool",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Black Magic",
+      "Tricorn Black",
+      "Grizzle Gray"
+    ],
+    "paintImage": "assets/paints/origami-white-paint.jpg",
+    "accentImage": "assets/paints/origami-white-accents.jpg",
+    "tileImage": "assets/paints/origami-white-tiles.jpg",
+    "guideImage": "assets/paints/origami-white-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma Charcoal",
+        "image": "assets/stones/sonoma-charcoal.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Silvermist (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Pure White",
+    "category": "White",
+    "page": 10,
+    "slug": "pure-white",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Sonoma Charcoal",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Ashland Gray (Houston)",
+      "Silvermist (DFW)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Astronomy: Solstice / Grout 5019 Pearl Gray",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Blue Gray / Grout 5019 Pearl Gray",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Charcoal / Grout 5009 Gray"
+    ],
+    "accents": [
+      "Pure White",
+      "March Wind",
+      "Summit Gray"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Black Magic",
+      "Tricorn Black",
+      "Peppercorn"
+    ],
+    "paintImage": "assets/paints/pure-white-paint.jpg",
+    "accentImage": "assets/paints/pure-white-accents.jpg",
+    "tileImage": "assets/paints/pure-white-tiles.jpg",
+    "guideImage": "assets/paints/pure-white-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma Charcoal",
+        "image": "assets/stones/sonoma-charcoal.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Silvermist (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Heron Plume",
+    "category": "White",
+    "page": 11,
+    "slug": "heron-plume",
+    "stones": [
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Ashland Gray (Houston)",
+      "Eastern Buff Sawn Chop",
+      "French Chateau (DFW)",
+      "Blue Marble Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Off White / Grout 5014 Biscuit",
+      "Level 2 \u2014 Emser Tile Caverna: Fossil / Grout 5093 Warm Gray"
+    ],
+    "accents": [
+      "Heron Plume",
+      "Skyline Steel",
+      "Anonymous",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Peppercorn",
+      "Black Fox",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/heron-plume-paint.jpg",
+    "accentImage": "assets/paints/heron-plume-accents.jpg",
+    "tileImage": "assets/paints/heron-plume-tiles.jpg",
+    "guideImage": "assets/paints/heron-plume-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Shoji White",
+    "category": "White",
+    "page": 12,
+    "slug": "shoji-white",
+    "stones": [
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Ashland Gray (Houston)",
+      "French Chateau (DFW)",
+      "Blue Marble Sawn Chop",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Light Moss / Grout 5004 Bahama Beige",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Off White / Grout 5014 Biscuit"
+    ],
+    "accents": [
+      "Shoji White",
+      "Worldly Gray",
+      "Intellectual Gray",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Sealskin",
+      "Black Fox",
+      "Iron Ore",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/shoji-white-paint.jpg",
+    "accentImage": "assets/paints/shoji-white-accents.jpg",
+    "tileImage": "assets/paints/shoji-white-tiles.jpg",
+    "guideImage": "assets/paints/shoji-white-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Snowbound",
+    "category": "White",
+    "page": 13,
+    "slug": "snowbound",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Sonoma Charcoal",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Ashland Gray (Houston)",
+      "Silvermist (DFW)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Rebel / Grout 5107 Iron",
+      "Level 1 \u2014 DT Astronomy: Nebula / Grout 5047 Charcoal",
+      "Level 2 \u2014 Emser Tile Caverna: Tufa / Grout 5107 Iron"
+    ],
+    "accents": [
+      "Snowbound",
+      "March Wind",
+      "Summit Gray"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Black Magic",
+      "Tricorn Black",
+      "Peppercorn"
+    ],
+    "paintImage": "assets/paints/snowbound-paint.jpg",
+    "accentImage": "assets/paints/snowbound-accents.jpg",
+    "tileImage": "assets/paints/snowbound-tiles.jpg",
+    "guideImage": "assets/paints/snowbound-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma Charcoal",
+        "image": "assets/stones/sonoma-charcoal.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Silvermist (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Canvas Tan",
+    "category": "Beige",
+    "page": 15,
+    "slug": "canvas-tan",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone (SA/AU)",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Blue Moon Sawn Chop",
+      "Country French Chopped",
+      "Granbury Blue Streak (DFW)",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Off White / Grout 5014 Biscuit"
+    ],
+    "accents": [
+      "Alabaster",
+      "Functional Gray",
+      "Backdrop",
+      "Griffin"
+    ],
+    "darkAccents": [
+      "Black Fox",
+      "Urbane Bronze"
+    ],
+    "paintImage": "assets/paints/canvas-tan-paint.jpg",
+    "accentImage": "assets/paints/canvas-tan-accents.jpg",
+    "tileImage": "assets/paints/canvas-tan-tiles.jpg",
+    "guideImage": "assets/paints/canvas-tan-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone (SA/AU)",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Moon Sawn Chop",
+        "image": "assets/stones/blue-moon-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Blue Streak (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Grecian Ivory",
+    "category": "Beige",
+    "page": 16,
+    "slug": "grecian-ivory",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone (SA/AU)",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Blue Moon Sawn Chop",
+      "Texas Mix Sawn Chop",
+      "Granbury Blue Streak (DFW)",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Off White / Grout 5014 Biscuit"
+    ],
+    "accents": [
+      "Shoji White",
+      "Functional Gray",
+      "Backdrop",
+      "Griffin"
+    ],
+    "darkAccents": [
+      "Black Fox",
+      "Urbane Bronze"
+    ],
+    "paintImage": "assets/paints/grecian-ivory-paint.jpg",
+    "accentImage": "assets/paints/grecian-ivory-accents.jpg",
+    "tileImage": "assets/paints/grecian-ivory-tiles.jpg",
+    "guideImage": "assets/paints/grecian-ivory-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone (SA/AU)",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Moon Sawn Chop",
+        "image": "assets/stones/blue-moon-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Texas Mix Sawn Chop",
+        "image": "assets/stones/texas-mix-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Blue Streak (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Loggia",
+    "category": "Beige",
+    "page": 17,
+    "slug": "loggia",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone (SA/AU)",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Granbury Quarry Chop (HOU/SA/AU)",
+      "Granbury Cream Quarry Chop (DFW)",
+      "Oklahoma Squares and Recs (DFW)",
+      "Country French Chopped",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Taupe / Grout 5105 Driftwood"
+    ],
+    "accents": [
+      "Aesthetic White",
+      "Shiitake",
+      "Elephant Ear",
+      "Sealskin"
+    ],
+    "darkAccents": [
+      "Tricorn Black",
+      "Urbane Bronze"
+    ],
+    "paintImage": "assets/paints/loggia-paint.jpg",
+    "accentImage": "assets/paints/loggia-accents.jpg",
+    "tileImage": "assets/paints/loggia-tiles.jpg",
+    "guideImage": "assets/paints/loggia-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone (SA/AU)",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Quarry Chop (HOU/SA/AU)",
+        "image": "assets/stones/granbury-quarry-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Granbury Cream Quarry Chop (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Oklahoma Squares and Recs (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Oyster Bar",
+    "category": "Beige",
+    "page": 18,
+    "slug": "oyster-bar",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone (SA/AU)",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Blue Moon Sawn Chop",
+      "Texas Mix Sawn Chop",
+      "Granbury Blue Streak (DFW)",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Off White / Grout 5014 Biscuit",
+      "Level 2 \u2014 Emser Tile Caverna: Fossil / Grout 5093 Warm Gray"
+    ],
+    "accents": [
+      "Alabaster",
+      "Functional Gray",
+      "Backdrop",
+      "Griffin"
+    ],
+    "darkAccents": [
+      "Black Fox",
+      "Urbane Bronze"
+    ],
+    "paintImage": "assets/paints/oyster-bar-paint.jpg",
+    "accentImage": "assets/paints/oyster-bar-accents.jpg",
+    "tileImage": "assets/paints/oyster-bar-tiles.jpg",
+    "guideImage": "assets/paints/oyster-bar-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone (SA/AU)",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Moon Sawn Chop",
+        "image": "assets/stones/blue-moon-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Texas Mix Sawn Chop",
+        "image": "assets/stones/texas-mix-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Blue Streak (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Accessible Beige",
+    "category": "Greige",
+    "page": 20,
+    "slug": "accessible-beige",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Country French Chopped",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Taupe / Grout 5105 Driftwood"
+    ],
+    "accents": [
+      "Aesthetic White",
+      "Tony Taupe"
+    ],
+    "darkAccents": [
+      "Tricorn Black",
+      "Urbane Bronze",
+      "Cityscape",
+      "Grizzle Gray"
+    ],
+    "paintImage": "assets/paints/accessible-beige-paint.jpg",
+    "accentImage": "assets/paints/accessible-beige-accents.jpg",
+    "tileImage": "assets/paints/accessible-beige-tiles.jpg",
+    "guideImage": "assets/paints/accessible-beige-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Amazing Gray",
+    "category": "Greige",
+    "page": 21,
+    "slug": "amazing-gray",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Country French Chopped",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Emser Tile Caverna: Fossil / Grout 5093 Warm Gray"
+    ],
+    "accents": [
+      "Shoji White",
+      "Felted Wool",
+      "Porpoise",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/amazing-gray-paint.jpg",
+    "accentImage": "assets/paints/amazing-gray-accents.jpg",
+    "tileImage": "assets/paints/amazing-gray-tiles.jpg",
+    "guideImage": "assets/paints/amazing-gray-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Anew Gray",
+    "category": "Greige",
+    "page": 22,
+    "slug": "anew-gray",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone (SA/AU)",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Country French Chopped",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Emser Tile Caverna: Fossil / Grout 5093 Warm Gray"
+    ],
+    "accents": [
+      "Incredible White",
+      "Modern Gray",
+      "Fawn Brindle"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/anew-gray-paint.jpg",
+    "accentImage": "assets/paints/anew-gray-accents.jpg",
+    "tileImage": "assets/paints/anew-gray-tiles.jpg",
+    "guideImage": "assets/paints/anew-gray-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone (SA/AU)",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Fawn Brindle",
+    "category": "Greige",
+    "page": 23,
+    "slug": "fawn-brindle",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone (SA/AU)",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Granbury Quarry Chop (HOU/SA/AU)",
+      "Granbury Cream Quarry Chop (DFW)",
+      "Country French Chopped",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Light Moss / Grout 5004 Bahama Beige",
+      "Level 2 \u2014 Emser Caverna: Gravel / Grout 5027 Silver"
+    ],
+    "accents": [
+      "Snowbound",
+      "Modern Gray",
+      "Anew Gray",
+      "Sealskin"
+    ],
+    "darkAccents": [
+      "Tricorn Black",
+      "Urbane Bronze"
+    ],
+    "paintImage": "assets/paints/fawn-brindle-paint.jpg",
+    "accentImage": "assets/paints/fawn-brindle-accents.jpg",
+    "tileImage": "assets/paints/fawn-brindle-tiles.jpg",
+    "guideImage": "assets/paints/fawn-brindle-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone (SA/AU)",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Granbury Quarry Chop (HOU/SA/AU)",
+        "image": "assets/stones/granbury-quarry-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Granbury Cream Quarry Chop (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Worldly Gray",
+    "category": "Greige",
+    "page": 24,
+    "slug": "worldly-gray",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone (SA/AU)",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Country French Chopped",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Emser Tile Caverna: Fossil / Grout 5093 Warm Gray",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Off White / Grout 5014 Biscuit"
+    ],
+    "accents": [
+      "Shoji White",
+      "Worldly Gray",
+      "Intellectual Gray",
+      "Felted Wool",
+      "Urbane Bronze"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/worldly-gray-paint.jpg",
+    "accentImage": "assets/paints/worldly-gray-accents.jpg",
+    "tileImage": "assets/paints/worldly-gray-tiles.jpg",
+    "guideImage": "assets/paints/worldly-gray-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone (SA/AU)",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Colonnade Gray",
+    "category": "Gray",
+    "page": 26,
+    "slug": "colonnade-gray",
+    "stones": [
+      "Blanco Sawn Chop",
+      "Blanco Ledgestone (SA/AU)",
+      "Brazos Canyon Ledgestone (HOU)",
+      "Sonoma White (DFW)",
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Eastern Buff Sawn Chop",
+      "Country French Chopped"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Emser Caverna: Magma / Grout 5010 Black"
+    ],
+    "accents": [
+      "Origami White",
+      "Pewter Tankard",
+      "Black Fox"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Tricorn Black",
+      "Black Magic"
+    ],
+    "paintImage": "assets/paints/colonnade-gray-paint.jpg",
+    "accentImage": "assets/paints/colonnade-gray-accents.jpg",
+    "tileImage": "assets/paints/colonnade-gray-tiles.jpg",
+    "guideImage": "assets/paints/colonnade-gray-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Ledgestone (SA/AU)",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Brazos Canyon Ledgestone (HOU)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Crushed Ice",
+    "category": "Gray",
+    "page": 27,
+    "slug": "crushed-ice",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Sonoma Charcoal",
+      "French Chateau (DFW)",
+      "Edinburgh (Houston)",
+      "Ashland Gray (Houston)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Mentor / Grout 5027 Silver",
+      "Level 1 \u2014 DT Astronomy: Solstice / Grout 5019 Pearl Gray",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Charcoal / Grout 5009 Gray"
+    ],
+    "accents": [
+      "Crushed Ice",
+      "Light French Gray",
+      "Westchester Gray"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Tricorn Black",
+      "Grizzle Gray"
+    ],
+    "paintImage": "assets/paints/crushed-ice-paint.jpg",
+    "accentImage": "assets/paints/crushed-ice-accents.jpg",
+    "tileImage": "assets/paints/crushed-ice-tiles.jpg",
+    "guideImage": "assets/paints/crushed-ice-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma Charcoal",
+        "image": "assets/stones/sonoma-charcoal.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Edinburgh (Houston)",
+        "image": "assets/stones/edinburgh.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      }
+    ]
+  },
+  {
+    "name": "Dorian Gray",
+    "category": "Gray",
+    "page": 28,
+    "slug": "dorian-gray",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Sonoma Charcoal",
+      "French Chateau (DFW)",
+      "Ashland Gray (Houston)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Mentor / Grout 5027 Silver",
+      "Level 1 \u2014 DT Astronomy: Nebula / Grout 5047 Charcoal",
+      "Level 2 \u2014 Emser Tile Caverna: Tufa / Grout 5107 Iron"
+    ],
+    "accents": [
+      "Eider White",
+      "Repose Gray",
+      "Gauntlet Gray"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Tricorn Black",
+      "Black Fox"
+    ],
+    "paintImage": "assets/paints/dorian-gray-paint.jpg",
+    "accentImage": "assets/paints/dorian-gray-accents.jpg",
+    "tileImage": "assets/paints/dorian-gray-tiles.jpg",
+    "guideImage": "assets/paints/dorian-gray-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma Charcoal",
+        "image": "assets/stones/sonoma-charcoal.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      }
+    ]
+  },
+  {
+    "name": "Drift of Mist",
+    "category": "Gray",
+    "page": 29,
+    "slug": "drift-of-mist",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Blue Marble Sawn Chop",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Country French",
+      "French Chateau (DFW)",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Mentor / Grout 5027 Silver",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 Emser Caverna: Gravel / Grout 5027 Silver"
+    ],
+    "accents": [
+      "Eider White",
+      "Drift of Mist",
+      "Gray Clouds",
+      "Roycroft Pewter",
+      "Thunder Gray"
+    ],
+    "darkAccents": [
+      "Greenblack",
+      "Iron Ore",
+      "Tricorn Black",
+      "Black Magic",
+      "Peppercorn"
+    ],
+    "paintImage": "assets/paints/drift-of-mist-paint.jpg",
+    "accentImage": "assets/paints/drift-of-mist-accents.jpg",
+    "tileImage": "assets/paints/drift-of-mist-tiles.jpg",
+    "guideImage": "assets/paints/drift-of-mist-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Gossamer Veil",
+    "category": "Gray",
+    "page": 30,
+    "slug": "gossamer-veil",
+    "stones": [
+      "Brazos Canyon Ledgestone (Houston)",
+      "Blanco Ledgestone",
+      "Sonoma White (DFW)",
+      "Blanco Sawn Chop",
+      "Aspen Blend Chopped",
+      "Aspen Blend Ledgestone (Level 2)",
+      "Country French Chopped",
+      "Eastern Buff Sawn Chop"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Hero / Grout 5103 Cobblestone",
+      "Level 1 \u2014 DT Reminiscent: Memento White / Grout 5103 Cobblestone",
+      "Level 2 \u2014 DT Outlander: Moonlight\u2013Palazzo / Grout 5077 Frost"
+    ],
+    "accents": [
+      "Eider White",
+      "Gossamer Veil",
+      "Fawn Brindle",
+      "Thunder Gray"
+    ],
+    "darkAccents": [
+      "Greenblack",
+      "Iron Ore",
+      "Tricorn Black",
+      "Black Magic",
+      "Peppercorn"
+    ],
+    "paintImage": "assets/paints/gossamer-veil-paint.jpg",
+    "accentImage": "assets/paints/gossamer-veil-accents.jpg",
+    "tileImage": "assets/paints/gossamer-veil-tiles.jpg",
+    "guideImage": "assets/paints/gossamer-veil-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Brazos Canyon Ledgestone (Houston)",
+        "image": "assets/stones/brazos-canyon-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Blanco Ledgestone",
+        "image": "assets/stones/blanco-ledgestone.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma White (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Blanco Sawn Chop",
+        "image": "assets/stones/blanco-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Chopped",
+        "image": "assets/stones/aspen-blend-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Aspen Blend Ledgestone (Level 2)",
+        "image": "assets/stones/aspen-blend-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Country French Chopped",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Eastern Buff Sawn Chop",
+        "image": null,
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      }
+    ]
+  },
+  {
+    "name": "Knitting Needles",
+    "category": "Gray",
+    "page": 31,
+    "slug": "knitting-needles",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Sonoma Charcoal",
+      "French Chateau (DFW)",
+      "Edinburgh (Houston)",
+      "Ashland Gray (Houston)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Mentor / Grout 5027 Silver",
+      "Level 1 \u2014 DT Astronomy: Nebula / Grout 5047 Charcoal",
+      "Level 2 \u2014 Emser Caverna: Magma / Grout 5010 Black"
+    ],
+    "accents": [
+      "Extra White",
+      "Knitting Needles"
+    ],
+    "darkAccents": [
+      "Grizzle Gray",
+      "Tricorn Black",
+      "Iron Ore"
+    ],
+    "paintImage": "assets/paints/knitting-needles-paint.jpg",
+    "accentImage": "assets/paints/knitting-needles-accents.jpg",
+    "tileImage": "assets/paints/knitting-needles-tiles.jpg",
+    "guideImage": "assets/paints/knitting-needles-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma Charcoal",
+        "image": "assets/stones/sonoma-charcoal.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Edinburgh (Houston)",
+        "image": "assets/stones/edinburgh.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      }
+    ]
+  },
+  {
+    "name": "Light French Gray",
+    "category": "Gray",
+    "page": 32,
+    "slug": "light-french-gray",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "Sonoma Charcoal",
+      "French Chateau (DFW)",
+      "Edinburgh (Houston)",
+      "Ashland Gray (Houston)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Mentor / Grout 5027 Silver",
+      "Level 1 \u2014 DT Astronomy: Nebula / Grout 5047 Charcoal",
+      "Level 2 \u2014 Marazzi Moroccan Concrete: Charcoal / Grout 5009 Gray"
+    ],
+    "accents": [
+      "Origami White",
+      "Light French Gray"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Tricorn Black",
+      "Grizzle Gray"
+    ],
+    "paintImage": "assets/paints/light-french-gray-paint.jpg",
+    "accentImage": "assets/paints/light-french-gray-accents.jpg",
+    "tileImage": "assets/paints/light-french-gray-tiles.jpg",
+    "guideImage": "assets/paints/light-french-gray-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Sonoma Charcoal",
+        "image": "assets/stones/sonoma-charcoal.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Edinburgh (Houston)",
+        "image": "assets/stones/edinburgh.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      },
+      {
+        "name": "Ashland Gray (Houston)",
+        "image": "assets/stones/ashland-gray.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      }
+    ]
+  },
+  {
+    "name": "Repose Gray",
+    "category": "Gray",
+    "page": 33,
+    "slug": "repose-gray",
+    "stones": [
+      "Blue Marble Sawn Chop",
+      "Bluebonnet Chopped",
+      "Bluebonnet Ledgestone (Level 2)",
+      "French Chateau (DFW)",
+      "Edinburgh (Houston)"
+    ],
+    "tiles": [
+      "Standard \u2014 DT Scripter: Rebel / Grout 5107 Iron",
+      "Level 1 \u2014 DT Astronomy: Solstice / Grout 5019 Pearl Gray",
+      "Level 2 \u2014 Emser Caverna: Magma / Grout 5010 Black"
+    ],
+    "accents": [
+      "Eider White",
+      "Dorian Gray",
+      "Gauntlet Gray",
+      "Black Fox"
+    ],
+    "darkAccents": [
+      "Iron Ore",
+      "Tricorn Black"
+    ],
+    "paintImage": "assets/paints/repose-gray-paint.jpg",
+    "accentImage": "assets/paints/repose-gray-accents.jpg",
+    "tileImage": "assets/paints/repose-gray-tiles.jpg",
+    "guideImage": "assets/paints/repose-gray-guide.jpg",
+    "stoneCards": [
+      {
+        "name": "Blue Marble Sawn Chop",
+        "image": "assets/stones/blue-marble-sawn-chop.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Chopped",
+        "image": "assets/stones/bluebonnet-chopped.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Bluebonnet Ledgestone (Level 2)",
+        "image": "assets/stones/bluebonnet-ledgestone.jpg",
+        "level2": true,
+        "dfwOnly": false,
+        "houstonSpecific": false
+      },
+      {
+        "name": "French Chateau (DFW)",
+        "image": null,
+        "level2": false,
+        "dfwOnly": true,
+        "houstonSpecific": false
+      },
+      {
+        "name": "Edinburgh (Houston)",
+        "image": "assets/stones/edinburgh.jpg",
+        "level2": false,
+        "dfwOnly": false,
+        "houstonSpecific": true
+      }
+    ]
+  }
+]
