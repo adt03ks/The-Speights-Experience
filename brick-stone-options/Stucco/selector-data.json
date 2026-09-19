@@ -2127,7 +2127,7 @@
       },
       {
         "name": "Country French",
-        "image": null,
+        "image": "assets/stones/country-french-blend.jpg",
         "level2": false,
         "dfwOnly": false,
         "houstonSpecific": false
@@ -2141,7 +2141,7 @@
       },
       {
         "name": "Eastern Buff Sawn Chop",
-        "image": null,
+        "image": "assets/stones/eastern-buff-sawn-chop.jpg",
         "level2": false,
         "dfwOnly": false,
         "houstonSpecific": false
