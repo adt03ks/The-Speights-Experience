@@ -50,7 +50,19 @@
         <h2>3. Choose accent treatment</h2>
         <div class="sub">The guide allows one or two fascia / soffit / garage-door colors, or a single “dark option” color for all elements. The source palette is shown alongside the controls.</div>
         <div class="guide-row" style="margin-top:12px">
-          <div class="guide-card"><img id="accentGuideImg" alt="Accent color guide"></div>
+         <div class="guide-card" style="height:auto; overflow:visible;">
+  <img
+    id="accentGuideImg"
+    alt="Accent color guide"
+    style="
+      width:100%;
+      height:auto;
+      max-height:none;
+      object-fit:contain;
+      display:block;
+    "
+  >
+</div>
           <div>
             <div class="radio-row">
               <label class="radio-pill"><input type="radio" name="accentMode" value="mix" checked> Mix & match up to two</label>
@@ -69,7 +81,19 @@
       <div class="section">
         <h2>4. Choose front porch tile</h2>
         <div class="guide-row" style="margin-top:12px">
-          <div class="guide-card"><img id="tileGuideImg" alt="Front porch tile guide"></div>
+<div class="guide-card" style="height:auto; overflow:visible;">
+  <img
+    id="tileGuideImg"
+    alt="Front porch tile guide"
+    style="
+      width:100%;
+      height:auto;
+      max-height:none;
+      object-fit:contain;
+      display:block;
+    "
+  >
+</div>
           <div><label for="tileSelect">Selected porch tile</label><select id="tileSelect"><option value="">Choose a tile</option></select><div class="sub" style="margin-top:8px">The level and grout details are included in each option label.</div></div>
         </div>
       </div>
