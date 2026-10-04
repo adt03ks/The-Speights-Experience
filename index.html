@@ -1466,66 +1466,7 @@ const videoLinks = {
       if (event.key === "ArrowLeft") showGalleryImage(-1);
       if (event.key === "ArrowRight") showGalleryImage(1);
     });
-    const registerModal = document.getElementById("registerModal");
-const registerButtons = document.querySelectorAll("[data-open-register-form]");
-const registerClose = document.querySelector(".register-modal-close");
-
-function openRegisterModal() {
-  if (!registerModal) return;
-
-  registerModal.classList.add("is-open");
-  registerModal.setAttribute("aria-hidden", "false");
-
-}
-
-function closeRegisterModal() {
-  if (!registerModal) return;
-
-  registerModal.classList.remove("is-open");
-  registerModal.setAttribute("aria-hidden", "true");
-}
-
-/* Open from buttons on the index page */
-registerButtons.forEach(function (button) {
-  button.addEventListener("click", function (event) {
-    event.preventDefault();
-    openRegisterModal();
-  });
-});
-
-/* Close button */
-if (registerClose) {
-  registerClose.addEventListener("click", closeRegisterModal);
-}
-
-/* Close when clicking outside the form */
-if (registerModal) {
-  registerModal.addEventListener("click", function (event) {
-    if (event.target === registerModal) {
-      closeRegisterModal();
-    }
-  });
-}
-
-/* Close with Escape */
-document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") {
-    closeRegisterModal();
-  }
-});
-
-/* 
-   Open registration automatically when arriving from:
-   index.html#register
-*/
-function checkForRegistrationLink() {
-  if (window.location.hash === "#register") {
-    openRegisterModal();
-  }
-}
-
-checkForRegistrationLink();
-
+   
 window.addEventListener("hashchange", checkForRegistrationLink);
   </script>
   <script>
