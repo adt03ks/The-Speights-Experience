@@ -871,6 +871,14 @@
     <a href="lot-opportunities.html">Explore Lot Options</a>
     <a href="floorplan-comparison.html">Compare Floor Plans</a>
     <a href="riceland-70-included-features.html">Included Features</a>
+     <a href="https://adt03ks.github.io/Speights-Mortgage-Calculator-/"
+     target="_blank"
+     rel="noopener">
+    Mortgage Calculator
+  </a>
+  <a href="#"
+     id="menuRegisterAngela">
+    Register with Angela Speights</a>
   </nav>
 </header>
   <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
@@ -1529,7 +1537,24 @@ document.addEventListener("keydown", (event) => {
           navMenu.classList.remove("active");
         });
       });
+const menuRegisterAngela = document.getElementById("menuRegisterAngela");
 
+if (menuRegisterAngela) {
+  menuRegisterAngela.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    // Close hamburger menu
+    navMenu.classList.remove("active");
+
+    // Open Angela's registration form
+    const registerModal = document.getElementById("registerModal");
+
+    if (registerModal) {
+      registerModal.classList.add("is-open");
+      registerModal.setAttribute("aria-hidden", "false");
+    }
+  });
+}
       document.addEventListener("click", function (event) {
         if (!navMenu.contains(event.target) && !hamburgerBtn.contains(event.target)) {
           navMenu.classList.remove("active");
