@@ -1259,9 +1259,12 @@
     Explore Lot Options
   </a>
 
-         <button class="btn btn-primary connect-register-btn" type="button" data-open-register-form>
-    Let's Connect - Register Today!
-  </button>
+        <a class="btn btn-primary"
+   href="https://share-na2.hsforms.com/282sc8OMfSeaoRKMBnFYQ2Q42926n"
+   target="_blank"
+   rel="noopener">
+  Let's Connect - Register Today!
+</a>
 </div>
       </div>
     </section>
@@ -1290,25 +1293,6 @@
   </a>
           <a class="btn btn-secondary" style="background: var(--black); border-color: var(--black);" href="mailto:Angela.Speights@perryhomes.com?subject=I%20would%20like%20more%20details%20about%20this%20Perry%20Homes%20plan">Ask Angela About This Plan</a>
         </div>
-        <div class="register-modal" id="registerModal" aria-hidden="true">
-  <div class="register-modal-box" role="dialog" aria-modal="true" aria-labelledby="registerModalTitle">
-    <div class="register-modal-top">
-      <h3 id="registerModalTitle">Let's Connect</h3>
-      <button class="register-modal-close" type="button" aria-label="Close registration form">×</button>
-    </div>
-
-    <div class="register-modal-body">
-      <p>
-        Register today so Angela can help you explore Perry Homes options, lot opportunities,
-        floorplans, pricing, and next steps with confidence.
-      </p>
-
-      <script src="https://share-na2.hsforms.com/282sc8OMfSeaoRKMBnFYQ2Q42926n"defer></script>
-      <div  class="hs-form-frame" 
-        data-region="na2" 
-        data-form-id="f36b1cf0-e31f-49e6-a844-a3019c5610d9" 
-        data-portal-id="245646671">
-      </div>
     </div>
   </div>
 </div>
@@ -1492,7 +1476,6 @@ function openRegisterModal() {
   registerModal.classList.add("is-open");
   registerModal.setAttribute("aria-hidden", "false");
 
-  document.body.style.overflow = "hidden";
 }
 
 function closeRegisterModal() {
@@ -1500,8 +1483,6 @@ function closeRegisterModal() {
 
   registerModal.classList.remove("is-open");
   registerModal.setAttribute("aria-hidden", "true");
-
-  document.body.style.overflow = "";
 }
 
 /* Open from buttons on the index page */
