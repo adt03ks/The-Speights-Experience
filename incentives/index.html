@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071b32">
+  <meta name="description" content="Explore homebuyer incentives and Realtor Rewards in Riceland with Angela Speights, Perry Homes. View financing options, appliance-package details, and Realtor Rewards terms.">
+  <title>Explore Incentives | Angela Speights | Perry Homes Riceland</title>
+
+  <style>
+    :root {
+      --navy:#071b32;
+      --navy2:#102c4b;
+      --gold:#e0b45e;
+      --ink:#162b40;
+      --muted:#586a7b;
+      --cream:#faf7f0;
+      --line:#e1e7eb;
+      --green:#174b3b;
+      --coral:#b95448;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      background:#fff;
+      color:var(--ink);
+      font:16px/1.65 Arial,Helvetica,sans-serif;
+    }
+
+    a {
+      text-decoration:none;
+      color:inherit;
+    }
+
+    a:focus-visible {
+      outline:3px solid var(--gold);
+      outline-offset:4px;
+    }
+
+    .wrap {
+      width:calc(100% - 40px);
+      max-width:1160px;
+      margin:auto;
+    }
+
+    /* HEADER */
+
+    .top {
+      background:#fff;
+      border-bottom:1px solid var(--line);
+    }
+
+    .nav {
+      min-height:76px;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .brand {
+      font-weight:900;
+      letter-spacing:1.2px;
+      font-size:21px;
+      color:var(--navy);
+      line-height:1.3;
+    }
+
+    .brand small {
+      display:block;
+      font-size:10px;
+      font-weight:500;
+      color:#687a8b;
+      letter-spacing:2px;
+      margin-top:3px;
+    }
+
+    .nav-link {
+      border:1px solid #d8e0e7;
+      color:var(--navy);
+      font-size:13px;
+      font-weight:800;
+      padding:11px 16px;
+      border-radius:7px;
+    }
+
+    /* HERO */
+
+    .hero {
+      background:linear-gradient(118deg,#081b30,#16385d);
+      color:#fff;
+      overflow:hidden;
+    }
+
+    .hero-grid {
+      display:grid;
+      grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);
+      align-items:center;
+      gap:65px;
+      padding:64px 0;
+    }
+
+    .eyebrow {
+      color:var(--gold);
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
+    h1 {
+      font-size:clamp(40px,5vw,65px);
+      line-height:1.08;
+      letter-spacing:-1.8px;
+      margin:18px 0 24px;
+    }
+
+    h1 span { color:var(--gold); }
+
+    .hero p {
+      color:#dbe5ee;
+      max-width:590px;
+      font-size:16px;
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+
+    /* BUTTONS */
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:13px 22px;
+      border-radius:7px;
+      font-size:14px;
+      font-weight:900;
+      text-align:center;
+    }
+
+    .btn-gold {
+      background:var(--gold);
+      color:var(--navy);
+    }
+
+    .btn-ghost {
+      border:1px solid #b6cadb;
+      color:#fff;
+    }
+
+    .btn:hover,
+    .card-link:hover {
+      filter:brightness(1.08);
+    }
+
+    /* PROFESSIONAL IMAGE */
+
+    .portrait-shell {
+      max-width:385px;
+      margin:0 auto;
+      box-shadow:0 22px 60px #0006;
+      border:1px solid #e0b45e55;
+      background:#071b32;
+      border-radius:8px;
+      overflow:hidden;
+    }
+
+    .portrait-shell img {
+      display:block;
+      width:100%;
+      height:auto;
+    }
+
+    .portrait-caption {
+      font-size:11px;
+      color:#ccdae6;
+      text-align:center;
+      margin-top:10px;
+    }
+
+    /* SECTIONS */
+
+    .section { padding:77px 0; }
+
+    .section-muted { background:var(--cream); }
+
+    .center { text-align:center; }
+
+    .kicker {
+      color:#916b35;
+      font-weight:900;
+      text-transform:uppercase;
+      letter-spacing:1.8px;
+      font-size:12px;
+    }
+
+    h2 {
+      font-size:clamp(29px,3.5vw,43px);
+      letter-spacing:-1px;
+      line-height:1.2;
+      margin:13px 0 17px;
+    }
+
+    .lead {
+      max-width:750px;
+      color:var(--muted);
+      margin:0 auto 37px;
+    }
+
+    /* INCENTIVE CARDS */
+
+    .cards {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .card {
+      background:white;
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:31px 26px;
+      display:flex;
+      flex-direction:column;
+      min-height:375px;
+      box-shadow:0 7px 23px #081b300a;
+    }
+
+    .card .symbol {
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      background:#f7f2e5;
+      color:var(--navy);
+      font-size:25px;
+      border-radius:13px;
+    }
+
+    .card .tag {
+      margin-top:19px;
+      color:#927346;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-size:11px;
+      font-weight:800;
+    }
+
+    .card h3 {
+      font-size:23px;
+      line-height:1.24;
+      color:var(--navy);
+      margin:9px 0 12px;
+    }
+
+    .card p {
+      color:var(--muted);
+      font-size:14px;
+      margin:0 0 15px;
+    }
+
+    .card .card-link {
+      margin-top:auto;
+      display:inline-block;
+      padding:14px 17px;
+      border-radius:7px;
+      background:var(--navy);
+      color:#fff;
+      font-weight:800;
+      font-size:14px;
+      text-align:center;
+    }
+
+    .fine {
+      font-size:12px;
+      color:#657380;
+      line-height:1.75;
+    }
+
+    .notice {
+      border-left:4px solid #c7a052;
+      background:#fff9ed;
+      padding:18px 22px;
+      margin-top:28px;
+      border-radius:5px;
+      text-align:left;
+      color:#4f4736;
+      font-size:13px;
+    }
+
+    /* FEATURED HOME */
+
+    .feature-band {
+      background:var(--navy);
+      color:#fff;
+      padding:56px 0;
+    }
+
+    .feature-grid {
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:28px;
+    }
+
+    .feature-band h2 {
+      margin:10px 0;
+      font-size:31px;
+    }
+
+    .feature-band p {
+      color:#d5e0e9;
+      max-width:650px;
+      margin:0;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      background:#061525;
+      color:#c3d0dc;
+      padding:28px 0;
+      text-align:center;
+      font-size:12px;
+    }
+
+    .footer a { color:#f2d391; }
+
+    .address {
+      font-size:12px;
+      color:#8293a4;
+      margin:8px 0 0;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:920px) {
+      .hero-grid { gap:32px; }
+
+      .cards { grid-template-columns:1fr 1fr; }
+
+      .card:last-child {
+        grid-column:1/-1;
+        min-height:auto;
+      }
+    }
+
+    @media(max-width:660px) {
+      .nav {
+        align-items:flex-start;
+        flex-direction:column;
+        padding:15px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns:1fr;
+        padding:44px 0;
+      }
+
+      .hero-photo { order:-1; }
+
+      .portrait-shell { max-width:265px; }
+
+      .section { padding:54px 0; }
+
+      .cards { grid-template-columns:1fr; }
+
+      .card:last-child { grid-column:auto; }
+
+      .card { min-height:auto; }
+
+      .feature-grid {
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .hero-actions .btn,
+      .feature-grid .btn {
+        width:100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="top">
+  <div class="wrap nav">
+
+    <a class="brand" href="https://angelaspeights.com">
+      ANGELA SPEIGHTS
+      <small>NEW HOME SALES · PERRY HOMES · RICELAND</small>
+    </a>
+
+    <a class="nav-link" href="/deal-of-the-week.html">
+      View Deal of the Week ↗
+    </a>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO WITH ANGELA'S IMAGE -->
+
+<section class="hero">
+  <div class="wrap hero-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        Homebuying Opportunities · Riceland
+      </div>
+
+      <h1>
+        Explore Your
+        <span>Incentive Opportunities.</span>
+      </h1>
+
+      <p>
+        Buying a new home is an important investment.
+        Explore Perry Homes financing opportunities,
+        learn about an advertised appliance package,
+        and discover the separate Realtor Rewards
+        program for participating agents.
+      </p>
+
+      <p>
+        I'll help you understand which programs
+        apply to the home you're considering,
+        the deadlines, and any restrictions
+        before you make your decision.
+      </p>
+
+      <div class="hero-actions">
+
+        <a class="btn btn-gold" href="#explore">
+          Explore All Three ↓
+        </a>
+
+        <a class="btn btn-ghost" href="/deal-of-the-week.html">
+          Featured Home: 12302 Hyland Ln.
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="hero-photo">
+
+      <div class="portrait-shell">
+
+        <img
+          src="/assets/angela-speights-profile.png"
+          alt="Angela Speights, Perry Homes Riceland Sales Professional"
+          width="691"
+          height="1083">
+
+      </div>
+
+      <div class="portrait-caption">
+        Angela Speights · New Home Sales Professional
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- INCENTIVES OVERVIEW -->
+
+<section class="section section-muted" id="explore">
+  <div class="wrap">
+
+    <div class="center">
+
+      <div class="kicker">
+        Your Incentive Guide
+      </div>
+
+      <h2>
+        Three Programs. The Details You Need.
+      </h2>
+
+      <p class="lead">
+        Open any incentive below to see its
+        dedicated page with program information,
+        terms, and ways to ask about eligibility.
+
+        Links open in a new tab, so you can
+        return here easily.
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+      <!-- HOME APPLIANCES -->
+
+      <article class="card">
+
+        <div class="symbol" aria-hidden="true">⌂</div>
+
+        <div class="tag">
+          Home Essentials
+        </div>
+
+        <h3>Home Appliance Package</h3>
+
+        <p>
+          See the previously advertised Riceland
+          package featuring a GE refrigerator,
+          washer and electric dryer,
+          plus faux-wood blinds.
+        </p>
+
+        <p>
+          <strong>Important:</strong>
+          The supplied flyer's September 2026
+          qualifying period has ended.
+
+          Ask Angela to confirm whether an
+          updated offer is available.
+        </p>
+
+        <a
+          class="card-link"
+          href="/incentives/home-appliances.html"
+          target="_blank"
+          rel="noopener noreferrer">
+          Explore Appliance Details ↗
+        </a>
+
+      </article>
+
+      <!-- SPECIAL FINANCING -->
+
+      <article class="card">
+
+        <div class="symbol" aria-hidden="true">%</div>
+
+        <div class="tag">
+          Houston Year End Sales Event
+        </div>
+
+        <h3>
+          Special Financing &amp; Interest Rates
+        </h3>
+
+        <p>
+          Compare the advertised 4.99% 7-Year ARM,
+          5.99% 30-Year Fixed, and 5.49%
+          30-Year Fixed Government financing options,
+          plus potential Flex Cash on select inventory.
+        </p>
+
+        <p>
+          <strong>Event:</strong>
+          Purchase November 2–30, 2026;
+          qualifying homes must close by
+          December 31, 2026.
+
+          Credit approval and full restrictions apply.
+        </p>
+
+        <a
+          class="card-link"
+          href="/incentives/special-financing.html"
+          target="_blank"
+          rel="noopener noreferrer">
+          Explore Financing Details ↗
+        </a>
+
+      </article>
+
+      <!-- REALTOR REWARDS -->
+
+      <article class="card">
+
+        <div class="symbol" aria-hidden="true">★</div>
+
+        <div class="tag">
+          For Eligible Real Estate Agents
+        </div>
+
+        <h3>Riceland Realtor Rewards</h3>
+
+        <p>
+          See the advertised escalating bonus tiers:
+          $250 for the 1st–3rd qualifying closings,
+          $500 for the 4th–5th,
+          and $1,000 from the 6th closing onward.
+        </p>
+
+        <p>
+          <strong>Program:</strong>
+          August 1–December 31, 2026.
+
+          These are agent rewards,
+          not a cash incentive paid to the homebuyer.
+
+          Eligibility and program rules apply.
+        </p>
+
+        <a
+          class="card-link"
+          href="/incentives/realtor-bonus.html"
+          target="_blank"
+          rel="noopener noreferrer">
+          Explore Realtor Rewards ↗
+        </a>
+
+      </article>
+
+    </div>
+
+    <!-- IMPORTANT NOTICE -->
+
+    <div class="notice">
+
+      <strong>Before Choosing an Incentive:</strong>
+
+      These are distinct programs with
+      different eligibility rules.
+
+      Not all offers apply to every home
+      or can be combined.
+
+      The appliance flyer is historical,
+      and the specific financing and Flex Cash
+      amounts for 12302 Hyland Ln. must be verified
+      with Perry Homes and the participating lender.
+
+      Rates, APRs, prices, and terms can change.
+
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURED HOME -->
+
+<section class="feature-band">
+  <div class="wrap feature-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        Featured Home · Riceland
+      </div>
+
+      <h2>
+        12302 Hyland Ln. · $464,900
+      </h2>
+
+      <p>
+        Mont Belvieu, TX 77523 ·
+        4 bedrooms · 3 bathrooms ·
+        2,544 square feet ·
+        9,116-square-foot corner lot.
+
+        Discover more photos, property details,
+        and the offer inquiry form.
+      </p>
+
+    </div>
+
+    <a class="btn btn-gold"
+       href="/deal-of-the-week.html">
+      Explore This Home →
+    </a>
+
+  </div>
+</section>
+
+<!-- CONTACT ANGELA -->
+
+<section class="section center">
+  <div class="wrap">
+
+    <div class="kicker">
+      Personal Guidance
+    </div>
+
+    <h2>
+      Have a Question About Eligibility?
+    </h2>
+
+    <p class="lead">
+      I'd be glad to help you navigate
+      the current promotions and find out
+      what may apply to your new home purchase.
+    </p>
+
+    <a
+      class="btn btn-gold"
+      href="mailto:Angela.Speights@perryhomes.com?subject=Riceland%20Incentive%20Information%20Request">
+      Email Angela ↗
+    </a>
+
+    <a
+      class="btn"
+      style="background:var(--navy);color:white;margin-left:8px"
+      href="tel:+13468674865">
+      Call 346-867-4865
+    </a>
+
+    <p class="fine"
+       style="margin:25px auto 0;max-width:790px">
+
+      Offer descriptions are informational
+      and do not guarantee eligibility,
+      availability, pricing, or approval.
+
+      Please review full written program
+      restrictions and lender disclosures.
+
+      Realtor Rewards are for eligible
+      participating agents and are not
+      a buyer rebate.
+
+      Subject to Perry Homes and community
+      policies. Equal Housing Opportunity.
+
+    </p>
+
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="wrap">
+
+    <strong>Angela Speights</strong>
+    · Sales Professional, Perry Homes – Riceland
+
+    <br>
+
+    <a href="https://angelaspeights.com">
+      AngelaSpeights.com
+    </a>
+
+    ·
+
+    <a href="mailto:Angela.Speights@perryhomes.com">
+      Angela.Speights@perryhomes.com
+    </a>
+
+    <p class="address">
+      Offer eligibility and information must
+      be confirmed before a purchase decision.
+    </p>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
