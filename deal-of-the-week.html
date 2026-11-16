@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1d32">
+  <meta name="description" content="Deal of the Week: 4 bedrooms, 3 baths, 2,544 square feet, and a 9,116 sq ft corner lot for $464,900.">
+  <title>Deal of the Week | Angela Speights | Perry Homes</title>
+
+  <style>
+    :root {
+      --navy: #0b1d32;
+      --blue: #204f75;
+      --gold: #d8ad5f;
+      --cream: #f8f5ee;
+      --red: #c9272a;
+      --text: #102238;
+      --muted: #5f6c79;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      background: #fff;
+    }
+
+    a { text-decoration: none; }
+
+    a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .container {
+      max-width: 1160px;
+      width: calc(100% - 40px);
+      margin: auto;
+    }
+
+    /* HEADER */
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e6e8ea;
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: var(--navy);
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .brand small {
+      display: block;
+      font-size: 11px;
+      font-weight: normal;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #687382;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      padding: 15px 23px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 800;
+      text-align: center;
+      transition: .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-dark {
+      background: var(--navy);
+      color: #fff;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-outline {
+      border: 1px solid #aebdca;
+      color: #fff;
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      color: white;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      min-height: 540px;
+    }
+
+    .hero-content {
+      padding: 70px 40px 70px max(30px, calc((100vw - 1160px) / 2));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(40px, 5vw, 66px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin: 20px 0;
+    }
+
+    h1 span { color: var(--gold); }
+
+    .hero-price {
+      font-size: 40px;
+      font-weight: 900;
+      margin: 5px 0;
+    }
+
+    .hero-specs {
+      color: #f0e2c3;
+      font-weight: bold;
+      margin: 8px 0 20px;
+    }
+
+    .hero-description {
+      color: #d8e0e8;
+      max-width: 470px;
+      font-size: 16px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .hero-photo {
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* PROPERTY FACTS */
+    .property-facts {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 1px solid #e6e8ea;
+    }
+
+    .fact {
+      text-align: center;
+      padding: 28px 10px;
+      border-right: 1px solid #e6e8ea;
+    }
+
+    .fact:last-child { border-right: none; }
+
+    .fact strong {
+      display: block;
+      font-size: 24px;
+      color: var(--navy);
+    }
+
+    .fact span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* MAIN SECTIONS */
+    section.content-section { padding: 75px 0; }
+
+    .cream { background: var(--cream); }
+
+    .kicker {
+      color: #9e7034;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: clamp(29px, 3.5vw, 43px);
+      line-height: 1.2;
+      letter-spacing: -1px;
+      margin: 14px 0 20px;
+    }
+
+    .intro {
+      max-width: 750px;
+      color: var(--muted);
+      margin-bottom: 35px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid #e6e6e6;
+      border-radius: 9px;
+      padding: 30px;
+    }
+
+    .feature-number {
+      font-size: 12px;
+      color: #b58039;
+      font-weight: bold;
+    }
+
+    .feature-card h3 {
+      font-size: 21px;
+      margin: 17px 0 10px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* VALUE SECTION */
+    .value-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .value-copy p { color: var(--muted); }
+
+    .value-panel {
+      background: var(--cream);
+      border: 1px solid #e8e4dc;
+      border-radius: 10px;
+      padding: 35px;
+    }
+
+    .value-panel h3 { margin-top: 0; }
+
+    .value-panel ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .value-panel li {
+      padding: 13px 0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .value-panel li::before {
+      content: "✓";
+      color: #1e7e66;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    /* INCENTIVE SECTION */
+    .incentives {
+      background: linear-gradient(135deg, #f6f8fc, #fbf6ee);
+      text-align: center;
+    }
+
+    .incentives .intro {
+      margin: 0 auto 30px;
+    }
+
+    .incentive-bubbles {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 35px auto 25px;
+    }
+
+    .incentive-bubble {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      padding: 16px 23px;
+      min-height: 60px;
+      color: var(--navy);
+      background: white;
+      border: 2px solid var(--gold);
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,.06);
+      transition: .2s;
+    }
+
+    .incentive-bubble:hover {
+      background: #fff3d8;
+      transform: translateY(-3px);
+    }
+
+    .offer-btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 20px 40px;
+      color: white;
+      background: var(--red);
+      border-radius: 100px;
+      font-size: 19px;
+      font-weight: 900;
+      box-shadow: 0 8px 20px rgba(201,39,42,.22);
+    }
+
+    .offer-btn:hover { background: #a91f23; }
+
+    .small-print {
+      color: var(--muted);
+      font-size: 12px;
+      max-width: 700px;
+      margin: 20px auto 0;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      padding: 75px 0;
+      background: #132d49;
+      color: white;
+    }
+
+    .cta-layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .cta-layout p {
+      color: #c7d3de;
+      max-width: 650px;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 210px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #071728;
+      color: #d4e0ea;
+      padding: 30px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer a { color: white; }
+
+    .disclaimer {
+      padding: 30px 0;
+      font-size: 12px;
+      color: #687382;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-photo { order: -1; min-height: 350px; }
+      .hero-content { padding: 45px 25px; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .value-grid { grid-template-columns: 1fr; }
+      .cta-layout { flex-direction: column; align-items: start; }
+    }
+
+    @media (max-width: 600px) {
+      .brand { font-size: 16px; }
+      .header-inner .btn { font-size: 11px; padding: 10px; }
+      .hero-photo { min-height: 250px; }
+      .hero-price { font-size: 34px; }
+      .property-facts { grid-template-columns: repeat(2, 1fr); }
+      .fact { border-bottom: 1px solid #e6e8ea; }
+      .fact:last-child { grid-column: span 2; }
+      .feature-grid { grid-template-columns: 1fr; }
+      section.content-section { padding: 55px 0; }
+      .incentive-bubbles { flex-direction: column; }
+      .incentive-bubble, .offer-btn { width: 100%; }
+      .hero-actions .btn, .cta-buttons { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container header-inner">
+      <a href="https://angelaspeights.com" class="brand">
+        ANGELA SPEIGHTS
+        <small>New Home Sales · Perry Homes</small>
+      </a>
+
+      <a href="#tour" class="btn btn-dark">Schedule a Tour</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-grid">
+
+        <div class="hero-content">
+          <span class="eyebrow">Angela's Deal of the Week</span>
+
+          <h1>
+            Your Next Home.<br>
+            <span>An Incredible Opportunity.</span>
+          </h1>
+
+          <div class="hero-price">$464,900</div>
+
+          <div class="hero-specs">
+            4 Bedrooms · 3 Baths · 2,544 Sq Ft · Corner Lot
+          </div>
+
+          <p class="hero-description">
+            Discover an inviting home offering 2,544 square feet
+            of living space, four bedrooms, three full bathrooms,
+            and a generous 9,116-square-foot corner lot.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#tour" class="btn btn-gold">
+              Schedule a Private Tour
+            </a>
+
+            <a href="#highlights" class="btn btn-outline">
+              Explore This Home
+            </a>
+          </div>
+
+          <p style="font-size:12px;color:#aec0cf;margin-top:25px;">
+            Current asking price. Pricing and availability subject to change.
+          </p>
+        </div>
+
+        <div class="hero-photo">
+          <!-- Upload the promotional house photo to this path -->
+          <img
+            src="assets/deal-of-the-week-home.png"
+            alt="Featured Perry Homes property with Deal of the Week banner"
+          >
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROPERTY DETAILS -->
+    <div class="container property-facts">
+
+      <div class="fact">
+        <strong>$464,900</strong>
+        <span>Current Price</span>
+      </div>
+
+      <div class="fact">
+        <strong>2,544</strong>
+        <span>Square Feet</span>
+      </div>
+
+      <div class="fact">
+        <strong>4</strong>
+        <span>Bedrooms</span>
+      </div>
+
+      <div class="fact">
+        <strong>3</strong>
+        <span>Bathrooms</span>
+      </div>
+
+      <div class="fact">
+        <strong>9,116</strong>
+        <span>Sq Ft Corner Lot</span>
+      </div>
+
+    </div>
+
+    <!-- PROPERTY HIGHLIGHTS -->
+    <section class="content-section cream" id="highlights">
+      <div class="container">
+
+        <span class="kicker">Why This Home Stands Out</span>
+
+        <h2>
+          More Than a Beautiful Home.<br>
+          A Place to Make Your Own.
+        </h2>
+
+        <p class="intro">
+          Beautiful curb appeal, a bright and inviting kitchen,
+          generous living space, and a corner lot make this
+          home worth seeing in person.
+        </p>
+
+        <div class="feature-grid">
+
+          <article class="feature-card">
+            <span class="feature-number">01 / CURB APPEAL</span>
+            <h3>A Beautiful First Impression</h3>
+            <p>
+              Light brickwork, distinctive rooflines,
+              thoughtful landscaping, and an inviting
+              front entry create a welcoming exterior.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-number">02 / MODERN KITCHEN</span>
+            <h3>The Heart of the Home</h3>
+            <p>
+              A bright kitchen with a spacious island
+              creates an inviting gathering place for
+              everyday meals and entertaining.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <span class="feature-number">03 / CORNER LOT</span>
+            <h3>Room to Enjoy Outdoors</h3>
+            <p>
+              Positioned on a 9,116-square-foot corner
+              lot, this home offers a generous setting
+              with space to enjoy outdoor living.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE -->
+    <section class="content-section">
+      <div class="container value-grid">
+
+        <div class="value-copy">
+          <span class="kicker">The Value of Your Next Move</span>
+
+          <h2>
+            The Right Home.<br>
+            The Right Opportunity.
+          </h2>
+
+          <p>
+            At a current asking price of
+            <strong>$464,900</strong>, this
+            4-bedroom, 3-bath home offers
+            2,544 square feet of living space
+            on a 9,116-square-foot corner lot.
+          </p>
+
+          <p>
+            Explore available builder incentives,
+            special financing opportunities, and
+            options that could make your next home
+            purchase more appealing.
+          </p>
+
+          <p>
+            Angela can help you understand the
+            full picture, including available
+            promotions, potential financing options,
+            and what it may take to make this home yours.
+          </p>
+
+          <a href="#incentives" class="btn btn-dark">
+            Explore Available Incentives
+          </a>
+        </div>
+
+        <div class="value-panel">
+          <h3>Let's Review Your Opportunities</h3>
+
+          <ul>
+            <li>Current asking price of $464,900</li>
+            <li>2,544 square feet of living space</li>
+            <li>4 bedrooms and 3 bathrooms</li>
+            <li>9,116-square-foot corner lot</li>
+            <li>Current builder incentive opportunities</li>
+            <li>Available financing programs</li>
+            <li>Private tour scheduling</li>
+            <li>Offer and purchasing options</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- INCENTIVES -->
+    <section class="content-section incentives" id="incentives">
+      <div class="container">
+
+        <span class="kicker">Exclusive Homebuying Opportunities</span>
+
+        <h2>
+          Add These Incentives to Your<br>
+          Home Purchase Today!
+        </h2>
+
+        <p class="intro">
+          Explore the available promotional opportunities
+          that may help make your home purchase even more
+          rewarding. Click below to review the details
+          and learn which incentives may apply.
+        </p>
+
+        <nav class="incentive-bubbles" aria-label="Incentive information">
+
+          <a
+            class="incentive-bubble"
+            href="/incentives/home-appliances.html">
+            ✦ Home Appliances
+          </a>
+
+          <a
+            class="incentive-bubble"
+            href="/incentives/special-financing.html">
+            ✦ Special Financing &amp; Interest Rates
+          </a>
+
+          <a
+            class="incentive-bubble"
+            href="/incentives/realtor-bonus.html">
+            ✦ Realtor Bonus
+          </a>
+
+        </nav>
+
+        <h3 style="margin-top:45px;font-size:25px;">
+          Ready to Make This Home Yours?
+        </h3>
+
+        <p>
+          Take the next step and let Angela know you're interested.
+        </p>
+
+        <a href="/submit-offer.html" class="offer-btn">
+          Submit an Offer Now! &rarr;
+        </a>
+
+        <p class="small-print">
+          Incentives are subject to availability,
+          eligibility, approval, and program terms.
+          Some promotions may not be combined.
+          Submitting an offer inquiry does not
+          constitute a binding purchase agreement.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section class="final-cta" id="tour">
+      <div class="container cta-layout">
+
+        <div>
+          <span class="eyebrow">Let's Make Your Next Move Happen</span>
+
+          <h2>
+            Don't Just Browse It.<br>
+            Come Experience It.
+          </h2>
+
+          <p>
+            See this beautiful corner-lot home in person
+            and let Angela guide you through pricing,
+            available incentives, and your options
+            for purchasing.
+          </p>
+        </div>
+
+        <div class="cta-buttons">
+          <a
+            href="https://angelaspeights.com"
+            class="btn btn-gold">
+            Connect With Angela
+          </a>
+
+          <a
+            href="/submit-offer.html"
+            class="btn btn-outline">
+            Submit an Offer Now!
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <div class="container disclaimer">
+      <strong>Important Information:</strong>
+      Property pricing, availability, square footage,
+      lot dimensions, included features, financing options,
+      and promotional incentives are subject to change
+      and should be verified with Perry Homes.
+      Financing is subject to lender approval.
+      This promotional page is independently prepared
+      for property marketing.
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <strong>Angela Speights</strong>
+        <div style="font-size:12px;color:#9badbc;">
+          New Home Sales Professional · Perry Homes
+        </div>
+      </div>
+
+      <a href="https://angelaspeights.com">
+        AngelaSpeights.com
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
