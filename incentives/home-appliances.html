@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1d32">
+
+<meta name="description"
+content="Explore the Riceland appliance package previously advertised by Perry Homes, including refrigerator, washer, dryer and blinds, and request current terms from Angela Speights.">
+
+<title>Home Appliances Incentive | Angela Speights</title>
+
+<style>
+:root {
+  --navy:#0b1d32;
+  --gold:#d9aa54;
+  --ink:#12283e;
+  --muted:#5e6b78;
+  --cream:#f8f5ef;
+  --line:#e4e8ee;
+  --white:#fff;
+}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  font:16px/1.65 Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:#fff;
+}
+
+a { color:inherit; }
+
+a:focus-visible,
+button:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:4px;
+}
+
+.container {
+  max-width:1100px;
+  margin:0 auto;
+  width:calc(100% - 36px);
+}
+
+/* HEADER */
+
+header {
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:20px 0;
+}
+
+.brand {
+  text-decoration:none;
+  font-weight:900;
+  letter-spacing:1px;
+  font-size:19px;
+  color:var(--navy);
+}
+
+.brand small {
+  display:block;
+  font-size:10px;
+  letter-spacing:1.5px;
+  font-weight:500;
+  color:var(--muted);
+}
+
+.nav-back {
+  color:var(--navy);
+  font-size:13px;
+  text-decoration:none;
+  font-weight:800;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 15px;
+}
+
+/* HERO */
+
+.hero {
+  background:linear-gradient(115deg,#0b1d32,#173653);
+  color:white;
+  padding:65px 0;
+}
+
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  gap:46px;
+}
+
+.eyebrow {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:var(--gold);
+  font-weight:800;
+}
+
+h1 {
+  font-size:clamp(36px,5vw,62px);
+  line-height:1.08;
+  letter-spacing:-1.8px;
+  margin:15px 0 22px;
+}
+
+h1 em {
+  color:var(--gold);
+  font-style:normal;
+}
+
+.hero p {
+  max-width:660px;
+  color:#e0e8f1;
+}
+
+.pill {
+  display:inline-flex;
+  align-items:center;
+  padding:13px 22px;
+  background:white;
+  border:2px solid var(--gold);
+  color:var(--navy);
+  border-radius:40px;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 6px 20px #0002;
+}
+
+.hero .pill { font-size:18px; }
+
+.top-note {
+  margin-top:22px;
+  font-size:13px;
+  color:#dee7f0;
+}
+
+.flyer-art {
+  display:block;
+  width:100%;
+  border-radius:12px;
+  box-shadow:0 18px 50px #0005;
+  background:#fff;
+}
+
+/* PROMOTION NOTICE */
+
+.notice {
+  background:#fff8e9;
+  border-left:5px solid #c39232;
+  padding:19px 23px;
+  border-radius:5px;
+  margin-top:30px;
+  color:#4b3b21;
+}
+
+.notice strong {
+  display:block;
+  margin-bottom:5px;
+}
+
+/* SECTIONS */
+
+.section { padding:65px 0; }
+
+.section-alt { background:var(--cream); }
+
+h2 {
+  font-size:clamp(28px,3.5vw,40px);
+  line-height:1.2;
+  letter-spacing:-.7px;
+  margin:12px 0 18px;
+}
+
+.lead {
+  color:var(--muted);
+  max-width:780px;
+}
+
+/* APPLIANCE CARDS */
+
+.items {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:30px;
+}
+
+.item {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:26px 21px;
+  min-height:175px;
+}
+
+.item .symbol { font-size:31px; }
+
+.item h3 {
+  font-size:19px;
+  margin:12px 0 5px;
+}
+
+.item p {
+  color:var(--muted);
+  font-size:14px;
+  margin:0;
+}
+
+/* OFFER DETAILS */
+
+.details {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+}
+
+.detail-card {
+  padding:25px;
+  border:1px solid var(--line);
+  border-radius:12px;
+}
+
+.detail-card h3 { margin-top:0; }
+
+.detail-card li { margin-bottom:9px; }
+
+/* BUTTONS */
+
+.btn {
+  display:inline-block;
+  background:var(--gold);
+  color:var(--navy);
+  text-decoration:none;
+  padding:16px 26px;
+  border-radius:7px;
+  font-weight:900;
+  margin:8px 10px 8px 0;
+}
+
+.btn-secondary {
+  background:var(--navy);
+  color:white;
+}
+
+/* FINAL CTA */
+
+.cta {
+  background:#122e4b;
+  color:white;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.cta p {
+  color:#dde7f2;
+  max-width:680px;
+  margin:0 auto 24px;
+}
+
+.fineprint {
+  font-size:12px;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+.fineprint p { margin:8px 0; }
+
+/* FOOTER */
+
+footer {
+  background:#081729;
+  color:#bfcbd5;
+  text-align:center;
+  padding:30px 20px;
+  font-size:13px;
+}
+
+footer a { color:#f4cf8b; }
+
+/* MOBILE */
+
+@media(max-width:800px) {
+  .hero-grid,
+  .details {
+    grid-template-columns:1fr;
+  }
+
+  .flyer-art {
+    max-width:420px;
+    margin:auto;
+  }
+
+  .items {
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:520px) {
+  .nav {
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .hero { padding:45px 0; }
+
+  .items { grid-template-columns:1fr; }
+
+  .section { padding:45px 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header>
+  <div class="container nav">
+
+    <a class="brand" href="https://angelaspeights.com">
+      ANGELA SPEIGHTS
+      <small>NEW HOME SALES · PERRY HOMES</small>
+    </a>
+
+    <a
+      class="nav-back"
+      href="https://angelaspeights.com/deal-of-the-week.html">
+      ← Back to featured home
+    </a>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        Riceland · Appliance Package Information
+      </div>
+
+      <h1>
+        Your New Home Essentials,
+        <em>All in One Place.</em>
+      </h1>
+
+      <p>
+        Explore the appliance and window-covering
+        package previously advertised for select
+        Perry Homes in Riceland.
+      </p>
+
+      <p>
+        Find out what's included and ask Angela to
+        confirm whether a current offer is available
+        for the home you're considering.
+      </p>
+
+      <a class="pill" href="#package">
+        ✦ &nbsp; Home Appliances
+      </a>
+
+      <div class="top-note">
+        Featured Property:<br>
+        12302 Hyland Ln., Mont Belvieu, TX 77523
+      </div>
+
+    </div>
+
+    <!-- ORIGINAL FLYER IMAGE -->
+
+    <img
+      class="flyer-art"
+      src="../assets/riceland-appliance-flyer.png"
+      alt="Perry Homes appliance package promotional flyer featuring washer, dryer, refrigerator and blinds">
+
+  </div>
+
+</section>
+
+<!-- IMPORTANT PROMOTION NOTICE -->
+
+<div class="container">
+
+  <div class="notice">
+
+    <strong>
+      Important: This flyer describes a promotion,
+      not a confirmed current offer.
+    </strong>
+
+    The supplied flyer requires an initial earnest-money
+    contract dated
+
+    <strong style="display:inline">
+     November 1–30, 2026
+    </strong>,
+
+    a period that has ended.
+
+    The package is shown for reference only.
+    Angela must verify any newly available promotion,
+    eligible property, package contents, and terms
+    before you rely on it.
+
+  </div>
+
+</div>
+
+<!-- PACKAGE CONTENTS -->
+
+<section class="section section-alt" id="package">
+
+  <div class="container">
+
+    <div class="eyebrow" style="color:#926c35">
+      What this incentive Includes
+    </div>
+
+    <h2>
+      Four Essentials for Move-In Day
+    </h2>
+
+    <p class="lead">
+      The advertised package covers major household
+      essentials and window coverings.
+
+      The flyer describes the following products,
+      subject to substitutions and availability.
+    </p>
+
+    <div class="items">
+
+      <article class="item">
+
+        <div class="symbol">❄️</div>
+
+        <h3>Refrigerator</h3>
+
+        <p>
+          GE stainless-steel 27.7 cu. ft.
+          French-door refrigerator.
+        </p>
+
+      </article>
+
+      <article class="item">
+
+        <div class="symbol">🫧</div>
+
+        <h3>Washer</h3>
+
+        <p>
+          GE white washer from the
+          washer-and-electric-dryer package.
+        </p>
+
+      </article>
+
+      <article class="item">
+
+        <div class="symbol">♨️</div>
+
+        <h3>Dryer</h3>
+
+        <p>
+          GE white electric dryer from
+          the matching package.
+        </p>
+
+      </article>
+
+      <article class="item">
+
+        <div class="symbol">🪟</div>
+
+        <h3>Blinds</h3>
+
+        <p>
+          Norman 2-inch faux-wood blinds.
+          Exclusions may apply.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- PACKAGE VALUE -->
+
+<section class="section">
+
+  <div class="container details">
+
+    <div>
+
+      <div class="eyebrow" style="color:#926c35">
+        Offer Snapshot
+      </div>
+
+      <h2>
+        Advertised Value:
+        Up to $10,000
+      </h2>
+
+      <p class="lead">
+        The appliance
+        package is valued at <strong>up to $10,000</strong>.
+      </p>
+
+      <p>
+        Items may be restricted by availability
+        and may be substituted by Perry Homes with
+        items of equal value at its discretion.
+      </p>
+
+      <a class="btn btn-secondary" href="#ask">
+        Ask About Current Eligibility
+      </a>
+
+    </div>
+
+    <div class="detail-card">
+
+      <h3>Terms Shown in the Flyer</h3>
+
+      <ul>
+
+        <li>
+          Applied to <strong>select Perry Homes
+          Riceland residences</strong>.
+        </li>
+
+        <li>
+          Purchaser must present this flyer at
+          their <strong>initial model-home visit</strong>.
+        </li>
+
+        <li>
+          Initial earnest-money contract must be
+         signed prior to <strong>November 30th, 2026</strong>.
+        </li>
+
+        <li>
+          Selections are to be made with the sales
+          professional at the time of contract.
+        </li>
+
+        <li>
+          The promotion could not be combined with
+          other promotions. One promotional offer
+          per contract.
+        </li>
+
+        <li>
+          Other terms, exclusions, and change or
+          cancellation rights applied.
+        </li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+</section>
+
+<!-- CONTACT CTA -->
+
+<section class="cta" id="ask">
+
+  <div class="container">
+
+    <div class="eyebrow">
+      Your Next Step
+    </div>
+
+    <h2>
+      See Which Incentives Apply to Your Home.
+    </h2>
+
+    <p>
+      Ask Angela to check the latest appliance
+      promotion, availability, and whether
+      it can be paired with other purchase
+      options for 12302 Hyland Ln.
+    </p>
+
+    <a
+      class="btn"
+      href="mailto:Angela.Speights@perryhomes.com?subject=Current%20Appliance%20Package%20Eligibility%20-%2012302%20Hyland%20Ln">
+      Ask Angela About This Package ↗
+    </a>
+
+    <a
+      class="btn btn-secondary"
+      href="https://angelaspeights.com/deal-of-the-week.html">
+      Return to Featured Home
+    </a>
+
+  </div>
+
+</section>
+
+<!-- LEGAL INFORMATION -->
+
+<div class="container fineprint"
+style="padding:25px 0 40px">
+
+  <p>
+    <strong>Disclaimer:</strong>
+
+    This informational page summarizes a Perry Homes Riceland 70' promotion.
+
+    Terms and conditions are subject to change. Confirm eligibility requirements with Angela Speights.
+
+    Program availability, eligible homes,
+    brands, models, specifications,
+    installation, offer combinations,
+    substitution rights, and conditions
+    must be confirmed with the authorized
+    sales agent.
+
+    No incentive is promised or reserved
+    by this page.
+  </p>
+
+</div>
+
+</main>
+
+<footer>
+
+  Angela Speights · New Home Sales Professional · Perry Homes
+
+  <br>
+
+  <a href="https://angelaspeights.com">
+    AngelaSpeights.com
+  </a>
+
+</footer>
+
+</body>
+</html>
