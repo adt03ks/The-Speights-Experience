@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#4f4b67">
+
+<title>Realtor Bonus | Angela Speights</title>
+
+<meta name="description" content="Learn about the Riceland Realtor Rewards program, including bonus amounts per closing, participating builders, and incentive details for agents.">
+
+<style>
+:root {
+  --navy:#0b1d32;
+  --gold:#d8ad5f;
+  --coral:#ef735e;
+  --sage:#dfe9e5;
+  --soft:#f7f7f3;
+  --ink:#27384d;
+  --muted:#5d6874;
+  --lavender:#514c68;
+  --line:#e3e7ec;
+  --white:#ffffff;
+}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.65;
+  color:var(--ink);
+  background:#fff;
+}
+
+a { color:inherit; }
+
+a:focus-visible,
+button:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:3px;
+}
+
+.container {
+  width:calc(100% - 36px);
+  max-width:1100px;
+  margin:auto;
+}
+
+/* HEADER */
+
+header {
+  background:#fff;
+  border-bottom:1px solid var(--line);
+}
+
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  padding:20px 0;
+}
+
+.brand {
+  text-decoration:none;
+  font-weight:900;
+  letter-spacing:1px;
+  font-size:19px;
+  color:var(--navy);
+}
+
+.brand small {
+  display:block;
+  font-size:10px;
+  letter-spacing:1.5px;
+  font-weight:500;
+  color:var(--muted);
+}
+
+.nav-back {
+  color:var(--navy);
+  font-size:13px;
+  text-decoration:none;
+  font-weight:800;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 15px;
+}
+
+/* HERO */
+
+.hero {
+  background:linear-gradient(120deg, #eef5f2, #e5efec);
+  padding:65px 0;
+}
+
+.hero-grid {
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:42px;
+}
+
+.eyebrow {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#8a6a31;
+  font-weight:800;
+}
+
+h1 {
+  font-size:clamp(36px,5vw,58px);
+  line-height:1.08;
+  letter-spacing:-1.7px;
+  margin:14px 0 18px;
+  color:var(--navy);
+}
+
+h1 span {
+  color:var(--coral);
+}
+
+.hero p {
+  color:var(--muted);
+  max-width:650px;
+}
+
+.flyer-art {
+  width:100%;
+  display:block;
+  border-radius:14px;
+  box-shadow:0 16px 45px rgba(0,0,0,.12);
+  background:#fff;
+}
+
+.pill {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 22px;
+  background:#fff;
+  border:2px solid var(--gold);
+  color:var(--navy);
+  border-radius:100px;
+  font-weight:800;
+  text-decoration:none;
+  box-shadow:0 6px 20px rgba(0,0,0,.06);
+  margin-top:12px;
+}
+
+/* SECTIONS */
+
+.section {
+  padding:68px 0;
+}
+
+.section-alt {
+  background:var(--soft);
+}
+
+.kicker {
+  font-size:12px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  color:#8a6a31;
+  font-weight:800;
+}
+
+h2 {
+  font-size:clamp(28px,3.5vw,42px);
+  line-height:1.2;
+  letter-spacing:-.8px;
+  margin:12px 0 18px;
+}
+
+.lead {
+  max-width:800px;
+  color:var(--muted);
+}
+
+/* BONUS CARDS */
+
+.bonus-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:30px;
+}
+
+.bonus-card {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:28px 24px;
+  box-shadow:0 4px 15px rgba(0,0,0,.05);
+}
+
+.bonus-card .small {
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  color:#7c8893;
+  font-weight:800;
+}
+
+.amount {
+  font-size:44px;
+  font-weight:900;
+  color:var(--coral);
+  line-height:1.1;
+  margin:14px 0 4px;
+}
+
+.amount span {
+  font-size:18px;
+  font-weight:800;
+}
+
+.bonus-card h3 {
+  font-size:22px;
+  margin:10px 0 7px;
+}
+
+.bonus-card p {
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* BUILDER + DETAILS GRID */
+
+.details-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:28px;
+  margin-top:30px;
+}
+
+.panel {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:28px;
+}
+
+.panel h3 {
+  margin-top:0;
+  margin-bottom:14px;
+}
+
+.panel ul {
+  margin:0;
+  padding-left:18px;
+}
+
+.panel li {
+  margin-bottom:10px;
+}
+
+.builders {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:18px;
+}
+
+.builder-pill {
+  background:#eef4f1;
+  border:1px solid #d8e3dd;
+  border-radius:10px;
+  padding:12px 14px;
+  font-size:14px;
+  font-weight:800;
+  text-align:center;
+}
+
+/* FEATURED CALLOUT */
+
+.callout {
+  background:var(--lavender);
+  color:#fff;
+  border-radius:16px;
+  padding:35px;
+  margin-top:35px;
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  align-items:center;
+}
+
+.callout strong {
+  display:block;
+  font-size:clamp(28px,4vw,44px);
+  line-height:1.15;
+  color:#fff;
+}
+
+.callout p {
+  margin:10px 0 0;
+  color:#e7e4f0;
+}
+
+.badge {
+  background:#fff;
+  color:var(--lavender);
+  border-radius:100px;
+  padding:12px 18px;
+  font-size:14px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+/* BUTTONS */
+
+.btn {
+  display:inline-block;
+  padding:16px 26px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:900;
+  margin:8px 10px 8px 0;
+}
+
+.btn-primary {
+  background:var(--gold);
+  color:var(--navy);
+}
+
+.btn-secondary {
+  background:var(--navy);
+  color:#fff;
+}
+
+/* CTA */
+
+.cta {
+  background:var(--navy);
+  color:#fff;
+  text-align:center;
+  padding:70px 20px;
+}
+
+.cta p {
+  max-width:700px;
+  margin:0 auto 24px;
+  color:#d9e4ef;
+}
+
+/* FINE PRINT */
+
+.fineprint {
+  font-size:12px;
+  line-height:1.8;
+  color:var(--muted);
+}
+
+.notice {
+  background:#fff7e8;
+  border-left:5px solid var(--gold);
+  border-radius:8px;
+  padding:20px 24px;
+  margin-top:28px;
+  color:#4f4025;
+}
+
+.notice strong {
+  display:block;
+  margin-bottom:6px;
+}
+
+/* FOOTER */
+
+footer {
+  background:#071728;
+  color:#cad5de;
+  text-align:center;
+  padding:28px 18px;
+  font-size:13px;
+}
+
+footer a { color:#f0ca86; }
+
+/* RESPONSIVE */
+
+@media(max-width:850px) {
+  .hero-grid,
+  .details-grid {
+    grid-template-columns:1fr;
+  }
+
+  .bonus-grid {
+    grid-template-columns:1fr;
+  }
+
+  .callout {
+    display:block;
+  }
+
+  .badge {
+    display:inline-block;
+    margin-top:18px;
+  }
+
+  .flyer-art {
+    max-width:450px;
+    margin:auto;
+  }
+}
+
+@media(max-width:520px) {
+  .nav {
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .section {
+    padding:46px 0;
+  }
+
+  .hero {
+    padding:45px 0;
+  }
+
+  .builders {
+    grid-template-columns:1fr;
+  }
+
+  .amount {
+    font-size:38px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a class="brand" href="https://angelaspeights.com">
+      ANGELA SPEIGHTS
+      <small>NEW HOME SALES · PERRY HOMES</small>
+    </a>
+
+    <a
+      class="nav-back"
+      href="https://angelaspeights.com/deal-of-the-week.html">
+      ← Back to featured home
+    </a>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        Riceland · Realtor Rewards Program
+      </div>
+
+      <h1>
+        Realtor <span>Rewards</span><br>
+        A Little Something Extra
+      </h1>
+
+      <p>
+        The Riceland Realtor Rewards program is designed
+        to thank agents for connecting families with a
+        place they’ll love calling home.
+      </p>
+
+      <p>
+        The more homes you help close in Riceland,
+        the greater your bonus per closing.
+      </p>
+
+      <a class="pill" href="#bonus-levels">
+        ✦ &nbsp; Realtor Bonus Details
+      </a>
+
+    </div>
+
+    <img
+      class="flyer-art"
+      src="../assets/realtor-rewards-flyer.jpeg"
+      alt="Riceland Realtor Rewards flyer showing bonus tiers and participating builders">
+
+  </div>
+</section>
+
+<!-- PROGRAM INTRO -->
+
+<section class="section">
+  <div class="container">
+
+    <div class="kicker">
+      Incentive Overview
+    </div>
+
+    <h2>
+      A Closing Bonus That Grows With Your Sales
+    </h2>
+
+    <p class="lead">
+      Beginning <strong>August 1, 2026</strong>,
+      each closing through <strong>December 31, 2026</strong>
+      can qualify participating real estate professionals
+      for a Realtor Rewards bonus in Riceland.
+    </p>
+
+    <p class="lead">
+      According to the flyer, the more homes sold by the
+      end of the year, the bigger the per-closing reward.
+    </p>
+
+    <div class="callout">
+      <div>
+        <strong>New Homes from the $300s</strong>
+        <p>
+          Riceland offers participating builders and a
+          tiered rewards opportunity for agents.
+        </p>
+      </div>
+
+      <div class="badge">
+        Through Dec. 31, 2026
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BONUS LEVELS -->
+
+<section class="section section-alt" id="bonus-levels">
+  <div class="container">
+
+    <div class="kicker">
+      Bonus Structure
+    </div>
+
+    <h2>
+      Realtor Rewards by Closing Count
+    </h2>
+
+    <p class="lead">
+      The flyer lists three reward levels based on the
+      number of closings completed during the program period.
+    </p>
+
+    <div class="bonus-grid">
+
+      <article class="bonus-card">
+        <div class="small">Reward Tier 01</div>
+        <div class="amount">$250 <span>per closing</span></div>
+        <h3>1st, 2nd &amp; 3rd Sales</h3>
+        <p>
+          The first three qualified closings are eligible
+          for a $250 reward per closing.
+        </p>
+      </article>
+
+      <article class="bonus-card">
+        <div class="small">Reward Tier 02</div>
+        <div class="amount">$500 <span>per closing</span></div>
+        <h3>4th &amp; 5th Sales</h3>
+        <p>
+          The fourth and fifth qualified closings are
+          eligible for a $500 reward per closing.
+        </p>
+      </article>
+
+      <article class="bonus-card">
+        <div class="small">Reward Tier 03</div>
+        <div class="amount">$1,000 <span>per closing</span></div>
+        <h3>6th &amp; Future Sales</h3>
+        <p>
+          Beginning with the sixth qualified closing,
+          the reward increases to $1,000 per closing.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ELIGIBILITY + BUILDERS -->
+
+<section class="section">
+  <div class="container details-grid">
+
+    <div class="panel">
+
+      <h3>Program Dates &amp; Key Details</h3>
+
+      <ul>
+        <li>
+          <strong>Program start:</strong>
+          August 1, 2026
+        </li>
+        <li>
+          <strong>Program end:</strong>
+          December 31, 2026
+        </li>
+        <li>
+          Bonuses are based on closings completed
+          during the listed promotion period.
+        </li>
+        <li>
+          Bonus amounts increase as your qualifying
+          sales count increases.
+        </li>
+        <li>
+          Terms, documentation requirements, and
+          official program rules should be confirmed
+          before relying on the reward.
+        </li>
+      </ul>
+
+      <div class="notice">
+        <strong>Important Notice</strong>
+        This page is an informational summary
+        based on the provided flyer image.
+        Verify eligibility, documentation,
+        broker/agent qualification requirements,
+        and current program status before claiming
+        any expected reward.
+      </div>
+
+    </div>
+
+    <div class="panel">
+
+      <h3>Participating Builders Shown on the Flyer</h3>
+
+      <div class="builders">
+        <div class="builder-pill">Autograph Homes</div>
+        <div class="builder-pill">Chesmar</div>
+        <div class="builder-pill">David Weekley Homes</div>
+        <div class="builder-pill">Highland Homes</div>
+        <div class="builder-pill">Perry Homes</div>
+      </div>
+
+      <p style="margin-top:18px;color:var(--muted)">
+        The flyer promotes the Realtor Rewards
+        opportunity in Riceland and includes
+        these builders as part of the program.
+      </p>
+
+      <p style="color:var(--muted)">
+        Community shown:
+        <strong>Riceland</strong><br>
+        12212 Valencia Blvd,
+        Mont Belvieu, TX 77580<br>
+        RicelandTX.com
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- SOURCE IMAGE / PROGRAM REFERENCE -->
+
+<section class="section section-alt">
+  <div class="container">
+
+    <div class="kicker">
+      Source Promotion
+    </div>
+
+    <h2>
+      Review the Realtor Rewards Flyer
+    </h2>
+
+    <p class="lead">
+      The original flyer introduces the Riceland
+      Realtor Rewards program, the bonus tiers,
+      participating builders, and the time frame
+      for the promotion.
+    </p>
+
+    <a
+      class="btn btn-secondary"
+      href="../assets/realtor-rewards-flyer.jpeg"
+      target="_blank"
+      rel="noopener noreferrer">
+      Open Flyer Image ↗
+    </a>
+
+  </div>
+</section>
+
+<!-- CTA -->
+
+<section class="cta">
+  <div class="container">
+
+    <div class="eyebrow" style="color:#d8ad5f">
+      Realtor Incentive Assistance
+    </div>
+
+    <h2>
+      Want Help Leveraging This Realtor Bonus?
+    </h2>
+
+    <p>
+      Reach out to Angela to discuss the Riceland
+      Realtor Rewards opportunity, qualifying homes,
+      and how this incentive may support your buyers
+      and your business.
+    </p>
+
+    <a
+      class="btn btn-primary"
+      href="mailto:Angela.Speights@perryhomes.com?subject=Riceland%20Realtor%20Rewards%20Inquiry">
+      Ask Angela About Realtor Rewards ↗
+    </a>
+
+    <a
+      class="btn btn-secondary"
+      href="https://angelaspeights.com/deal-of-the-week.html">
+      Return to Featured Home
+    </a>
+
+  </div>
+</section>
+
+<!-- DISCLAIMER -->
+
+<div class="container fineprint" style="padding:26px 0 40px;">
+  <p>
+    <strong>Disclaimer:</strong>
+    This page is a marketing summary based on the
+    provided Riceland Realtor Rewards flyer image.
+    Bonus amounts, participating builders, dates,
+    eligibility requirements, documentation,
+    brokerage participation, and payout procedures
+    should be confirmed through the official
+    Riceland Realtor Rewards program materials.
+  </p>
+
+  <p>
+    Incentives may be subject to terms,
+    restrictions, administrative requirements,
+    and change without notice.
+  </p>
+</div>
+
+</main>
+
+<footer>
+  Angela Speights · New Home Sales Professional · Perry Homes
+  <br>
+  <a href="https://angelaspeights.com">AngelaSpeights.com</a>
+</footer>
+
+</body>
+</html>
