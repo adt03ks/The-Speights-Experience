@@ -1,23 +1,1544 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Inventory Manager | Angela Speights</title><link rel="stylesheet" href="/assets/inventory.css"></head><body>
-<header class="nav"><div class="wrap nav-inner"><a class="brand" href="/">ANGELA SPEIGHTS<small>PRIVATE INVENTORY MANAGER</small></a><nav class="nav-actions"><a class="btn outline" href="/inventory.html" target="_blank" rel="noopener noreferrer">Open Inventory ↗</a><button class="btn outline hidden" type="button" id="logout">Sign out</button></nav></div></header>
-<section class="hero" style="padding:34px 0"><div class="wrap"><div class="eyebrow">Private workspace</div><h1>Inventory Deal Manager</h1><p>Add properties, update prices, upload photos, and publish or unpublish offers from one place. Changes appear automatically on the inventory library.</p></div></section>
-<main class="section"><div class="wrap"><div id="appMessage" role="status"></div>
-<section id="loginPanel" class="editor" style="max-width:540px;margin:auto"><h2>Authorized access</h2><p class="muted">Sign in with the Supabase Auth account authorized to manage listings.</p><form id="loginForm" class="form-grid"><div class="field wide"><label for="loginEmail">Email</label><input id="loginEmail" type="email" required autocomplete="username"></div><div class="field wide"><label for="loginPassword">Password</label><input id="loginPassword" type="password" required autocomplete="current-password"></div><div class="field wide"><button class="btn primary" type="submit">Sign In</button></div></form></section>
-<div id="workspace" class="admin-layout hidden"><aside class="admin-sidebar"><button class="btn primary" id="newListing" type="button">+ Add a Home</button><p class="subtle">Drafts are visible here but not to buyers. Publishing adds the home to the public inventory library.</p><div id="listingList"></div></aside><section class="editor"><div class="eyebrow">Listing editor</div><h2 id="editorTitle">New property</h2><form id="listingForm"><div class="form-grid">
-<div class="field"><label for="title">Listing title *</label><input id="title" required maxlength="150" placeholder="12302 Hyland Ln."></div><div class="field"><label for="slug">Page slug *</label><input id="slug" required pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="12302-hyland-ln"><small class="subtle">Permanent address: /home.html?slug=YOUR-SLUG</small></div>
-<div class="field wide"><label for="address">Street address *</label><input id="address" required maxlength="180"></div><div class="field"><label for="city">City</label><input id="city" value="Mont Belvieu"></div><div class="field"><label for="state">State</label><input id="state" value="TX"></div><div class="field"><label for="zip">ZIP</label><input id="zip" value="77523"></div><div class="field"><label for="community">Community</label><input id="community" value="Riceland"></div>
-<div class="field"><label for="original_price">Original price ($)</label><input id="original_price" type="number" min="0" step="1"></div><div class="field"><label for="current_price">Current price ($) *</label><input id="current_price" type="number" min="0" step="1" required></div>
-<div class="field"><label for="bedrooms">Bedrooms</label><input id="bedrooms" type="number" min="0" step="0.5"></div><div class="field"><label for="bathrooms">Bathrooms</label><input id="bathrooms" type="number" min="0" step="0.5"></div>
-<div class="field"><label for="square_feet">Living sq ft</label><input id="square_feet" type="number" min="0" step="1"></div><div class="field"><label for="lot_square_feet">Lot sq ft</label><input id="lot_square_feet" type="number" min="0" step="1"></div>
-<div class="field"><label for="lot_type">Lot type</label><input id="lot_type" placeholder="Corner lot, golf course, cul-de-sac"></div><div class="field"><label for="floor_plan">Floor plan</label><input id="floor_plan" placeholder="Plan number (optional)"></div>
-<div class="field"><label for="story_count">Stories</label><input id="story_count" type="number" min="0" step="1"></div><div class="field"><label for="garage_spaces">Garage spaces</label><input id="garage_spaces" type="number" min="0" step="1"></div>
-<div class="field wide"><label for="description">Home description</label><textarea id="description" maxlength="3500"></textarea></div><div class="field wide"><label for="highlights">Selling points — one per line</label><textarea id="highlights" placeholder="Bright kitchen with oversized island&#10;Corner lot&#10;Move-in ready"></textarea></div>
-<div class="field wide"><label>Related incentive detail pages (open in a new tab)</label><label class="checkline"><input type="checkbox" id="appliances_link"> Home Appliances</label><label class="checkline"><input type="checkbox" id="financing_link"> Special Financing &amp; Interest Rates</label><label class="checkline"><input type="checkbox" id="realtor_link"> Realtor Rewards (agents)</label></div>
-<div class="field wide"><label for="promo_note">Incentive eligibility note</label><textarea id="promo_note" placeholder="Ask Angela to verify which offers apply to this address."></textarea></div>
-<div class="field"><label for="status">Publishing status</label><select id="status"><option value="draft">Draft — private</option><option value="published">Published — public</option><option value="archived">Archived — private</option></select></div><div class="field"><label for="sort_order">Library display order</label><input id="sort_order" type="number" value="100"></div>
-<div class="field wide"><label class="checkline"><input type="checkbox" id="is_featured"> Feature this property (only one published featured home)</label></div>
-<div class="field wide"><label for="photoUpload">Upload property photos (JPG, PNG or WebP, max 10MB each)</label><input id="photoUpload" type="file" multiple accept="image/png,image/jpeg,image/webp"><small class="subtle">Uploads save into public Supabase Storage and appear in the gallery after you save the listing. You can change captions and reorder below.</small><div id="photosList"></div></div>
-</div><div class="actions"><button class="btn primary" type="submit" id="saveListing">Save Listing</button><button class="btn gold" id="publishListing" type="button">Publish &amp; Save</button><button class="btn outline" id="copyLink" type="button">Copy Page Link</button><button class="btn outline" id="archiveListing" type="button">Archive</button></div><p class="subtle">Published pages update automatically without creating new HTML files. Existing Salesforce emails still need their URLs updated when you feature a different home.</p></form></section></div>
-</div></main><footer class="footer">Inventory administration · AngelaSpeights.com · Supabase Auth + Row Level Security</footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.95.0/dist/umd/supabase.min.js"></script><script src="/assets/inventory-config.js"></script><script src="/assets/inventory-common.js"></script><script src="/assets/inventory-admin.js"></script>
-</body></html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inventory Manager | Angela Speights</title>
+
+<style>
+:root {
+  --navy:#0b1d32;
+  --gold:#d8ad5f;
+  --ink:#213448;
+  --muted:#627385;
+  --line:#dce4eb;
+  --bg:#f3f6f9;
+  --red:#9f2929;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  font:15px/1.5 Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+
+header {
+  background:var(--navy);
+  color:white;
+  padding:20px max(20px,calc((100% - 1160px)/2));
+}
+
+header strong {
+  font-size:20px;
+  letter-spacing:.6px;
+}
+
+header small {
+  display:block;
+  color:var(--gold);
+  letter-spacing:1.5px;
+  font-size:10px;
+}
+
+main {
+  max-width:1160px;
+  margin:28px auto;
+  padding:0 18px;
+}
+
+.panel {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 5px 20px #0b1d3208;
+}
+
+h1 {
+  font-size:28px;
+  margin:0 0 8px;
+}
+
+h2 {
+  font-size:20px;
+  margin:0 0 15px;
+}
+
+p {
+  margin:8px 0 15px;
+  color:var(--muted);
+}
+
+label {
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin:0 0 6px;
+  color:#34495e;
+}
+
+input,
+select,
+textarea {
+  width:100%;
+  min-height:42px;
+  background:white;
+  border:1px solid #bdcbd7;
+  border-radius:7px;
+  padding:10px 12px;
+  font:inherit;
+  color:var(--ink);
+}
+
+textarea {
+  min-height:100px;
+  resize:vertical;
+}
+
+input[type=checkbox] {
+  width:auto;
+  min-height:0;
+  margin:0 8px 0 0;
+}
+
+.check {
+  display:flex;
+  align-items:center;
+  margin:12px 0;
+  font-size:14px;
+}
+
+.check label {
+  margin:0;
+  font-size:14px;
+  font-weight:normal;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+}
+
+.full { grid-column:1/-1; }
+
+.actions {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+button,
+.button {
+  cursor:pointer;
+  border:0;
+  border-radius:7px;
+  background:var(--navy);
+  color:white;
+  padding:12px 18px;
+  font:inherit;
+  font-weight:bold;
+  text-decoration:none;
+  display:inline-block;
+  text-align:center;
+}
+
+button.secondary,
+.button.secondary {
+  background:white;
+  border:1px solid #9dadbb;
+  color:var(--navy);
+}
+
+button.gold {
+  background:var(--gold);
+  color:var(--navy);
+}
+
+button.danger {
+  background:#fff2f2;
+  color:var(--red);
+  border:1px solid #e7b2b2;
+}
+
+button:disabled {
+  opacity:.55;
+  cursor:wait;
+}
+
+.status {
+  padding:12px;
+  border-radius:7px;
+  background:#ebf3f8;
+  color:#203b52;
+  margin:12px 0;
+  white-space:pre-wrap;
+}
+
+.status.error {
+  background:#fff0ef;
+  color:#8f2727;
+}
+
+.status.success {
+  background:#eaf5ed;
+  color:#216338;
+}
+
+.toolbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+  margin-top:17px;
+}
+
+.listing {
+  display:flex;
+  gap:14px;
+  align-items:center;
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px;
+}
+
+.listing img {
+  width:100px;
+  height:76px;
+  object-fit:cover;
+  border-radius:6px;
+  background:#eef2f6;
+}
+
+.listing .details {
+  flex:1;
+  min-width:0;
+}
+
+.listing strong { display:block; }
+
+.muted {
+  color:var(--muted);
+  font-size:12px;
+}
+
+.tag {
+  display:inline-block;
+  font-size:11px;
+  background:#eaf1f6;
+  color:#25415a;
+  padding:2px 7px;
+  border-radius:20px;
+}
+
+.photos {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+  margin:14px 0;
+}
+
+.photo {
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:8px;
+  overflow:hidden;
+}
+
+.photo img {
+  width:100%;
+  height:125px;
+  object-fit:cover;
+  display:block;
+  border-radius:5px;
+}
+
+.photo button {
+  padding:7px 9px;
+  margin-top:8px;
+  width:100%;
+  font-size:12px;
+}
+
+.photo input {
+  font-size:12px;
+  margin-top:7px;
+}
+
+.hidden { display:none!important; }
+
+.hint {
+  font-size:12px;
+  color:var(--muted);
+}
+
+a { color:#164d84; }
+
+hr {
+  border:0;
+  border-top:1px solid var(--line);
+  margin:24px 0;
+}
+
+@media(max-width:780px) {
+  .grid { grid-template-columns:1fr 1fr; }
+  .cards { grid-template-columns:1fr; }
+  .photos { grid-template-columns:repeat(2,1fr); }
+}
+
+@media(max-width:520px) {
+  .grid { grid-template-columns:1fr; }
+  .photos { grid-template-columns:1fr 1fr; }
+  .panel { padding:17px; }
+  header { padding:17px 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <strong>ANGELA SPEIGHTS</strong>
+  <small>PRIVATE INVENTORY MANAGER · PERRY HOMES</small>
+</header>
+
+<main>
+
+<!-- LOGIN -->
+
+<section id="loginPanel" class="panel">
+
+  <h1>Inventory Manager Sign In</h1>
+
+  <p>
+    Sign in with the email and password for your
+    authorized Supabase user account.
+  </p>
+
+  <form id="loginForm" class="grid">
+
+    <div>
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        autocomplete="username"
+        required>
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input
+        id="password"
+        type="password"
+        autocomplete="current-password"
+        required>
+    </div>
+
+    <div style="align-self:end">
+      <button type="submit">Sign In</button>
+    </div>
+
+  </form>
+
+  <p class="hint">
+    Only users authorized in inventory_admins
+    can manage listings.
+  </p>
+
+</section>
+
+<!-- DASHBOARD -->
+
+<div id="app" class="hidden">
+
+  <section class="panel">
+
+    <div class="toolbar">
+
+      <div>
+        <h1>Inventory Dashboard</h1>
+        <p id="signedInAs"></p>
+      </div>
+
+      <div class="actions">
+
+        <a
+          class="button secondary"
+          href="/inventory.html"
+          target="_blank"
+          rel="noopener noreferrer">
+          View Public Library
+        </a>
+
+        <button id="logout" class="secondary">
+          Sign Out
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- LISTING LIBRARY -->
+
+  <section class="panel">
+
+    <div class="toolbar">
+
+      <h2 style="margin:0">Your Properties</h2>
+
+      <button id="newListing" class="gold">
+        + Add New Home
+      </button>
+
+    </div>
+
+    <div id="listings" class="cards"></div>
+
+  </section>
+
+  <!-- EDITOR -->
+
+  <section id="editPanel" class="panel hidden">
+
+    <div class="toolbar">
+
+      <h2 id="editorHeading">Add New Home</h2>
+
+      <button id="closeEditor" class="secondary">
+        Close Editor
+      </button>
+
+    </div>
+
+    <p>
+      Save new properties as drafts first.
+      After saving, you can upload photos.
+      Publish when the listing is ready.
+    </p>
+
+    <form id="listingForm">
+
+      <div class="grid">
+
+        <div>
+          <label for="title">Listing Title *</label>
+          <input id="title" required
+                 placeholder="12302 Hyland Ln.">
+        </div>
+
+        <div>
+          <label for="slug">Website Slug *</label>
+          <input
+            id="slug"
+            required
+            pattern="[a-z0-9]+(-[a-z0-9]+)*"
+            placeholder="12302-hyland-ln">
+        </div>
+
+        <div>
+          <label for="community">Community</label>
+          <input id="community" value="Riceland">
+        </div>
+
+        <div>
+          <label for="address">Street Address *</label>
+          <input id="address" required>
+        </div>
+
+        <div>
+          <label for="city">City *</label>
+          <input id="city" required
+                 value="Mont Belvieu">
+        </div>
+
+        <div>
+          <label for="state">State</label>
+          <input id="state" maxlength="2" value="TX">
+        </div>
+
+        <div>
+          <label for="zip">ZIP Code</label>
+          <input id="zip" value="77523">
+        </div>
+
+        <div>
+          <label for="original_price">
+            Original Price ($)
+          </label>
+          <input id="original_price"
+                 type="number" min="0" step="0.01">
+        </div>
+
+        <div>
+          <label for="current_price">
+            Current Asking Price ($) *
+          </label>
+          <input
+            id="current_price"
+            type="number"
+            min="0"
+            step="0.01"
+            required>
+        </div>
+
+        <div>
+          <label for="bedrooms">Bedrooms</label>
+          <input id="bedrooms"
+                 type="number" min="0" step="0.5">
+        </div>
+
+        <div>
+          <label for="bathrooms">Bathrooms</label>
+          <input id="bathrooms"
+                 type="number" min="0" step="0.5">
+        </div>
+
+        <div>
+          <label for="square_feet">
+            Home Square Feet
+          </label>
+          <input id="square_feet"
+                 type="number" min="0">
+        </div>
+
+        <div>
+          <label for="lot_square_feet">
+            Lot Square Feet
+          </label>
+          <input id="lot_square_feet"
+                 type="number" min="0">
+        </div>
+
+        <div>
+          <label for="lot_type">Lot Description</label>
+          <input id="lot_type"
+                 placeholder="Corner lot">
+        </div>
+
+        <div>
+          <label for="floor_plan">Floor Plan</label>
+          <input id="floor_plan">
+        </div>
+
+        <div>
+          <label for="story_count">Stories</label>
+          <input id="story_count"
+                 type="number" min="0">
+        </div>
+
+        <div>
+          <label for="garage_spaces">
+            Garage Spaces
+          </label>
+          <input id="garage_spaces"
+                 type="number" min="0">
+        </div>
+
+        <div>
+          <label for="sort_order">
+            Library Sort Order
+          </label>
+          <input id="sort_order"
+                 type="number" value="100">
+        </div>
+
+        <div class="full">
+
+          <label for="description">
+            Property Description
+          </label>
+
+          <textarea id="description"></textarea>
+
+        </div>
+
+        <div class="full">
+
+          <label for="highlights">
+            Highlights — One Per Line
+          </label>
+
+          <textarea
+            id="highlights"
+            placeholder="Gorgeous kitchen island&#10;Corner homesite&#10;Move-in ready"></textarea>
+
+        </div>
+
+        <div class="full">
+
+          <label for="promo_note">
+            Incentives Notes / Qualifications
+          </label>
+
+          <textarea
+            id="promo_note"
+            placeholder="Ask Angela to confirm applicable offers and terms."></textarea>
+
+        </div>
+
+        <div class="full">
+
+          <strong>Incentive Detail-Page Links</strong>
+
+          <div class="check">
+            <input id="appliances_link"
+                   type="checkbox">
+            <label for="appliances_link">
+              Home Appliance Package
+            </label>
+          </div>
+
+          <div class="check">
+            <input id="financing_link"
+                   type="checkbox">
+            <label for="financing_link">
+              Special Financing &amp; Interest Rates
+            </label>
+          </div>
+
+          <div class="check">
+            <input id="realtor_link"
+                   type="checkbox">
+            <label for="realtor_link">
+              Realtor Rewards (Agents)
+            </label>
+          </div>
+
+        </div>
+
+        <div>
+
+          <label for="status">Listing Status</label>
+
+          <select id="status">
+            <option value="draft">Draft — Private</option>
+            <option value="published">
+              Published — Public
+            </option>
+            <option value="archived">
+              Archived — Hidden
+            </option>
+          </select>
+
+        </div>
+
+        <div>
+
+          <label class="check" for="is_featured">
+            <input id="is_featured"
+                   type="checkbox">
+            Feature This Home
+          </label>
+
+          <div class="hint">
+            Only one published listing
+            can be featured.
+          </div>
+
+        </div>
+
+      </div>
+
+      <hr>
+
+      <!-- PHOTO MANAGER -->
+
+      <h2>Property Photos</h2>
+
+      <p class="hint">
+        Supported: JPEG, PNG, WebP.
+        Maximum 10 MB per photo.
+        The first photo becomes the cover image.
+      </p>
+
+      <div id="photos" class="photos"></div>
+
+      <div class="actions"
+           style="margin-bottom:20px">
+
+        <input
+          type="file"
+          id="photoFiles"
+          accept="image/jpeg,image/png,image/webp"
+          multiple
+          style="max-width:400px">
+
+        <button
+          type="button"
+          id="uploadPhotos"
+          class="secondary">
+          Upload Selected Photos
+        </button>
+
+      </div>
+
+      <!-- SAVE ACTIONS -->
+
+      <div class="actions">
+
+        <button
+          type="submit"
+          id="saveBtn"
+          class="gold">
+          Save Listing
+        </button>
+
+        <button
+          type="button"
+          id="publishBtn">
+          Publish &amp; Save
+        </button>
+
+        <button
+          type="button"
+          id="archiveBtn"
+          class="secondary">
+          Archive &amp; Save
+        </button>
+
+        <button
+          type="button"
+          id="deleteBtn"
+          class="danger">
+          Delete Listing
+        </button>
+
+        <a
+          id="previewLink"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="button secondary hidden">
+          Open Public Page
+        </a>
+
+      </div>
+
+      <p class="hint">
+        Public property pages use
+        /home.html?slug=your-property-slug
+        once home.html has been installed.
+      </p>
+
+    </form>
+
+  </section>
+
+</div>
+
+<div
+  id="message"
+  class="status"
+  role="status"
+  aria-live="polite">
+  Enter your Supabase public key before signing in.
+</div>
+
+</main>
+
+<!-- SUPABASE CONNECTION AND INVENTORY LOGIC -->
+
+<script type="module">
+
+import { createClient }
+from 'https://esm.sh/@supabase/supabase-js@2.49.4';
+
+/*
+  SUPABASE CONFIGURATION
+
+  Replace the public key below.
+
+  NEVER use a service-role key here.
+*/
+
+const SUPABASE_URL =
+  'https://yyrynwzgtdopoqfognns.supabase.co';
+
+const SUPABASE_PUBLIC_KEY =
+  'sb_publishable_3oyKdqHlHa_x65KULEZBPQ_w_DHMvXA';
+
+const $ = id => document.getElementById(id);
+
+const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLIC_KEY
+);
+
+let currentId = null;
+let currentPhotos = [];
+let currentListings = [];
+
+const fields = [
+  'title',
+  'slug',
+  'address',
+  'city',
+  'state',
+  'zip',
+  'community',
+  'lot_type',
+  'floor_plan',
+  'description',
+  'promo_note'
+];
+
+const numberFields = [
+  'original_price',
+  'current_price',
+  'bedrooms',
+  'bathrooms',
+  'square_feet',
+  'lot_square_feet',
+  'story_count',
+  'garage_spaces',
+  'sort_order'
+];
+
+const checkboxFields = [
+  'appliances_link',
+  'financing_link',
+  'realtor_link',
+  'is_featured'
+];
+
+const money = n =>
+  n == null
+    ? 'Price upon request'
+    : new Intl.NumberFormat('en-US', {
+        style:'currency',
+        currency:'USD',
+        maximumFractionDigits:0
+      }).format(n);
+
+function message(text, error=false) {
+  $('message').textContent = text;
+  $('message').className =
+    'status ' + (error ? 'error' : 'success');
+}
+
+function showApp(on) {
+  $('loginPanel').classList.toggle('hidden',on);
+  $('app').classList.toggle('hidden',!on);
+}
+
+function cleanSlug(s) {
+  return s.toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g,'-')
+    .replace(/^-|-$/g,'');
+}
+
+function publicUrl(slug) {
+  return '/home.html?slug=' +
+    encodeURIComponent(slug);
+}
+
+/* AUTHENTICATION */
+
+async function checkLogin() {
+
+  const {
+    data:{user},
+    error
+  } = await supabase.auth.getUser();
+
+  if (error || !user) {
+    showApp(false);
+    return;
+  }
+
+  const {
+    data:access,
+    error:checkError
+  } = await supabase
+    .from('inventory_admins')
+    .select('user_id')
+    .eq('user_id',user.id)
+    .maybeSingle();
+
+  if (checkError || !access) {
+
+    await supabase.auth.signOut();
+
+    showApp(false);
+
+    message(
+      'This account is not listed in inventory_admins.',
+      true
+    );
+
+    return;
+  }
+
+  $('signedInAs').textContent =
+    'Signed in: ' +
+    (user.email || 'authorized administrator');
+
+  showApp(true);
+
+  await loadListings();
+}
+
+$('loginForm').addEventListener(
+  'submit',
+  async event => {
+
+    event.preventDefault();
+
+    message('Signing in...');
+
+    const {error} =
+      await supabase.auth.signInWithPassword({
+        email:$('email').value.trim(),
+        password:$('password').value
+      });
+
+    if (error) {
+      message(error.message,true);
+      return;
+    }
+
+    $('password').value = '';
+
+    await checkLogin();
+  }
+);
+
+$('logout').addEventListener(
+  'click',
+  async () => {
+
+    await supabase.auth.signOut();
+
+    showApp(false);
+
+    $('editPanel').classList.add('hidden');
+
+    message('Signed out.');
+  }
+);
+
+/* SAFE TEXT RENDERING */
+
+function addText(parent,tag,text,className='') {
+
+  const node=document.createElement(tag);
+
+  node.textContent=text;
+
+  if(className) node.className=className;
+
+  parent.appendChild(node);
+
+  return node;
+}
+
+/* LOAD INVENTORY */
+
+async function loadListings() {
+
+  const {data,error} = await supabase
+    .from('inventory_listings')
+    .select('*')
+    .order('sort_order',{ascending:true})
+    .order('created_at',{ascending:false});
+
+  if (error) {
+    message('Cannot load inventory: '+error.message,true);
+    return;
+  }
+
+  currentListings=data || [];
+
+  const box=$('listings');
+
+  box.replaceChildren();
+
+  if (!currentListings.length) {
+    addText(
+      box,
+      'p',
+      'No homes yet. Click Add New Home.'
+    );
+  }
+
+  for (const listing of currentListings) {
+
+    const card=document.createElement('div');
+    card.className='listing';
+
+    const img=document.createElement('img');
+    img.alt='Property cover';
+
+    const first=Array.isArray(listing.photos)
+      ? listing.photos[0]
+      : null;
+
+    if (
+      first &&
+      typeof first.url==='string' &&
+      /^(https:\/\/|\/)/.test(first.url)
+    ) {
+      img.src=first.url;
+    }
+
+    card.appendChild(img);
+
+    const details=document.createElement('div');
+    details.className='details';
+
+    addText(
+      details,
+      'strong',
+      listing.title || listing.address || 'Untitled home'
+    );
+
+    addText(
+      details,
+      'div',
+      money(listing.current_price) +
+      ' · ' +
+      (listing.community || ''),
+      'muted'
+    );
+
+    addText(
+      details,
+      'span',
+      listing.status +
+      (listing.is_featured ? ' · featured' : ''),
+      'tag'
+    );
+
+    card.appendChild(details);
+
+    const edit=document.createElement('button');
+
+    edit.type='button';
+    edit.className='secondary';
+    edit.textContent='Edit';
+
+    edit.addEventListener(
+      'click',
+      () => openEditor(listing)
+    );
+
+    card.appendChild(edit);
+    box.appendChild(card);
+  }
+
+  message(currentListings.length+' home(s) loaded.');
+}
+
+/* OPEN EDITOR */
+
+function openEditor(listing=null) {
+
+  $('listingForm').reset();
+
+  delete $('slug').dataset.edited;
+
+  currentId=listing?.id || null;
+
+  currentPhotos=Array.isArray(listing?.photos)
+    ? structuredClone(listing.photos)
+    : [];
+
+  $('editorHeading').textContent=listing
+    ? 'Edit '+listing.title
+    : 'Add New Home';
+
+  for (const field of fields) {
+
+    $(field).value =
+      listing?.[field] ??
+      ({
+        city:'Mont Belvieu',
+        state:'TX',
+        zip:'77523',
+        community:'Riceland'
+      }[field] || '');
+  }
+
+  for (const field of numberFields) {
+
+    $(field).value=listing?.[field] ??
+      (field==='sort_order' ? 100 : '');
+  }
+
+  for (const field of checkboxFields) {
+
+    $(field).checked=Boolean(listing?.[field]);
+  }
+
+  $('highlights').value=
+    Array.isArray(listing?.highlights)
+      ? listing.highlights.join('\n')
+      : '';
+
+  $('status').value=listing?.status || 'draft';
+
+  $('slug').readOnly=Boolean(listing);
+
+  $('deleteBtn').disabled=!listing;
+
+  $('photoFiles').value='';
+
+  $('previewLink').classList.toggle(
+    'hidden',
+    !listing || listing.status!=='published'
+  );
+
+  if(listing) {
+    $('previewLink').href=publicUrl(listing.slug);
+  }
+
+  renderPhotos();
+
+  $('editPanel').classList.remove('hidden');
+
+  $('editPanel').scrollIntoView({
+    behavior:'smooth',
+    block:'start'
+  });
+}
+
+$('newListing').addEventListener(
+  'click',
+  () => openEditor()
+);
+
+$('closeEditor').addEventListener(
+  'click',
+  () => $('editPanel').classList.add('hidden')
+);
+
+$('title').addEventListener('input',()=>{
+
+  if(!currentId && !$('slug').dataset.edited) {
+    $('slug').value=cleanSlug($('title').value);
+  }
+
+});
+
+$('slug').addEventListener('input',()=>{
+  $('slug').dataset.edited='true';
+});
+
+/* PHOTO DISPLAY */
+
+function renderPhotos() {
+
+  const box=$('photos');
+
+  box.replaceChildren();
+
+  if (!currentPhotos.length) {
+
+    addText(box,'p','No photos saved yet.');
+    return;
+  }
+
+  currentPhotos.forEach((photo,index)=>{
+
+    const item=document.createElement('div');
+    item.className='photo';
+
+    const img=document.createElement('img');
+    img.alt=photo.alt || 'Property image';
+
+    if (
+      typeof photo.url==='string' &&
+      /^(https:\/\/|\/)/.test(photo.url)
+    ) {
+      img.src=photo.url;
+    }
+
+    item.appendChild(img);
+
+    const caption=document.createElement('input');
+
+    caption.placeholder='Image description';
+    caption.value=photo.alt || '';
+
+    caption.addEventListener('input',()=>{
+      photo.alt=caption.value;
+    });
+
+    item.appendChild(caption);
+
+    const up=document.createElement('button');
+
+    up.type='button';
+    up.className='secondary';
+    up.textContent='Move Earlier';
+    up.disabled=index===0;
+
+    up.addEventListener('click',()=>{
+
+      [
+        currentPhotos[index-1],
+        currentPhotos[index]
+      ] = [
+        currentPhotos[index],
+        currentPhotos[index-1]
+      ];
+
+      renderPhotos();
+    });
+
+    item.appendChild(up);
+
+    const remove=document.createElement('button');
+
+    remove.type='button';
+    remove.className='danger';
+    remove.textContent='Remove from Listing';
+
+    remove.addEventListener('click',()=>{
+
+      currentPhotos.splice(index,1);
+
+      renderPhotos();
+    });
+
+    item.appendChild(remove);
+    box.appendChild(item);
+  });
+}
+
+/* PREPARE LISTING DATA */
+
+function buildPayload() {
+
+  const payload={};
+
+  for(const field of fields) {
+
+    payload[field]=$(field).value.trim();
+  }
+
+  for(const field of numberFields) {
+
+    payload[field]=$(field).value===''
+      ? null
+      : Number($(field).value);
+  }
+
+  for(const field of checkboxFields) {
+
+    payload[field]=$(field).checked;
+  }
+
+  payload.highlights=$('highlights')
+    .value
+    .split('\n')
+    .map(x=>x.trim())
+    .filter(Boolean);
+
+  payload.photos=currentPhotos;
+
+  payload.status=$('status').value;
+
+  if(!currentId) {
+    payload.slug=cleanSlug(payload.slug);
+  }
+
+  return payload;
+}
+
+/* SAVE AND PUBLISH */
+
+async function saveListing(desiredStatus=null) {
+
+  if(!$('listingForm').reportValidity()) {
+    return;
+  }
+
+  if(desiredStatus) {
+    $('status').value=desiredStatus;
+  }
+
+  const payload=buildPayload();
+
+  if (
+    !payload.slug ||
+    !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(payload.slug)
+  ) {
+
+    message('Enter a valid lowercase slug.',true);
+    return;
+  }
+
+  if (
+    payload.status==='published' &&
+    payload.is_featured
+  ) {
+
+    const other=currentListings.find(x=>
+      x.id!==currentId &&
+      x.is_featured &&
+      x.status==='published'
+    );
+
+    if(other) {
+
+      message(
+        'Another published home is featured: ' +
+        other.title +
+        '. Uncheck Featured on that property first.',
+        true
+      );
+
+      return;
+    }
+  }
+
+  $('saveBtn').disabled=true;
+
+  message('Saving listing...');
+
+  let result;
+
+  if(currentId) {
+
+    delete payload.slug;
+
+    result=await supabase
+      .from('inventory_listings')
+      .update(payload)
+      .eq('id',currentId)
+      .select('*')
+      .single();
+
+  } else {
+
+    result=await supabase
+      .from('inventory_listings')
+      .insert(payload)
+      .select('*')
+      .single();
+  }
+
+  $('saveBtn').disabled=false;
+
+  if(result.error) {
+
+    message(
+      'Save failed: '+result.error.message,
+      true
+    );
+
+    return;
+  }
+
+  await loadListings();
+
+  const saved=result.data;
+
+  openEditor(saved);
+
+  message(
+    'Saved '+saved.title+' as '+saved.status+'. '+
+    (
+      saved.status==='published'
+        ? 'Public URL: '+
+          location.origin+
+          publicUrl(saved.slug)
+        : 'Only administrators can view this listing.'
+    )
+  );
+}
+
+$('listingForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  saveListing();
+});
+
+$('publishBtn').addEventListener(
+  'click',
+  ()=>saveListing('published')
+);
+
+$('archiveBtn').addEventListener(
+  'click',
+  ()=>saveListing('archived')
+);
+
+/* DELETE LISTING */
+
+$('deleteBtn').addEventListener('click',async()=>{
+
+  if(!currentId) return;
+
+  if(!confirm(
+    'Permanently delete this listing? '+
+    'This cannot be undone. '+
+    'Uploaded files will remain in storage.'
+  )) return;
+
+  const {error}=await supabase
+    .from('inventory_listings')
+    .delete()
+    .eq('id',currentId);
+
+  if(error) {
+
+    message(error.message,true);
+    return;
+  }
+
+  $('editPanel').classList.add('hidden');
+
+  currentId=null;
+
+  await loadListings();
+
+  message('Listing deleted.');
+});
+
+/* UPLOAD PHOTOS */
+
+$('uploadPhotos').addEventListener('click',async()=>{
+
+  if(!currentId) {
+
+    message(
+      'Save this home as a draft before uploading photos.',
+      true
+    );
+
+    return;
+  }
+
+  const files=Array.from(
+    $('photoFiles').files || []
+  );
+
+  if(!files.length) {
+
+    message('Select photos to upload.',true);
+    return;
+  }
+
+  const allowed=[
+    'image/jpeg',
+    'image/png',
+    'image/webp'
+  ];
+
+  if(files.some(f=>
+    !allowed.includes(f.type) ||
+    f.size>10*1024*1024
+  )) {
+
+    message(
+      'Only JPEG, PNG or WebP under 10 MB are allowed.',
+      true
+    );
+
+    return;
+  }
+
+  $('uploadPhotos').disabled=true;
+
+  let added=0;
+
+  for(const file of files) {
+
+    const ext=
+      file.type==='image/jpeg' ? 'jpg' :
+      file.type==='image/png' ? 'png' :
+      'webp';
+
+    const name=
+      currentId+'/'+crypto.randomUUID()+'.'+ext;
+
+    const {error}=await supabase.storage
+      .from('inventory-photos')
+      .upload(name,file,{
+        contentType:file.type,
+        upsert:false
+      });
+
+    if(error) {
+
+      message(
+        'Upload stopped: '+error.message,
+        true
+      );
+
+      break;
+    }
+
+    const {data}=supabase.storage
+      .from('inventory-photos')
+      .getPublicUrl(name);
+
+    currentPhotos.push({
+      url:data.publicUrl,
+      alt:$('title').value+' property photo'
+    });
+
+    added++;
+  }
+
+  $('uploadPhotos').disabled=false;
+
+  $('photoFiles').value='';
+
+  renderPhotos();
+
+  if(added) {
+
+    message(
+      added+
+      ' photo(s) uploaded. Click Save Listing to save the updated gallery.'
+    );
+  }
+});
+
+/* STARTUP */
+
+if(
+  SUPABASE_PUBLIC_KEY.startsWith('PASTE_')
+) {
+
+  message(
+    'Setup required: replace SUPABASE_PUBLIC_KEY in the HTML.',
+    true
+  );
+
+  $('loginForm')
+    .querySelector('button')
+    .disabled=true;
+
+} else {
+
+  checkLogin().catch(err=>{
+    message(
+      'Could not start: '+err.message,
+      true
+    );
+  });
+}
+
+</script>
+</body>
+</html>
