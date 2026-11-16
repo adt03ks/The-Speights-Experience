@@ -1532,50 +1532,61 @@ window.addEventListener("hashchange", checkForRegistrationLink);
 </a>
 
 <style>
+
+/* INVENTORY ADMIN KEYPAD */
+
 .inventory-admin-keypad {
-  position:fixed;
-  top:20px;
-  right:20px;
-  z-index:9999;
+  position: fixed !important;
 
-  width:48px;
-  height:48px;
+  /* Place in bottom-left corner */
+  top: auto !important;
+  right: auto !important;
+  bottom: 25px !important;
+  left: 25px !important;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  z-index: 2147483647 !important;
 
-  background:#0b1d32;
-  color:#d8ad5f;
+  width: 56px !important;
+  height: 56px !important;
 
-  border:1px solid #d8ad5f;
-  border-radius:12px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  box-shadow:0 5px 18px rgba(0,0,0,.18);
+  background: #0b1d32 !important;
+  color: #d8ad5f !important;
 
-  text-decoration:none;
-  transition:transform .2s ease,
-             background .2s ease;
+  border: 2px solid #d8ad5f !important;
+  border-radius: 14px !important;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,.3) !important;
+
+  opacity: 1 !important;
+  visibility: visible !important;
+
+  text-decoration: none !important;
+}
+
+.inventory-admin-keypad svg {
+  width: 26px;
+  height: 26px;
+  display: block;
 }
 
 .inventory-admin-keypad:hover {
-  background:#173654;
-  transform:translateY(-2px);
+  background: #173654 !important;
+  transform: translateY(-2px);
 }
 
-.inventory-admin-keypad:focus-visible {
-  outline:3px solid #d8ad5f;
-  outline-offset:3px;
-}
-
-@media(max-width:600px) {
+@media (max-width: 600px) {
   .inventory-admin-keypad {
-    top:12px;
-    right:12px;
-    width:42px;
-    height:42px;
+    bottom: 15px !important;
+    left: 15px !important;
+    width: 48px !important;
+    height: 48px !important;
   }
 }
+
 </style>
 <!-- END INVENTORY ADMIN ACCESS ICON -->
 
