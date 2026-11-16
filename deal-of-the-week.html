@@ -2,775 +2,1494 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0b1d32">
-  <meta name="description" content="Deal of the Week: 4 bedrooms, 3 baths, 2,544 square feet, and a 9,116 sq ft corner lot for $464,900.">
-  <title>Deal of the Week | Angela Speights | Perry Homes</title>
-
-  <style>
-    :root {
-      --navy: #0b1d32;
-      --blue: #204f75;
-      --gold: #d8ad5f;
-      --cream: #f8f5ee;
-      --red: #c9272a;
-      --text: #102238;
-      --muted: #5f6c79;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--text);
-      line-height: 1.6;
-      background: #fff;
-    }
-
-    a { text-decoration: none; }
-
-    a:focus-visible {
-      outline: 3px solid var(--gold);
-      outline-offset: 3px;
-    }
-
-    .container {
-      max-width: 1160px;
-      width: calc(100% - 40px);
-      margin: auto;
-    }
-
-    /* HEADER */
-    header {
-      background: #fff;
-      border-bottom: 1px solid #e6e8ea;
-    }
-
-    .header-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      color: var(--navy);
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .brand small {
-      display: block;
-      font-size: 11px;
-      font-weight: normal;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #687382;
-    }
-
-    /* BUTTONS */
-    .btn {
-      display: inline-block;
-      padding: 15px 23px;
-      border-radius: 5px;
-      font-size: 14px;
-      font-weight: 800;
-      text-align: center;
-      transition: .2s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); }
-
-    .btn-dark {
-      background: var(--navy);
-      color: #fff;
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: var(--navy);
-    }
-
-    .btn-outline {
-      border: 1px solid #aebdca;
-      color: #fff;
-    }
-
-    /* HERO */
-    .hero {
-      background: var(--navy);
-      color: white;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      min-height: 540px;
-    }
-
-    .hero-content {
-      padding: 70px 40px 70px max(30px, calc((100vw - 1160px) / 2));
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      font-size: 12px;
-      letter-spacing: 2px;
-      font-weight: 800;
-    }
-
-    h1 {
-      font-size: clamp(40px, 5vw, 66px);
-      line-height: 1.08;
-      letter-spacing: -2px;
-      margin: 20px 0;
-    }
-
-    h1 span { color: var(--gold); }
-
-    .hero-price {
-      font-size: 40px;
-      font-weight: 900;
-      margin: 5px 0;
-    }
-
-    .hero-specs {
-      color: #f0e2c3;
-      font-weight: bold;
-      margin: 8px 0 20px;
-    }
-
-    .hero-description {
-      color: #d8e0e8;
-      max-width: 470px;
-      font-size: 16px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .hero-photo {
-      min-height: 400px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /* PROPERTY FACTS */
-    .property-facts {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      border-bottom: 1px solid #e6e8ea;
-    }
-
-    .fact {
-      text-align: center;
-      padding: 28px 10px;
-      border-right: 1px solid #e6e8ea;
-    }
-
-    .fact:last-child { border-right: none; }
-
-    .fact strong {
-      display: block;
-      font-size: 24px;
-      color: var(--navy);
-    }
-
-    .fact span {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
-
-    /* MAIN SECTIONS */
-    section.content-section { padding: 75px 0; }
-
-    .cream { background: var(--cream); }
-
-    .kicker {
-      color: #9e7034;
-      font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    h2 {
-      font-size: clamp(29px, 3.5vw, 43px);
-      line-height: 1.2;
-      letter-spacing: -1px;
-      margin: 14px 0 20px;
-    }
-
-    .intro {
-      max-width: 750px;
-      color: var(--muted);
-      margin-bottom: 35px;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .feature-card {
-      background: white;
-      border: 1px solid #e6e6e6;
-      border-radius: 9px;
-      padding: 30px;
-    }
-
-    .feature-number {
-      font-size: 12px;
-      color: #b58039;
-      font-weight: bold;
-    }
-
-    .feature-card h3 {
-      font-size: 21px;
-      margin: 17px 0 10px;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 0;
-    }
-
-    /* VALUE SECTION */
-    .value-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .value-copy p { color: var(--muted); }
-
-    .value-panel {
-      background: var(--cream);
-      border: 1px solid #e8e4dc;
-      border-radius: 10px;
-      padding: 35px;
-    }
-
-    .value-panel h3 { margin-top: 0; }
-
-    .value-panel ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .value-panel li {
-      padding: 13px 0;
-      border-bottom: 1px solid #e5e5e5;
-    }
-
-    .value-panel li::before {
-      content: "✓";
-      color: #1e7e66;
-      font-weight: bold;
-      margin-right: 10px;
-    }
-
-    /* INCENTIVE SECTION */
-    .incentives {
-      background: linear-gradient(135deg, #f6f8fc, #fbf6ee);
-      text-align: center;
-    }
-
-    .incentives .intro {
-      margin: 0 auto 30px;
-    }
-
-    .incentive-bubbles {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      margin: 35px auto 25px;
-    }
-
-    .incentive-bubble {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 100px;
-      padding: 16px 23px;
-      min-height: 60px;
-      color: var(--navy);
-      background: white;
-      border: 2px solid var(--gold);
-      font-weight: 800;
-      font-size: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,.06);
-      transition: .2s;
-    }
-
-    .incentive-bubble:hover {
-      background: #fff3d8;
-      transform: translateY(-3px);
-    }
-
-    .offer-btn {
-      display: inline-block;
-      margin-top: 25px;
-      padding: 20px 40px;
-      color: white;
-      background: var(--red);
-      border-radius: 100px;
-      font-size: 19px;
-      font-weight: 900;
-      box-shadow: 0 8px 20px rgba(201,39,42,.22);
-    }
-
-    .offer-btn:hover { background: #a91f23; }
-
-    .small-print {
-      color: var(--muted);
-      font-size: 12px;
-      max-width: 700px;
-      margin: 20px auto 0;
-    }
-
-    /* FINAL CTA */
-    .final-cta {
-      padding: 75px 0;
-      background: #132d49;
-      color: white;
-    }
-
-    .cta-layout {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .cta-layout p {
-      color: #c7d3de;
-      max-width: 650px;
-    }
-
-    .cta-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      min-width: 210px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #071728;
-      color: #d4e0ea;
-      padding: 30px 0;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    footer a { color: white; }
-
-    .disclaimer {
-      padding: 30px 0;
-      font-size: 12px;
-      color: #687382;
-    }
-
-    /* MOBILE */
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-photo { order: -1; min-height: 350px; }
-      .hero-content { padding: 45px 25px; }
-      .feature-grid { grid-template-columns: 1fr 1fr; }
-      .value-grid { grid-template-columns: 1fr; }
-      .cta-layout { flex-direction: column; align-items: start; }
-    }
-
-    @media (max-width: 600px) {
-      .brand { font-size: 16px; }
-      .header-inner .btn { font-size: 11px; padding: 10px; }
-      .hero-photo { min-height: 250px; }
-      .hero-price { font-size: 34px; }
-      .property-facts { grid-template-columns: repeat(2, 1fr); }
-      .fact { border-bottom: 1px solid #e6e8ea; }
-      .fact:last-child { grid-column: span 2; }
-      .feature-grid { grid-template-columns: 1fr; }
-      section.content-section { padding: 55px 0; }
-      .incentive-bubbles { flex-direction: column; }
-      .incentive-bubble, .offer-btn { width: 100%; }
-      .hero-actions .btn, .cta-buttons { width: 100%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1d32">
+
+<title>Deal of the Week | 12302 Hyland Ln. | Angela Speights</title>
+
+<meta name="description"
+content="Explore 12302 Hyland Ln. in Mont Belvieu, Texas. Originally $549,900, now $464,900. Four bedrooms, three bathrooms, 2,544 square feet and a corner lot.">
+
+<style>
+:root {
+  --navy:#0b1d32;
+  --blue:#204f75;
+  --gold:#d8ad5f;
+  --cream:#f8f5ee;
+  --red:#c9272a;
+  --text:#102238;
+  --muted:#5f6c79;
+}
+
+* {box-sizing:border-box}
+
+html {scroll-behavior:smooth}
+
+body {
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--text);
+  line-height:1.6;
+}
+
+a {text-decoration:none}
+
+button {font-family:inherit}
+
+button, a {touch-action:manipulation}
+
+button:focus-visible,
+a:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:3px;
+}
+
+.container {
+  width:calc(100% - 40px);
+  max-width:1160px;
+  margin:auto;
+}
+
+/* HEADER */
+
+header {
+  background:white;
+  border-bottom:1px solid #e5e8ed;
+}
+
+.header-inner {
+  min-height:76px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+
+.brand {
+  color:var(--navy);
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.brand small {
+  display:block;
+  font-size:10px;
+  letter-spacing:2px;
+  color:#687382;
+  font-weight:400;
+}
+
+.btn {
+  display:inline-block;
+  padding:15px 23px;
+  border-radius:5px;
+  font-size:14px;
+  font-weight:800;
+  text-align:center;
+}
+
+.btn-dark {
+  background:var(--navy);
+  color:white;
+}
+
+.btn-gold {
+  background:var(--gold);
+  color:var(--navy);
+}
+
+.btn-outline {
+  border:1px solid #aebdca;
+  color:white;
+}
+
+/* HERO */
+
+.hero {
+  display:grid;
+  grid-template-columns:47% 53%;
+  background:var(--navy);
+  color:white;
+}
+
+.hero-content {
+  padding:65px max(25px, calc((100vw - 1160px)/2));
+  display:flex;
+  justify-content:center;
+  flex-direction:column;
+}
+
+.eyebrow {
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+h1 {
+  font-size:clamp(38px,5vw,64px);
+  line-height:1.1;
+  letter-spacing:-2px;
+  margin:20px 0;
+}
+
+h1 span {color:var(--gold)}
+
+.original-price {
+  font-size:18px;
+  color:#c9d3df;
+  margin:10px 0 0;
+}
+
+.original-price s {
+  color:#f1adb0;
+  text-decoration-thickness:2px;
+}
+
+.current-price {
+  font-size:45px;
+  font-weight:900;
+  margin:5px 0;
+}
+
+.savings {
+  color:#ffe0a3;
+  font-weight:800;
+  font-size:16px;
+  margin-bottom:18px;
+}
+
+.hero-specs {
+  font-weight:700;
+  color:#f0e2c3;
+  margin-bottom:12px;
+}
+
+.hero-address {
+  font-size:14px;
+  color:#e2e8ef;
+  margin-bottom:20px;
+}
+
+.hero-description {
+  color:#d8e0e8;
+  font-size:15px;
+  max-width:480px;
+}
+
+.hero-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:25px;
+}
+
+.hero-image {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#dce9f3;
+  overflow:hidden;
+  min-width:0;
+}
+
+.hero-image img {
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  object-position:center;
+}
+
+.hero-note {
+  font-size:11px;
+  color:#b5c5d6;
+  margin-top:25px;
+}
+
+/* PROPERTY FACTS */
+
+.property-facts {
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  border-bottom:1px solid #e4e7eb;
+}
+
+.fact {
+  text-align:center;
+  padding:25px 12px;
+  border-right:1px solid #e4e7eb;
+}
+
+.fact:last-child {border-right:0}
+
+.fact strong {
+  display:block;
+  font-size:23px;
+  color:var(--navy);
+}
+
+.fact span {
+  display:block;
+  font-size:11px;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:700;
+  letter-spacing:1px;
+}
+
+.fact small {
+  display:block;
+  color:#8b5f63;
+  font-size:11px;
+}
+
+/* MAIN SECTIONS */
+
+.section {padding:75px 0}
+
+.cream {background:var(--cream)}
+
+.kicker {
+  font-size:12px;
+  color:#9e7034;
+  font-weight:800;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+h2 {
+  font-size:clamp(29px,3.5vw,43px);
+  line-height:1.2;
+  letter-spacing:-1px;
+  margin:13px 0 20px;
+}
+
+.intro {
+  max-width:750px;
+  color:var(--muted);
+  margin-bottom:35px;
+}
+
+.feature-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.feature-card {
+  background:white;
+  border:1px solid #e7e7e7;
+  border-radius:9px;
+  padding:30px;
+}
+
+.feature-number {
+  font-size:12px;
+  font-weight:bold;
+  color:#b58039;
+}
+
+.feature-card h3 {
+  font-size:21px;
+  margin:16px 0 10px;
+}
+
+.feature-card p {
+  color:var(--muted);
+  font-size:14px;
+  margin:0;
+}
+
+/* VALUE SECTION */
+
+.value-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:45px;
+  align-items:center;
+}
+
+.value-copy p {color:var(--muted)}
+
+.value-panel {
+  background:var(--cream);
+  border-radius:10px;
+  padding:35px;
+}
+
+.value-panel ul {
+  padding:0;
+  list-style:none;
+}
+
+.value-panel li {
+  padding:13px 0;
+  border-bottom:1px solid #e1e1e1;
+}
+
+.value-panel li:before {
+  content:"✓";
+  color:#1e7e66;
+  font-weight:bold;
+  margin-right:10px;
+}
+
+/* INCENTIVE SECTION */
+
+.incentives {
+  background:linear-gradient(135deg,#f6f8fc,#fbf6ee);
+  text-align:center;
+}
+
+.incentives .intro {margin:0 auto 30px}
+
+.incentive-bubbles {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin:30px auto;
+}
+
+.incentive-bubble {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px 23px;
+  border-radius:100px;
+  border:2px solid var(--gold);
+  background:white;
+  color:var(--navy);
+  font-size:14px;
+  font-weight:800;
+  box-shadow:0 5px 15px rgba(0,0,0,.06);
+  transition:transform .2s;
+}
+
+.incentive-bubble:hover {
+  transform:translateY(-3px);
+}
+
+.offer-btn {
+  display:inline-block;
+  background:var(--red);
+  color:white;
+  border-radius:100px;
+  padding:19px 38px;
+  font-size:18px;
+  font-weight:900;
+  margin-top:20px;
+  box-shadow:0 8px 20px rgba(201,39,42,.2);
+}
+
+.offer-btn:hover {background:#a91f23}
+
+.small-print {
+  font-size:11px;
+  color:var(--muted);
+  max-width:700px;
+  margin:20px auto 0;
+}
+
+/* PHOTO GALLERY */
+
+.gallery-section {
+  background:var(--cream);
+  padding:70px 0;
+}
+
+.gallery-header {
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.gallery-header p {color:var(--muted)}
+
+.gallery-frame {
+  position:relative;
+  max-width:1050px;
+  margin:auto;
+  background:#e1e8ed;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+
+.gallery-main {
+  width:100%;
+  aspect-ratio:16/9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#e1e8ed;
+  padding:0;
+  border:0;
+  cursor:zoom-in;
+  position:relative;
+}
+
+.gallery-main img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.gallery-caption {
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  color:white;
+  font-weight:bold;
+  text-align:left;
+  padding:25px 20px 13px;
+  background:linear-gradient(transparent,rgba(0,0,0,.7));
+}
+
+.gallery-arrow {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:44px;
+  height:44px;
+  border:0;
+  border-radius:50%;
+  background:rgba(11,29,50,.85);
+  color:white;
+  font-size:25px;
+  cursor:pointer;
+  z-index:2;
+}
+
+.gallery-arrow.prev {left:12px}
+.gallery-arrow.next {right:12px}
+
+.gallery-arrow[hidden] {display:none}
+
+.gallery-thumbnails {
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  overflow-x:auto;
+  padding:16px 0;
+}
+
+.gallery-thumbnail {
+  flex:0 0 112px;
+  height:78px;
+  border:3px solid transparent;
+  border-radius:7px;
+  background:white;
+  padding:0;
+  overflow:hidden;
+  cursor:pointer;
+  opacity:.7;
+}
+
+.gallery-thumbnail img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.gallery-thumbnail.active {
+  border-color:var(--gold);
+  opacity:1;
+}
+
+.gallery-hint {
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* LIGHTBOX */
+
+.lightbox {
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.94);
+  padding:25px;
+}
+
+.lightbox.open {display:flex}
+
+.lightbox img {
+  max-width:95%;
+  max-height:85vh;
+  object-fit:contain;
+}
+
+.lightbox-close {
+  position:absolute;
+  top:15px;
+  right:22px;
+  border:0;
+  background:transparent;
+  color:white;
+  font-size:40px;
+  cursor:pointer;
+}
+
+.lightbox-counter {
+  position:absolute;
+  bottom:18px;
+  color:white;
+  font-size:13px;
+  text-align:center;
+}
+
+.lightbox .gallery-arrow.prev {left:12px}
+.lightbox .gallery-arrow.next {right:12px}
+
+/* FINAL CTA */
+
+.final-cta {
+  background:#132d49;
+  color:white;
+  padding:75px 0;
+}
+
+.cta-layout {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+
+.cta-layout p {
+  max-width:600px;
+  color:#c7d3de;
+}
+
+.cta-buttons {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-width:210px;
+}
+
+footer {
+  background:#071728;
+  color:white;
+  padding:30px 0;
+  text-align:center;
+}
+
+footer a {color:var(--gold)}
+
+.disclaimer {
+  font-size:11px;
+  color:#687382;
+  padding:30px 0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px) {
+  .hero {grid-template-columns:1fr}
+  .hero-image {order:-1}
+  .hero-content {padding:45px 25px}
+  .feature-grid {grid-template-columns:1fr 1fr}
+  .value-grid {grid-template-columns:1fr}
+  .cta-layout {flex-direction:column;align-items:start}
+}
+
+@media(max-width:600px) {
+  .brand {font-size:16px}
+  .header-inner .btn {padding:10px;font-size:11px}
+  .current-price {font-size:36px}
+  .property-facts {grid-template-columns:repeat(2,1fr)}
+  .fact {border-bottom:1px solid #e5e5e5}
+  .fact:last-child {grid-column:span 2}
+  .feature-grid {grid-template-columns:1fr}
+  .section {padding:55px 0}
+  .incentive-bubbles {flex-direction:column}
+  .incentive-bubble,.offer-btn {width:100%}
+  .hero-actions .btn {width:100%}
+  .gallery-main {aspect-ratio:4/3}
+  .gallery-arrow {width:37px;height:37px}
+  .cta-buttons {width:100%}
+}
+</style>
+
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="container header-inner">
-      <a href="https://angelaspeights.com" class="brand">
-        ANGELA SPEIGHTS
-        <small>New Home Sales · Perry Homes</small>
+<!-- HEADER -->
+
+<header>
+  <div class="container header-inner">
+
+    <a href="https://angelaspeights.com" class="brand">
+      ANGELA SPEIGHTS
+      <small>NEW HOME SALES · PERRY HOMES</small>
+    </a>
+
+    <a href="#tour" class="btn btn-dark">
+      Schedule a Tour
+    </a>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <span class="eyebrow">
+      Angela's Deal of the Week
+    </span>
+
+    <h1>
+      Your Next Home.<br>
+      <span>An Incredible Opportunity.</span>
+    </h1>
+
+    <p class="original-price">
+      Original Price:
+      <s>$549,900</s>
+    </p>
+
+    <div class="current-price">
+      $464,900
+    </div>
+
+    <div class="savings">
+      $85,000 Below Original Price!
+    </div>
+
+    <div class="hero-specs">
+      4 Bedrooms · 3 Baths · 2,544 Sq Ft · Corner Lot
+    </div>
+
+    <div class="hero-address">
+      12302 Hyland Ln.<br>
+      Mont Belvieu, TX 77523
+    </div>
+
+    <p class="hero-description">
+      Discover this beautiful 4-bedroom home offering
+      2,544 square feet of living space, three full
+      bathrooms, and a generous 9,116-square-foot
+      corner lot.
+    </p>
+
+    <div class="hero-actions">
+
+      <a href="#tour" class="btn btn-gold">
+        Schedule a Private Tour
       </a>
 
-      <a href="#tour" class="btn btn-dark">Schedule a Tour</a>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-grid">
-
-        <div class="hero-content">
-          <span class="eyebrow">Angela's Deal of the Week</span>
-
-          <h1>
-            Your Next Home.<br>
-            <span>An Incredible Opportunity.</span>
-          </h1>
-
-          <div class="hero-price">$464,900</div>
-
-          <div class="hero-specs">
-            4 Bedrooms · 3 Baths · 2,544 Sq Ft · Corner Lot
-          </div>
-
-          <p class="hero-description">
-            Discover an inviting home offering 2,544 square feet
-            of living space, four bedrooms, three full bathrooms,
-            and a generous 9,116-square-foot corner lot.
-          </p>
-
-          <div class="hero-actions">
-            <a href="#tour" class="btn btn-gold">
-              Schedule a Private Tour
-            </a>
-
-            <a href="#highlights" class="btn btn-outline">
-              Explore This Home
-            </a>
-          </div>
-
-          <p style="font-size:12px;color:#aec0cf;margin-top:25px;">
-            Current asking price. Pricing and availability subject to change.
-          </p>
-        </div>
-
-        <div class="hero-photo">
-          <!-- Upload the promotional house photo to this path -->
-          <img
-            src="assets/deal-of-the-week-home.png"
-            alt="Featured Perry Homes property with Deal of the Week banner"
-          >
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PROPERTY DETAILS -->
-    <div class="container property-facts">
-
-      <div class="fact">
-        <strong>$464,900</strong>
-        <span>Current Price</span>
-      </div>
-
-      <div class="fact">
-        <strong>2,544</strong>
-        <span>Square Feet</span>
-      </div>
-
-      <div class="fact">
-        <strong>4</strong>
-        <span>Bedrooms</span>
-      </div>
-
-      <div class="fact">
-        <strong>3</strong>
-        <span>Bathrooms</span>
-      </div>
-
-      <div class="fact">
-        <strong>9,116</strong>
-        <span>Sq Ft Corner Lot</span>
-      </div>
+      <a href="#highlights" class="btn btn-outline">
+        Explore This Home
+      </a>
 
     </div>
 
-    <!-- PROPERTY HIGHLIGHTS -->
-    <section class="content-section cream" id="highlights">
-      <div class="container">
+    <p class="hero-note">
+      Pricing, availability and promotional incentives
+      are subject to verification and change.
+    </p>
 
-        <span class="kicker">Why This Home Stands Out</span>
+  </div>
 
-        <h2>
-          More Than a Beautiful Home.<br>
-          A Place to Make Your Own.
-        </h2>
+  <div class="hero-image">
+    <img
+      src="assets/deal-of-the-week-home.png"
+      alt="12302 Hyland Lane exterior - Deal of the Week">
+  </div>
 
-        <p class="intro">
-          Beautiful curb appeal, a bright and inviting kitchen,
-          generous living space, and a corner lot make this
-          home worth seeing in person.
-        </p>
+</section>
 
-        <div class="feature-grid">
+<!-- PROPERTY FACTS -->
 
-          <article class="feature-card">
-            <span class="feature-number">01 / CURB APPEAL</span>
-            <h3>A Beautiful First Impression</h3>
-            <p>
-              Light brickwork, distinctive rooflines,
-              thoughtful landscaping, and an inviting
-              front entry create a welcoming exterior.
-            </p>
-          </article>
+<div class="container property-facts">
 
-          <article class="feature-card">
-            <span class="feature-number">02 / MODERN KITCHEN</span>
-            <h3>The Heart of the Home</h3>
-            <p>
-              A bright kitchen with a spacious island
-              creates an inviting gathering place for
-              everyday meals and entertaining.
-            </p>
-          </article>
+  <div class="fact">
+    <strong>$464,900</strong>
+    <span>Current Price</span>
+    <small>Was <s>$549,900</s></small>
+  </div>
 
-          <article class="feature-card">
-            <span class="feature-number">03 / CORNER LOT</span>
-            <h3>Room to Enjoy Outdoors</h3>
-            <p>
-              Positioned on a 9,116-square-foot corner
-              lot, this home offers a generous setting
-              with space to enjoy outdoor living.
-            </p>
-          </article>
+  <div class="fact">
+    <strong>2,544</strong>
+    <span>Square Feet</span>
+  </div>
 
-        </div>
-      </div>
-    </section>
+  <div class="fact">
+    <strong>4</strong>
+    <span>Bedrooms</span>
+  </div>
 
-    <!-- VALUE -->
-    <section class="content-section">
-      <div class="container value-grid">
+  <div class="fact">
+    <strong>3</strong>
+    <span>Bathrooms</span>
+  </div>
 
-        <div class="value-copy">
-          <span class="kicker">The Value of Your Next Move</span>
+  <div class="fact">
+    <strong>9,116</strong>
+    <span>Sq Ft Corner Lot</span>
+  </div>
 
-          <h2>
-            The Right Home.<br>
-            The Right Opportunity.
-          </h2>
+</div>
 
-          <p>
-            At a current asking price of
-            <strong>$464,900</strong>, this
-            4-bedroom, 3-bath home offers
-            2,544 square feet of living space
-            on a 9,116-square-foot corner lot.
-          </p>
+<!-- HIGHLIGHTS -->
 
-          <p>
-            Explore available builder incentives,
-            special financing opportunities, and
-            options that could make your next home
-            purchase more appealing.
-          </p>
+<section class="section cream" id="highlights">
 
-          <p>
-            Angela can help you understand the
-            full picture, including available
-            promotions, potential financing options,
-            and what it may take to make this home yours.
-          </p>
+  <div class="container">
 
-          <a href="#incentives" class="btn btn-dark">
-            Explore Available Incentives
-          </a>
-        </div>
+    <span class="kicker">
+      Why This Home Stands Out
+    </span>
 
-        <div class="value-panel">
-          <h3>Let's Review Your Opportunities</h3>
+    <h2>
+      More Than a Beautiful Home.<br>
+      A Place to Make Your Own.
+    </h2>
 
-          <ul>
-            <li>Current asking price of $464,900</li>
-            <li>2,544 square feet of living space</li>
-            <li>4 bedrooms and 3 bathrooms</li>
-            <li>9,116-square-foot corner lot</li>
-            <li>Current builder incentive opportunities</li>
-            <li>Available financing programs</li>
-            <li>Private tour scheduling</li>
-            <li>Offer and purchasing options</li>
-          </ul>
-        </div>
+    <p class="intro">
+      Beautiful curb appeal, a bright kitchen,
+      generous living space, and a corner lot
+      make this home worth seeing in person.
+    </p>
 
-      </div>
-    </section>
+    <div class="feature-grid">
 
-    <!-- INCENTIVES -->
-    <section class="content-section incentives" id="incentives">
-      <div class="container">
+      <article class="feature-card">
+        <span class="feature-number">
+          01 / CURB APPEAL
+        </span>
 
-        <span class="kicker">Exclusive Homebuying Opportunities</span>
-
-        <h2>
-          Add These Incentives to Your<br>
-          Home Purchase Today!
-        </h2>
-
-        <p class="intro">
-          Explore the available promotional opportunities
-          that may help make your home purchase even more
-          rewarding. Click below to review the details
-          and learn which incentives may apply.
-        </p>
-
-        <nav class="incentive-bubbles" aria-label="Incentive information">
-
-          <a
-            class="incentive-bubble"
-            href="/incentives/home-appliances.html">
-            ✦ Home Appliances
-          </a>
-
-          <a
-            class="incentive-bubble"
-            href="/incentives/special-financing.html">
-            ✦ Special Financing &amp; Interest Rates
-          </a>
-
-          <a
-            class="incentive-bubble"
-            href="/incentives/realtor-bonus.html">
-            ✦ Realtor Bonus
-          </a>
-
-        </nav>
-
-        <h3 style="margin-top:45px;font-size:25px;">
-          Ready to Make This Home Yours?
-        </h3>
+        <h3>A Beautiful First Impression</h3>
 
         <p>
-          Take the next step and let Angela know you're interested.
+          Light brickwork, distinctive rooflines,
+          thoughtful landscaping, and a welcoming
+          front entry.
         </p>
+      </article>
 
-        <a href="/submit-offer.html" class="offer-btn">
-          Submit an Offer Now! &rarr;
-        </a>
+      <article class="feature-card">
+        <span class="feature-number">
+          02 / MODERN KITCHEN
+        </span>
 
-        <p class="small-print">
-          Incentives are subject to availability,
-          eligibility, approval, and program terms.
-          Some promotions may not be combined.
-          Submitting an offer inquiry does not
-          constitute a binding purchase agreement.
+        <h3>The Heart of the Home</h3>
+
+        <p>
+          A bright kitchen with a spacious island
+          creates a gathering place for meals,
+          entertaining, and everyday living.
         </p>
+      </article>
 
-      </div>
-    </section>
+      <article class="feature-card">
+        <span class="feature-number">
+          03 / CORNER LOT
+        </span>
 
-    <!-- FINAL CALL TO ACTION -->
-    <section class="final-cta" id="tour">
-      <div class="container cta-layout">
+        <h3>Room to Enjoy Outdoors</h3>
 
-        <div>
-          <span class="eyebrow">Let's Make Your Next Move Happen</span>
+        <p>
+          Situated on a 9,116-square-foot corner lot,
+          offering a generous outdoor setting.
+        </p>
+      </article>
 
-          <h2>
-            Don't Just Browse It.<br>
-            Come Experience It.
-          </h2>
-
-          <p>
-            See this beautiful corner-lot home in person
-            and let Angela guide you through pricing,
-            available incentives, and your options
-            for purchasing.
-          </p>
-        </div>
-
-        <div class="cta-buttons">
-          <a
-            href="https://angelaspeights.com"
-            class="btn btn-gold">
-            Connect With Angela
-          </a>
-
-          <a
-            href="/submit-offer.html"
-            class="btn btn-outline">
-            Submit an Offer Now!
-          </a>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- DISCLAIMER -->
-    <div class="container disclaimer">
-      <strong>Important Information:</strong>
-      Property pricing, availability, square footage,
-      lot dimensions, included features, financing options,
-      and promotional incentives are subject to change
-      and should be verified with Perry Homes.
-      Financing is subject to lender approval.
-      This promotional page is independently prepared
-      for property marketing.
     </div>
+  </div>
 
-  </main>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container footer-content">
-      <div>
-        <strong>Angela Speights</strong>
-        <div style="font-size:12px;color:#9badbc;">
-          New Home Sales Professional · Perry Homes
-        </div>
-      </div>
+<!-- VALUE SECTION -->
 
-      <a href="https://angelaspeights.com">
-        AngelaSpeights.com
+<section class="section">
+
+  <div class="container value-grid">
+
+    <div class="value-copy">
+
+      <span class="kicker">
+        The Value of Your Next Move
+      </span>
+
+      <h2>
+        The Right Home.<br>
+        The Right Opportunity.
+      </h2>
+
+      <p>
+        Originally priced at
+        <s>$549,900</s>, this home is
+        currently offered at
+        <strong>$464,900</strong>.
+      </p>
+
+      <p>
+        That's an $85,000 difference from the
+        original price on a home with four
+        bedrooms, three bathrooms, 2,544 square
+        feet, and a 9,116-square-foot corner lot.
+      </p>
+
+      <p>
+        Explore available builder incentives,
+        special financing opportunities,
+        and options that could make your
+        next purchase more appealing.
+      </p>
+
+      <a href="#incentives" class="btn btn-dark">
+        Explore Available Incentives
       </a>
+
     </div>
-  </footer>
+
+    <div class="value-panel">
+
+      <h3>Let's Review Your Opportunities</h3>
+
+      <ul>
+        <li>Original Price: $549,900</li>
+        <li>Current Price: $464,900</li>
+        <li>4 Bedrooms and 3 Bathrooms</li>
+        <li>2,544 Square Feet</li>
+        <li>9,116 Sq Ft Corner Lot</li>
+        <li>Available Builder Incentives</li>
+        <li>Special Financing Opportunities</li>
+        <li>Private Tour Scheduling</li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- INCENTIVES -->
+
+<section class="section incentives" id="incentives">
+
+  <div class="container">
+
+    <span class="kicker">
+      Exclusive Homebuying Opportunities
+    </span>
+
+    <h2>
+      Add These Incentives to<br>
+      Your Home Purchase Today!
+    </h2>
+
+    <p class="intro">
+      Explore available promotional opportunities
+      that may help make your purchase even
+      more rewarding.
+    </p>
+
+    <nav class="incentive-bubbles"
+      aria-label="Homebuyer incentives">
+
+      <a
+        href="/incentives/home-appliances.html"
+        class="incentive-bubble">
+        ✦ Home Appliances
+      </a>
+
+      <a
+        href="/incentives/special-financing.html"
+        class="incentive-bubble">
+        ✦ Special Financing &amp; Interest Rates
+      </a>
+
+      <a
+        href="/incentives/realtor-bonus.html"
+        class="incentive-bubble">
+        ✦ Realtor Bonus
+      </a>
+
+    </nav>
+
+    <h3>
+      Ready to Make This Home Yours?
+    </h3>
+
+    <p>
+      Take the next step and let Angela
+      know you're interested.
+    </p>
+
+    <a
+      href="/submit-offer.html?home=deal-of-the-week&amp;address=12302%20Hyland%20Ln.%2C%20Mont%20Belvieu%2C%20TX%2077523"
+      class="offer-btn">
+      Submit an Offer Now! →
+    </a>
+
+    <p class="small-print">
+      Incentives are subject to availability,
+      eligibility, approval, and program terms.
+      Some promotions may not be combined.
+      An offer inquiry is not a binding
+      purchase agreement.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- INTERACTIVE GALLERY -->
+
+<section class="gallery-section" id="home-gallery">
+
+  <div class="container">
+
+    <div class="gallery-header">
+
+      <span class="kicker">
+        Explore 12302 Hyland Ln.
+      </span>
+
+      <h2>
+        Take a Closer Look Inside &amp; Out
+      </h2>
+
+      <p>
+        Browse the home photographs.
+        Click an image to enlarge it, or
+        let the gallery scroll automatically.
+      </p>
+
+    </div>
+
+    <div class="gallery-frame" id="galleryFrame">
+
+      <button
+        class="gallery-main"
+        id="galleryOpen"
+        type="button"
+        aria-label="Enlarge property photo">
+
+        <img
+          id="galleryImage"
+          src="assets/deal-of-the-week-home.png"
+          alt="12302 Hyland Lane exterior">
+
+        <span
+          class="gallery-caption"
+          id="galleryCaption">
+          Front Exterior
+        </span>
+
+      </button>
+
+      <button
+        type="button"
+        class="gallery-arrow prev"
+        id="galleryPrev"
+        aria-label="Previous photo">
+        &#10094;
+      </button>
+
+      <button
+        type="button"
+        class="gallery-arrow next"
+        id="galleryNext"
+        aria-label="Next photo">
+        &#10095;
+      </button>
+
+    </div>
+
+    <div
+      class="gallery-thumbnails"
+      id="galleryThumbnails">
+    </div>
+
+    <p class="gallery-hint">
+      Select a thumbnail or click the
+      main image for a full-screen view.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- FULLSCREEN LIGHTBOX -->
+
+<div
+  class="lightbox"
+  id="lightbox"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Property photo viewer"
+  aria-hidden="true">
+
+  <button
+    type="button"
+    class="lightbox-close"
+    id="lightboxClose"
+    aria-label="Close viewer">
+    &times;
+  </button>
+
+  <button
+    type="button"
+    class="gallery-arrow prev"
+    id="lightboxPrev"
+    aria-label="Previous enlarged photo">
+    &#10094;
+  </button>
+
+  <img
+    id="lightboxImage"
+    src=""
+    alt="Enlarged property photo">
+
+  <button
+    type="button"
+    class="gallery-arrow next"
+    id="lightboxNext"
+    aria-label="Next enlarged photo">
+    &#10095;
+  </button>
+
+  <div
+    class="lightbox-counter"
+    id="lightboxCounter">
+  </div>
+
+</div>
+
+<!-- FINAL CALL TO ACTION -->
+
+<section class="final-cta" id="tour">
+
+  <div class="container cta-layout">
+
+    <div>
+
+      <span class="eyebrow">
+        Let's Make Your Next Move Happen
+      </span>
+
+      <h2>
+        Don't Just Browse It.<br>
+        Come Experience It.
+      </h2>
+
+      <p>
+        See this beautiful corner-lot home in
+        person and let Angela guide you through
+        pricing, available incentives, and
+        purchasing options.
+      </p>
+
+    </div>
+
+    <div class="cta-buttons">
+
+      <a
+        href="https://angelaspeights.com"
+        class="btn btn-gold">
+        Connect With Angela
+      </a>
+
+      <a
+        href="/submit-offer.html?home=deal-of-the-week&amp;address=12302%20Hyland%20Ln.%2C%20Mont%20Belvieu%2C%20TX%2077523"
+        class="btn btn-outline">
+        Submit an Offer Now!
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- DISCLAIMERS -->
+
+<div class="container disclaimer">
+  <strong>Important Information:</strong>
+  Original price of $549,900 and current
+  advertised price of $464,900 are provided
+  for this marketing page and should be
+  verified with Perry Homes.
+
+  Pricing, availability, square footage,
+  lot dimensions, included features,
+  interest rates, financing options, and
+  incentives are subject to change.
+
+  Financing is subject to lender approval.
+  Photos are for property presentation;
+  verify features in person.
+</div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <strong>Angela Speights</strong>
+
+  <p>
+    New Home Sales Professional | Perry Homes
+  </p>
+
+  <a href="https://angelaspeights.com">
+    AngelaSpeights.com
+  </a>
+
+</footer>
+
+<!-- PHOTO GALLERY JAVASCRIPT -->
+
+<script>
+
+/*
+  PHOTO CONFIGURATION
+
+  Upload the actual property photos to your
+  website's assets folder.
+
+  Additional images must use these filenames,
+  or you can change the filenames below.
+
+  Missing images are automatically skipped.
+*/
+
+const PROPERTY_PHOTOS = [
+
+  {
+    src:"assets/deal-of-the-week-home.png",
+    caption:"Front Exterior"
+  },
+
+  {
+    src:"assets/12302-hyland-kitchen.jpg",
+    caption:"Kitchen and Island"
+  },
+
+  {
+    src:"assets/12302-hyland-living.jpg",
+    caption:"Living Area"
+  },
+
+  {
+    src:"assets/12302-hyland-primary.jpg",
+    caption:"Primary Bedroom"
+  },
+
+  {
+    src:"assets/12302-hyland-backyard.jpg",
+    caption:"Backyard and Corner Lot"
+  },
+
+  {
+    src:"assets/12302-hyland-bathroom.jpg",
+    caption:"Bathroom"
+  }
+
+];
+
+
+(async function() {
+
+  const available = await Promise.all(
+    PROPERTY_PHOTOS.map(photo => new Promise(resolve => {
+
+      const image = new Image();
+
+      image.onload = () => resolve(photo);
+
+      image.onerror = () => resolve(null);
+
+      image.src = photo.src;
+
+    }))
+  );
+
+  const photos = available.filter(Boolean);
+
+  if (!photos.length) return;
+
+  let activeIndex = 0;
+  let timer = null;
+
+  const $ = id => document.getElementById(id);
+
+  const mainImage = $("galleryImage");
+  const caption = $("galleryCaption");
+  const thumbs = $("galleryThumbnails");
+  const lightbox = $("lightbox");
+  const lightboxImage = $("lightboxImage");
+
+  const galleryFrame = $("galleryFrame");
+
+  const prev = $("galleryPrev");
+  const next = $("galleryNext");
+
+  const lightboxPrev = $("lightboxPrev");
+  const lightboxNext = $("lightboxNext");
+
+  const allArrows = [
+    prev,
+    next,
+    lightboxPrev,
+    lightboxNext
+  ];
+
+  allArrows.forEach(button => {
+    button.hidden = photos.length < 2;
+  });
+
+
+  function render(index) {
+
+    activeIndex =
+      (index + photos.length) % photos.length;
+
+    const photo = photos[activeIndex];
+
+    mainImage.src = photo.src;
+    mainImage.alt = photo.caption;
+
+    caption.textContent = photo.caption;
+
+    lightboxImage.src = photo.src;
+    lightboxImage.alt = photo.caption;
+
+    $("lightboxCounter").textContent =
+      (activeIndex + 1) +
+      " of " +
+      photos.length +
+      " - " +
+      photo.caption;
+
+    [...thumbs.children].forEach((button, i) => {
+
+      button.classList.toggle(
+        "active",
+        i === activeIndex
+      );
+
+      button.setAttribute(
+        "aria-current",
+        String(i === activeIndex)
+      );
+
+    });
+
+  }
+
+
+  photos.forEach((photo, index) => {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+    button.className = "gallery-thumbnail";
+    button.setAttribute(
+      "aria-label",
+      "View " + photo.caption
+    );
+
+    const image = document.createElement("img");
+
+    image.src = photo.src;
+    image.alt = photo.caption;
+    image.loading = "lazy";
+
+    button.appendChild(image);
+
+    button.addEventListener("click", () => {
+      render(index);
+      restart();
+    });
+
+    thumbs.appendChild(button);
+
+  });
+
+
+  function stop() {
+
+    if (timer) clearInterval(timer);
+
+    timer = null;
+
+  }
+
+
+  function restart() {
+
+    stop();
+
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (
+      photos.length > 1 &&
+      !reducedMotion &&
+      !lightbox.classList.contains("open")
+    ) {
+
+      timer = setInterval(() => {
+
+        render(activeIndex + 1);
+
+      }, 5500);
+
+    }
+
+  }
+
+
+  prev.addEventListener("click", () => {
+    render(activeIndex - 1);
+    restart();
+  });
+
+  next.addEventListener("click", () => {
+    render(activeIndex + 1);
+    restart();
+  });
+
+
+  galleryFrame.addEventListener(
+    "mouseenter", stop
+  );
+
+  galleryFrame.addEventListener(
+    "mouseleave", restart
+  );
+
+  galleryFrame.addEventListener(
+    "focusin", stop
+  );
+
+  galleryFrame.addEventListener(
+    "focusout", restart
+  );
+
+
+  $("galleryOpen").addEventListener("click", () => {
+
+    stop();
+
+    lightbox.classList.add("open");
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow = "hidden";
+
+    $("lightboxClose").focus();
+
+  });
+
+
+  function closeLightbox() {
+
+    lightbox.classList.remove("open");
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.style.overflow = "";
+
+    $("galleryOpen").focus();
+
+    restart();
+
+  }
+
+
+  $("lightboxClose").addEventListener(
+    "click", closeLightbox
+  );
+
+
+  lightboxPrev.addEventListener("click", () => {
+    render(activeIndex - 1);
+  });
+
+
+  lightboxNext.addEventListener("click", () => {
+    render(activeIndex + 1);
+  });
+
+
+  lightbox.addEventListener("click", event => {
+
+    if (event.target === lightbox) {
+      closeLightbox();
+    }
+
+  });
+
+
+  document.addEventListener("keydown", event => {
+
+    if (!lightbox.classList.contains("open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    }
+
+    if (event.key === "ArrowLeft") {
+      render(activeIndex - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      render(activeIndex + 1);
+    }
+
+  });
+
+
+  document.addEventListener(
+    "visibilitychange",
+    () => {
+      if (document.hidden) {
+        stop();
+      } else {
+        restart();
+      }
+    }
+  );
+
+
+  render(0);
+  restart();
+
+})();
+
+</script>
 
 </body>
 </html>
