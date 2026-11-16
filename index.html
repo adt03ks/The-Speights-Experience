@@ -1494,5 +1494,90 @@ window.addEventListener("hashchange", checkForRegistrationLink);
       });
     });
   </script>
+  
+<!-- INVENTORY ADMIN ACCESS ICON -->
+
+<a
+  href="/inventory-admin.html"
+  class="inventory-admin-keypad"
+  title="Inventory Manager Login"
+  aria-label="Open Inventory Manager Login">
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true">
+
+    <rect x="4" y="2" width="16" height="20" rx="3"/>
+
+    <rect x="7" y="5" width="10" height="4" rx="1"/>
+
+    <circle cx="8" cy="13" r="0.8"/>
+    <circle cx="12" cy="13" r="0.8"/>
+    <circle cx="16" cy="13" r="0.8"/>
+
+    <circle cx="8" cy="17" r="0.8"/>
+    <circle cx="12" cy="17" r="0.8"/>
+    <circle cx="16" cy="17" r="0.8"/>
+
+  </svg>
+
+</a>
+
+<style>
+.inventory-admin-keypad {
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:9999;
+
+  width:48px;
+  height:48px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#0b1d32;
+  color:#d8ad5f;
+
+  border:1px solid #d8ad5f;
+  border-radius:12px;
+
+  box-shadow:0 5px 18px rgba(0,0,0,.18);
+
+  text-decoration:none;
+  transition:transform .2s ease,
+             background .2s ease;
+}
+
+.inventory-admin-keypad:hover {
+  background:#173654;
+  transform:translateY(-2px);
+}
+
+.inventory-admin-keypad:focus-visible {
+  outline:3px solid #d8ad5f;
+  outline-offset:3px;
+}
+
+@media(max-width:600px) {
+  .inventory-admin-keypad {
+    top:12px;
+    right:12px;
+    width:42px;
+    height:42px;
+  }
+}
+</style>
+<!-- END INVENTORY ADMIN ACCESS ICON -->
+
 </body>
 </html>
