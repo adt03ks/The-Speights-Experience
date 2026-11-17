@@ -743,8 +743,16 @@ function render(home) {
       : null
   );
 
-  addSpec('Lot Type',home.lot_type);
-  addSpec('Floor Plan',home.floor_plan);
+ 
+addSpec('Lot Type',home.lot_type);
+
+addSpec(
+  'Move-In Availability',
+  home.move_in_availability
+);
+
+addSpec('Floor Plan',home.floor_plan);
+
   addSpec('Stories',home.story_count);
   addSpec('Garage Spaces',home.garage_spaces);
 
