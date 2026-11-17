@@ -1,0 +1,720 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081b30">
+
+<title>Available Inventory | Angela Speights</title>
+
+<meta name="description"
+content="Explore available new construction homes and inventory opportunities with Angela Speights at Perry Homes Riceland.">
+
+<style>
+:root {
+  --navy:#081b30;
+  --navy2:#163453;
+  --gold:#d9ae60;
+  --ink:#22364a;
+  --muted:#647587;
+  --line:#dce5ed;
+  --bg:#f4f6f8;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+}
+
+a { text-decoration:none; }
+
+.wrap {
+  max-width:1190px;
+  width:calc(100% - 36px);
+  margin:auto;
+}
+
+header {
+  background:var(--navy);
+  color:#fff;
+  padding:20px 0;
+}
+
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.brand {
+  font-size:20px;
+  font-weight:900;
+  color:#fff;
+  letter-spacing:.7px;
+}
+
+.brand small {
+  display:block;
+  color:var(--gold);
+  font-size:10px;
+  letter-spacing:1.5px;
+  font-weight:normal;
+}
+
+.nav a:last-child {
+  color:#fff;
+  font-size:13px;
+}
+
+.hero {
+  background:linear-gradient(115deg,#081b30,#17416a);
+  color:#fff;
+  padding:72px 0;
+  text-align:center;
+}
+
+.eyebrow {
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:900;
+  font-size:12px;
+}
+
+h1 {
+  font-size:clamp(36px,5vw,57px);
+  line-height:1.12;
+  margin:14px 0;
+}
+
+.hero p {
+  max-width:690px;
+  margin:0 auto;
+  color:#dce6ef;
+  font-size:16px;
+}
+
+main { padding:42px 0 75px; }
+
+.filters {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:14px;
+  padding:22px;
+  background:white;
+  border-radius:13px;
+  border:1px solid var(--line);
+  margin-bottom:25px;
+}
+
+label {
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+input,select {
+  width:100%;
+  padding:13px 12px;
+  border:1px solid #bdcbd8;
+  border-radius:7px;
+  font:inherit;
+  background:white;
+  color:var(--ink);
+}
+
+.results-bar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+  margin:20px 0;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:23px;
+}
+
+.card {
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:13px;
+  overflow:hidden;
+  box-shadow:0 8px 25px #081b300b;
+  display:flex;
+  flex-direction:column;
+}
+
+.photo-wrap {
+  position:relative;
+  background:#e5ebf0;
+  aspect-ratio:16/10;
+  overflow:hidden;
+}
+
+.photo-wrap img {
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+
+.placeholder {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:100%;
+  color:#718294;
+  font-size:13px;
+}
+
+.featured {
+  position:absolute;
+  top:14px;
+  left:14px;
+  background:var(--gold);
+  color:var(--navy);
+  padding:7px 11px;
+  font-size:11px;
+  border-radius:5px;
+  font-weight:900;
+}
+
+.card-content {
+  padding:23px;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+}
+
+.community {
+  text-transform:uppercase;
+  letter-spacing:1.2px;
+  font-size:11px;
+  font-weight:900;
+  color:#9a733f;
+}
+
+.card h2 {
+  margin:10px 0 5px;
+  font-size:22px;
+  line-height:1.25;
+  color:var(--navy);
+}
+
+.address {
+  font-size:13px;
+  color:var(--muted);
+}
+
+.price {
+  font-size:28px;
+  color:var(--navy);
+  font-weight:900;
+  margin-top:17px;
+}
+
+.original {
+  color:#8793a0;
+  text-decoration:line-through;
+  font-size:14px;
+}
+
+.savings {
+  font-size:12px;
+  font-weight:800;
+  color:#267448;
+}
+
+.specs {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:19px 0;
+  font-size:12px;
+  color:#526579;
+}
+
+.specs span {
+  padding:6px 9px;
+  background:#f0f4f7;
+  border-radius:5px;
+}
+
+.buttons {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:auto;
+}
+
+.button {
+  background:var(--navy);
+  border-radius:7px;
+  color:#fff;
+  padding:13px 18px;
+  text-align:center;
+  font-size:13px;
+  font-weight:900;
+}
+
+.button.alt {
+  background:#fff;
+  color:var(--navy);
+  border:1px solid var(--navy);
+}
+
+.empty {
+  background:white;
+  padding:48px 25px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  text-align:center;
+  color:var(--muted);
+}
+
+.hidden { display:none!important; }
+
+footer {
+  background:#071728;
+  color:#cbd7e1;
+  text-align:center;
+  padding:35px 20px;
+  font-size:12px;
+}
+
+footer a { color:var(--gold); }
+
+@media(max-width:1000px) {
+  .cards { grid-template-columns:repeat(2,1fr); }
+}
+
+@media(max-width:650px) {
+  .filters { grid-template-columns:1fr; }
+  .cards { grid-template-columns:1fr; }
+  .nav { flex-wrap:wrap; }
+  .hero { padding:48px 0; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">
+      ANGELA SPEIGHTS
+      <small>PERRY HOMES · RICELAND</small>
+    </a>
+    <a href="/">← Return to Homepage</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+
+    <div class="eyebrow">
+      The Speights Experience
+    </div>
+
+    <h1>Available Homes &amp; Inventory Deals</h1>
+
+    <p>
+      Explore available new construction opportunities,
+      view property details, compare pricing, and
+      connect directly with Angela Speights.
+    </p>
+
+  </div>
+</section>
+
+<main>
+<div class="wrap">
+
+  <section class="filters">
+
+    <div>
+      <label for="search">Search Inventory</label>
+      <input
+        id="search"
+        type="search"
+        placeholder="Address, community or floor plan">
+    </div>
+
+    <div>
+      <label for="community">Community</label>
+      <select id="community">
+        <option value="">All Communities</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="sort">Sort Properties</label>
+      <select id="sort">
+        <option value="featured">Featured First</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="newest">Recently Added</option>
+      </select>
+    </div>
+
+  </section>
+
+  <div class="results-bar">
+    <strong id="count">Loading inventory...</strong>
+    <span>Listings update as availability changes</span>
+  </div>
+
+  <div id="cards" class="cards"></div>
+
+  <div id="empty" class="empty hidden">
+    <h2>No Homes Found</h2>
+    <p>
+      There are no published homes matching
+      your search right now.
+    </p>
+    <p>
+      Please check back for new opportunities
+      or contact Angela directly.
+    </p>
+    <a href="mailto:Angela.Speights@perryhomes.com">
+      Contact Angela
+    </a>
+  </div>
+
+  <div id="error" class="empty hidden" role="alert">
+    Unable to load inventory.
+    Please refresh the page or try again later.
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <strong>Angela Speights</strong><br>
+  Perry Homes · Riceland · Mont Belvieu, Texas
+
+  <p>
+    <a href="tel:+13468674865">346-867-4865</a>
+    ·
+    <a href="mailto:Angela.Speights@perryhomes.com">
+      Email Angela
+    </a>
+  </p>
+
+  <p>
+    Pricing and availability are subject to
+    verification and change without notice.
+    Equal Housing Opportunity.
+  </p>
+</footer>
+
+<script type="module">
+
+import { createClient }
+from 'https://esm.sh/@supabase/supabase-js@2.49.4';
+
+const SUPABASE_URL =
+  'https://yyrynwzgtdopoqfognns.supabase.co';
+
+const SUPABASE_PUBLIC_KEY =
+  'sb_publishable_3oyKdqHlHa_x65KULEZBPQ_w_DHMvXA';
+
+const db = createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLIC_KEY,
+  {
+    auth: {
+      persistSession:false,
+      autoRefreshToken:false,
+      detectSessionInUrl:false
+    }
+  }
+);
+
+const $ = id => document.getElementById(id);
+
+let homes=[];
+
+const money = n => new Intl.NumberFormat(
+  'en-US',
+  {
+    style:'currency',
+    currency:'USD',
+    maximumFractionDigits:0
+  }
+).format(Number(n)||0);
+
+function el(tag,className,text) {
+  const node=document.createElement(tag);
+  if(className) node.className=className;
+  if(text!==undefined) node.textContent=text;
+  return node;
+}
+
+function propertyLink(home) {
+  return '/home.html?slug='+
+    encodeURIComponent(home.slug);
+}
+
+function render() {
+
+  const query=$('search').value.toLowerCase().trim();
+  const community=$('community').value;
+  const sort=$('sort').value;
+
+  let matches=homes.filter(home=>{
+
+    const text=[
+      home.address,
+      home.city,
+      home.community,
+      home.floor_plan,
+      home.title
+    ].join(' ').toLowerCase();
+
+    return (
+      (!query || text.includes(query)) &&
+      (!community || home.community===community)
+    );
+  });
+
+  if(sort==='low') {
+    matches.sort((a,b)=>
+      Number(a.current_price)-Number(b.current_price)
+    );
+  } else if(sort==='high') {
+    matches.sort((a,b)=>
+      Number(b.current_price)-Number(a.current_price)
+    );
+  } else if(sort==='newest') {
+    matches.sort((a,b)=>
+      new Date(b.created_at)-new Date(a.created_at)
+    );
+  } else {
+    matches.sort((a,b)=>
+      Number(b.is_featured)-Number(a.is_featured) ||
+      a.sort_order-b.sort_order
+    );
+  }
+
+  $('count').textContent=
+    matches.length+' Available Home'+
+    (matches.length===1?'':'s');
+
+  const box=$('cards');
+  box.replaceChildren();
+
+  $('empty').classList.toggle(
+    'hidden',
+    matches.length!==0
+  );
+
+  matches.forEach(home=>{
+
+    const card=el('article','card');
+
+    const photoWrap=el('div','photo-wrap');
+
+    const photo=Array.isArray(home.photos)
+      ? home.photos[0]
+      : null;
+
+    if(
+      photo &&
+      typeof photo.url==='string' &&
+      /^(https:\/\/|\/)/.test(photo.url)
+    ) {
+      const img=el('img');
+      img.src=photo.url;
+      img.alt=photo.alt || home.address;
+      img.loading='lazy';
+      photoWrap.appendChild(img);
+    } else {
+      photoWrap.appendChild(
+        el('div','placeholder','Property Photo Coming Soon')
+      );
+    }
+
+    if(home.is_featured) {
+      photoWrap.appendChild(
+        el('span','featured','FEATURED HOME')
+      );
+    }
+
+    card.appendChild(photoWrap);
+
+    const content=el('div','card-content');
+
+    content.appendChild(
+      el('div','community',home.community||'Available Home')
+    );
+
+    content.appendChild(
+      el('h2','',home.title||home.address)
+    );
+
+    content.appendChild(
+      el(
+        'div',
+        'address',
+        [home.address,home.city,home.state,home.zip]
+        .filter(Boolean).join(', ')
+      )
+    );
+
+    if(
+      home.original_price!=null &&
+      Number(home.original_price)>Number(home.current_price)
+    ) {
+      content.appendChild(
+        el('div','original',money(home.original_price))
+      );
+    }
+
+    content.appendChild(
+      el('div','price',money(home.current_price))
+    );
+
+    if(
+      home.original_price!=null &&
+      Number(home.original_price)>Number(home.current_price)
+    ) {
+      content.appendChild(
+        el(
+          'div',
+          'savings',
+          money(
+            home.original_price-home.current_price
+          )+' below original price'
+        )
+      );
+    }
+
+    const specs=el('div','specs');
+
+    [
+      home.bedrooms!=null
+        ? home.bedrooms+' Beds' : null,
+
+      home.bathrooms!=null
+        ? home.bathrooms+' Baths' : null,
+
+      home.square_feet!=null
+        ? Number(home.square_feet).toLocaleString()+' Sq Ft'
+        : null,
+
+      home.lot_type||null
+    ].filter(Boolean).forEach(text=>{
+      specs.appendChild(el('span','',text));
+    });
+
+    content.appendChild(specs);
+
+    const buttons=el('div','buttons');
+
+    const view=el('a','button','VIEW HOME DETAILS →');
+    view.href=propertyLink(home);
+    buttons.appendChild(view);
+
+    const inquiry=el('a','button alt','ASK ABOUT THIS HOME');
+
+    inquiry.href=
+      'mailto:Angela.Speights@perryhomes.com'+
+      '?subject='+encodeURIComponent(
+        'Inventory Inquiry - '+home.address
+      );
+
+    buttons.appendChild(inquiry);
+    content.appendChild(buttons);
+
+    card.appendChild(content);
+    box.appendChild(card);
+  });
+}
+
+async function loadHomes() {
+
+  const {data,error}=await db
+    .from('inventory_listings')
+    .select('*')
+    .eq('status','published')
+    .order('sort_order',{ascending:true})
+    .order('created_at',{ascending:false});
+
+  if(error) {
+    console.error('Inventory load error:',error);
+    $('error').classList.remove('hidden');
+    $('count').textContent='Inventory unavailable';
+    return;
+  }
+
+  $('error').classList.add('hidden');
+
+  homes=data||[];
+
+  const selected=$('community').value;
+
+  const communities=[
+    ...new Set(
+      homes.map(x=>x.community).filter(Boolean)
+    )
+  ].sort();
+
+  $('community').replaceChildren(
+    new Option('All Communities','')
+  );
+
+  communities.forEach(name=>{
+    $('community').add(new Option(name,name));
+  });
+
+  if(communities.includes(selected)) {
+    $('community').value=selected;
+  }
+
+  render();
+}
+
+['search','community','sort'].forEach(id=>{
+  $(id).addEventListener(
+    id==='search'?'input':'change',
+    render
+  );
+});
+
+if(SUPABASE_PUBLIC_KEY.startsWith('PASTE_')) {
+  $('error').classList.remove('hidden');
+  $('count').textContent=
+    'Setup required: add Supabase public key';
+} else {
+
+  loadHomes();
+
+  // Refresh listings every 60 seconds
+  setInterval(()=>{
+    if(!document.hidden) loadHomes();
+  },60000);
+
+  // Also refresh when returning to the tab
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden) loadHomes();
+  });
+}
+
+</script>
+</body>
+</html>
