@@ -590,6 +590,30 @@ function render() {
       el('div','price',money(home.current_price))
     );
 
+// SHOW MOVE-IN AVAILABILITY ON INVENTORY CARDS
+
+if (
+  home.move_in_availability &&
+  home.move_in_availability.trim()
+) {
+
+  const availability = document.createElement('div');
+
+  availability.style.background = '#eef5f0';
+  availability.style.color = '#176347';
+  availability.style.padding = '10px 14px';
+  availability.style.borderRadius = '7px';
+  availability.style.marginTop = '14px';
+  availability.style.fontSize = '13px';
+  availability.style.fontWeight = '800';
+
+  availability.textContent =
+    'MOVE-IN AVAILABILITY: ' +
+    home.move_in_availability;
+
+  content.appendChild(availability);
+}
+
     if(
       home.original_price!=null &&
       Number(home.original_price)>Number(home.current_price)
