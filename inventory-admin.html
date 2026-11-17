@@ -531,6 +531,25 @@ hr {
                  placeholder="Corner lot">
         </div>
 
+<!-- MOVE-IN AVAILABILITY -->
+
+<div>
+  <label for="move_in_availability">
+    Move-In Availability
+  </label>
+
+  <input
+    id="move_in_availability"
+    type="text"
+    maxlength="120"
+    placeholder="Example: Move-In Ready or January 2027">
+
+  <div class="hint">
+    Enter the confirmed or estimated
+    move-in timeframe for this home.
+  </div>
+</div>
+
         <div>
           <label for="floor_plan">Floor Plan</label>
           <input id="floor_plan">
@@ -784,6 +803,7 @@ let currentId = null;
 let currentPhotos = [];
 let currentListings = [];
 
+
 const fields = [
   'title',
   'slug',
@@ -793,10 +813,12 @@ const fields = [
   'zip',
   'community',
   'lot_type',
+  'move_in_availability',
   'floor_plan',
   'description',
   'promo_note'
 ];
+
 
 const numberFields = [
   'original_price',
