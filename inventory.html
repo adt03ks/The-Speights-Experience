@@ -656,12 +656,25 @@ async function loadHomes() {
     .order('sort_order',{ascending:true})
     .order('created_at',{ascending:false});
 
-  if(error) {
-    console.error('Inventory load error:',error);
-    $('error').classList.remove('hidden');
-    $('count').textContent='Inventory unavailable';
-    return;
-  }
+
+if (error) {
+  console.error('Supabase inventory error:', error);
+
+  $('count').textContent = 'Inventory connection error';
+
+  $('error').classList.remove('hidden');
+
+  $('error').textContent =
+    'Unable to load inventory.\n\n' +
+    'Error: ' + (error.message || 'Unknown error') +
+    '\nCode: ' + (error.code || 'Not provided') +
+    '\nDetails: ' + (error.details || 'Not provided');
+
+  $('error').style.whiteSpace = 'pre-line';
+
+  return;
+}
+
 
   $('error').classList.add('hidden');
 
