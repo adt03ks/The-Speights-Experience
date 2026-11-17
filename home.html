@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#081b30">
+<title>Home Details | Angela Speights</title>
+
+<style>
+:root {
+  --navy:#081b30;
+  --navy2:#173753;
+  --gold:#d9ae60;
+  --ink:#20364b;
+  --muted:#627386;
+  --line:#dce5ed;
+  --cream:#faf8f3;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  color:var(--ink);
+  background:#f5f7f9;
+  font:16px/1.65 Arial,Helvetica,sans-serif;
+}
+
+a { text-decoration:none; }
+
+.wrap {
+  width:calc(100% - 36px);
+  max-width:1130px;
+  margin:auto;
+}
+
+header {
+  background:var(--navy);
+  padding:22px 0;
+  color:white;
+}
+
+.nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+
+.brand {
+  font-size:20px;
+  font-weight:900;
+  color:white;
+}
+
+.brand small {
+  display:block;
+  font-size:10px;
+  letter-spacing:1px;
+  color:var(--gold);
+}
+
+.nav a:last-child {
+  font-size:13px;
+  color:white;
+}
+
+main { padding:45px 0 70px; }
+
+.eyebrow {
+  color:#9c7137;
+  font-size:12px;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  font-weight:900;
+}
+
+h1 {
+  font-size:clamp(34px,5vw,50px);
+  color:var(--navy);
+  margin:12px 0 5px;
+  line-height:1.16;
+}
+
+.address {
+  color:var(--muted);
+  margin:0 0 24px;
+}
+
+.gallery {
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:12px;
+  margin:30px 0;
+}
+
+.gallery img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  border-radius:9px;
+}
+
+.gallery button {
+  display:block;
+  padding:0;
+  border:0;
+  width:100%;
+  background:#e6ebf0;
+  cursor:pointer;
+  overflow:hidden;
+  border-radius:9px;
+}
+
+.primary-image {
+  aspect-ratio:16/10;
+  position:relative;
+}
+
+.primary-image img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.image-placeholder {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:280px;
+  background:#e5ebf0;
+  color:#617182;
+}
+
+.thumbnails {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  align-content:start;
+}
+
+.thumbnails button {
+  aspect-ratio:16/10;
+}
+
+.panel {
+  background:white;
+  padding:29px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  margin:22px 0;
+}
+
+.main-grid {
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(275px,.8fr);
+  gap:25px;
+  align-items:start;
+}
+
+.price {
+  font-size:43px;
+  color:var(--navy);
+  font-weight:900;
+}
+
+.original {
+  text-decoration:line-through;
+  color:#80909d;
+}
+
+.savings {
+  color:#227148;
+  font-weight:bold;
+}
+
+.specs {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin-top:22px;
+}
+
+.spec {
+  background:#f0f4f7;
+  padding:15px;
+  border-radius:8px;
+}
+
+.spec strong {
+  display:block;
+  color:var(--navy);
+  font-size:21px;
+}
+
+h2 {
+  color:var(--navy);
+  font-size:26px;
+  line-height:1.25;
+  margin:0 0 17px;
+}
+
+.highlights { padding-left:22px; }
+
+.highlights li { margin:8px 0; }
+
+.btn {
+  display:block;
+  background:var(--navy);
+  color:white;
+  text-align:center;
+  border-radius:7px;
+  padding:16px 20px;
+  font-size:14px;
+  font-weight:900;
+  margin:10px 0;
+}
+
+.btn.gold {
+  background:var(--gold);
+  color:var(--navy);
+}
+
+.btn.outline {
+  background:white;
+  color:var(--navy);
+  border:1px solid var(--navy);
+}
+
+.incentive {
+  display:block;
+  padding:15px 17px;
+  border-radius:8px;
+  border:1px solid #d5bb82;
+  background:#fffaf0;
+  color:var(--navy);
+  font-weight:800;
+  margin:10px 0;
+}
+
+.note {
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.hidden { display:none!important; }
+
+.error {
+  padding:45px 20px;
+  text-align:center;
+  background:white;
+  border-radius:12px;
+}
+
+dialog {
+  border:0;
+  padding:14px;
+  border-radius:12px;
+  width:min(94vw,1050px);
+  max-height:94vh;
+  background:#0c1722;
+  color:white;
+}
+
+dialog::backdrop {
+  background:rgba(0,0,0,.85);
+}
+
+dialog img {
+  display:block;
+  max-width:100%;
+  max-height:75vh;
+  margin:auto;
+  object-fit:contain;
+}
+
+dialog .controls {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:12px;
+}
+
+dialog button {
+  cursor:pointer;
+  border:1px solid #c9ac70;
+  background:#142b42;
+  color:white;
+  padding:10px 18px;
+  border-radius:6px;
+}
+
+footer {
+  background:#071728;
+  color:#cbd7e1;
+  padding:32px 20px;
+  text-align:center;
+  font-size:12px;
+}
+
+footer a { color:var(--gold); }
+
+@media(max-width:800px) {
+  .gallery { grid-template-columns:1fr; }
+  .main-grid { grid-template-columns:1fr; }
+}
+
+@media(max-width:520px) {
+  .thumbnails { grid-template-columns:repeat(3,1fr); }
+  .panel { padding:20px; }
+  .price { font-size:35px; }
+  .nav { flex-wrap:wrap; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap nav">
+
+    <a class="brand" href="/">
+      ANGELA SPEIGHTS
+      <small>PERRY HOMES · RICELAND</small>
+    </a>
+
+    <a href="/inventory.html">
+      ← Browse All Inventory
+    </a>
+
+  </div>
+</header>
+
+<main class="wrap">
+
+  <div id="loading">Loading property details...</div>
+
+  <div id="notFound" class="error hidden">
+    <h2>Home Not Available</h2>
+    <p>
+      This property may have been removed,
+      archived, or is no longer publicly available.
+    </p>
+    <a class="btn" href="/inventory.html">
+      Browse Available Homes
+    </a>
+  </div>
+
+  <div id="property" class="hidden">
+
+    <div class="eyebrow" id="community"></div>
+
+    <h1 id="title"></h1>
+
+    <p id="address" class="address"></p>
+
+    <!-- PHOTO GALLERY -->
+
+    <div id="gallery" class="gallery">
+
+      <div id="heroImage" class="primary-image"></div>
+
+      <div id="thumbnails" class="thumbnails"></div>
+
+    </div>
+
+    <!-- MAIN PROPERTY DETAILS -->
+
+    <div class="main-grid">
+
+      <div>
+
+        <section class="panel">
+
+          <h2>Property Overview</h2>
+
+          <p id="description"></p>
+
+          <div id="specs" class="specs"></div>
+
+        </section>
+
+        <section id="highlightsPanel" class="panel hidden">
+
+          <h2>What Makes This Home Special</h2>
+
+          <ul id="highlights" class="highlights"></ul>
+
+        </section>
+
+        <section id="incentivesPanel" class="panel hidden">
+
+          <h2>Explore Incentive Opportunities</h2>
+
+          <p>
+            Review promotional program details and
+            confirm availability and eligibility
+            before making a purchase decision.
+          </p>
+
+          <div id="incentiveLinks"></div>
+
+          <p id="promoNote" class="note"></p>
+
+        </section>
+
+      </div>
+
+      <!-- PRICE AND OFFER SIDEBAR -->
+
+      <aside>
+
+        <div class="panel">
+
+          <div id="originalPrice" class="original"></div>
+
+          <div id="price" class="price"></div>
+
+          <div id="savings" class="savings"></div>
+
+          <p>
+            Interested in this property?
+            Let's discuss your options
+            and next steps.
+          </p>
+
+          <a id="offerLink" class="btn gold"
+             href="#">
+            SUBMIT AN OFFER NOW →
+          </a>
+
+          <a id="emailLink" class="btn"
+             href="#">
+            EMAIL ANGELA
+          </a>
+
+          <a class="btn outline"
+             href="tel:+13468674865">
+            CALL 346-867-4865
+          </a>
+
+          <p class="note">
+            Offer inquiries are nonbinding.
+            Pricing, availability, financing
+            and incentives must be verified.
+          </p>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+</main>
+
+<dialog id="lightbox">
+
+  <img id="lightboxImage"
+       alt="Property gallery photo">
+
+  <div class="controls">
+    <button id="previousPhoto" type="button">
+      ← Previous
+    </button>
+
+    <button id="nextPhoto" type="button">
+      Next →
+    </button>
+
+    <button id="closeLightbox" type="button">
+      Close
+    </button>
+  </div>
+
+</dialog>
+
+<footer>
+
+  Angela Speights · Perry Homes · Riceland
+
+  <p>
+    <a href="/inventory.html">
+      View All Inventory
+    </a>
+    ·
+    <a href="mailto:Angela.Speights@perryhomes.com">
+      Contact Angela
+    </a>
+  </p>
+
+  <p>
+    All property information is subject
+    to verification and change.
+    Equal Housing Opportunity.
+  </p>
+
+</footer>
+
+<script type="module">
+
+import { createClient }
+from 'https://esm.sh/@supabase/supabase-js@2.49.4';
+
+const SUPABASE_URL =
+  'https://yyrynwzgtdopoqfognns.supabase.co';
+
+const SUPABASE_PUBLIC_KEY =
+  'PASTE_YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY_HERE';
+
+const db=createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLIC_KEY,
+  {
+    auth:{
+      persistSession:false,
+      autoRefreshToken:false,
+      detectSessionInUrl:false
+    }
+  }
+);
+
+const $=id=>document.getElementById(id);
+
+const params=new URLSearchParams(location.search);
+
+const slug=params.get('slug');
+
+const money=n=>new Intl.NumberFormat(
+  'en-US',
+  {
+    style:'currency',
+    currency:'USD',
+    maximumFractionDigits:0
+  }
+).format(Number(n)||0);
+
+function appendText(parent,tag,text,css='') {
+  const node=document.createElement(tag);
+  node.textContent=text;
+  if(css) node.className=css;
+  parent.appendChild(node);
+  return node;
+}
+
+let galleryPhotos=[];
+let activePhoto=0;
+
+function displayGallery(photos,address) {
+
+  galleryPhotos=photos.filter(
+    x=>x &&
+    typeof x.url==='string' &&
+    /^(https:\/\/|\/)/.test(x.url)
+  );
+
+  const hero=$('heroImage');
+  const thumbs=$('thumbnails');
+
+  hero.replaceChildren();
+  thumbs.replaceChildren();
+
+  if(!galleryPhotos.length) {
+    appendText(
+      hero,
+      'div',
+      'Property photos coming soon.',
+      'image-placeholder'
+    );
+    thumbs.classList.add('hidden');
+    return;
+  }
+
+  const first=document.createElement('button');
+  first.type='button';
+
+  const image=document.createElement('img');
+  image.src=galleryPhotos[0].url;
+  image.alt=galleryPhotos[0].alt || address;
+
+  first.appendChild(image);
+  first.addEventListener(
+    'click',
+    ()=>openLightbox(0)
+  );
+
+  hero.appendChild(first);
+
+  galleryPhotos.slice(1,5).forEach((photo,i)=>{
+
+    const button=document.createElement('button');
+    button.type='button';
+
+    const img=document.createElement('img');
+    img.src=photo.url;
+    img.alt=photo.alt || address;
+    img.loading='lazy';
+
+    button.appendChild(img);
+    button.addEventListener(
+      'click',
+      ()=>openLightbox(i+1)
+    );
+
+    thumbs.appendChild(button);
+  });
+
+  if(galleryPhotos.length<2) {
+    thumbs.classList.add('hidden');
+  } else {
+    thumbs.classList.remove('hidden');
+  }
+}
+
+function openLightbox(index) {
+
+  activePhoto=index;
+  updateLightbox();
+
+  $('lightbox').showModal();
+}
+
+function updateLightbox() {
+
+  const photo=galleryPhotos[activePhoto];
+
+  if(!photo) return;
+
+  $('lightboxImage').src=photo.url;
+  $('lightboxImage').alt=photo.alt || 'Home photo';
+}
+
+$('previousPhoto').addEventListener('click',()=>{
+
+  if(!galleryPhotos.length) return;
+
+  activePhoto=(
+    activePhoto-1+galleryPhotos.length
+  )%galleryPhotos.length;
+
+  updateLightbox();
+});
+
+$('nextPhoto').addEventListener('click',()=>{
+
+  if(!galleryPhotos.length) return;
+
+  activePhoto=(activePhoto+1)%galleryPhotos.length;
+  updateLightbox();
+});
+
+$('closeLightbox').addEventListener(
+  'click',
+  ()=>$('lightbox').close()
+);
+
+function addSpec(label,value) {
+
+  if(value===null || value===undefined || value==='') {
+    return;
+  }
+
+  const node=document.createElement('div');
+  node.className='spec';
+
+  appendText(node,'strong',String(value));
+  appendText(node,'span',label);
+
+  $('specs').appendChild(node);
+}
+
+function addIncentive(label,path) {
+
+  const link=document.createElement('a');
+
+  link.className='incentive';
+  link.href=path;
+  link.target='_blank';
+  link.rel='noopener noreferrer';
+  link.textContent='✦ '+label+' ↗';
+
+  $('incentiveLinks').appendChild(link);
+}
+
+function render(home) {
+
+  document.title=
+    (home.title||home.address)+
+    ' | Angela Speights';
+
+  $('community').textContent=
+    home.community||'Available Home';
+
+  $('title').textContent=home.title||home.address;
+
+  const fullAddress=[
+    home.address,
+    home.city,
+    home.state,
+    home.zip
+  ].filter(Boolean).join(', ');
+
+  $('address').textContent=fullAddress;
+
+  $('description').textContent=
+    home.description||'Contact Angela for property details.';
+
+  $('price').textContent=money(home.current_price);
+
+  if(
+    home.original_price!=null &&
+    Number(home.original_price)>Number(home.current_price)
+  ) {
+
+    $('originalPrice').textContent=
+      'Originally '+money(home.original_price);
+
+    $('savings').textContent=
+      money(home.original_price-home.current_price)+
+      ' below original price';
+  }
+
+  addSpec('Bedrooms',home.bedrooms);
+  addSpec('Bathrooms',home.bathrooms);
+
+  addSpec(
+    'Living Area',
+    home.square_feet!=null
+      ? Number(home.square_feet).toLocaleString()+' Sq Ft'
+      : null
+  );
+
+  addSpec(
+    'Lot Size',
+    home.lot_square_feet!=null
+      ? Number(home.lot_square_feet).toLocaleString()+' Sq Ft'
+      : null
+  );
+
+  addSpec('Lot Type',home.lot_type);
+  addSpec('Floor Plan',home.floor_plan);
+  addSpec('Stories',home.story_count);
+  addSpec('Garage Spaces',home.garage_spaces);
+
+  const highlights=Array.isArray(home.highlights)
+    ? home.highlights
+    : [];
+
+  $('highlightsPanel').classList.toggle(
+    'hidden',
+    !highlights.length
+  );
+
+  highlights.forEach(item=>{
+    appendText($('highlights'),'li',item);
+  });
+
+  if(home.appliances_link) {
+    addIncentive(
+      'Home Appliance Package',
+      '/incentives/home-appliances.html'
+    );
+  }
+
+  if(home.financing_link) {
+    addIncentive(
+      'Special Financing & Interest Rates',
+      '/incentives/special-financing.html'
+    );
+  }
+
+  if(home.realtor_link) {
+    addIncentive(
+      'Realtor Rewards — For Agents',
+      '/incentives/realtor-bonus.html'
+    );
+  }
+
+  $('incentivesPanel').classList.toggle(
+    'hidden',
+    !home.appliances_link &&
+    !home.financing_link &&
+    !home.realtor_link
+  );
+
+  $('promoNote').textContent=home.promo_note||'';
+
+  // Reuse your existing Submit an Offer form.
+  // The address is automatically prefilled.
+
+  const offerParams=new URLSearchParams({
+    home:home.slug,
+    address:fullAddress
+  });
+
+  $('offerLink').href=
+    '/submit-offer.html?'+offerParams.toString();
+
+  $('emailLink').href=
+    'mailto:Angela.Speights@perryhomes.com'+
+    '?subject='+encodeURIComponent(
+      'Home Inquiry - '+fullAddress
+    );
+
+  displayGallery(
+    Array.isArray(home.photos)?home.photos:[],
+    fullAddress
+  );
+
+  $('loading').classList.add('hidden');
+  $('property').classList.remove('hidden');
+}
+
+function showNotFound() {
+  $('loading').classList.add('hidden');
+  $('property').classList.add('hidden');
+  $('notFound').classList.remove('hidden');
+}
+
+async function loadHome() {
+
+  if(!slug || SUPABASE_PUBLIC_KEY.startsWith('PASTE_')) {
+    showNotFound();
+    return;
+  }
+
+  const {data,error}=await db
+    .from('inventory_listings')
+    .select('*')
+    .eq('slug',slug)
+    .eq('status','published')
+    .maybeSingle();
+
+  if(error) {
+    console.error('Property load error:',error);
+    showNotFound();
+    return;
+  }
+
+  if(!data) {
+    showNotFound();
+    return;
+  }
+
+  render(data);
+}
+
+// Recheck availability when returning to a listing.
+// Archived or deleted listings will no longer display.
+
+document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden) location.reload();
+});
+
+loadHome();
+
+</script>
+</body>
+</html>
