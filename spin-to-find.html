@@ -1,0 +1,747 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spin to Find Your Home | Angela Speights</title>
+<meta name="description" content="Spin the wheel and discover an available Perry Homes property in Riceland.">
+
+<style>
+:root {
+  --navy: #0b1b30;
+  --blue: #193b59;
+  --gold: #d9ae60;
+  --cream: #faf8f3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  color: var(--navy);
+}
+
+header {
+  background: var(--navy);
+  border-bottom: 4px solid var(--gold);
+  padding: 22px;
+  text-align: center;
+  color: white;
+}
+
+header strong {
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+header small {
+  display: block;
+  margin-top: 7px;
+  color: var(--gold);
+  letter-spacing: 2px;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 45px 20px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.eyebrow {
+  color: #a27b41;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 5vw, 55px);
+  line-height: 1.15;
+  margin: 16px auto;
+  max-width: 850px;
+}
+
+.hero p {
+  color: #617386;
+  font-size: 17px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.4fr 0.85fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.wheel-card {
+  background: white;
+  border-radius: 18px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 10px 35px #0b1b3015;
+}
+
+.wheel-container {
+  position: relative;
+  width: min(100%, 500px);
+  aspect-ratio: 1;
+  margin: 0 auto 25px;
+}
+
+#wheel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 10px solid var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px var(--navy);
+  background: var(--navy);
+  container-type: inline-size;
+  transition: transform 5.5s cubic-bezier(.15,.7,.13,1);
+}
+
+.wheel-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 15px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 2px 4px #07182baa;
+}
+
+.wheel-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 28%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--gold);
+  border: 5px solid white;
+  font-weight: bold;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pointer {
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 38px solid var(--navy);
+  z-index: 5;
+}
+
+button,
+.primary-link {
+  border: 0;
+  border-radius: 8px;
+  padding: 17px 28px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  background: var(--gold);
+  color: var(--navy);
+  display: inline-block;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #2876ba;
+  outline-offset: 4px;
+}
+
+#status {
+  font-size: 14px;
+  color: #657789;
+  min-height: 42px;
+}
+
+.profile {
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--navy);
+  color: white;
+}
+
+.portrait {
+  height: 300px;
+  background: linear-gradient(135deg,#254c70,#10233a);
+  display: grid;
+  place-items: center;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+
+#photoFallback {
+  text-align: center;
+  font-size: 22px;
+  color: var(--gold);
+}
+
+.profile-body {
+  padding: 28px;
+}
+
+.profile h2 {
+  font: 30px Georgia, serif;
+  margin: 12px 0;
+}
+
+.profile p {
+  color: #e4ebf2;
+  line-height: 1.7;
+}
+
+.profile a {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+.result {
+  max-width: 850px;
+  margin: 30px auto 0;
+  padding: 24px;
+  border-radius: 17px;
+  border: 1px solid #e3e8ee;
+  background: white;
+}
+
+.result[hidden] { display: none; }
+
+.result-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  align-items: center;
+  gap: 22px;
+}
+
+#resultImage img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+#resultImage .fallback {
+  background: #edf1f5;
+  padding: 55px 12px;
+  text-align: center;
+}
+
+.result h2 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  margin: 8px 0;
+}
+
+#resultPrice {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.fineprint {
+  text-align: center;
+  max-width: 850px;
+  margin: 35px auto 0;
+  font-size: 12px;
+  color: #68798b;
+}
+
+footer {
+  text-align: center;
+  padding: 28px 15px;
+  background: var(--navy);
+  color: white;
+  font-size: 13px;
+}
+
+footer a { color: var(--gold); }
+
+@media(max-width: 800px) {
+  .layout { grid-template-columns: 1fr; }
+  .result-grid { grid-template-columns: 1fr; }
+  .portrait { height: 240px; }
+}
+
+@media(max-width: 450px) {
+  .wheel-card { padding: 20px 12px; }
+  .wheel-number { font-size: 12px; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  #wheel { transition: none; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <a href="/">
+    <strong>ANGELA SPEIGHTS</strong>
+    <small>PERRY HOMES · RICELAND</small>
+  </a>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="eyebrow">Your next address is one spin away</div>
+
+  <h1>
+    What If Picking Your Home
+    Was Like Playing the Lotto?
+  </h1>
+
+  <p>
+    10 homes. One spin. A whole new way to discover
+    your next favorite address!
+    Let the wheel introduce you to a home in Riceland.
+  </p>
+</section>
+
+<div class="layout">
+
+  <section class="wheel-card">
+
+    <div class="wheel-container">
+      <div class="pointer" aria-hidden="true"></div>
+      <div id="wheel">
+        <div class="wheel-center">YOUR<br>HOME?</div>
+      </div>
+    </div>
+
+    <p id="status" role="status" aria-live="polite">
+      Loading available homes...
+    </p>
+
+    <button id="spinButton" type="button" disabled>
+      SPIN TO FIND YOUR HOME ✦
+    </button>
+
+    <p style="font-size:12px;color:#697b8d">
+      Don't love your first pick? Spin again!
+    </p>
+
+  </section>
+
+  <aside class="profile">
+
+    <div class="portrait">
+      <img id="angelaPhoto" alt="Angela Speights">
+      <div id="photoFallback">ANGELA SPEIGHTS</div>
+    </div>
+
+    <div class="profile-body">
+
+      <div class="eyebrow">Your Riceland Home Guide</div>
+
+      <h2>Meet Angela Speights</h2>
+
+      <p>
+        Finding the right home should be exciting!
+        Whether you're buying your first home,
+        making your next move, or helping a client
+        find their perfect fit, I'm here to help
+        make the journey easier.
+      </p>
+
+      <p>
+        Spin the wheel, explore the home,
+        and let me help you take the next step!
+      </p>
+
+      <p>
+        <a href="mailto:Angela.Speights@perryhomes.com">
+          Email Angela →
+        </a>
+      </p>
+
+      <p>
+        <a href="tel:+13468674865">
+          346-867-4865
+        </a>
+      </p>
+
+    </div>
+  </aside>
+
+</div>
+
+<section class="result" id="result" hidden>
+
+  <div class="eyebrow">✦ Your Wheel Selection ✦</div>
+
+  <div class="result-grid">
+
+    <div id="resultImage"></div>
+
+    <div>
+      <h2 id="resultTitle"></h2>
+      <p id="resultAddress"></p>
+      <p id="resultSpecs"></p>
+      <p id="resultPrice"></p>
+
+      <a id="resultLink" class="primary-link" href="#">
+        VIEW MY HOME →
+      </a>
+
+      <p>
+        <a href="/inventory.html">
+          Browse All Available Homes →
+        </a>
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<p class="fineprint">
+  Just for fun! This is a random home discovery experience,
+  not a lottery, contest, sweepstakes, or prize promotion.
+  No prizes or purchase are involved.
+  Prices, incentives and availability are subject to change.
+  Equal Housing Opportunity.
+</p>
+
+</main>
+
+<footer>
+  Angela Speights · Perry Homes · Riceland
+  <p>
+    <a href="mailto:Angela.Speights@perryhomes.com">
+      Email Angela
+    </a>
+    ·
+    <a href="tel:+13468674865">
+      346-867-4865
+    </a>
+  </p>
+</footer>
+
+<script>
+'use strict';
+
+// ============================================
+// CONFIGURATION
+// ============================================
+
+// Replace with the published path of your photo.
+const ANGELA_PHOTO_URL = '';
+
+// Existing public Supabase credentials.
+// Never put a service_role or secret key here.
+const SUPABASE_URL =
+  'https://yyrynwzgtdopoqfognns.supabase.co';
+
+const SUPABASE_KEY =
+  'sb_publishable_3oyKdqHlHa_x65KULEZBPQ_w_DHMvXA';
+
+const MAX_HOMES = 10;
+
+// ============================================
+
+const $ = id => document.getElementById(id);
+
+let homes = [];
+let rotation = 0;
+let spinning = false;
+
+if (ANGELA_PHOTO_URL) {
+  const photo = $('angelaPhoto');
+  photo.src = ANGELA_PHOTO_URL;
+
+  photo.onload = () => {
+    photo.style.display = 'block';
+    $('photoFallback').style.display = 'none';
+  };
+}
+
+function getHomeLink(home) {
+  return '/home.html?slug=' +
+    encodeURIComponent(home.slug);
+}
+
+function formatPrice(value) {
+  if (value === null || value === undefined || value === '') {
+    return 'Contact Angela for price';
+  }
+
+  return Number(value).toLocaleString(
+    'en-US',
+    {
+      style: 'currency',
+      currency: 'USD',
+      maximumFractionDigits: 0
+    }
+  );
+}
+
+function getPhoto(home) {
+  const first = Array.isArray(home.photos)
+    ? home.photos[0]
+    : null;
+
+  if (!first || typeof first.url !== 'string') {
+    return null;
+  }
+
+  if (!/^(https:\/\/|\/)/.test(first.url)) {
+    return null;
+  }
+
+  return first.url;
+}
+
+function randomIndex(max) {
+  const values = new Uint32Array(1);
+  const range = 4294967296;
+  const cutoff = Math.floor(range / max) * max;
+
+  do {
+    crypto.getRandomValues(values);
+  } while (values[0] >= cutoff);
+
+  return values[0] % max;
+}
+
+function drawWheel() {
+  const wheel = $('wheel');
+  const count = homes.length;
+
+  const colors = [
+    '#102e48',
+    '#d2a55f',
+    '#1b4768',
+    '#b88b49',
+    '#17405f',
+    '#ebc584',
+    '#204c6b',
+    '#b88c52',
+    '#0d304c',
+    '#d0a96b'
+  ];
+
+  const slices = homes.map((home, index) => {
+    const start = index * 100 / count;
+    const end = (index + 1) * 100 / count;
+
+    return colors[index % colors.length] +
+      ' ' + start + '% ' + end + '%';
+  });
+
+  wheel.style.background =
+    'conic-gradient(' + slices.join(',') + ')';
+
+  wheel.querySelectorAll('.wheel-number')
+    .forEach(node => node.remove());
+
+  homes.forEach((home, index) => {
+    const label = document.createElement('span');
+
+    label.className = 'wheel-number';
+    label.textContent = index + 1;
+
+    const radians =
+      ((index + 0.5) * 360 / count - 90) *
+      Math.PI / 180;
+
+    const x = Math.cos(radians) * 35;
+    const y = Math.sin(radians) * 35;
+
+    label.style.transform =
+      'translate(-50%, -50%) ' +
+      'translate(' + x + 'cqw,' + y + 'cqw)';
+
+    wheel.appendChild(label);
+  });
+}
+
+function showResult(home) {
+  $('resultTitle').textContent =
+    home.title || home.address || 'Your Riceland Home';
+
+  $('resultAddress').textContent = [
+    home.address,
+    home.city,
+    home.state
+  ].filter(Boolean).join(', ');
+
+  $('resultSpecs').textContent = [
+    home.bedrooms ? home.bedrooms + ' Bedrooms' : '',
+    home.bathrooms ? home.bathrooms + ' Bathrooms' : '',
+    home.square_feet
+      ? Number(home.square_feet).toLocaleString() + ' Sq Ft'
+      : ''
+  ].filter(Boolean).join(' · ');
+
+  $('resultPrice').textContent =
+    formatPrice(home.current_price);
+
+  $('resultLink').href = getHomeLink(home);
+
+  const container = $('resultImage');
+  container.replaceChildren();
+
+  const photo = getPhoto(home);
+
+  if (photo) {
+    const img = document.createElement('img');
+    img.src = photo;
+    img.alt = 'Selected Riceland home';
+    container.appendChild(img);
+  } else {
+    const fallback = document.createElement('div');
+    fallback.className = 'fallback';
+    fallback.textContent = 'View home photos on listing page';
+    container.appendChild(fallback);
+  }
+
+  $('result').hidden = false;
+
+  $('result').scrollIntoView({
+    behavior: 'smooth',
+    block: 'nearest'
+  });
+}
+
+async function loadHomes() {
+  try {
+    const endpoint =
+      SUPABASE_URL +
+      '/rest/v1/inventory_listings' +
+      '?select=slug,title,address,city,state,' +
+      'current_price,bedrooms,bathrooms,square_feet,photos' +
+      '&status=eq.published' +
+      '&order=address.asc' +
+      '&limit=100';
+
+    const response = await fetch(endpoint, {
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: 'Bearer ' + SUPABASE_KEY
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        'Inventory request failed: ' + response.status
+      );
+    }
+
+    const data = await response.json();
+
+    homes = (Array.isArray(data) ? data : [])
+      .filter(home => home.slug)
+      .slice(0, MAX_HOMES);
+
+    if (!homes.length) {
+      $('status').textContent =
+        'No published homes are available right now.';
+      return;
+    }
+
+    drawWheel();
+
+    $('spinButton').disabled = false;
+
+    $('status').textContent =
+      homes.length + ' available homes. Ready to spin!';
+
+  } catch (error) {
+    console.error(error);
+
+    $('status').textContent =
+      'Homes could not be loaded. ' +
+      'Please try again or browse all inventory.';
+  }
+}
+
+$('spinButton').addEventListener('click', () => {
+  if (spinning || !homes.length) return;
+
+  spinning = true;
+  $('spinButton').disabled = true;
+  $('result').hidden = true;
+
+  const selected = randomIndex(homes.length);
+
+  const slice = 360 / homes.length;
+  const target = (selected + 0.5) * slice;
+
+  const current =
+    ((rotation % 360) + 360) % 360;
+
+  const adjustment =
+    (360 - target - current + 360) % 360;
+
+  rotation += 360 * 6 + adjustment;
+
+  const reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  ).matches;
+
+  $('wheel').style.transition = reducedMotion
+    ? 'none'
+    : 'transform 5.5s cubic-bezier(.15,.7,.13,1)';
+
+  $('wheel').style.transform =
+    'rotate(' + rotation + 'deg)';
+
+  $('status').textContent =
+    'Finding your next home...';
+
+  setTimeout(() => {
+    spinning = false;
+    $('spinButton').disabled = false;
+
+    $('status').textContent =
+      'You landed on Home #' + (selected + 1) +
+      '! Spin again or explore your pick.';
+
+    showResult(homes[selected]);
+  }, reducedMotion ? 50 : 5600);
+});
+
+loadHomes();
+</script>
+
+</body>
+</html>
