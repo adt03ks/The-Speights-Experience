@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Piece Together Your Dream Home | Angela Speights</title>
+<meta name="description" content="Solve the puzzle to reveal a Riceland home and explore its details.">
+
+<style>
+:root{
+  --navy:#0b1b30;
+  --navy2:#173753;
+  --gold:#d9ae60;
+  --cream:#faf8f3;
+  --ink:#20364b;
+  --muted:#627386;
+  --line:#dce5ed;
+  --success:#2e7d53;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:#f4f6f9;
+}
+
+a{text-decoration:none}
+
+header{
+  background:var(--navy);
+  color:#fff;
+  border-bottom:4px solid var(--gold);
+  padding:22px 16px;
+}
+
+.wrap{
+  width:min(1140px,calc(100% - 32px));
+  margin:auto;
+}
+
+.brand{
+  color:#fff;
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.brand small{
+  display:block;
+  margin-top:6px;
+  color:var(--gold);
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+main{
+  padding:40px 0 70px;
+}
+
+.hero{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.eyebrow{
+  color:#9c7137;
+  font-size:12px;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  font-weight:900;
+}
+
+h1{
+  font-family:Georgia,serif;
+  color:var(--navy);
+  font-size:clamp(32px,5vw,52px);
+  line-height:1.12;
+  margin:12px 0 10px;
+}
+
+.hero p{
+  color:var(--muted);
+  max-width:780px;
+  margin:0 auto;
+  line-height:1.75;
+  font-size:17px;
+}
+
+.layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.35fr) minmax(300px,.85fr);
+  gap:28px;
+  align-items:start;
+}
+
+.panel{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 8px 25px rgba(11,27,48,.05);
+}
+
+.panel h2{
+  margin:0 0 14px;
+  color:var(--navy);
+  font-family:Georgia,serif;
+  font-size:30px;
+}
+
+.small-copy{
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:18px;
+}
+
+.puzzle-board{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:6px;
+  width:min(100%,640px);
+  margin:0 auto;
+  background:#d7e0e8;
+  padding:6px;
+  border-radius:16px;
+}
+
+.tile{
+  position:relative;
+  aspect-ratio:1/1;
+  border:0;
+  border-radius:10px;
+  overflow:hidden;
+  cursor:pointer;
+  background-color:#edf2f6;
+  background-size:400% 400%;
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+}
+
+.tile.selected{
+  outline:4px solid var(--gold);
+  outline-offset:-4px;
+}
+
+.tile.correct::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(255,255,255,.10);
+  pointer-events:none;
+}
+
+.tile-label{
+  position:absolute;
+  right:8px;
+  bottom:6px;
+  background:rgba(11,27,48,.72);
+  color:#fff;
+  border-radius:999px;
+  padding:2px 8px;
+  font-size:11px;
+  font-weight:700;
+}
+
+.controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center;
+  margin-top:18px;
+}
+
+.btn{
+  display:inline-block;
+  border:0;
+  background:var(--navy);
+  color:#fff;
+  border-radius:8px;
+  padding:14px 18px;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.btn.gold{
+  background:var(--gold);
+  color:var(--navy);
+}
+
+.btn.outline{
+  background:#fff;
+  color:var(--navy);
+  border:1px solid var(--navy);
+}
+
+.btn:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
+
+.status{
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+  min-height:22px;
+  margin:12px 0 0;
+}
+
+.progress{
+  margin-top:16px;
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+}
+
+.profile{
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--navy);
+  color:#fff;
+}
+
+.portrait{
+  position:relative;
+  min-height:420px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#26496d,#0f2238);
+}
+
+.portrait img{
+  width:100%;
+  height:100%;
+  min-height:420px;
+  object-fit:cover;
+  display:none;
+}
+
+.portrait::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(6,20,35,.86) 0%,
+    rgba(6,20,35,.35) 50%,
+    rgba(6,20,35,.06) 100%
+  );
+}
+
+#photoFallback{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  z-index:1;
+  color:var(--gold);
+  font-weight:800;
+  letter-spacing:2px;
+  text-align:center;
+}
+
+.portrait-copy{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  padding:24px;
+  z-index:2;
+}
+
+.eyebrow.light{
+  color:var(--gold);
+}
+
+.portrait-title{
+  margin:8px 0 0;
+  color:#fff;
+  font-family:Georgia,serif;
+  font-size:clamp(30px,4vw,48px);
+  line-height:1.05;
+}
+
+.profile-body{
+  padding:24px;
+  background:#081b30;
+}
+
+.profile-body p{
+  margin:0 0 16px;
+  line-height:1.75;
+  color:#f0f4f7;
+}
+
+.profile-body a{
+  color:#f3c56c;
+  font-weight:800;
+  text-decoration:underline;
+}
+
+.reveal{
+  margin-top:30px;
+}
+
+.reveal[hidden]{
+  display:none;
+}
+
+.reveal-grid{
+  display:grid;
+  grid-template-columns:240px 1fr;
+  gap:22px;
+  align-items:center;
+}
+
+.reveal-photo img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  border-radius:12px;
+  display:block;
+}
+
+.reveal-photo .fallback{
+  height:210px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  background:#edf1f5;
+  border-radius:12px;
+  color:var(--muted);
+  padding:18px;
+}
+
+.reveal h3{
+  margin:0 0 8px;
+  font-family:Georgia,serif;
+  color:var(--navy);
+  font-size:30px;
+}
+
+.price{
+  font-size:28px;
+  font-weight:900;
+  color:var(--navy);
+  margin:12px 0;
+}
+
+.success-banner{
+  display:inline-block;
+  background:#edf8f1;
+  color:var(--success);
+  font-weight:800;
+  border:1px solid #cce9d8;
+  padding:8px 12px;
+  border-radius:999px;
+  margin-bottom:10px;
+}
+
+.fineprint{
+  text-align:center;
+  max-width:850px;
+  margin:34px auto 0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7;
+}
+
+footer{
+  background:#071728;
+  color:#cbd7e1;
+  padding:32px 20px;
+  text-align:center;
+  font-size:12px;
+}
+
+footer a{
+  color:var(--gold);
+}
+
+@media(max-width:900px){
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .reveal-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:520px){
+  .panel{
+    padding:18px;
+  }
+
+  .portrait,
+  .portrait img{
+    min-height:330px;
+  }
+
+  .portrait-copy,
+  .profile-body{
+    padding:20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">
+      ANGELA SPEIGHTS
+      <small>PERRY HOMES · RICELAND</small>
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="eyebrow">Can you piece together your dream home?</div>
+    <h1>Complete the Puzzle<br>and Reveal the Home</h1>
+    <p>
+      Put together this 16-piece puzzle to uncover a featured Riceland home.
+      Once you solve it, you'll unlock the home details and can explore the full listing.
+    </p>
+  </section>
+
+  <div class="layout">
+
+    <section class="panel">
+      <h2>Medium Puzzle Challenge</h2>
+      <p class="small-copy">
+        Tap one tile, then tap another tile to swap them.
+        Keep going until the full image comes together.
+      </p>
+
+      <div id="board" class="puzzle-board" aria-label="16 piece home puzzle"></div>
+
+      <div class="controls">
+        <button id="shuffleBtn" class="btn gold" type="button">Shuffle Puzzle</button>
+        <button id="resetBtn" class="btn outline" type="button">Reset</button>
+        <button id="hintBtn" class="btn outline" type="button">Show Finished Image</button>
+      </div>
+
+      <div id="status" class="status" role="status" aria-live="polite">
+        Loading puzzle...
+      </div>
+
+      <div id="progress" class="progress"></div>
+
+      <section id="reveal" class="panel reveal" hidden>
+        <div class="success-banner">Puzzle Complete ✦ Home Revealed</div>
+
+        <div class="reveal-grid">
+          <div id="revealPhoto" class="reveal-photo"></div>
+
+          <div>
+            <h3 id="homeTitle"></h3>
+            <p id="homeAddress"></p>
+            <p id="homeSpecs"></p>
+            <div id="homePrice" class="price"></div>
+
+            <p id="homeDescription"></p>
+
+            <p>
+              <a id="homeLink" class="btn gold" href="#" target="_blank" rel="noopener">
+                VIEW THIS HOME →
+              </a>
+            </p>
+
+            <p>
+              <a href="/inventory.html">Browse All Available Homes →</a>
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <aside class="profile">
+      <div class="portrait">
+        <img id="angelaPhoto" alt="Angela Speights">
+        <div id="photoFallback">ANGELA SPEIGHTS</div>
+
+        <div class="portrait-copy">
+          <div class="eyebrow light">Your Riceland Home Guide</div>
+          <h2 class="portrait-title">Meet Angela Speights</h2>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <p>
+          Finding the right home should be exciting.
+          This puzzle is a fun way to discover one of our beautiful homes in Riceland.
+        </p>
+
+        <p>
+          Once you complete the image, you'll unlock the featured home details
+          and can decide whether it might be the perfect fit for you or your client.
+        </p>
+
+        <p>
+          <a href="mailto:Angela.Speights@perryhomes.com">Email Angela →</a>
+        </p>
+
+        <p>
+          <a href="tel:+13468674865">346-867-4865</a>
+        </p>
+      </div>
+    </aside>
+
+  </div>
+
+  <p class="fineprint">
+    This puzzle is for promotional and entertainment purposes only.
+    Home pricing, incentives, and availability are subject to change.
+    Equal Housing Opportunity.
+  </p>
+
+</main>
+
+<footer>
+  Angela Speights · Perry Homes · Riceland
+  <p>
+    <a href="mailto:Angela.Speights@perryhomes.com">Email Angela</a>
+    ·
+    <a href="tel:+13468674865">346-867-4865</a>
+  </p>
+</footer>
+
+<script>
+'use strict';
+
+/* =========================
+   CONFIGURATION
+========================= */
+
+// Replace with your actual home photo URL
+const HOUSE_IMAGE_URL = '/images/featured-home-puzzle.jpeg';
+
+// Replace with the actual home details page
+const HOUSE_LINK = '/home.html?slug=12230-jacob-lane';
+
+// Replace with actual home details
+const HOME_DATA = {
+  title: 'Your Next Dream Home',
+  address: '12230 Jacob Lane, Mont Belvieu, TX',
+  specs: '5 Bedrooms · 5.5 Bathrooms · 4,356 Sq Ft',
+  price: '$849,900',
+  description: 'Beautiful Perry Home with amazing curb appeal! Perfect for the family that needs the extra storage space, living quarters, privacy and garage space!'
+};
+
+// Replace with your image path
+const ANGELA_PHOTO_URL = '/images/Angela-Doorway.png';
+
+/* ========================= */
+
+const GRID_SIZE = 4;
+const TILE_COUNT = GRID_SIZE * GRID_SIZE;
+
+const board = document.getElementById('board');
+const statusNode = document.getElementById('status');
+const progressNode = document.getElementById('progress');
+const reveal = document.getElementById('reveal');
+
+let tiles = [];
+let selectedIndex = null;
+let solvedState = [];
+let currentState = [];
+
+if (ANGELA_PHOTO_URL) {
+  const photo = document.getElementById('angelaPhoto');
+  photo.src = ANGELA_PHOTO_URL;
+  photo.onload = () => {
+    photo.style.display = 'block';
+    document.getElementById('photoFallback').style.display = 'none';
+  };
+}
+
+function setReveal() {
+  document.getElementById('homeTitle').textContent = HOME_DATA.title;
+  document.getElementById('homeAddress').textContent = HOME_DATA.address;
+  document.getElementById('homeSpecs').textContent = HOME_DATA.specs;
+  document.getElementById('homePrice').textContent = HOME_DATA.price;
+  document.getElementById('homeDescription').textContent = HOME_DATA.description;
+  document.getElementById('homeLink').href = HOUSE_LINK;
+
+  const revealPhoto = document.getElementById('revealPhoto');
+  revealPhoto.replaceChildren();
+
+  if (HOUSE_IMAGE_URL) {
+    const img = document.createElement('img');
+    img.src = HOUSE_IMAGE_URL;
+    img.alt = HOME_DATA.title;
+    revealPhoto.appendChild(img);
+  } else {
+    const fallback = document.createElement('div');
+    fallback.className = 'fallback';
+    fallback.textContent = 'Home image will appear here';
+    revealPhoto.appendChild(fallback);
+  }
+}
+
+function tileBackgroundPosition(index) {
+  const row = Math.floor(index / GRID_SIZE);
+  const col = index % GRID_SIZE;
+  const x = (GRID_SIZE - 1) === 0 ? 0 : (col / (GRID_SIZE - 1)) * 100;
+  const y = (GRID_SIZE - 1) === 0 ? 0 : (row / (GRID_SIZE - 1)) * 100;
+  return x + '% ' + y + '%';
+}
+
+function createTiles() {
+  board.replaceChildren();
+  tiles = [];
+
+  for (let i = 0; i < TILE_COUNT; i++) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'tile';
+    btn.dataset.index = i;
+
+    btn.style.backgroundImage = HOUSE_IMAGE_URL
+      ? 'url("' + HOUSE_IMAGE_URL + '")'
+      : 'linear-gradient(135deg,#dbe5ef,#f5f8fb)';
+
+    const label = document.createElement('span');
+    label.className = 'tile-label';
+    label.textContent = i + 1;
+    btn.appendChild(label);
+
+    btn.addEventListener('click', () => handleTileClick(i));
+
+    board.appendChild(btn);
+    tiles.push(btn);
+  }
+}
+
+function renderBoard() {
+  currentState.forEach((sourceIndex, tileIndex) => {
+    const tile = tiles[tileIndex];
+    tile.style.backgroundPosition = tileBackgroundPosition(sourceIndex);
+    tile.classList.toggle('correct', sourceIndex === tileIndex);
+
+    const label = tile.querySelector('.tile-label');
+    label.textContent = sourceIndex + 1;
+  });
+
+  const correctCount = currentState.filter((value, index) => value === index).length;
+  progressNode.textContent = correctCount + ' of ' + TILE_COUNT + ' pieces in the correct place';
+
+  if (correctCount === TILE_COUNT) {
+    statusNode.textContent = 'You solved it!';
+    reveal.hidden = false;
+  } else {
+    reveal.hidden = true;
+  }
+}
+
+function shuffleArray(array) {
+  const clone = [...array];
+
+  for (let i = clone.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [clone[i], clone[j]] = [clone[j], clone[i]];
+  }
+
+  return clone;
+}
+
+function shuffleUntilNotSolved() {
+  let shuffled = [...solvedState];
+
+  while (shuffled.every((value, index) => value === index)) {
+    shuffled = shuffleArray(solvedState);
+  }
+
+  return shuffled;
+}
+
+function clearSelection() {
+  selectedIndex = null;
+  tiles.forEach(tile => tile.classList.remove('selected'));
+}
+
+function handleTileClick(index) {
+  if (selectedIndex === null) {
+    selectedIndex = index;
+    tiles[index].classList.add('selected');
+    statusNode.textContent = 'Tile selected. Tap another tile to swap.';
+    return;
+  }
+
+  if (selectedIndex === index) {
+    clearSelection();
+    statusNode.textContent = 'Selection cleared.';
+    return;
+  }
+
+  [currentState[selectedIndex], currentState[index]] =
+    [currentState[index], currentState[selectedIndex]];
+
+  clearSelection();
+  renderBoard();
+
+  if (!reveal.hidden) {
+    statusNode.textContent = 'Congratulations! You revealed the home.';
+  } else {
+    statusNode.textContent = 'Keep going — you are building the full image.';
+  }
+}
+
+function shufflePuzzle() {
+  currentState = shuffleUntilNotSolved();
+  clearSelection();
+  reveal.hidden = true;
+  statusNode.textContent = 'Puzzle shuffled. Start swapping pieces!';
+  renderBoard();
+}
+
+function resetPuzzle() {
+  currentState = [...solvedState];
+  clearSelection();
+  reveal.hidden = false;
+  statusNode.textContent = 'Puzzle reset to solved state.';
+  renderBoard();
+}
+
+function showHint() {
+  alert('Tip: You are rebuilding the complete photo. Match the doorways, flooring, windows, and large visual sections to help guide you.');
+}
+
+document.getElementById('shuffleBtn').addEventListener('click', shufflePuzzle);
+document.getElementById('resetBtn').addEventListener('click', resetPuzzle);
+document.getElementById('hintBtn').addEventListener('click', showHint);
+
+function init() {
+  solvedState = Array.from({ length: TILE_COUNT }, (_, i) => i);
+  currentState = [...solvedState];
+
+  createTiles();
+  setReveal();
+
+  if (!HOUSE_IMAGE_URL) {
+    statusNode.textContent = 'Add a house image URL in the configuration section.';
+  } else {
+    statusNode.textContent = 'Puzzle loaded. Shuffle to begin!';
+  }
+
+  renderBoard();
+  shufflePuzzle();
+}
+
+init();
+</script>
+
+</body>
+</html>
